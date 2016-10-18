@@ -1,0 +1,30 @@
+body{
+    height: 100%;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-image: url("../img/acc.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+h4, h6{
+    color: #fff;
+}
+/*option {*/
+/*font-weight: normal;*/
+/*display: block;*/
+/*white-space: pre;*/
+/*min-height: 1.2em;*/
+/*padding: 0px 2px 1px;*/
+/*}*/
+.well{
+    -webkit-tap-highlight-color: rgba(0,135,245,0);
+    background-color: rgba(55, 51, 36, 0.4);
+    border: none;
+    border-radius: 25px;
+}
+.main_content {  width: 50%;  margin: 70px auto;  }
