@@ -12,8 +12,8 @@
                        <h6 style="text-align: center;">LOGIN</h6>
 
                        <div class="form-group{{ $errors->has('manNumber') ? ' has-error' : '' }}">
-                           <label for="email" class="control-label">MAN NUMBER</label>
-                           <input  id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
+                           <label for="email" class="control-label" style="color:#fff; ">MAN NUMBER</label>
+                           <input  placeholder="Enter your man number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
                            @if ($errors->has('manNumber'))
                                <span class="help-block">
                                     <strong>{{ $errors->first('manNumber') }}</strong>
@@ -22,7 +22,7 @@
                        </div>
 
                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                           <label for="password" class="control-label">PASSWORD</label>
+                           <label for="password" class="control-label" style="color: #fff;">PASSWORD</label>
                            <input id="password" type="password" class="form-control" name="password" placeholder="password">
                            @if ($errors->has('password'))
                                <span class="help-block">
@@ -33,8 +33,8 @@
 
                        <div class="form-group">
                            <div class="checkbox">
-                               <label>
-                                   <input type="checkbox" name="remember"> Remember Me
+                               <label style="color: #fff;">
+                                   <input type="checkbox" name="remember">Remember Me
                                </label>
                            </div>
                        </div>

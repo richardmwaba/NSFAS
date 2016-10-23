@@ -11,8 +11,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+//    public $primaryKey = 'manNumber';
     protected $fillable = [
-        'name', 'email', 'password',
+        'access_level_id','manNumber','firstName','lastName','otherName', 'email', 'password',
     ];
 
     /**
@@ -23,4 +24,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function access_level(){
+        return $this->belongsTo('App\AccessLevel');
+    }
+
+    public function department(){
+        return $this->belongsTo('App\Departments');
+    }
 }
