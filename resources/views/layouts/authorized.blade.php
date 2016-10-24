@@ -138,8 +138,9 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
+                <img class="center block" src="{{ URL::asset('frontend/img/logo.png') }}">
                 <h4 class="page-header">
-                    <img class="pull-right" src="{{ URL::asset('frontend/img/logo.png') }}">
+
                     @section('page_title')@yield('heading')@show
                     @if(Session::has('flash_message'))
                         <div class="alert alert-success {{session()->has('flash_message_important')? session('flash_message') : ''}}">
