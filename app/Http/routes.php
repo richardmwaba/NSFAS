@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
+Route::group(['middleware' => ['web']], function () {
+    /**
+     * All the routes bellow can be accessed by an unauthenticated user who visits our site
+     */
+    Route::get('/', function () {
+        return view('login');
+    });
 });
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+/**
+ * All routes included in the bellow route grouping will be accessed only by authenticated
+ * users that's both registered companies and customers
+ */
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/home', 'HomeController@index');
+
+});

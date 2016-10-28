@@ -31,28 +31,11 @@
         <!][endif] -->
 </head>
 <body>
-{{--<!-- Navigation -->--}}
-{{--<nav class="navbar nav-tabs navbar-inverse " role="navigation">--}}
-{{--<div class="container">--}}
-{{--<!-- Brand and toggle get grouped for better mobile display -->--}}
-    {{--<div class="navbar-header">--}}
-        {{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"--}}
-                {{--aria-expanded="false">--}}
-            {{--<span class="sr-only">Toggle navigation</span>--}}
-            {{--<span class="icon-bar"></span>--}}
-            {{--<span class="icon-bar"></span>--}}
-            {{--<span class="icon-bar"></span>--}}
-        {{--</button>--}}
-        {{--<a class="navbar-brand" href="{{ url('/') }}">Financial Accounting System</a>--}}
-    {{--</div>--}}
-{{--<!-- /.container -->--}}
-{{--</nav>--}}
-
-<div class="main_content">
-    @section('main_content')
-        @yield('content')
-    @show
-</div>
+    <div class="main_content">
+        @section('main_content')
+            @yield('content')
+        @show
+    </div>
 
 
 <!-- jQuery -->
