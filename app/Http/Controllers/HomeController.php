@@ -33,11 +33,11 @@ class HomeController extends Controller
              return view('admin.index');
          }elseif ($access_level_id =='AC'){
              return view('acc.index');
-         }elseif ($access_level_id == 'HOD'){
+         }elseif ($access_level_id == 'HD'){
              return view('hod.index');
-         }elseif ($access_level_id == 'DOS'){
+         }elseif ($access_level_id == 'DS'){
              return view('dos.index');
-         }elseif ($access_level_id =='HOU'){
+         }elseif ($access_level_id =='HU'){
              return view('hou.index');
          }else {
 
