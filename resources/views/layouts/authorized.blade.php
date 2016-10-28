@@ -114,6 +114,9 @@
                             <li>
                                 <a href="{{URL::asset('#')}}"><i class="fa fa-plus fa-fw"></i>Head of Unit</a>
                             </li>
+                            <li>
+                                <a href="{{URL::asset('new/imprest')}}"><i class="fa fa-plus fa-fw"></i>imprest</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
