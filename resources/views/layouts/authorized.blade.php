@@ -141,7 +141,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <img class="center block" src="{{ URL::asset('frontend/img/logo.png') }}">
+                <!-- <img style="margin-bottom:0.01%;margin-top:2%" class="img-rounded" src="{{ URL::asset('frontend/img/logo.png') }}"> -->
                 <h4 class="page-header">
 
                     @section('page_title')@yield('heading')@show
@@ -173,10 +173,12 @@
 @section('scripts')
 
     <!-- jQuery -->
-    <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}" type="text/javascript"></script>
+    <!--<script src="{URL::asset('../frontend/js/jquery-3.1.1.js')}}"> </script>-->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('../frontend/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{URL::asset('../frontend/metisMenu/dist/metisMenu.min.js')}}"></script>
@@ -192,6 +194,7 @@
     <script>
         $('div.alert').not('.alert-important').delay(4000).slideUp(300);
     </script>
+
 
 @show
 </body>

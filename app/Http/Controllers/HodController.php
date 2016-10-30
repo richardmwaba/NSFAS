@@ -11,6 +11,6 @@ class HodController extends Controller
     //
     public function imprestForm(){
 
-        return view('imprest.index');
+        return view('imprest.imprest');
     }
 }

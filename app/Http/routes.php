@@ -29,6 +29,7 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
-    Route::get('new/imprest', 'HodController@imprestForm');
+    Route::get('new/imprest', 'ImprestController@imprestForm');
+    Route::post('imprest/update', 'ImprestController@update');
 
 });

@@ -30,6 +30,11 @@ class User extends Authenticatable
     }
 
     public function department(){
-        return $this->belongsTo('App\Departments');
+        return $this->belongsTo('App\Departments', 'department_id');
+    }
+
+    public function access(){
+
+        return $this->hasOne('App\AccessLevel');
     }
 }

@@ -11,16 +11,22 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('access_level_id') ? ' has-error' : '' }}">
-                            <label for="access_level_id" class="col-md-4 control-label">System Admin</label>
-
+                            <label for="access_level" class="col-md-4 control-label">Access level</label>
                             <div class="col-md-6">
-                                <input id="access_level_id" type="text" class="form-control" name="access_level_id" value="SA">
+                                <select class="form-control" name="access_level_id">
+
+                                    @foreach($access_level as $access)
+                                        <option value="{{$access->id}}">{{$access->levelName}}</option>
+                                    @endforeach
+
+
 
                                 @if ($errors->has('access_level_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('access_level_id') }}</strong>
                                     </span>
                                 @endif
+                                </select>
                             </div>
                         </div>
 
