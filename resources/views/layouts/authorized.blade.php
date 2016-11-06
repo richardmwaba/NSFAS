@@ -115,7 +115,7 @@
                                 <a href="{{URL::asset('#')}}"><i class="fa fa-plus fa-fw"></i>Head of Unit</a>
                             </li>
                             <li>
-                                <a href="{{URL::asset('new/imprest')}}"><i class="fa fa-plus fa-fw"></i>imprest</a>
+                                <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus fa-fw"></i>imprests</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -132,6 +132,7 @@
                         <!-- /.nav-second-level -->
                     {{--</li>--}}
                 </ul>
+
             </div>
             <!-- /.sidebar-collapse -->
         </div>
@@ -195,6 +196,22 @@
         $('div.alert').not('.alert-important').delay(4000).slideUp(300);
     </script>
 
+    <script>
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        });
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+
+    </script>
 
 @show
 </body>

@@ -2,30 +2,354 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Imprest;
+use App\Budget;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Mail;
 
 class ImprestController extends Controller
 {
 
     //
-    public function imprestForm(){
+    public function newForm()
+    {
 
-        $imprests = Imprest::all();
-        return view('imprest.imprest')->with('imprests', $imprests);
+
+        $budgets = Budget::where('departmentId', Auth::user()->department_id)->get();
+
+        return view('imprests.new')->with(['budgets' => $budgets]);
     }
 
 
+    public function editForm($id)
+    {
 
-        public function update(Request $request){
+        $imprest = Imprest::findOrFail($id);
 
-        Imprest::create(['applicant_id' => Auth::user()->manNumber, 'amount_requested'=>$request->amount, 'purpose'=>$request->purpose]);
-        //$imprest->create(['applicant_id' => $request->manNumber, 'amount_requested'=>$request->amount, 'purpose'=>$request->amount]);
-        //$imprest->save();
+        //choose what to update based on current user
+        $ac = Auth::user()->accessLevelId;
 
-            return $request;
+        switch ($ac) {
+            case 'HD':
+                $budgets = Budget::where('departmentId', Auth::user()->department_id)->get();
+                break;
+
+            case 'OT':
+                $budgets = Budget::where('departmentId', Auth::user()->department_id)->get();
+                break;
+
+            default:
+                $budgets = Budget::all();
+                break;
+        }
+        return view('imprests.edit')->with(['imprest' => $imprest, 'budgets' => $budgets]);
     }
+
+
+    public function create(Requests\newImprest $request)
+    {
+        //check if this user has no unretired imprest
+        if ($this->hasActiveImprest()) {
+
+            //this user has an active imprest
+            session()->flash('flash_message', 'You still have an active imprest. Please have it retired and then try again');
+            return Redirect::action('ImprestController@newForm');
+
+            //else the user has no active imprests
+        } else {
+
+            //choose what to save based on level id
+            if (Auth::user()->accessLevelId == 'OT') {
+
+                //create a new record
+                Imprest::create(['applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'amountRequested' => $request->amountRequested,
+                    'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
+
+                //function to notify this user's head
+                $this->notifyHead();
+
+
+                //else means the user trying to create a new imprest is the head
+            } else {
+
+
+                //check if the head has aproved the budget and save the state as well as the comment if any
+                if ($request->authorisedByHead == 1) {
+
+                    //create a record
+                    Imprest::create(['applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'authorisedByHead' => $request->authorisedByHead,
+                        'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
+                        'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
+
+                    //method to notify the dean
+                    $this->notifyDean();
+
+
+                    //don't change the default authoriseState
+                } else {
+
+                    //create a record
+                    Imprest::create(['applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
+                        'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
+
+                }
+
+            }
+
+        }
+
+        return Redirect::action('ImprestController@showAll');
+
+    }
+
+    //this function checks if the current user has no active imprests before they can create another one. Returns true if they do
+    public function hasActiveImprest()
+    {
+
+        //logic to check if user has un retired imprests
+        $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->where('isRetired', 0)->get();
+
+        if ($imprests->isEmpty()) {
+
+            return false;
+
+        } else {
+
+            return true;
+        }
+
+        //return false;
+
+    }
+
+    public function notifyHead()
+    {
+        $imprests = Auth::user()->imprests;
+
+        //loop through the eloquent results until the newly created imprest is found using the isRetired attribute
+        foreach ($imprests as $imprest) {
+
+            if ($imprest->isRetired == 0) {
+
+                //when found, look for this user's head and send him/her a mail
+                $head = User::where('accesslevelId', 'HD')->where('department_id', Auth::user()->department_id)->first();
+
+                Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($head) {
+
+                    $m->to($head->email, 'Me')->subject('Imprest authorisation required');
+                });
+
+                break;
+
+            }
+
+
+        }
+
+    }
+
+    public function notifyDean()
+    {
+        $imprests = Auth::user()->imprests;
+
+        //loop through the eloquent results until the newly created imprest is found using the isRetired attribute
+        foreach ($imprests as $imprest) {
+
+            if ($imprest->isRetired == 0 and $imprest->authorisedByHead == 1) {
+
+                //when found, look for this user's head and send him/her a mail
+                $dean = User::where('accessLevelId', 'DN')->first();
+
+                Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($dean) {
+
+                    $m->to($dean->email, 'Me')->subject('Imprest authorisation required');
+                });
+
+                break;
+
+            }
+
+
+        }
+
+    }
+
+    //public function sendMail($model, $user, $emailHeading,){
+
+
+    public function update(Request $request)
+    {
+
+        $imprest = Imprest::findOrFail($request->id);
+
+        $ac = Auth::user()->accessLevelId;
+
+        //choose what to update based on current user
+        switch ($ac) {
+
+            case 'HD':
+                $imprest->fill(['authorisedByHead' => $request->approvedByHead, 'commentFromHead' => $request->commentFromHead]);
+                $imprest->save();
+                $this->notifyDean();
+                break;
+
+            case 'OT':
+                $imprest->fill(['amountRequested' => $request->amountRequested, 'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
+                $imprest->save();
+                break;
+
+            case 'AC':
+
+                //function to process updates from the accountants
+                $this->accounts($imprest, $request);
+
+            //code to process what happens when the dean modifys an imprest
+            case 'DN':
+
+                //fill in these fields first
+                $imprest->fill(['authorisedAmount' => $request->authorisedAmount, 'authorisedByDean' => $request->authorisedByDean,
+                    'commentFromDean' => $request->commentFromDean]);
+                $imprest->save();
+
+
+                //set authorised on date if the dean has authorised this imprest and notify the accountants
+                if ($request->authorisedByDean == 1) {
+                    $imprest->authorisedOn = Carbon::now();
+                    $imprest->save();
+
+                    //send mail to accountants
+                    $user = User::where('accessLevelId', 'AC')->get();
+                    foreach ($user as $user) {
+                        Mail::send('Mails.authorised', ['imprest' => $imprest], function ($m) use ($user) {
+
+                            $m->to($user->email, 'Me')->subject('Imprest has been authorised');
+                        });
+
+                    }
+
+                    //notify the applicant if cash is ready
+                    if ($imprest->cashAvailable) {
+                        $user = $imprest->owner;
+                        Mail::send('Mails.ready', ['imprest' => $imprest], function ($m) use ($user) {
+
+                            $m->to($user->email, 'Me')->subject('Money ready for collection');
+                        });
+                    }
+                }
+
+        }
+
+        session()->flash('flash_message', 'saved!');
+
+        return Redirect::action('ImprestController@showAll');
+
+    }
+
+
+    //processs updates from accountsants
+    public function accounts($imprest, $request)
+    {
+
+        if ($request->bursarRecommendation == 1 and $request->authorisedByDean == 1 and $imprest->cashAvailable == 1) {
+
+            //save the cash ready state
+            $imprest->cashAvailable = 1;
+            $imprest->bursarRecommendation = $request->bursarRecommendation;
+            $imprest->save();
+
+            //notify the applicant
+            $user = $imprest->owner;
+            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+
+                $m->to($user->email, 'Me')->subject('Imprest recommendation required');
+            });
+
+        } elseif ($request->bursarRecommendation == 1) {
+
+            //save the comment, and the bursar recommendation state
+            $imprest->fill(['cashAvailable' => $request->cashAvailable, 'bursarRecommendation' => $request->bursarRecommendation, 'commentFromBursar' => $request->commentFromBursar]);
+            $imprest->save();
+
+            //send mail to the dean about update
+            $user = User::where('accessLevelId', 'DN')->first();
+            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+
+                $m->to($user->email, 'Me')->subject('The bursar has recommended this imprest');
+            });
+        }
+
+
+    }
+
+
+//function to show alll the that have been seen by dean
+    public function showAll()
+    {
+        //get all imprests that belong to this user
+        if (Auth::user()->accessLevelId == 'OT') {
+            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->get();
+
+            //get all imprests that belong to current user department
+        } elseif (Auth::user()->accessLevelId == 'HD') {
+            $imprests = Auth::user()->department->imprests;
+
+            //get all imprests that have been seen and sent to accountant for recommendation
+        } elseif (Auth::user()->accessLevelId == 'AC') {
+            $imprests = Imprest::where('seenByDean', 1)->get();
+
+            //get all imprests that have been authorised by head for the dean to see
+        } else {
+            $imprests = Imprest::where('authorisedByHead', 1)->get();
+
+        }
+
+        return view('imprests.all')->with(['imprests' => $imprests]);
+    }
+
+
+    public function newBudgetLine(Request $request)
+    {
+
+        $imprest = Imprest::findOrFail($request->id);
+        $imprest->budgetLine = $request->newBudgetLine;
+        $imprest->save();
+
+        session()->flash('flash_message', 'The new budget line has been saved');
+
+        return Redirect::action('ImprestController@editForm', [$imprest->imprestId]);
+
+
+    }
+
+    public function recommendation(Request $request)
+    {
+
+        //send the from to bursar fro recommendation and set a state that will tell that this imprest is now waiting for recommendation for the bursar
+        $imprest = Imprest::findOrFAil($request->id);
+        $imprest->seenByDean = 1;
+        $imprest->commentFromDean = $request->commentFromDean;
+        $imprest->save();
+
+        $user = User::where('accessLevelId', 'AC')->get();
+
+        foreach ($user as $user) {
+
+            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+
+                $m->to($user->email, 'Me')->subject('Imprest recommendation required');
+            });
+
+        }
+
+        session()->flash('flash_message', 'sent!');
+
+        return Redirect::action('ImprestController@showAll');
+    }
+
 }

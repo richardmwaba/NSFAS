@@ -29,7 +29,12 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
-    Route::get('new/imprest', 'ImprestController@imprestForm');
-    Route::post('imprest/update', 'ImprestController@update');
+    Route::get('/imprests/new', 'ImprestController@newForm');
+    Route::post('/imprests/create', 'ImprestController@create');
+    Route::get('/imprests/edit/{id}', 'ImprestController@editForm');
+    Route::get('/imprests/all', 'ImprestController@showAll');
+    Route::post('imprests/update', 'ImprestController@update');
+    Route::post('/imprests/newBudgetLine', 'ImprestController@newBudgetLine');
+    Route::post('imprests/recommendation/{id}', 'ImprestController@recommendation');
 
 });
