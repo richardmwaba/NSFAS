@@ -36,5 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('imprests/update', 'ImprestController@update');
     Route::post('/imprests/newBudgetLine', 'ImprestController@newBudgetLine');
     Route::post('imprests/recommendation/{id}', 'ImprestController@recommendation');
+    Route::post('cashout/summary', 'CashOut@cashout');
+    Route::post('cashout/confirm', 'CashOut@confirm');
 
 });

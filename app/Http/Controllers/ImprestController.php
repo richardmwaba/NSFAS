@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
+use App\Expenditure;
+use App\Income;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,6 +37,8 @@ class ImprestController extends Controller
 
         //choose what to update based on current user
         $ac = Auth::user()->accessLevelId;
+        $actual = Expenditure::where('purpose', $imprest->purpose)->sum('amountPaid');
+        $accounts = Account::all();
 
         switch ($ac) {
             case 'HD':
@@ -48,7 +53,7 @@ class ImprestController extends Controller
                 $budgets = Budget::all();
                 break;
         }
-        return view('imprests.edit')->with(['imprest' => $imprest, 'budgets' => $budgets]);
+        return view('imprests.edit')->with(['imprest' => $imprest, 'budgets' => $budgets, 'accounts' => $accounts, 'actual'=>$actual]);
     }
 
 
@@ -138,12 +143,14 @@ class ImprestController extends Controller
             if ($imprest->isRetired == 0) {
 
                 //when found, look for this user's head and send him/her a mail
-                $head = User::where('accesslevelId', 'HD')->where('department_id', Auth::user()->department_id)->first();
+                if($this->is_connected()) {
+                    $head = User::where('accesslevelId', 'HD')->where('department_id', Auth::user()->department_id)->first();
 
-                Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($head) {
+                    Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($head) {
 
-                    $m->to($head->email, 'Me')->subject('Imprest authorisation required');
-                });
+                        $m->to($head->email, 'Me')->subject('Imprest authorisation required');
+                    });
+                }
 
                 break;
 
@@ -164,12 +171,14 @@ class ImprestController extends Controller
             if ($imprest->isRetired == 0 and $imprest->authorisedByHead == 1) {
 
                 //when found, look for this user's head and send him/her a mail
-                $dean = User::where('accessLevelId', 'DN')->first();
+                if($this->is_connected()) {
+                    $dean = User::where('accessLevelId', 'DN')->first();
 
-                Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($dean) {
+                    Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($dean) {
 
-                    $m->to($dean->email, 'Me')->subject('Imprest authorisation required');
-                });
+                        $m->to($dean->email, 'Me')->subject('Imprest authorisation required');
+                    });
+                }
 
                 break;
 
@@ -183,7 +192,7 @@ class ImprestController extends Controller
     //public function sendMail($model, $user, $emailHeading,){
 
 
-    public function update(Request $request)
+    public function update(Requests\updateImprest $request)
     {
 
         $imprest = Imprest::findOrFail($request->id);
@@ -224,22 +233,26 @@ class ImprestController extends Controller
                     $imprest->save();
 
                     //send mail to accountants
-                    $user = User::where('accessLevelId', 'AC')->get();
-                    foreach ($user as $user) {
-                        Mail::send('Mails.authorised', ['imprest' => $imprest], function ($m) use ($user) {
+                    If ($this->is_connected()) {
+                        $user = User::where('accessLevelId', 'AC')->get();
+                        foreach ($user as $user) {
+                            Mail::send('Mails.authorised', ['imprest' => $imprest], function ($m) use ($user) {
 
-                            $m->to($user->email, 'Me')->subject('Imprest has been authorised');
-                        });
+                                $m->to($user->email, 'Me')->subject('Imprest has been authorised');
+                            });
+                        }
 
                     }
 
                     //notify the applicant if cash is ready
-                    if ($imprest->cashAvailable) {
-                        $user = $imprest->owner;
-                        Mail::send('Mails.ready', ['imprest' => $imprest], function ($m) use ($user) {
+                    if ($this->is_connected()) {
+                        if ($imprest->cashAvailable) {
+                            $user = $imprest->owner;
+                            Mail::send('Mails.ready', ['imprest' => $imprest], function ($m) use ($user) {
 
-                            $m->to($user->email, 'Me')->subject('Money ready for collection');
-                        });
+                                $m->to($user->email, 'Me')->subject('Money ready for collection');
+                            });
+                        }
                     }
                 }
 
@@ -264,11 +277,13 @@ class ImprestController extends Controller
             $imprest->save();
 
             //notify the applicant
-            $user = $imprest->owner;
-            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+            if($this->is_connected()) {
+                $user = $imprest->owner;
+                Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
 
-                $m->to($user->email, 'Me')->subject('Imprest recommendation required');
-            });
+                    $m->to($user->email, 'Me')->subject('Imprest recommendation required');
+                });
+            }
 
         } elseif ($request->bursarRecommendation == 1) {
 
@@ -277,11 +292,13 @@ class ImprestController extends Controller
             $imprest->save();
 
             //send mail to the dean about update
-            $user = User::where('accessLevelId', 'DN')->first();
-            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+            if($this->is_connected()) {
+                $user = User::where('accessLevelId', 'DN')->first();
+                Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
 
-                $m->to($user->email, 'Me')->subject('The bursar has recommended this imprest');
-            });
+                    $m->to($user->email, 'Me')->subject('The bursar has recommended this imprest');
+                });
+            }
         }
 
 
@@ -293,19 +310,19 @@ class ImprestController extends Controller
     {
         //get all imprests that belong to this user
         if (Auth::user()->accessLevelId == 'OT') {
-            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->get();
+            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'desc')->get();
 
             //get all imprests that belong to current user department
         } elseif (Auth::user()->accessLevelId == 'HD') {
-            $imprests = Auth::user()->department->imprests;
+            $imprests = Auth::user()->department->imprests->orderBy('created_at', 'desc');
 
             //get all imprests that have been seen and sent to accountant for recommendation
         } elseif (Auth::user()->accessLevelId == 'AC') {
-            $imprests = Imprest::where('seenByDean', 1)->get();
+            $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'desc')->get();
 
             //get all imprests that have been authorised by head for the dean to see
         } else {
-            $imprests = Imprest::where('authorisedByHead', 1)->get();
+            $imprests = Imprest::where('authorisedByHead', 1)->orderBy('created_at', 'desc')->get();
 
         }
 
@@ -338,18 +355,34 @@ class ImprestController extends Controller
 
         $user = User::where('accessLevelId', 'AC')->get();
 
-        foreach ($user as $user) {
+        if($this->is_connected()) {
+            foreach ($user as $user) {
 
-            Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+                Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
 
-                $m->to($user->email, 'Me')->subject('Imprest recommendation required');
-            });
+                    $m->to($user->email, 'Me')->subject('Imprest recommendation required');
+                });
 
+            }
         }
 
         session()->flash('flash_message', 'sent!');
 
         return Redirect::action('ImprestController@showAll');
+    }
+
+    function is_connected()
+    {
+        $connected = @fsockopen("www.gmail.com", 80);
+        //website, port  (try 80 or 443)
+        if ($connected){
+            $is_conn = true; //action when connected
+            fclose($connected);
+        }else{
+            $is_conn = false; //action in connection failure
+        }
+        return $is_conn;
+
     }
 
 }

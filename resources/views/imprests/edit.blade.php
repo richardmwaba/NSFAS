@@ -130,7 +130,7 @@
                                             <div class="form-group">
                                                 <label><input
                                                             onchange="alert('are you sure you want to authorise this imprest?')"
-                                                            name="approvedByHead" value="1"
+                                                            name="approvedByHead" class="nv-check-box" value="1"
                                                             type="checkbox" <?php if ($imprest->authorisedByHead == true) echo 'checked' ?> >Approve?</label>
                                             </div>
 
@@ -175,56 +175,77 @@
                                                         of imprest on
                                                         applicants
                                                         account</label>
-                                                    <span class="col-md-4 col-md-offset-1 input-group-addon">K</span>
-                                                    <input value="@if($imprest->authorisedByDean==1) {{$imprest->imprestBalance}}@else {{$pl = 0}}@endif "
-                                                           type="text"
-                                                           class="col-md-4"
-                                                           name="imprestBalance"
-                                                           @if($imprest->busarRecommendation==0)
 
-                                                           {{$pl = $imprest->amountRequested}}
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">K</span>
+                                                            <input value="@if($imprest->authorisedByDean==1) {{$imprest->imprestBalance}}@else {{$pl = 0}}@endif "
+                                                                   type="text"
 
-                                                           @else
+                                                                   name="imprestBalance"
+                                                                   @if($imprest->busarRecommendation==0)
 
-                                                           {{$pl = $imprest->imprestBalance}}
+                                                                   {{$pl = $imprest->amountRequested}}
 
-                                                           @endif placeholder="" disabled>
-                                                    <span class="col-md-4 input-group-addon">.00</span>
+                                                                   @else
 
+                                                                   {{$pl = $imprest->imprestBalance}}
+
+                                                                   @endif placeholder="" disabled>
+                                                            <span class="input-group-addon">.00</span>
+                                                    </div>
+                                                    </div>
 
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-md-12 control-label"
-                                                           for="Copied_To">Budget</label>
-                                                    <span class="col-md-4 col-md-offset-1 input-group-addon">K</span>
-                                                    <input value="{{$imprest->item->cost}}"
-                                                           placeholder="{{$imprest->item->cost}}" type="number"
-                                                           class="col-md-4"
-                                                           name="budget" disabled>
-                                                    <span class="col-md-4 input-group-addon">.00</span>
-                                                </div>
+
+                                                            <label class="col-md-12 control-label"
+                                                                   for="Copied_To">Budget</label>
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">K</span>
+                                                            <input value="{{$imprest->item->cost}}"
+                                                                   placeholder="{{$imprest->item->cost}}" type="number"
+
+                                                                   name="budget" disabled>
+                                                            <span class="input-group-addon">.00</span>
+                                                        </div>
+                                                    </div><!-- End of col-md-2-->
+                                                </div><!-- form group-->
+
+
 
                                                 <div class="form-group">
                                                     <label class="col-md-12 control-label" for="Copied_To">Actual
                                                         YTD(K)</label>
-                                                    <span class="col-md-4 col-md-offset-1 input-group-addon">K</span>
-                                                    <input value="{{$imprest->expenditure->amountPaid}}"
-                                                           placeholder="{{$imprest->expenditure->amountPaid}}"
-                                                           type="number"
-                                                           class="col-md-4" name="actual" disabled>
-                                                    <span class="col-md-4 input-group-addon">.00</span>
+
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <span class=" input-group-addon">K</span>
+                                                            <input value="{{$actual}}"
+                                                                   placeholder=""
+                                                                   type="number"
+                                                                   name="actual" disabled>
+                                                            <span class="input-group-addon">.00</span>
+                                                        </div><!-- end input group-->
+                                                    </div><!-- end col-md-2-->
+
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-12 control-label"
                                                            for="Copied_To">Balance</label>
-                                                    <span class="col-md-4 col-md-offset-1 input-group-addon">K</span>
-                                                    <input type="number"
-                                                           value="{{$imprest->item->cost-$imprest->expenditure->amountPaid}}"
-                                                           placeholder="{{$imprest->item->cost-$imprest->expenditure->amountPaid}}"
-                                                           class="col-md-4" name="balance" disabled>
-                                                    <span class="col-md-4 input-group-addon">.00</span>
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <span class=" input-group-addon">K</span>
+                                                            <input type="number"
+                                                                   value="{{$imprest->item->cost-$actual}}"
+                                                                   placeholder=""
+                                                                    name="balance" disabled>
+                                                            <span class="input-group-addon">.00</span>
+                                                        </div><!-- end of input group-->
+                                                    </div><!-- end of col-md-2-->
                                                 </div>
 
                                             </div>
@@ -259,7 +280,7 @@
 
                                                 <div class="form-group">
                                                     <a href="#" class="btn btn-link" role="button" data-toggle="modal"
-                                                       data-target="#cashOut" onclick="" id="">Cash out??</a>
+                                                       data-target="#cashOut" onclick="" id="" @if($imprest->authorisedByDean==0){{$d = "disabled"}}@endif>Cash out??</a>
                                                 </div>
                                                 <div id="demo" class="collapse">
 
@@ -282,16 +303,27 @@
 
 
                                             <div class="form-group">
+
+                                                <div class="form-group{{ $errors->has('authorisedAmount') ? ' has-error' : '' }}">
+
                                                 <label for="Copied_To">Amount Authorised</label>
                                                 <input type="number" value="{{$imprest->amountRequested}}"
                                                        class="form-control" name="authorisedAmount"
                                                        placeholder="{{$imprest->amountRequested}}">
+
+                                                    @if ($errors->has('authorisedAmount'))
+                                                        <span class="help-block">
+                                        <strong>{{ $errors->first('authorisedAmount') }}</strong>
+                                    </span>
+                                                    @endif
+                                                </div>
+
                                             </div>
 
 
                                             <div class="form-group">
                                                 <a style="margin-bottom: 5%" data-toggle="modal" data-target="#comment"
-                                                   class="btn btn-link form-control" role="button">Click here to send to
+                                                   class="btn btn-link form-control" role="button" @if($imprest->bursarRecommendation==1){{$d='disabled'}}@endif>Click here to send to
                                                     bursar for recommendation</a>
                                             </div>
                                             <div id="demo" class="collapse">
@@ -382,7 +414,6 @@
                                          class="form-group">
                                         <label>Budget line</label>
                                         <select value="" class="form-control"
-                                                placeholder="Password"
                                                 name="newBudgetLine"
                                                 id="newBudgetLine">
                                             <option value="{{$imprest->budgetLine}}">Select new budget line
@@ -421,7 +452,7 @@
         </form>
 
         <form id="newBudgetLineFm" class="form-horizontal" role="form" method="POST"
-              action="{{url('/imprests/cashOut')}}">
+              action="{{url('/cashout/summary')}}">
             {!! csrf_field() !!}
             <div class="modal fade" id="cashOut" role="dialog">
                 <div class="modal-dialog modal-md">
@@ -436,22 +467,27 @@
                                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
 
                                     <div class="form-group">
+
+                                        <label>Account</label>
+                                        <select value="" class="form-control" name="account">
+                                            <option>Select an account to withdraw from</option>
+                                            @foreach($accounts as $account)
+                                                <option value="{{$account->id}}">{{$account->accountName}}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Amount</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">K</span>
-                                            <input type="text" name="cost" class="form-control"
+                                            <input type="text" name="amount" class="form-control"
                                                    aria-label="Amount (Kwacha)">
                                             <span class="input-group-addon">.00</span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Account</label>
-                                        <select class="form-control" name="account">
-                                            <option>Select an account to withdraw from</option>
-                                        </select>
-
-                                    </div>
 
                                     <div class="form-group">
                                         <label for="Copied_To">Date Outstanding imprest obtained</label>

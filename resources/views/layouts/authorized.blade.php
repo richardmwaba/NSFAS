@@ -68,7 +68,8 @@
             </button>
             <div>
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{URL::asset('home')}}">
+
+                <a class="navbar-brand" href="{{URL::asset('home')}}"><span><img src="{{URL::asset('..frontend/img/logo.png')}}" alt="Unza logo" height="35" width="35" style="padding-bottom:5px"></span>
                     Financial Accounting System
                 </a>
             </div>
@@ -169,6 +170,15 @@
     @show
 </div>
 <!-- /#wrapper -->
+
+<!-- Footer -->
+<footer class="footer footer-fixed-bottom">
+    <div class="container" style="text-align:center">
+        <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> - 2016 The University of Zambia
+            <br> All rights reserved.</p>
+    </div>
+</footer>
+<!-- ./footer -->
 
 <!-- jQuery -->
 @section('scripts')

@@ -11,11 +11,14 @@
 
                     @if(Auth::user()->accessLevelId=='OT' or Auth::user()->accessLevelId=='HD')
                         <div class="form-group">
-                            <a href="{{url('/imprests/new')}}" class="btn btn-link">Create new</a>
+                            <a href="{{url('/imprests/new')}}" class="btn btn-link glyphicon-certificate">Create new</a>
                         </div>
                     @endif
 
-                    <table class="table">
+                    <table class="table table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
+                           data-show-toggle="true" data-show-columns="true" data-search="true"
+                           data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
+                           data-sort-order="desc" style="font-size: small">
 
                         <thead>
                         <tr>
@@ -23,11 +26,10 @@
                             <th data-field="name" data-sortable="true">Purpose</th>
                             <th data-field="id" data-sortable="true">Applicant</th>
                             <th data-field="position" data-sortable="true">Amount</th>
-                            <th data-field="department" data-sortable="true">Authorised by head</th>
-                            <th data-field="school" data-sortable="true">Authorised by Dean</th>
-                            <th data-field="renew by" data-sortable="true">Recommended by Bursar</th>
-                            <th data-field="contract status" data-sortable="true">isRetired</th>
-                            <th data-field="application stage" data-sortable="true">Budget</th>
+                            <th data-field="school" data-sortable="true">Authorised by</th>
+                            <th data-field="renew by" data-sortable="true">Recommendation</th>
+                            <th data-field="contract status" data-sortable="true">Status/Retire</th>
+                            <th data-field="application stage" data-sortable="true">Budget line</th>
                             <th data-field="application stage" data-sortable="true">Amount Authorised</th>
                             <th data-field="application stage" data-sortable="true">Created on</th>
                             <th data-field="edit" data-sortable="true">Edit</th>
@@ -36,28 +38,25 @@
 
                         @foreach($imprests as $imprest)
 
-                            <?php if ($imprest->authorisedByHead == 1) {
-                                $head = "Yes";
-                            } else {
-                                $head = "No";
-                            } ?>
-
                             <?php if ($imprest->authorisedByDean == 1) {
-                                $dean = "Yes";
-                            } else {
-                                $dean = "No";
-                            } ?>
+                                $auth = "The Dean";
+                            } elseif($imprest->authorisedByHead == 1){
+                                $auth = "The Head";
+                            } else{
+                                $auth = 'None';
+                            }?>
+
 
                             <?php if ($imprest->bursarRecommendation == 1) {
-                                $bursar = "Yes";
+                                $bursar = "Recommended";
                             } else {
-                                $bursar = "No";
+                                $bursar = "Not recommended";
                             } ?>
 
                             <?php if ($imprest->isRetired == 1) {
-                                $retired = "Yes";
+                                $retired = "Retired";
                             } else {
-                                $retired = "No";
+                                $retired = "Not retired";
                             } ?>
 
                             <tr>
@@ -66,19 +65,18 @@
                                 <td>{{$imprest->item->description}}</td>
                                 <td>{{$imprest->owner->firstName}} {{$imprest->owner->lastName}}</td>
                                 <td>{{$imprest->amountRequested}}</td>
-                                <td>{{$head}}</td>
-                                <td>{{$dean}}</td>
-                                <td>{{$bursar}}</td>
+                                <td @if($auth=="None") style="color: red" @elseif($auth=="The Head") style="color: orange" @else style="color:limegreen;"@endif>{{$auth}}</td>
+                                <td @if($bursar=="Not recommended") style="color: red" @else style="color:limegreen" @endif >{{$bursar}}</td>
 
 
-                                <td>{{$retired}}</td>
+                                <td @if($retired=="Retired") style="color:red;"{{$retired}} @else style="color:limegreen;" @endif >{{$retired}}</td>
                                 <td>{{$imprest->budget->name}}</td>
-                                <td>{{$imprest->amountAuthorised}}</td>
+                                <td>{{$imprest->authorisedAmount}}</td>
                                 <td>{{\Carbon\Carbon::parse($imprest->created_at)->diffForHumans()}}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{url('/imprests/edit/'.$imprest->imprestId)}}"
-                                           class="btn btn-sm btn-link">Edit</a>
+                                           class="btn btn-sm btn-link glyphicon glyphicon-edit">Edit</a>
                                     </div>
                                 </td>
                             </tr>
@@ -99,6 +97,54 @@
     <!-- /#page-wrapper -->
 
     <!-- Custom Table JavaScript -->
+
+    <script>
+        $(function () {
+            $('#hover, #striped, #condensed').click(function () {
+                var classes = 'table';
+
+                if ($('#hover').prop('checked')) {
+                    classes += ' table-hover';
+                }
+                if ($('#condensed').prop('checked')) {
+                    classes += ' table-condensed';
+                }
+                $('#table-style').bootstrapTable('destroy')
+                        .bootstrapTable({
+                            classes: classes,
+                            striped: $('#striped').prop('checked')
+                        });
+            });
+        });
+
+        function rowStyle(row, index) {
+            var classes = ['active', 'success', 'info', 'warning', 'danger'];
+
+            if (index % 2 === 0 && index / 2 < classes.length) {
+                return {
+                    classes: classes[index / 2]
+                };
+            }
+            return {};
+        }
+    </script>
+
+    <script>
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        });
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+    </script>
+
     <!-- /.Custom Table JavaScript -->
 
 @endsection
