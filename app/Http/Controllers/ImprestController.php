@@ -314,7 +314,7 @@ class ImprestController extends Controller
 
             //get all imprests that belong to current user department
         } elseif (Auth::user()->accessLevelId == 'HD') {
-            $imprests = Auth::user()->department->imprests->orderBy('created_at', 'desc');
+            $imprests = Auth::user()->department->imprests;
 
             //get all imprests that have been seen and sent to accountant for recommendation
         } elseif (Auth::user()->accessLevelId == 'AC') {
