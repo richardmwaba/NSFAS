@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->integer('manNumber')->unique();
 
+
             $table->string('firstName');
             $table->string('lastName');
             $table->string('otherName');
@@ -24,10 +25,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            $table->char('access_level_id', 2);
-            $table->integer('department_id')->nullable();
+            $table->char('accessLevelId', 2);
+            $table->integer('departmentId')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+
+            $table->foreign('departmentId')->references('departments')->on('id')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

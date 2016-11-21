@@ -411,9 +411,9 @@
                                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
 
                                     <div id="budgetLine"
-                                         class="form-group">
+                                         class="form-group{{ $errors->has('newBudgetLine') ? ' has-error' : '' }}">
                                         <label>Budget line</label>
-                                        <select value="" class="form-control"
+                                        <select class="form-control"
                                                 name="newBudgetLine"
                                                 id="newBudgetLine">
                                             <option value="{{$imprest->budgetLine}}">Select new budget line
@@ -423,6 +423,11 @@
                                             @endforeach
 
                                         </select>
+                                        @if ($errors->has('newBudgetLine'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('newBudgetLine') }}</strong>
+                                    </span>
+                                        @endif
                                     </div>
                                     <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
                                 </div>
@@ -469,8 +474,8 @@
                                     <div class="form-group">
 
                                         <label>Account</label>
-                                        <select value="" class="form-control" name="account">
-                                            <option>Select an account to withdraw from</option>
+                                        <select class="form-control" name="account">
+                                            <option value="">Select an account to withdraw from</option>
                                             @foreach($accounts as $account)
                                                 <option value="{{$account->id}}">{{$account->accountName}}</option>
                                             @endforeach
@@ -482,7 +487,7 @@
                                         <label>Amount</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">K</span>
-                                            <input type="text" name="amount" class="form-control"
+                                            <input type="text" value="{{$imprest->authorisedAmount}}" name="amount" class="form-control"
                                                    aria-label="Amount (Kwacha)">
                                             <span class="input-group-addon">.00</span>
                                         </div>

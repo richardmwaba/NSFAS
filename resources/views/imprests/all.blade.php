@@ -23,32 +23,33 @@
                         <thead>
                         <tr>
                             <!--<th data-field="state" data-checkbox="true">Count</th>-->
+                            <th data-field="application stage" data-sortable="true">Budget</th>
                             <th data-field="name" data-sortable="true">Purpose</th>
                             <th data-field="id" data-sortable="true">Applicant</th>
                             <th data-field="position" data-sortable="true">Amount</th>
-                            <th data-field="school" data-sortable="true">Authorised by</th>
-                            <th data-field="renew by" data-sortable="true">Recommendation</th>
-                            <th data-field="contract status" data-sortable="true">Status/Retire</th>
-                            <th data-field="application stage" data-sortable="true">Budget line</th>
-                            <th data-field="application stage" data-sortable="true">Amount Authorised</th>
-                            <th data-field="application stage" data-sortable="true">Created on</th>
-                            <th data-field="edit" data-sortable="true">Edit</th>
+                            <th data-field="application stage" data-sortable="true">Authorised amount</th>
+                            <th data-field="school" data-sortable="true">Authorisation</th>
+                            <th data-field="renew by" data-sortable="true">Recommended by</th>
+                            <th data-field="contract status" data-sortable="true">Status</th>
+                            <th data-field="application stage" data-sortable="true">Created</th>
+                            <th data-field="edit" data-sortable="true">Retire/Edit</th>
                         </tr>
                         </thead>
 
                         @foreach($imprests as $imprest)
 
                             <?php if ($imprest->authorisedByDean == 1) {
-                                $auth = "The Dean";
+                                $auth = $imprest->dean->lastName." ".$imprest->dean->firstName." as the Dean";
+
                             } elseif($imprest->authorisedByHead == 1){
-                                $auth = "The Head";
+                                $auth = $imprest->head->lastName." ".$imprest->head->firstName." as the Head";
                             } else{
                                 $auth = 'None';
                             }?>
 
 
                             <?php if ($imprest->bursarRecommendation == 1) {
-                                $bursar = "Recommended";
+                                $bursar = $imprest->bursar->lastName." ".$imprest->bursar->firstName;
                             } else {
                                 $bursar = "Not recommended";
                             } ?>
@@ -62,21 +63,25 @@
                             <tr>
 
                                 <!--<td data-field="state" data-checkbox="true">{$imprest->id}}</td>-->
+                                <td>{{$imprest->budget->name}}</td>
                                 <td>{{$imprest->item->description}}</td>
                                 <td>{{$imprest->owner->firstName}} {{$imprest->owner->lastName}}</td>
                                 <td>{{$imprest->amountRequested}}</td>
-                                <td @if($auth=="None") style="color: red" @elseif($auth=="The Head") style="color: orange" @else style="color:limegreen;"@endif>{{$auth}}</td>
+                                <td>{{$imprest->authorisedAmount}}</td>
+                                <td @if($auth=='None') style="color: red" @elseif($auth=="The Head") style="color: orange" @else style="color:limegreen;"@endif>{{$auth}}</td>
                                 <td @if($bursar=="Not recommended") style="color: red" @else style="color:limegreen" @endif >{{$bursar}}</td>
 
 
                                 <td @if($retired=="Retired") style="color:red;"{{$retired}} @else style="color:limegreen;" @endif >{{$retired}}</td>
-                                <td>{{$imprest->budget->name}}</td>
-                                <td>{{$imprest->authorisedAmount}}</td>
                                 <td>{{\Carbon\Carbon::parse($imprest->created_at)->diffForHumans()}}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{url('/imprests/edit/'.$imprest->imprestId)}}"
                                            class="btn btn-sm btn-link glyphicon glyphicon-edit">Edit</a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="{{url('/imprests/retirement/form/'.$imprest->imprestId)}}"
+                                           class="btn btn-sm btn-link glyphicon glyphicon-flag">Retire</a>
                                     </div>
                                 </td>
                             </tr>

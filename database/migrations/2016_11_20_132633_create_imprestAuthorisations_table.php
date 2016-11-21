@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStaffTable extends Migration
+class CreateAuthorisationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,11 @@ class CreateStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('staff', function (Blueprint $table) {
-
+        //
+        Schema::create('imprestAuthorisations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('manNumber')->unique();
-
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('otherName');
-
-            $table->integer('department_id');
-
+            $table->integer('name');
+            $table->integer('');
         });
     }
 
@@ -33,6 +27,7 @@ class CreateStaffTable extends Migration
      */
     public function down()
     {
-        Schema::drop('staff');
+        //
+        Schema::drop('authorisations');
     }
 }

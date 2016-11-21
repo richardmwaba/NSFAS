@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.unauthorized')
 
-@section('content')
+@section('main_content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -10,10 +10,11 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('access_level_id') ? ' has-error' : '' }}">
-                            <label for="access_level" class="col-md-4 control-label">Access level</label>
+                        <div class="form-group{{ $errors->has('accessLevelId') ? ' has-error' : '' }}">
+                            <label for="access_level" class="col-md-4 control-label">Role/Position</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="access_level_id">
+                                <select class="form-control" name="accessLevelId">
+                                    <option value="">Select a role</option>
 
                                     @foreach($access_level as $access)
                                         <option value="{{$access->id}}">{{$access->levelName}}</option>
@@ -21,9 +22,9 @@
 
 
 
-                                @if ($errors->has('access_level_id'))
+                                @if ($errors->has('accessLevelId'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('access_level_id') }}</strong>
+                                        <strong>{{ $errors->first('accessLevelId') }}</strong>
                                     </span>
                                 @endif
                                 </select>
@@ -128,6 +129,7 @@
                                 @endif
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

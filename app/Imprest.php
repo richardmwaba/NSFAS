@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Imprest extends Model
 {
     //
-    public $fillable = ['applicantId', 'departmentId', 'amountRequested', 'budgetLine', 'purpose', 'authorisedByHead', 'authorisedByDean',
+    public $fillable = ['applicantId', 'headManNumber', 'deanManNumber', 'bursarManNumber','departmentId', 'amountRequested', 'budgetLine', 'purpose', 'authorisedByHead', 'authorisedByDean',
         'dateOutstandingImprest', 'bursarRecommendation', 'authorisedAmount', 'commentFromDean', 'commentFromHead',
         'commentFromBursar', 'authorisedOn', 'seenByDean', 'cashAvailable'];
     protected $primaryKey = 'imprestId';
@@ -34,5 +34,20 @@ class Imprest extends Model
     {
 
         return $this->hasOne('App\Budget', 'id', 'budgetLine');
+    }
+
+    public function head(){
+
+        return $this->hasOne('App\User','manNumber', 'headManNumber');
+    }
+
+    public function dean(){
+
+        return $this->hasOne('App\User','manNumber', 'deanManNumber');
+    }
+
+    public function bursar(){
+
+        return $this->hasOne('App\User','manNumber', 'bursarManNumber');
     }
 }

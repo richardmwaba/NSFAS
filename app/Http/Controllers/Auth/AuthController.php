@@ -72,7 +72,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'id' => $data['access_level_id'],
+            'accessLevelId' => $data['accessLevelId'],
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'otherName' => $data['otherName'],

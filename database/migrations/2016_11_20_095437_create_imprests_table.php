@@ -21,14 +21,16 @@ class Imprests extends Migration
             $table->integer('purpose');
             $table->integer('budgetLine')->nullable();
             $table->boolean('authorisedByHead')->default(false);
+            $table->integer('headManNumber')->nullable();
             $table->string('commentFromHead')->nullable();
             $table->boolean('authorisedByDean')->default(false);
+            $table->integer('deanManNumber')->nullable();
             $table->string('commentFromDean')->nullable();
             $table->boolean('bursarRecommendation')->default(false);
+            $table->integer('bursarManNumber')->nullable();
             $table->string('commentFromBursar')->nullable(false);
             $table->double('authorisedAmount')->default(0);
             $table->double('imprestBalance')->default(0);
-            $table->double('actualAmountCollected')->default(0);
             $table->timestamp('authorisedOn')->nullable();
             $table->boolean('cashAvailable')->default(false);
             $table->date('dateOutstandingImprest')->nullable();
@@ -37,8 +39,12 @@ class Imprests extends Migration
             $table->timestamps();
 
 
-            $table->foreign('applicantId')->references('manNumber')->on('users');
-            //$table->foreign('budgetLine')->references('id')->on('budgets');
+            $table->foreign('applicantId')->references('manNumber')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('HeadManNumber')->references('manNumber')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('DeanManNumber')->references('manNumber')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('bursarManNumber')->references('manNumber')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('budgetLine')->references('id')->on('budgets')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('purpose')->references('id')->on('budgetItems')->onDelete('set null')->onUpdate('cascade');
         });
 
     }
@@ -51,5 +57,6 @@ class Imprests extends Migration
     public function down()
     {
         //
+        Schema::drop('imprests');
     }
 }
