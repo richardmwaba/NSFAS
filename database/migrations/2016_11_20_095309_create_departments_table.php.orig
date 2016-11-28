@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateDepartmentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('departments', function (Blueprint $table) {
+
+            $table->increments('id')->unique();
+            $table->string('departmentName');
+
+<<<<<<< HEAD:database/migrations/2016_11_20_095309_create_departments_table.php
+            $table->integer('schoolId');
+=======
+            $table->integer('schools_id');
+>>>>>>> 09ca028c1b12c5b2f598c2f3ad5b91b05716ce05:database/migrations/2016_10_18_202102_create_departments_table.php
+//            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('departments');
+    }
+}

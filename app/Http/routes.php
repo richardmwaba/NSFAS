@@ -45,4 +45,56 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/imprests/retirement/edit/{id}', 'ImprestRetirementController@edit');
     Route::post('/imprests/retirement/update/{id}', 'ImprestRetirementController@update');
 
+    /**
+     * routes for all admin operations goes here
+     */
+    Route::get('/addHod', 'AdminController@index');
+    Route::post('/addHod', 'AdminController@addHOD');
+    Route::get('/addAccountant', 'AdminController@getAcc');
+    Route::post('/addAccountant', 'AdminController@addAccountant');
+    Route::get('/addDos', 'AdminController@dos');
+    Route::post('/addDos', 'AdminController@addDos');
+
+    /**
+     * routes for all head of department operations goes here
+     */
+    Route::get('/addStaff', 'HodController@index');
+    Route::post('/addStaff', 'HodController@addStaff');
+    Route::get('/addProject', 'HodController@addProject');
+    Route::post('/addProject', 'HodController@saveProject');
+//    Route::get('/projectBudgeting/{id}', 'HodController@projectBudget');
+//    Route::post('/projectBudgeting/{id}', 'HodController@saveProjectBudget');
+    Route::post('/projectBudget/{id}', 'HodController@saveProjectBudget');
+    Route::post('/projectMoneyRequest/{id}', 'HodController@projectMoneyRequest');
+
+    Route::get('/viewStaff', 'HodController@staff');
+    Route::get('/viewBudget', 'HodController@viewBudget');
+    Route::get('/viewProjectInfo', 'HodController@projectInfo');
+    Route::get('/projectExpenditures', 'HodController@projectExpenditures');
+
+    Route::get('/dltStaff/{id}', ['uses'=> 'HodController@destroy', 'as' => '/dltStaff']);
+    Route::get('/projectBudget/{id}', ['uses'=> 'HodController@projectBudget', 'as' => '/projectBudget']);
+    Route::get('/requestForMoney/{id}', ['uses'=> 'HodController@requestForMoney', 'as' => '/requestForMoney']);
+    Route::get('/requestApproval/{id}', ['uses'=> 'HodController@requestApproval', 'as' => '/requestApproval']);
+    Route::get('/editStaff/{id}', ['uses' =>'HodController@edit', 'as' => '/editStaff']);
+
+    /**
+     * routes for all the accountant controller goes here
+     */
+    Route::get('/projectIncomes', 'AccountantController@projectIncomes');
+    Route::get('/budgetIncomes', 'AccountantController@budgetIncomes');
+    Route::get('/Info', 'AccountantController@Info');
+    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@approvalProjectBudgetInfo', 'as' => '/approvalProjectBudget']);
+    Route::get('/projectIncomes/{id}', ['uses' =>'AccountantController@addProjectIncome', 'as' => '/projectIncomes']);
+    Route::get('/projectIncomesDetails/{id}', ['uses' =>'AccountantController@moreIncomeInfo', 'as' => '/projectIncomesDetails']);
+    Route::get('/projectBudgetDetails/{id}', ['uses' =>'AccountantController@moreBudgetInfo', 'as' => '/projectBudgetDetails']);
+    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@projectBudgetApproval', 'as' => '/approvalProjectBudget']);
+    Route::get('/approvalProjectBudget', 'AccountantController@approvalProjectBudget');
+
+    Route::post('/projectIncomes/{id}', 'AccountantController@addProjectIncomes');
+//    Route::post('/approvalProjectBudget', 'AccountantController@approvalProjectBudgetInfo');
+//    Route::post('/projectBudgetApproval/{id}', 'AccountantController@projectBudgetApproval');
+
+
+
 });

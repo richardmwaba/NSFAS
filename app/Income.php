@@ -11,4 +11,7 @@ class Income extends Model
 
         return $this->belongsTo('App\Account', 'account_id', 'id');
     }
+public function accounts(){
+       return $this->belongsTo('App\Accounts');
+   }
 }

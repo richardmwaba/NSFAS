@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id')->unique();
             $table->string('departmentName');
 
-            $table->integer('schoolId');
+            $table->integer('schools_id');
 //            $table->timestamps();
         });
     }

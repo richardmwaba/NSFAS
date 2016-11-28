@@ -25,4 +25,15 @@ class Departments extends Model
     {
         return $this->hasMany('App\Imprest', 'departmentId', 'id');
     }
+
+    public function budget(){
+        return $this->hasOne('App\Departments');
+    }
+ public function staff(){
+        return $this->hasMany('App\Staff');
+    }
+public function projects(){
+        return $this->hasMany('App\Projects');
+    }
+
 }

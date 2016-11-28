@@ -17,21 +17,22 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->integer('manNumber')->unique();
 
-
             $table->string('firstName');
             $table->string('lastName');
             $table->string('otherName');
 
             $table->string('email')->unique();
+            $table->string('phoneNumber')->unique()->nullable();
             $table->string('password');
 
-            $table->char('accessLevelId', 2);
-            $table->integer('departmentId')->nullable();
+            $table->char('access_level_id', 2);
+            $table->integer('departments_id')->nullable();
+            $table->integer('schools_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
 
-            //$table->foreign('departmentId')->references('departments')->on('id')->onDelete('set null')->onUpdate('cascade');
+            //$table->foreign('departments_id')->references('departments')->on('id')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

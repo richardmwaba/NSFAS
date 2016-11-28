@@ -16,11 +16,19 @@ class CreateBudgetsTable extends Migration
 
             $table->increments('id');
 
+            $table->string('budgetName')->nullable();
+            $table->float('netProjectBudget')->nullable();
+            $table->float('departmentAmount')->nullable();
+            $table->float('unzaAmount')->nullable();
+            $table->float('actualProjectBudget')->nullable();
+
             $table->boolean('approved');
             $table->boolean('isDepartmentBudget');
             $table->string('name');
 
-            $table->integer('project_id')->nullable();
+            $table->integer('projects_id')->nullable();
+            $table->integer('departments_id')->nullable();
+            $table->integer('accounts_id')->nullable();
             $table->timestamps();
         });
     }
