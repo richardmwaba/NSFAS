@@ -17,12 +17,18 @@ class CreateExpendituresTable extends Migration
             $table->increments('id');
 
             $table->float('amountPaid');
+            $table->string('budgetLine')->nullable();
             $table->string('beneficiary');
             $table->string('purpose');
-            $table->string('voucherNumber');
+            $table->string('voucherNumber')->nullable();
             $table->string('datePaid');
+            $table->boolean('approved');
+            $table->boolean('approvedByHOD');
+            $table->boolean('approvedByACC');
+            $table->boolean('approvedByDN');
 
-            $table->integer('account_id');
+            $table->integer('accounts_id');
+            $table->integer('projects_id')->nullable();
             $table->timestamps();
         });
     }

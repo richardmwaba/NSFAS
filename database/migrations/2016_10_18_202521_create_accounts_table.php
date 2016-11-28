@@ -15,8 +15,10 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('accountName');
+            $table->string('accountName')->unique();
 
+            $table->integer('projects_id')->nullable();
+            $table->integer('budget_id')->nullable();
             $table->timestamps();
         });
     }

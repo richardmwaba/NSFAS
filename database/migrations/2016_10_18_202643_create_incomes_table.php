@@ -21,7 +21,7 @@ class CreateIncomesTable extends Migration
             $table->string('dateReceived');
             $table->string('receiptNumber');
 
-            $table->integer('account_id');
+            $table->integer('accounts_id');
             $table->timestamps();
         });
     }

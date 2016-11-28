@@ -20,8 +20,10 @@ class CreateStaffTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('otherName');
+            $table->string('phoneNumber');
 
-            $table->integer('department_id');
+            $table->integer('departments_id');
+            $table->timestamps();
 
         });
     }

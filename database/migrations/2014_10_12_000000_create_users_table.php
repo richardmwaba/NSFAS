@@ -22,10 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('otherName');
 
             $table->string('email')->unique();
+            $table->string('phoneNumber')->unique()->nullable();
             $table->string('password');
 
             $table->char('access_level_id', 2);
-            $table->integer('department_id')->nullable();
+            $table->integer('departments_id')->nullable();
+            $table->integer('schools_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

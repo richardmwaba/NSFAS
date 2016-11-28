@@ -18,10 +18,12 @@ class CreateProjectsTable extends Migration
 
             $table->string('projectName');
             $table->string('projectCoordinator');
+            $table->string('description');
             $table->string('startDate');
             $table->string('endingDate');
+            $table->boolean('completed');
 
-            $table->integer('department_id');
+            $table->integer('departments_id');
             $table->timestamps();
         });
     }

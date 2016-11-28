@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserDepartmentsTable extends Migration
+class UsersRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateUserDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_departments', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('department_id');
+        Schema::create('users_roles', function (Blueprint $table) {
+            $table->integer('users_id');
+            $table->integer('roles_id');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateUserDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_departments');
+        Schema::drop('users_roles');
     }
 }

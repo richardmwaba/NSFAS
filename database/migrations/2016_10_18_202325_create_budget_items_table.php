@@ -16,9 +16,11 @@ class CreateBudgetItemsTable extends Migration
 
             $table->increments('id');
 
+            $table->string('budgetLine');
             $table->string('description');
+            $table->integer('quantity');
+            $table->float('pricePerUnit');
             $table->float('cost');
-            $table->string('comments');
 
             $table->integer('budget_id');
             $table->timestamps();

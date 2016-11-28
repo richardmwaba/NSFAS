@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Departments;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
@@ -33,12 +34,22 @@ class HomeController extends Controller
              return view('admin.index');
          }elseif ($access_level_id =='AC'){
              return view('acc.index');
-         }elseif ($access_level_id == 'HOD'){
-             return view('hod.index');
-         }elseif ($access_level_id == 'DOS'){
+         }elseif ($access_level_id == 'HD' || $access_level_id =='OT'){
+             $id = $logged_in_user->department_id;
+             $record = Departments::find($id);
+             if (isset($record)){
+//                 $record = $record->departmentName;
+                 return view('hod.index', ['record',$record]);
+             }else{
+                 return view('hod.index');
+             }
+
+         }elseif ($access_level_id == 'DN'){
              return view('dos.index');
-         }elseif ($access_level_id =='HOU'){
+         }elseif ($access_level_id =='HU'){
              return view('hou.index');
+         }elseif ($access_level_id =='OT'){
+             return view('staff.index');
          }else {
 
          }
