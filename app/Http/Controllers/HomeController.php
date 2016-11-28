@@ -40,6 +40,7 @@ class HomeController extends Controller
          }elseif ($access_level_id =='HU'){
              return view('hou.index');
          }else {
+             return view('home');
 
          }
     }

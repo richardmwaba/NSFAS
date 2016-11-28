@@ -68,7 +68,8 @@
             </button>
             <div>
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{URL::asset('home')}}">
+
+                <a class="navbar-brand" href="{{URL::asset('home')}}"><span><img src="{{URL::asset('..frontend/img/logo.png')}}" alt="Unza logo" height="35" width="35" style="padding-bottom:5px"></span>
                     Financial Accounting System
                 </a>
             </div>
@@ -114,6 +115,9 @@
                             <li>
                                 <a href="{{URL::asset('#')}}"><i class="fa fa-plus fa-fw"></i>Head of Unit</a>
                             </li>
+                            <li>
+                                <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus fa-fw"></i>imprests</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -129,6 +133,7 @@
                         <!-- /.nav-second-level -->
                     {{--</li>--}}
                 </ul>
+
             </div>
             <!-- /.sidebar-collapse -->
         </div>
@@ -138,7 +143,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <img class="center block" src="{{ URL::asset('frontend/img/logo.png') }}">
+                <!-- <img style="margin-bottom:0.01%;margin-top:2%" class="img-rounded" src="{{ URL::asset('frontend/img/logo.png') }}"> -->
                 <h4 class="page-header">
 
                     @section('page_title')@yield('heading')@show
@@ -166,14 +171,25 @@
 </div>
 <!-- /#wrapper -->
 
+<!-- Footer -->
+<footer class="footer footer-fixed-bottom">
+    <div class="container" style="text-align:center">
+        <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> - 2016 The University of Zambia
+            <br> All rights reserved.</p>
+    </div>
+</footer>
+<!-- ./footer -->
+
 <!-- jQuery -->
 @section('scripts')
 
     <!-- jQuery -->
-    <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}" type="text/javascript"></script>
+    <!--<script src="{URL::asset('../frontend/js/jquery-3.1.1.js')}}"> </script>-->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('../frontend/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{URL::asset('../frontend/metisMenu/dist/metisMenu.min.js')}}"></script>
@@ -188,6 +204,23 @@
     <script src="{{URL::asset('../frontend/js/authorized.js')}}"></script>
     <script>
         $('div.alert').not('.alert-important').delay(4000).slideUp(300);
+    </script>
+
+    <script>
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        });
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+
     </script>
 
 @show

@@ -38,6 +38,16 @@
     </div>
 
 
+    <!-- Footer -->
+    <footer class="footer footer-fixed-bottom">
+        <div class="container" style="text-align:center">
+            <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> - 2016 The University of Zambia
+                <br> All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- ./footer -->
+
+
 <!-- jQuery -->
 <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
 

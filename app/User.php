@@ -13,8 +13,12 @@ class User extends Authenticatable
      */
 //    public $primaryKey = 'manNumber';
     protected $fillable = [
-        'access_level_id','manNumber','firstName','lastName','otherName', 'email', 'password',
+        'accessLevelId','manNumber','firstName','lastName','otherName', 'email', 'password',
     ];
+
+    public $incrementing = false;
+
+    protected $primaryKey = 'manNumber';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -30,6 +34,18 @@ class User extends Authenticatable
     }
 
     public function department(){
-        return $this->belongsTo('App\Departments');
+        return $this->belongsTo('App\Departments', 'departmentId', 'id');
     }
+
+    public function access(){
+
+        return $this->hasOne('App\AccessLevel');
+    }
+
+    public function imprests()
+    {
+
+        return $this->hasMany('App\Imprest', 'applicantId', 'manNumber');
+    }
+
 }

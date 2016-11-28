@@ -79,4 +79,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
+
+
+<!-- Footer -->
+<footer class="footer footer-fixed-bottom">
+    <div class="container" style="text-align:center">
+        <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> - 2016 The University of Zambia
+            <br> All rights reserved.</p>
+    </div>
+</footer>
+<!-- ./footer -->
 </html>

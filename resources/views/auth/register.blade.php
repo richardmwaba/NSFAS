@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.unauthorized')
 
-@section('content')
+@section('main_content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -10,17 +10,24 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('access_level_id') ? ' has-error' : '' }}">
-                            <label for="access_level_id" class="col-md-4 control-label">System Admin</label>
-
+                        <div class="form-group{{ $errors->has('accessLevelId') ? ' has-error' : '' }}">
+                            <label for="access_level" class="col-md-4 control-label">Role/Position</label>
                             <div class="col-md-6">
-                                <input id="access_level_id" type="text" class="form-control" name="access_level_id" value="SA">
+                                <select class="form-control" name="accessLevelId">
+                                    <option value="">Select a role</option>
 
-                                @if ($errors->has('access_level_id'))
+                                    @foreach($access_level as $access)
+                                        <option value="{{$access->id}}">{{$access->levelName}}</option>
+                                    @endforeach
+
+
+
+                                @if ($errors->has('accessLevelId'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('access_level_id') }}</strong>
+                                        <strong>{{ $errors->first('accessLevelId') }}</strong>
                                     </span>
                                 @endif
+                                </select>
                             </div>
                         </div>
 
@@ -122,6 +129,7 @@
                                 @endif
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
