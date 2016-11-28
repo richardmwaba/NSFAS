@@ -210,7 +210,7 @@
                                 <!-- /.nav-second-level -->
                             </li>
                         @endif
-                        @if(Auth::user()->access_level_id == 'HD')
+                        @if(Auth::user()->accessLevelId == 'HD')
                         <li>
                             <a href="#"><i class="fa fa-home fa-fw"></i>Staff<span
                                         class="fa arrow"></span></a>
@@ -261,23 +261,15 @@
                         </li>
                         @endif
                         @if(Auth::user()->access_level_id == 'OT')
-                            <li>
-                                <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus fa-fw"></i>imprests</a>
-                            </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                @endif
                     <!--future menus for other users can be included here-->
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i>Users<span
-                                    class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{URL::asset('')}}"><i class="fa fa-user fa-fw"></i>Members</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    {{--</li>--}}
+                <li>
+                    <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus fa-fw"></i>imprests</a>
+                </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
