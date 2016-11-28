@@ -127,11 +127,21 @@
 
                                             <em><h4>The Head of Applicants Unit</h4></em>
 
-                                            <div class="form-group">
-                                                <label><input
-                                                            onchange="alert('are you sure you want to authorise this imprest?')"
-                                                            name="approvedByHead" class="nv-check-box" value="1"
-                                                            type="checkbox" <?php if ($imprest->authorisedByHead == true) echo 'checked' ?> >Approve?</label>
+                                            <div class="form-group{{$errors->has('approvedByHead') ? 'has-error' : ''}}">
+                                                <input type="radio" class="radio radio-inline" value="1"
+                                                       name="approvedByHead"
+                                                       @if ($imprest->authorisedByHead == 1) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to approve this imprest?')">Approve<br>
+                                                <input type="radio" class="radio radio-inline" value="0"
+                                                       name="approvedByHead"
+                                                       @if ($imprest->authorisedByHead == 0) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
+
+                                                @if ($errors->has('approvedByHead'))
+                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('approvedByHead') }}</strong>
+                                    </span>
+                                                @endif
                                             </div>
 
                                             <div class="form-group">
@@ -193,15 +203,15 @@
 
                                                                    @endif placeholder="" disabled>
                                                             <span class="input-group-addon">.00</span>
-                                                    </div>
+                                                        </div>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                            <label class="col-md-12 control-label"
-                                                                   for="Copied_To">Budget</label>
+                                                    <label class="col-md-12 control-label"
+                                                           for="Copied_To">Budget</label>
                                                     <div class="col-md-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">K</span>
@@ -213,7 +223,6 @@
                                                         </div>
                                                     </div><!-- End of col-md-2-->
                                                 </div><!-- form group-->
-
 
 
                                                 <div class="form-group">
@@ -242,7 +251,7 @@
                                                             <input type="number"
                                                                    value="{{$imprest->item->cost-$actual}}"
                                                                    placeholder=""
-                                                                    name="balance" disabled>
+                                                                   name="balance" disabled>
                                                             <span class="input-group-addon">.00</span>
                                                         </div><!-- end of input group-->
                                                     </div><!-- end of col-md-2-->
@@ -258,15 +267,22 @@
                                                     Is cash available? </label>
                                             </div>
 
+                                            <div class="form-group form-inline{{ $errors->has('bursarRecommendation') ? ' has-error' : '' }}">
+                                                <input type="radio" value="1" name="bursarRecommendation"
+                                                       @if ($imprest->bursarRecommendation == 1) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to recommend this imprest?')">Recommend
+                                                imprest<br>
+                                                <input type="radio" value="0" name="bursarRecommendation"
+                                                       @if ($imprest->bursarRecommendation == 0) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
 
-                                            <div class="form-group form-inline">
-                                                <label class="" for="Copied_To"><input type="checkbox" value="1"
-                                                                                       class="checkbox"
-                                                                                       name="bursarRecommendation"
-                                                                                       placeholder="Description of use"
-                                                                                       <?php if ($imprest->bursarRecommendation == true) echo 'checked' ?> onchange="alert('Do you want to save this recommendation?')">
-                                                    Recommend this imprest?</label>
+                                                @if ($errors->has('bursarRecommendation'))
+                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('bursarRecommendation') }}</strong>
+                                    </span>
+                                                @endif
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label for="Copied_To">Comment</label>
@@ -280,7 +296,9 @@
 
                                                 <div class="form-group">
                                                     <a href="#" class="btn btn-link" role="button" data-toggle="modal"
-                                                       data-target="#cashOut" onclick="" id="" @if($imprest->authorisedByDean==0){{$d = "disabled"}}@endif>Cash out??</a>
+                                                       data-target="#cashOut" onclick=""
+                                                       id="" @if($imprest->authorisedByDean==0){{$d = "disabled"}}@endif>Cash
+                                                        out??</a>
                                                 </div>
                                                 <div id="demo" class="collapse">
 
@@ -292,240 +310,251 @@
                                         <fieldset id="DN" disabled>
                                             <em><h4>Dean or Director</h4></em>
 
+                                            <div class="form-group{{ $errors->has('authorisedByDean') ? ' has-error' : '' }}">
+                                                <input type="radio" class="radio radio-inline" value="1"
+                                                       name="authorisedByDean"
+                                                       @if ($imprest->authorisedByDean == 1) {{$e ='checked'}} @endif
+                                                       @if ($imprest->bursarRecommendation == 0) {{$e ='disabled'}} @endif onchange="alert('Are you sure you want to authorize this imprest?')">Approve<br>
+                                                <input type="radio" class="radio radio-inline" value="0"
+                                                       name="authorisedByDean"
+                                                       @if ($imprest->authorisedByDean == 0) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
 
-                                            <div class="form-group">
-                                                <label><input name="authorisedByDean"
-                                                              onchange="alert('Are you sure you want to authorize this imprest?')"
-                                                              value="1"
-                                                              type="checkbox" <?php if ($imprest->authorisedByDean == true) echo 'checked' ?>>
-                                                    Authorise?</label>
-                                            </div>
-
-
-                                            <div class="form-group">
-
-                                                <div class="form-group{{ $errors->has('authorisedAmount') ? ' has-error' : '' }}">
-
-                                                <label for="Copied_To">Amount Authorised</label>
-                                                <input type="number" value="{{$imprest->amountRequested}}"
-                                                       class="form-control" name="authorisedAmount"
-                                                       placeholder="{{$imprest->amountRequested}}">
-
-                                                    @if ($errors->has('authorisedAmount'))
-                                                        <span class="help-block">
-                                        <strong>{{ $errors->first('authorisedAmount') }}</strong>
+                                                @if ($errors->has('authorisedByDean'))
+                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('authorisedByDean') }}</strong>
                                     </span>
-                                                    @endif
-                                                </div>
-
+                                                @endif
                                             </div>
 
 
-                                            <div class="form-group">
-                                                <a style="margin-bottom: 5%" data-toggle="modal" data-target="#comment"
-                                                   class="btn btn-link form-control" role="button" @if($imprest->bursarRecommendation==1){{$d='disabled'}}@endif>Click here to send to
-                                                    bursar for recommendation</a>
-                                            </div>
-                                            <div id="demo" class="collapse">
+                                <div class="form-group">
 
-                                            </div>
+                                    <div class="form-group{{ $errors->has('authorisedAmount') ? ' has-error' : '' }}">
 
-                                        </fieldset>
-                                    </fieldset>
+                                        <label for="Copied_To">Amount Authorised</label>
+                                        <input type="number" value="{{$imprest->amountRequested}}"
+                                               class="form-control" name="authorisedAmount"
+                                               placeholder="{{$imprest->amountRequested}}">
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </form>
-
-        <!-- Send to accountant for recommendation modal -->
-        <form class="form-horizontal" role="form" method="POST"
-              action="{{url('imprests/recommendation/'.$imprest->imprestId)}}">
-            {!! csrf_field() !!}
-            <div class="modal fade" id="comment" role="dialog">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button id="close" type="button" class="close"
-                                    data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title text-primary">Send to bursar for recommendation</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-
-                                    <div class="form-group">
-                                        <label for="Copied_To">Comment</label>
-                                        <input type="text" class="form-control"
-                                               value="{{$imprest->commentFromDean}}" name="commentFromDean"
-                                               placeholder="Your comment. Leave blank otherwise">
-                                    </div>
-
-                                    <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <div class="col-md- ">
-
-                                    <button type="submit"
-                                            class="btn btn-default">send
-                                    </button>
-
-                                    <!--</div>
-                                    <div class="">-->
-                                    <button type="reset"
-                                            class="btn btn-default">Cancel
-                                    </button>
-                                </div>
-
-                                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Change password modal-->
-        </form>
-
-        <!-- Change budgetLine modal -->
-        <form id="newBudgetLineFm" class="form-horizontal" role="form" method="POST"
-              action="{{url('/imprests/newBudgetLine/')}}">
-            {!! csrf_field() !!}
-            <div class="modal fade" id="changeBudget" role="dialog">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button id="closeB" type="button" class="close"
-                                    data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title text-primary">New budget
-                                line</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-
-                                    <div id="budgetLine"
-                                         class="form-group{{ $errors->has('newBudgetLine') ? ' has-error' : '' }}">
-                                        <label>Budget line</label>
-                                        <select class="form-control"
-                                                name="newBudgetLine"
-                                                id="newBudgetLine">
-                                            <option value="{{$imprest->budgetLine}}">Select new budget line
-                                            </option>
-                                            @foreach($budgets as $budget)
-                                                <option value="{{$budget->id}}">{{$budget->name}}</option>
-                                            @endforeach
-
-                                        </select>
-                                        @if ($errors->has('newBudgetLine'))
+                                        @if ($errors->has('authorisedAmount'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('newBudgetLine') }}</strong>
+                                        <strong>{{ $errors->first('authorisedAmount') }}</strong>
                                     </span>
                                         @endif
                                     </div>
-                                    <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
-                                </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <div class="col-md- ">
-
-                                    <button type="submit"
-                                            class="btn btn-default">save
-                                    </button>
-
-                                    <!--</div>
-                                    <div class="">-->
-                                    <button type="reset"
-                                            class="btn btn-default">Cancel
-                                    </button>
                                 </div>
 
-                                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+
+                                <div class="form-group">
+                                    <a style="margin-bottom: 5%" data-toggle="modal" data-target="#comment"
+                                       class="btn btn-link form-control"
+                                       role="button" @if($imprest->bursarRecommendation==1){{$d='disabled'}}@endif>Click
+                                        here to send to
+                                        bursar for recommendation</a>
+                                </div>
+                                <div id="demo" class="collapse">
+
+                                </div>
+
+                                </fieldset>
+                                </fieldset>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /.Change password modal-->
-        </form>
-
-        <form id="newBudgetLineFm" class="form-horizontal" role="form" method="POST"
-              action="{{url('/cashout/summary')}}">
-            {!! csrf_field() !!}
-            <div class="modal fade" id="cashOut" role="dialog">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button id="closeB" type="button" class="close"
-                                    data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title text-primary">Cash out</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-
-                                    <div class="form-group">
-
-                                        <label>Account</label>
-                                        <select class="form-control" name="account">
-                                            <option value="">Select an account to withdraw from</option>
-                                            @foreach($accounts as $account)
-                                                <option value="{{$account->id}}">{{$account->accountName}}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Amount</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">K</span>
-                                            <input type="text" value="{{$imprest->authorisedAmount}}" name="amount" class="form-control"
-                                                   aria-label="Amount (Kwacha)">
-                                            <span class="input-group-addon">.00</span>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="form-group">
-                                        <label for="Copied_To">Date Outstanding imprest obtained</label>
-                                        <input @if($imprest->busarRecommendation == 0){{$d ='date'}} @else {{$d='text'}}@endif type="{{$d}}"
-                                               class="form-control" name="dateOutstandingImprest"
-                                               placeholder="{{ \Carbon\Carbon::parse($imprest->updated_at)->diffForHumans()}}">
-                                    </div>
-                                    <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <div class="col-md- ">
-
-                                    <button type="submit"
-                                            class="btn btn-default">save
-                                    </button>
-
-                                    <!--</div>
-                                    <div class="">-->
-                                    <button type="reset"
-                                            class="btn btn-default">Cancel
-                                    </button>
-                            </div>
-
-                                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                        </div>
-                        </div>
-                </div>
-                </div>
     </div>
-            <!-- /.Change password modal-->
-        </form>
+    </form>
+
+    <!-- Send to accountant for recommendation modal -->
+    <form class="form-horizontal" role="form" method="POST"
+          action="{{url('imprests/recommendation/'.$imprest->imprestId)}}">
+        {!! csrf_field() !!}
+        <div class="modal fade" id="comment" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="close" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-primary">Send to bursar for recommendation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+
+                                <div class="form-group">
+                                    <label for="Copied_To">Comment</label>
+                                    <input type="text" class="form-control"
+                                           value="{{$imprest->commentFromDean}}" name="commentFromDean"
+                                           placeholder="Your comment. Leave blank otherwise">
+                                </div>
+
+                                <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md- ">
+
+                                <button type="submit"
+                                        class="btn btn-default">send
+                                </button>
+
+                                <!--</div>
+                                <div class="">-->
+                                <button type="reset"
+                                        class="btn btn-default">Cancel
+                                </button>
+                            </div>
+
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Change password modal-->
+    </form>
+
+    <!-- Change budgetLine modal -->
+    <form id="newBudgetLineFm" class="form-horizontal" role="form" method="POST"
+          action="{{url('/imprests/newBudgetLine/')}}">
+        {!! csrf_field() !!}
+        <div class="modal fade" id="changeBudget" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="closeB" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-primary">New budget
+                            line</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+
+                                <div id="budgetLine"
+                                     class="form-group{{ $errors->has('newBudgetLine') ? ' has-error' : '' }}">
+                                    <label>Budget line</label>
+                                    <select class="form-control"
+                                            name="newBudgetLine"
+                                            id="newBudgetLine">
+                                        <option value="{{$imprest->budgetLine}}">Select new budget line
+                                        </option>
+                                        @foreach($budgets as $budget)
+                                            <option value="{{$budget->id}}">{{$budget->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    @if ($errors->has('newBudgetLine'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('newBudgetLine') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md- ">
+
+                                <button type="submit"
+                                        class="btn btn-default">save
+                                </button>
+
+                                <!--</div>
+                                <div class="">-->
+                                <button type="reset"
+                                        class="btn btn-default">Cancel
+                                </button>
+                            </div>
+
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Change password modal-->
+    </form>
+
+    <form id="newBudgetLineFm" class="form-horizontal" role="form" method="POST"
+          action="{{url('/cashout/summary')}}">
+        {!! csrf_field() !!}
+        <div class="modal fade" id="cashOut" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="closeB" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-primary">Cash out</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+
+                                <div class="form-group">
+
+                                    <label>Account</label>
+                                    <select class="form-control" name="account">
+                                        <option value="">Select an account to withdraw from</option>
+                                        @foreach($accounts as $account)
+                                            <option value="{{$account->id}}">{{$account->accountName}}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">K</span>
+                                        <input type="text" value="{{$imprest->authorisedAmount}}" name="amount"
+                                               class="form-control"
+                                               aria-label="Amount (Kwacha)">
+                                        <span class="input-group-addon">.00</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="Copied_To">Date Outstanding imprest obtained</label>
+                                    <input @if($imprest->busarRecommendation == 0){{$d ='date'}} @else {{$d='text'}}@endif type="{{$d}}"
+                                           class="form-control" name="dateOutstandingImprest"
+                                           placeholder="{{ \Carbon\Carbon::parse($imprest->updated_at)->diffForHumans()}}">
+                                </div>
+                                <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md- ">
+
+                                <button type="submit"
+                                        class="btn btn-default">save
+                                </button>
+
+                                <!--</div>
+                                <div class="">-->
+                                <button type="reset"
+                                        class="btn btn-default">Cancel
+                                </button>
+                            </div>
+
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Change password modal-->
+    </form>
 
     </div>
 

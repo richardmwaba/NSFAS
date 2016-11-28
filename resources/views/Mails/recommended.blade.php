@@ -7,7 +7,7 @@
 <body>
 
 <p>
-    This imprest been recommended and requires your authorisation.
+    This imprest been recommended and requires your final authorisation.
     <a href="{{url('/imprests/edit/'.$imprest->imprestId)}}">Click here to view it</a>
 </p>
 

@@ -50,4 +50,9 @@ class Imprest extends Model
 
         return $this->hasOne('App\User','manNumber', 'bursarManNumber');
     }
+
+    public function retirement(){
+
+        return $this->hasOne('App\imprestRetirement','imprestId', 'imprestId');
+    }
 }

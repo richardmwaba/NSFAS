@@ -26,12 +26,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->char('accessLevelId', 2);
-            $table->integer('departmentId')->unique()->nullable();
+            $table->integer('departmentId')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
 
-            $table->foreign('departmentId')->references('departments')->on('id')->onDelete('set null')->onUpdate('cascade');
+            //$table->foreign('departmentId')->references('departments')->on('id')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

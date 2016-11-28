@@ -90,7 +90,7 @@ class ImprestController extends Controller
                 if ($request->authorisedByHead == 1) {
 
                     //create a record
-                    Imprest::create(['headManNumber' => Auth::user()->manNumber,'applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'authorisedByHead' => $request->authorisedByHead,
+                    Imprest::create(['headManNumber' => Auth::user()->manNumber, 'applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'authorisedByHead' => $request->authorisedByHead,
                         'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
                         'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
 
@@ -146,7 +146,7 @@ class ImprestController extends Controller
 
                 //when found, look for this user's head and send him/her a mail
                 if ($this->is_connected()) {
-                    $head = User::where('accesslevelId', 'HD')->where('department_id', Auth::user()->department_id)->first();
+                    $head = User::where('accesslevelId', 'HD')->where('departmentId', Auth::user()->departmentId)->first();
 
                     Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($head) {
 
@@ -205,24 +205,33 @@ class ImprestController extends Controller
         switch ($ac) {
 
             case 'HD':
-                $imprest->fill(['commentFromHead' => $request->commentFromHead]);
+                //validate
+                $this->validate($request, ['approvedByHead' => 'required']);
 
-                //check if the head has authorised the imprest and update the attributes
-                   if($request->approvedByHead == 1){
-                    $imprest->authorisedByHead =  $request->approvedByHead;
-                    $imprest->headManNumber = Auth::user()->manNumber;
-                }
+                //update the records
+                $imprest->fill(['commentFromHead' => $request->commentFromHead,
+                    'authorisedByHead' => $request->approvedByHead,
+                    'headManNumber' => Auth::user()->manNumber,
+                    'authorisedByHeadOn' => Carbon::now()]);
                 $imprest->save();
-                //method to notify the dean
-                $this->notifyDean();
+
+                //method to notify the dean if imprest has been aproved
+                if ($request->authorisedByHead == 1) {
+                    $this->notifyDean();
+                }
                 break;
 
             case 'OT':
-                $imprest->fill(['amountRequested' => $request->amountRequested, 'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
+                $imprest->fill(['amountRequested' => $request->amountRequested,
+                    'purpose' => $request->purpose,
+                    'budgetLine' => $request->budgetLine]);
                 $imprest->save();
                 break;
 
             case 'AC':
+
+                //perfom validation
+                $this->validate($request, ['bursarRecommendation' => 'required']);
 
                 //function to process updates from the accountants
                 $this->accounts($imprest, $request);
@@ -230,17 +239,20 @@ class ImprestController extends Controller
             //code to process what happens when the dean modifys an imprest
             case 'DN':
 
+                //perfom validation
+                $this->validate($request, ['authorisedByDean' => 'required']);
+
                 //fill in these fields first
-                $imprest->fill(['authorisedAmount' => $request->authorisedAmount, 'authorisedByDean' => $request->authorisedByDean,
+                $imprest->fill(['authorisedAmount' => $request->authorisedAmount,
+                    'deanManNumber' => Auth::user()->manNumber,
+                    'authorisedByDean' => $request->authorisedByDean,
+                    'authorisedByDeanOn' => Carbon::now(),
                     'commentFromDean' => $request->commentFromDean]);
                 $imprest->save();
 
 
                 //set authorised on date if the dean has authorised this imprest and notify the accountants
                 if ($request->authorisedByDean == 1) {
-                    $imprest->authorisedOn = Carbon::now();
-                    $imprest->deanManNumber = Auth::user()->manNumber;
-                    $imprest->save();
 
                     //send mail to accountants
                     If ($this->is_connected()) {
@@ -252,16 +264,13 @@ class ImprestController extends Controller
                             });
                         }
 
-                    }
+                        //notify the applicant if cash is ready
+                        if ($imprest->cashAvailable == 1) {
+                            Mail::send('Mails.ready', ['imprest' => $imprest], function ($m) use ($imprest) {
 
-                    //notify the applicant if cash is ready
-                    if ($this->is_connected()) {
-                        if ($imprest->cashAvailable) {
-                            $user = $imprest->owner;
-                            Mail::send('Mails.ready', ['imprest' => $imprest], function ($m) use ($user) {
-
-                                $m->to($user->email, 'Me')->subject('Money ready for collection');
+                                $m->to($imprest->owner->email, 'Me')->subject('Money ready for collection');
                             });
+
                         }
                     }
                 }
@@ -284,6 +293,7 @@ class ImprestController extends Controller
             //save the cash ready state
             $imprest->cashAvailable = 1;
             $imprest->bursarRecommendation = $request->bursarRecommendation;
+            $imprest->bursarRecommendationDate = Carbon::now();
             $imprest->bursarManNumber = Auth::user()->manNumber;
             $imprest->save();
 
@@ -306,7 +316,7 @@ class ImprestController extends Controller
             //send mail to the dean about update
             if ($this->is_connected()) {
                 $user = User::where('accessLevelId', 'DN')->first();
-                Mail::send('Mails.recommendation', ['imprest' => $imprest], function ($m) use ($user) {
+                Mail::send('Mails.recommended', ['imprest' => $imprest], function ($m) use ($user) {
 
                     $m->to($user->email, 'Me')->subject('The bursar has recommended this imprest');
                 });
@@ -317,7 +327,7 @@ class ImprestController extends Controller
     }
 
 
-//function to show alll the that have been seen by dean
+//function to show all the that have been seen by dean
     public function showAll()
     {
         //get all imprests that belong to this user
@@ -338,9 +348,9 @@ class ImprestController extends Controller
 
         }
 
-        if($imprests != null) {
+        if ($imprests != null) {
             return view('imprests.all')->with(['imprests' => $imprests]);
-        }else{
+        } else {
             return view('imprests.create');
         }
     }
@@ -364,7 +374,7 @@ class ImprestController extends Controller
     public function recommendation(Request $request)
     {
 
-        //send the from to bursar fro recommendation and set a state that will tell that this imprest is now waiting for recommendation for the bursar
+        //send the from to bursar fro recommendation and set a state that will tell that this imprest is now waiting for recommendation from the bursar
         $imprest = Imprest::findOrFAil($request->id);
         $imprest->seenByDean = 1;
         $imprest->commentFromDean = $request->commentFromDean;
@@ -377,7 +387,7 @@ class ImprestController extends Controller
 
                 Mail::send('Mails.recommended', ['imprest' => $imprest], function ($m) use ($user) {
 
-                    $m->to($user->email, 'Me')->subject('Imprest recommendation required');
+                    $m->to($user->email, 'Me')->subject('Imprest has been recommended');
                 });
 
             }

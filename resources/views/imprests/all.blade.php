@@ -32,7 +32,7 @@
                             <th data-field="renew by" data-sortable="true">Recommended by</th>
                             <th data-field="contract status" data-sortable="true">Status</th>
                             <th data-field="application stage" data-sortable="true">Created</th>
-                            <th data-field="edit" data-sortable="true">Retire/Edit</th>
+                            <th data-field="edit" data-sortable="true">Edit/Retire</th>
                         </tr>
                         </thead>
 
@@ -80,13 +80,16 @@
                                            class="btn btn-sm btn-link glyphicon glyphicon-edit">Edit</a>
                                     </div>
                                     <div class="btn-group">
+                                        @if($imprest->authorisedByDean==1 AND $imprest->isRetired==0)
                                         <a href="{{url('/imprests/retirement/form/'.$imprest->imprestId)}}"
-                                           class="btn btn-sm btn-link glyphicon glyphicon-flag">Retire</a>
+                                           class="btn btn-sm btn-link glyphicon glyphicon-flag" >Retire</a>
+                                            @endIf
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
                     </table>
+
 
                     <!--/. script-->
 

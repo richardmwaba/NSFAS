@@ -37,8 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/imprests/newBudgetLine', 'ImprestController@newBudgetLine');
     Route::post('imprests/recommendation/{id}', 'ImprestController@recommendation');
 
-    Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirementForm');
     Route::post('cashout/summary', 'CashOut@cashout');
     Route::post('cashout/confirm', 'CashOut@confirm');
+
+    Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirementForm');
+    Route::post('/imprests/retirement/create', 'ImprestRetirementController@create');
+    Route::post('/imprests/retirement/edit/{id}', 'ImprestRetirementController@edit');
+    Route::post('/imprests/retirement/update/{id}', 'ImprestRetirementController@update');
 
 });
