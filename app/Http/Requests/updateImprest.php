@@ -24,14 +24,14 @@ class updateImprest extends Request
      */
     public function rules()
     {
-        $id = Auth::user()->accessLevelId;
+        $id = Auth::user()->access_level_id;
         if($id == 'OT'){
 
             return [
                 //
-                'amount'=>'required|numeric',
-                'purpose'=>'required',
-                'budgetLine'=>'required',
+                'amountRequested' => 'required|numeric',
+                'purpose' => 'required',
+                'budgetLine' => 'required',
             ];
 
         }elseif($id=='HD'){

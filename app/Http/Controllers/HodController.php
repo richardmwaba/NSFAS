@@ -22,6 +22,7 @@ use Validator;
 use Mail;
 use Hash;
 
+
 class HODController extends Controller
 {
 
@@ -33,7 +34,7 @@ class HODController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-       return view('hod.addStaff');
+        return view('hod.addStaff');
     }
 
     public function staff(){
@@ -46,7 +47,6 @@ class HODController extends Controller
         }
     }
 
- //
     public function imprestForm(){
 
         return view('imprests.imprests');
@@ -75,8 +75,12 @@ class HODController extends Controller
         $staff->save();
 
         // code for sending email to the added user goes here
+        Mail::send('Mails.addUser', ['password' => $password], function ($m) use ($staff) {
 
-        Session::flash('flash_message', 'staff added successfully! '. $password);
+            $m->to($staff->email, 'Me')->subject('Your account has been created');
+        });
+
+        Session::flash('flash_message', 'staff added successfully! ');
         Return Redirect::action('HodController@staff');
     }
 
@@ -162,7 +166,7 @@ class HODController extends Controller
 
     public function addProject(){
 
-       $id = $this->getDepartmentIdFromLoggedInUSer();
+        $id = $this->getDepartmentIdFromLoggedInUSer();
         $staff = User::where('departments_id', $id)->get();
         if ($this->getAccessLevelId() == 'OT'){
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
@@ -196,8 +200,8 @@ class HODController extends Controller
         $unzaPercentage = $request['unzaPercentage'];
         $actualProjectBudget= $request['actualProjectBudget'];
 
-         $dPercentage = ($departmentPercentage/100) * $net_project_budget;
-         $uPercentage = ($unzaPercentage/100) * $net_project_budget;
+        $dPercentage = ($departmentPercentage/100) * $net_project_budget;
+        $uPercentage = ($unzaPercentage/100) * $net_project_budget;
 
         $id = $this->getDepartmentIdFromLoggedInUSer();
         $department = Departments::where('id', $id)->first();
@@ -219,6 +223,7 @@ class HODController extends Controller
                 $budget->departmentAmount = $dPercentage;
                 $budget->unzaAmount = $uPercentage;
                 $budget->actualProjectBudget = $actualProjectBudget;
+                $budget->departments_id = $record->departments_id;
 
                 if ($record->budget()->save($budget)){
                     $account = new Accounts();

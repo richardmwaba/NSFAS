@@ -7,7 +7,8 @@
                 <div class="panel-heading">Imprest retirement</div>
                 <div class="panel-body">
 
-                        <details id="details">
+                        <details class="form-group" id="details">
+                            <summary>Click here to view imprest details</summary>
                             <div class="row">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Imprest details</div>
@@ -72,141 +73,200 @@
                             </div>
                         </details>
 
-                    <form class="form-vertical" role="form" method="POST" action="{{ url('/imprests/retirement/create') }}">
+                    <form class="form-vertical" role="form" method="POST" action="{{ url('/imprests/retirement/confirm') }}">
                         {{ csrf_field() }}
-
                         <div id="current">
                             <fieldset id="OT">
                                 <em><h4>Subsistance allowance</h4></em>
 
                                 <div class="row">
+                                    <details class=" form-group col-md-12">
+                                        <summary>Click here to include subsistence allowance details if applicable</summary>
+                                    <input type="hidden" name="imprestId" value="{{$id}}">
+                                    <input type="hidden" name="chequeNumber" value="1">
 
                                     <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('dateOfReturn') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Date of return</label>
-                                            <input type="date" value="{{Carbon\Carbon::now()}}" class="form-control"
+                                            <input type="date" value="{{old('dateOfReturn')}}" class="form-control"
                                                    name="dateOfReturn"
                                                    placeholder="">
+                                            @if ($errors->has('dateOfReturn'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('dateOfReturn') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('departedFrom') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Departed from</label>
                                             <input type="text"
-                                                   value="{{$imprest->bursar->lastName}} {{$imprest->bursar->otherName}} {{$imprest->bursar->firstName}}"
+                                                   value="{{old('departedFrom')}}"
                                                    class="form-control" name="departedFrom"
                                                    placeholder="">
+                                            @if ($errors->has('departedFrom'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('departedFrom') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="Date_Sent">Date</label>
-                                            <input type="date" value="{{$imprest->created_at}}"
-                                                   placeholder="{{\Carbon\Carbon::parse($imprest->created_at)->diffForHumans()}}"
+                                        <div class="form-group{{$errors->has('departureDate') ? 'has-error' : ''}}">
+                                            <label for="Date_Sent">Date of departure</label>
+                                            <input type="date" value="{{old('departureDate')}}"
+                                                   placeholder="Enter the date of departure"
                                                    class="form-control" name="departureDate">
-                                            <input type="hidden" value="{{$imprest->imprestId}}" name="imprestId">
+                                            @if ($errors->has('departureDate'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('departureDate') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('arrivedAt') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Arrived at</label>
-                                            <input type="text" value="" class="form-control" name="arrivedAt"
+                                            <input type="text" value="{{old('arrivedAt')}}" class="form-control" name="arrivedAt"
                                                    placeholder="">
+                                            @if ($errors->has('arrivedAt'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('arrivedAt') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-1">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('noOfNights') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">#nights</label>
-                                            <input type="number" class="form-control" name="noOfNights"
+                                            <input type="number" value="{{old('noOfNights')}}" class="form-control" name="noOfNights"
                                                    placeholder="">
+                                            @if ($errors->has('noOfNights'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('noOfNights') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-1">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('ratePerNight') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Rate/Night</label>
-                                            <input type="number" value="" class="form-control" name="ratePerNight"
+                                            <input type="number" value="{{old('ratePerNight')}}" class="form-control" name="ratePerNight"
                                                    placeholder="">
+                                            @if ($errors->has('ratePerNight'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('ratePerNight') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('departedFrom') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Amount</label>
-                                            <input type="number" value="" class="form-control" name="subAmount"
+                                            <input type="number" value="{{old('subAmount')}}" class="form-control" name="subAmount"
                                                    placeholder="K">
+                                            @if ($errors->has('subAmount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('subAmount') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
+
+                                    </details>
 
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="Date_Sent">Fuel</label>
                                             <input type="text" value="" class="form-control" name="fuel"
-                                                   placeholder="">
+                                                   placeholder="Cost on fuel" disabled>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="Date_Sent">Amount</label>
-                                            <input type="number" value="" class="form-control" name="fuelAmount"
+                                            <input type="number" value="{{old('fuelAmount')}}" class="form-control" name="fuelAmount"
                                                    placeholder="K">
                                         </div>
                                     </div>
 
                                     <div class="col-md-9">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('item1') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Other expenses</label>
-                                            <input type="text" value="" class="form-control" name="item1"
-                                                   placeholder="">
+                                            <input type="text" value="{{old('item1')}}" class="form-control" name="item1"
+                                                   placeholder="expense 1">
+                                            @if ($errors->has('item1'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('item1') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-3">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('item1Amount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent"></label>
-                                            <input type="number" value="" class="form-control" name="item1Amount"
+                                            <input type="number" value="{{old('ietm1Amount')}}" class="form-control" name="item1Amount"
                                                    placeholder="K">
+                                            @if ($errors->has('item1Amount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('item1Amount') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="Date_Sent"></label>
-                                            <input type="text" value="" class="form-control" name="item2"
-                                                   placeholder="">
+                                            <input type="text" value="{{old('item2')}}" class="form-control" name="item2"
+                                                   placeholder="expense 2">
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-3">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('item2Amount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent"></label>
-                                            <input type="number" value="" class="form-control" name="item2Amount"
+                                            <input type="number" value="{{old('item2Amount')}}" class="form-control" name="item2Amount"
                                                    placeholder="K">
+                                            @if ($errors->has('item2Amount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('item2Amount') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="Date_Sent"></label>
-                                            <input type="text" value="" class="form-control" name="item3"
-                                                   placeholder="">
+                                            <input type="text" value="{{old('item3')}}" class="form-control" name="item3"
+                                                   placeholder="expense 3">
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-3">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('item3Amount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent"></label>
-                                            <input type="number" value="" class="form-control" name="item3Amount"
+                                            <input type="number" value="{{old('item3Amount')}}" class="form-control" name="item3Amount"
                                                    placeholder="K">
+                                            @if ($errors->has('item3Amount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('item3Amount') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -214,7 +274,7 @@
                                         <div class="form-group">
                                             <label for="Date_Sent">Other expenses</label>
                                             <textarea name="other" id="field" onkeyup="countChar(this)" rows="5"
-                                                      cols="90" placeholder="Type here if field not enough"></textarea>
+                                                      cols="90" placeholder="Type here if the above fields are not enough">{{old('other')}}</textarea>
                                             <div id="charNum"></div>
 
                                             <!-- script to count number of characters entered in textarea-->
@@ -236,22 +296,60 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                        <div class="form-group">
+                                        <div class="form-group{{$errors->has('otherAmount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent"></label>
-                                            <input type="number" value="" class="form-control" name="otherAmount"
-                                                   placeholder="K">
+                                            <input type="number" value="{{old('otherAmount')}}" class="form-control" name="otherAmount"
+                                                   placeholder="Enter total cost of other expenses here">
+                                            @if ($errors->has('otherAmount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('otherAmount') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
                                     </div>
 
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <em><h4>Cash balance</h4></em>
-                                        <div class="form-group form-inline">
+                                    <details class="form-group">
+                                    <summary>Click here to add cash balance details if any</summary>
+                                        <div class="form-group{{$errors->has('receiptNo') ? 'has-error' : ''}}">
                                             <label>Recept No.</label>
-                                            <input class="form-control" type="number" name="receiptNo">
-
-                                            <label>Amount recoverable.</label>
-                                            <input class="form-control" type="number" name="recoverableAmount">
+                                            <input class="form-control" value="{{old('receiptNo')}}" type="number" name="receiptNo">
+                                            @if ($errors->has('receiptNo'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('receiptNo') }}</strong>
+                                    </span>
+                                            @endif
                                         </div>
+                                        <div class="form-group{{$errors->has('cashBalanceDate') ? 'has-error' : ''}}">
+                                            <label>Date</label>
+                                            <input class="form-control" value="{{old('cashBalanceDate')}}" type="date" name="cashBalanceDate">
+                                            @if ($errors->has('cashBalanceDate'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('cashBalanceDate') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group{{$errors->has('cashBalanceAmount') ? 'has-error' : ''}}">
+                                            <label>Date</label>
+                                            <input class="form-control" value="{{old('cashBalanceAmount')}}" type="number" name="cashBalanceAmount" placeholder="K">
+                                            @if ($errors->has('cashBalanceAmount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('cashBalanceAmount') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group{{$errors->has('recoverableAmount') ? 'has-error' : ''}}">
+                                            <label>Amount recoverable.</label>
+                                            <input class="form-control" value="{{old('recoverableAmount')}}" type="number" name="recoverableAmount" placeholder="K">
+                                            @if ($errors->has('recoverableAmount'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('recoverableAmount') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+
+                                    </details>
                                     </div>
                                 </div>
 
@@ -265,10 +363,10 @@
                             <button type="submit" class="btn btn-danger"> Cancel</button>
                         </div>
 
+                    </form>
+
                 </div>
             </div>
-    </div>
-    </form>
     </div>
 
 

@@ -26,7 +26,7 @@
                             <th data-field="income" data-sortable="true">Income</th>
                             <th data-field="allocatedBudget" data-sortable="true">Budget</th>
                             @if(Auth::user()->access_level_id != 'OT')
-                            <th data-field="approved" data-sortable="true">Budget Status</th>
+                                <th data-field="approved" data-sortable="true">Budget Status</th>
                             @endif
                             <th data-field="moreInfo" data-sortable="true">More Budget Info</th>
                         </tr>
@@ -39,62 +39,62 @@
                                 <td> @if(isset($rcd)) {{ $rcd->projectCoordinator }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->startDate }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->endingDate }} @endif </td>
-                                <td> @if(isset($rcd->totalAmount->incomeAcquired)) K{{ $rcd->totalAmount->incomeAcquired }}.00 @endif </td>
+                                <td> @if(isset($rcd)) K{{ $rcd->totalAmount->incomeAcquired }}.00 @endif </td>
                                 <td> @if(isset($rcd))
                                         @if($rcd->budget->approved  == 0)
                                             @if($rcd->totalAmount->proposedBudget != $rcd->budget->actualProjectBudget)
                                                 @if(Auth::user()->access_level_id != 'OT')
-                                                <span style="color: red; ">Budget not submitted</span>
+                                                    <span style="color: red; ">Budget not submitted</span>
                                                 @endif
                                             @else
-                                                @if(isset($rcd->totalAmount->proposedBudget)) K{{ $rcd->totalAmount->proposedBudget }}.00 @endif
+                                                @if(isset($rcd)) K{{ $rcd->totalAmount->proposedBudget }}.00 @endif
                                             @endif
 
                                         @endif
                                         @if( $rcd->budget->approved  == 1 )
                                             @if(isset($rcd->totalAmount->proposedBudget)) K{{ $rcd->totalAmount->proposedBudget }}.00 @endif
                                         @else
-                                                @if(isset($rcd->totalAmount->proposedBudget))
-                                                    @if($rcd->totalAmount->proposedBudget >= $rcd->budget->actualProjectBudget)
+                                            @if(isset($rcd->totalAmount->proposedBudget))
+                                                @if($rcd->totalAmount->proposedBudget >= $rcd->budget->actualProjectBudget)
 
-                                                    @else
-                                                        <div class="btn-group">
-                                                            <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" >Add Budget items</a>
-                                                        </div>
-                                                    @endif
-                                                @endif
-                                        @endif
-                                     @endif
-                                </td>
-                                @if(Auth::user()->access_level_id != 'OT')
-                                <td> @if(isset($rcd))
-                                        @if($rcd->budget->approved == 0)
-                                            @if($rcd->totalAmount->proposedBudget == $rcd->budget->actualProjectBudget)
-                                                <div class="btn-group">
-                                                    <a type="button" href="{{ route('/approvalProjectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link"><span style="color: orangered; ">Approve</span></a>
-                                                </div>
-                                            @else
-
-
-                                                <span style="color: red; ">Budget not submitted</span>
-
-                                            @endif
-                                            @if(isset($rcd->totalAmount->incomeAcquired) AND isset($rcd->totalAmount->proposedBudget))
-
-                                            @else
-                                                @if(!isset($rcd->totalAmount->incomeAcquired) AND !isset($rcd->totalAmount->proposedBudget))
-                                                    <span style="color: brown; ">Income and Budget not submitted</span>
-                                                @elseif(!isset($rcd->totalAmount->incomeAcquired) And isset($rcd->totalAmount->proposedBudget))
-                                                    <span style="color: red; ">Add Income</span>
-                                                @elseif(isset($rcd->totalAmount->incomeAcquired) And !isset($rcd->totalAmount->proposedBudget))
-                                                    {{--<span style="color: red; ">Budget not submitted</span>--}}
+                                                @else
+                                                    <div class="btn-group">
+                                                        <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" >Add Budget items</a>
+                                                    </div>
                                                 @endif
                                             @endif
-                                        @else
-                                            <span style="color: darkgreen; ">Approved</span>
                                         @endif
                                     @endif
                                 </td>
+                                @if(Auth::user()->access_level_id != 'OT')
+                                    <td> @if(isset($rcd))
+                                            @if($rcd->budget->approved == 0)
+                                                @if($rcd->totalAmount->proposedBudget == $rcd->budget->actualProjectBudget)
+                                                    <div class="btn-group">
+                                                        <a type="button" href="{{ route('/approvalProjectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link"><span style="color: orangered; ">Approve</span></a>
+                                                    </div>
+                                                @else
+
+
+                                                    <span style="color: red; ">Budget not submitted</span>
+
+                                                @endif
+                                                @if(isset($rcd->totalAmount->incomeAcquired) AND isset($rcd->totalAmount->proposedBudget))
+
+                                                @else
+                                                    @if(!isset($rcd->totalAmount->incomeAcquired) AND !isset($rcd->totalAmount->proposedBudget))
+                                                        <span style="color: brown; ">Income and Budget not submitted</span>
+                                                    @elseif(!isset($rcd->totalAmount->incomeAcquired) And isset($rcd->totalAmount->proposedBudget))
+                                                        <span style="color: red; ">Add Income</span>
+                                                    @elseif(isset($rcd->totalAmount->incomeAcquired) And !isset($rcd->totalAmount->proposedBudget))
+                                                        {{--<span style="color: red; ">Budget not submitted</span>--}}
+                                                    @endif
+                                                @endif
+                                            @else
+                                                <span style="color: darkgreen; ">Approved</span>
+                                            @endif
+                                        @endif
+                                    </td>
                                 @endif
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
@@ -103,9 +103,9 @@
                                     @endif
                                 </td>
                                 {{--@if( $rcd->completed == 1 )--}}
-                                    {{--<td class="text-success ">Yes</td>--}}
+                                {{--<td class="text-success ">Yes</td>--}}
                                 {{--@else--}}
-                                    {{--<td class="text-danger"> No</td>--}}
+                                {{--<td class="text-danger"> No</td>--}}
                                 {{--@endif--}}
                             </tr>
                         @endforeach

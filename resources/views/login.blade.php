@@ -11,6 +11,7 @@
                        {{ csrf_field() }}
                        <h6 style="text-align: center;">LOGIN</h6>
 
+
                        <div class="form-group{{ $errors->has('manNumber') ? ' has-error' : '' }}">
                            <label for="email" class="control-label" style="color:#fff; ">MAN NUMBER</label>
                            <input  placeholder="Enter your man number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">

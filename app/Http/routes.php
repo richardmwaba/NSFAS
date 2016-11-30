@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ImprestController;
+
 Route::group(['middleware' => ['web']], function () {
     /**
      * All the routes bellow can be accessed by an unauthenticated user who visits our site
@@ -42,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirementForm');
     Route::post('/imprests/retirement/create', 'ImprestRetirementController@create');
+    Route::post('/imprests/retirement/confirm', 'ImprestRetirementController@confirm');
     Route::post('/imprests/retirement/edit/{id}', 'ImprestRetirementController@edit');
     Route::post('/imprests/retirement/update/{id}', 'ImprestRetirementController@update');
 
@@ -94,6 +97,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/projectIncomes/{id}', 'AccountantController@addProjectIncomes');
 //    Route::post('/approvalProjectBudget', 'AccountantController@approvalProjectBudgetInfo');
 //    Route::post('/projectBudgetApproval/{id}', 'AccountantController@projectBudgetApproval');
+
+    /**
+     * Routes for printing PDF'S
+     */
+        Route::get('/pdf.imprest','ImprestController@getImprestPdf');
+
+        Route::get('/pdf.projects','ImprestController@getProjectPdf');
 
 
 

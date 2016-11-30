@@ -69,33 +69,45 @@
                                             </fieldset>
 
 
-                                            <div class="form-group">
+                                            <div class="form-group{{$errors->has('amountRequested') ? 'has-error' : ''}}">
                                                 <label for="Date_Sent">Amount of Imprest required </label>
                                                 <input type="number" class="form-control" name="amountRequested"
                                                        value="{{$imprest->amountRequested}}"
                                                        placeholder="{{$imprest->amountRequested}}">
+
+                                                @if ($errors->has('amountRequested'))
+                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('amountRequested') }}</strong>
+                                    </span>
+                                                @endif
                                             </div>
 
                                             <div class="form-group">
 
                                                 <label for="Copied_To">Budget line</label>
 
-                                                <div id="bL">
+                                                <div id="bL" class="form-group{{$errors->has('budgetLine') ? 'has-error': ''}}">
                                                     <select class="form-control"
                                                             placeholder="budgetLine"
                                                             name="budgetLine" id="budgetLine">
-                                                        <option value="{{$imprest->budget->id}}">{{$imprest->budget->name}}</option>
+                                                        <option value="{{$imprest->budget->id}}">{{$imprest->budget->budgetName}}</option>
                                                         @foreach($budgets as $budget)
-                                                            <option value="{{$budget->id}}">{{$budget->name}}</option>
+                                                            <option value="{{$budget->id}}">{{$budget->budgetName}}</option>
                                                         @endforeach
 
                                                     </select>
+
+                                                    @if ($errors->has('budgetLine'))
+                                                        <span class="help-block">
+                                        <strong>{{ $errors->first('budgetLine') }}</strong>
+                                    </span>
+                                                    @endif
 
                                                 </div>
 
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group{{$errors->has('purpose') ? 'has-arror' : ''}}">
                                                 <label for="Copied_To">Purpose</label>
                                                 <select class="form-control" value="{{$imprest->purpose}}"
                                                         name="purpose">
@@ -107,6 +119,12 @@
                                                         @endforeach
                                                     @endforeach
                                                 </select>
+
+                                                @if ($errors->has('purpose'))
+                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('purpose') }}</strong>
+                                    </span>
+                                                @endif
 
                                             </div>
 
@@ -132,9 +150,9 @@
                                                        name="approvedByHead"
                                                        @if ($imprest->authorisedByHead == 1) {{$e ='checked'}} @endif
                                                        onchange="alert('Are you sure you want to approve this imprest?')">Approve<br>
-                                                <input type="radio" class="radio radio-inline" value="0"
+                                                <input type="radio" class="radio radio-inline" value="2"
                                                        name="approvedByHead"
-                                                       @if ($imprest->authorisedByHead == 0) {{$e ='checked'}} @endif
+                                                       @if ($imprest->authorisedByHead == 2) {{$e ='checked'}} @endif
                                                        onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
 
                                                 @if ($errors->has('approvedByHead'))
@@ -164,8 +182,8 @@
                                                 <label for="Copied_To">Budget Line</label>
                                                 <input id="budgetLineD" name="" class="form-control"
                                                        type="text"
-                                                       value="{{$imprest->budget->name}}"
-                                                       placeholder="{{$imprest->budget->name}}" disabled>
+                                                       value="{{$imprest->budget->budgetName}}"
+                                                       placeholder="{{$imprest->budget->budgetName}}" disabled>
                                             </div>
 
                                             <div class="form-group">
@@ -272,9 +290,9 @@
                                                        @if ($imprest->bursarRecommendation == 1) {{$e ='checked'}} @endif
                                                        onchange="alert('Are you sure you want to recommend this imprest?')">Recommend
                                                 imprest<br>
-                                                <input type="radio" value="0" name="bursarRecommendation"
-                                                       @if ($imprest->bursarRecommendation == 0) {{$e ='checked'}} @endif
-                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
+                                                <input type="radio" value="2" name="bursarRecommendation"
+                                                       @if ($imprest->bursarRecommendation == 2) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject imprest<br>
 
                                                 @if ($errors->has('bursarRecommendation'))
                                                     <span class="help-block">
@@ -314,11 +332,11 @@
                                                 <input type="radio" class="radio radio-inline" value="1"
                                                        name="authorisedByDean"
                                                        @if ($imprest->authorisedByDean == 1) {{$e ='checked'}} @endif
-                                                       @if ($imprest->bursarRecommendation == 0) {{$e ='disabled'}} @endif onchange="alert('Are you sure you want to authorize this imprest?')">Approve<br>
-                                                <input type="radio" class="radio radio-inline" value="0"
+                                                       @if ($imprest->bursarRecommendation == 0) {{$e ='disabled'}} @endif onchange="alert('Are you sure you want to authorize this imprest?')">Approve imprest<br>
+                                                <input type="radio" class="radio radio-inline" value="2"
                                                        name="authorisedByDean"
-                                                       @if ($imprest->authorisedByDean == 0) {{$e ='checked'}} @endif
-                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject<br>
+                                                       @if ($imprest->authorisedByDean == 2) {{$e ='checked'}} @endif
+                                                       onchange="alert('Are you sure you want to reject this imprest?')">Reject imprest<br>
 
                                                 @if ($errors->has('authorisedByDean'))
                                                     <span class="help-block">
@@ -447,7 +465,7 @@
                                         <option value="{{$imprest->budgetLine}}">Select new budget line
                                         </option>
                                         @foreach($budgets as $budget)
-                                            <option value="{{$budget->id}}">{{$budget->name}}</option>
+                                            <option value="{{$budget->id}}">{{$budget->budgetName}}</option>
                                         @endforeach
 
                                     </select>
@@ -563,8 +581,8 @@
         window.onload = function () {
             if (window.jQuery) {
                 // jQuery is loaded
-                document.getElementById("current").innerHTML = document.getElementById("{{Auth::user()->accessLevelId}}").innerHTML;
-                document.getElementById("{{Auth::user()->accessLevelId}}").innerHTML = '';
+                document.getElementById("current").innerHTML = document.getElementById("{{Auth::user()->access_level_id}}").innerHTML;
+                document.getElementById("{{Auth::user()->access_level_id}}").innerHTML = '';
 
             } else {
                 location.reload();
