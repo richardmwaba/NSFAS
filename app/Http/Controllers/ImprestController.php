@@ -460,7 +460,7 @@ class ImprestController extends Controller
         return Redirect::action('ImprestController@showAll');
     }
 
-    function is_connected()
+    public static function is_connected()
     {
         $connected = @fsockopen("www.gmail.com", 80);
         //website, port  (try 80 or 443)
