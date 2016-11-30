@@ -33,26 +33,30 @@ class HODController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         return view('hod.addStaff');
     }
 
-    public function staff(){
-        $id = $this->getDepartmentIdFromLoggedInUSer() ;
+    public function staff()
+    {
+        $id = $this->getDepartmentIdFromLoggedInUSer();
         $staff = User::where('departments_id', $id)->get();
-        if($staff){
+        if ($staff) {
             return view('hod.staff')->with('staff', $staff);
-        }else{
+        } else {
             return view('hod.staff');
         }
     }
 
-    public function imprestForm(){
+    public function imprestForm()
+    {
 
         return view('imprests.imprests');
     }
 
-    public function addStaff(Request $request){
+    public function addStaff(Request $request)
+    {
         $validator = $this->addStaffValidation($request->all());
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -65,47 +69,51 @@ class HODController extends Controller
         $staff = new User();
         $staff->manNumber = $request['manNumber'];
         $staff->email = $request['email'];
-        $staff->access_level_id= 'OT';
+        $staff->access_level_id = 'OT';
         $staff->password = bcrypt($password);
         $staff->lastName = ucfirst($request['lastName']);
         $staff->firstName = ucfirst($request['firstName']);
         $staff->otherName = ucfirst($request['otherName']);
-        $staff->phoneNumber= $request['phoneNumber'];
-        $staff->departments_id= $this->getDepartmentIdFromLoggedInUSer();
+        $staff->phoneNumber = $request['phoneNumber'];
+        $staff->departments_id = $this->getDepartmentIdFromLoggedInUSer();
         $staff->save();
 
-        // code for sending email to the added user goes here
-        Mail::send('Mails.addUser', ['password' => $password], function ($m) use ($staff) {
+        // code for sending email to the added user
+        if (ImprestController::is_connected()) {
+            Mail::send('Mails.addUser', ['password' => $password], function ($m) use ($staff) {
 
-            $m->to($staff->email, 'Me')->subject('Your account has been created');
-        });
+                $m->to($staff->email, 'Me')->subject('Your account has been created');
+            });
+        }
 
         Session::flash('flash_message', 'staff added successfully! ');
         Return Redirect::action('HodController@staff');
     }
 
-    public function projectInfo(){
-        if ($this->getAccessLevelId() == 'OT'){
+    public function projectInfo()
+    {
+        if ($this->getAccessLevelId() == 'OT') {
             $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
                 ->get();
-        }else{
+        } else {
             $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
         }
 
-        foreach ($record as $rec){
+        foreach ($record as $rec) {
             $this->projectTotalBudgetCalculator($rec->id);
             $this->projectTotalIncomeCalculator($rec->id);
         }
 
-        if($record){
+        if ($record) {
             return view('hod.projectInfo')->with('record', $record);
-        }else{
+        } else {
             return view('hod.projectInfo');
         }
     }
 
-    public function requestForMoney($id){
+    public function requestForMoney($id)
+    {
         $projects = Projects::find($id);
         $budget = Budget::where('projects_id', $id)->first();
         $budget = BudgetItems::where('budget_id', $budget->id)->get();
@@ -114,7 +122,8 @@ class HODController extends Controller
             ->with('budget', $budget);
     }
 
-    public function projectMoneyRequest(Request $request,$id){
+    public function projectMoneyRequest(Request $request, $id)
+    {
         $validator = $this->projectMoneyRequestValidation($request->all());
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -127,7 +136,7 @@ class HODController extends Controller
         $expend = new Expenditure();
         $expend->amountPaid = $request['requestedAmount'];
         $expend->budgetLine = $request['budgetLine'];
-        $expend->beneficiary= $request['beneficiary'];
+        $expend->beneficiary = $request['beneficiary'];
         $expend->purpose = $request['purpose'];
         $expend->datePaid = $request['date'];
         $expend->accounts_id = $account->id;
@@ -137,57 +146,62 @@ class HODController extends Controller
         Return Redirect::action('HodController@projectExpenditures');
     }
 
-    public function requestApproval($id){
+    public function requestApproval($id)
+    {
 
-        $projects = Projects::where('id',$id)->first();
-        if ($projects->expenditures->approvedByHOD == 0){
+        $projects = Projects::where('id', $id)->first();
+        if ($projects->expenditures->approvedByHOD == 0) {
             $projects->expenditures->approvedByHOD = 1;
             $projects->save();
 
             $message = " success";
-        }else{
+        } else {
             $message = 'error';
         }
         Session::flash('flash_message', $message);
         Return Redirect::back();
     }
-    public function projectExpenditures(){
-        if ($this->getAccessLevelId() == 'OT'){
+
+    public function projectExpenditures()
+    {
+        if ($this->getAccessLevelId() == 'OT') {
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
                 ->get();
-        }else{
-            $projects= Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
+        } else {
+            $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
         }
-        if ($projects){
+        if ($projects) {
             return view('hod.projectExpenditures')->with('projects', $projects);
         }
     }
 
-    public function addProject(){
+    public function addProject()
+    {
 
         $id = $this->getDepartmentIdFromLoggedInUSer();
         $staff = User::where('departments_id', $id)->get();
-        if ($this->getAccessLevelId() == 'OT'){
+        if ($this->getAccessLevelId() == 'OT') {
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
                 ->orderBy('created_at', 'desc')
                 ->take(2)
                 ->get();
-        }else{
+        } else {
             $projects = Projects::where('departments_id', $id)
                 ->orderBy('created_at', 'desc')
                 ->take(2)
                 ->get();
         }
-        if($staff){
+        if ($staff) {
             return view('hod.addProjects')->with('staff', $staff)->with('projects', $projects);
-        }else{
+        } else {
             return view('hod.addProjects');
         }
     }
 
-    public function saveProject(Request $request){
+    public function saveProject(Request $request)
+    {
         $validator = $this->saveProjectValidation($request->all());
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -198,10 +212,10 @@ class HODController extends Controller
         $net_project_budget = $request['netProjectBudget'];
         $departmentPercentage = $request['departmentPercentage'];
         $unzaPercentage = $request['unzaPercentage'];
-        $actualProjectBudget= $request['actualProjectBudget'];
+        $actualProjectBudget = $request['actualProjectBudget'];
 
-        $dPercentage = ($departmentPercentage/100) * $net_project_budget;
-        $uPercentage = ($unzaPercentage/100) * $net_project_budget;
+        $dPercentage = ($departmentPercentage / 100) * $net_project_budget;
+        $uPercentage = ($unzaPercentage / 100) * $net_project_budget;
 
         $id = $this->getDepartmentIdFromLoggedInUSer();
         $department = Departments::where('id', $id)->first();
@@ -209,13 +223,13 @@ class HODController extends Controller
         $newProject->projectName = ucfirst($request['projectName']);
         $newProject->projectCoordinator = $request['projectCoordinator'];
         $newProject->description = $request['description'];
-        $newProject->startDate= $request['startDate'];
+        $newProject->startDate = $request['startDate'];
         $newProject->endingDate = $request['endDate'];
 
-        if ($department->projects()->save($newProject)){
-            $projectName =  $request['projectName'];
+        if ($department->projects()->save($newProject)) {
+            $projectName = $request['projectName'];
             $record = Projects::where('projectName', $projectName)->first();
-            if (isset($record)){
+            if (isset($record)) {
                 $budget = new Budget();
 
                 $budget->budgetName = $projectName;
@@ -225,25 +239,26 @@ class HODController extends Controller
                 $budget->actualProjectBudget = $actualProjectBudget;
                 $budget->departments_id = $record->departments_id;
 
-                if ($record->budget()->save($budget)){
+                if ($record->budget()->save($budget)) {
                     $account = new Accounts();
                     $account->accountName = $projectName;
                     $record->accounts()->save($account);
                 }
-            }else{
+            } else {
 
             }
-        }else{
+        } else {
 
         }
-        Session::flash('flash_message', 'The '.$projectName.' project has been added successfully!outline your budget and await for the HD approval!');
+        Session::flash('flash_message', 'The ' . $projectName . ' project has been added successfully!outline your budget and await for the HD approval!');
         Return Redirect::action('HodController@addProject');
     }
 
-    public function projectBudget($id){
+    public function projectBudget($id)
+    {
         $this->projectTotalIncomeCalculator($id);
         $this->projectTotalBudgetCalculator($id);
-        $records = Projects::where('id',$id)->first();
+        $records = Projects::where('id', $id)->first();
         $total = CalculatedTotal::where('projects_id', $id)->first();
         $data = Budget::where('projects_id', $records->id)->first();
         $items = BudgetItems::where('budget_id', $data->id)
@@ -255,30 +270,32 @@ class HODController extends Controller
             ->with('total', $total);
     }
 
-    public function projectTotalIncomeCalculator($projects_id){
+    public function projectTotalIncomeCalculator($projects_id)
+    {
         $project = Projects::where('id', $projects_id)->first();
         $account = Accounts::where('projects_id', $projects_id)->first();
-        $totalAmountReceived = Income::where('accounts_id',$account->id)->sum('amountReceived');
+        $totalAmountReceived = Income::where('accounts_id', $account->id)->sum('amountReceived');
         $record = CalculatedTotal::where('projects_id', $projects_id)->first();
-        if (isset($record)){
-            $record->incomeAcquired  = $totalAmountReceived;
+        if (isset($record)) {
+            $record->incomeAcquired = $totalAmountReceived;
             $project->totalAmount()->save($record);
-        }else{
+        } else {
             $total = new CalculatedTotal();
             $total->incomeAcquired = $totalAmountReceived;
             $project->totalAmount()->save($total);
         }
     }
 
-    public function projectTotalBudgetCalculator($id){
+    public function projectTotalBudgetCalculator($id)
+    {
         $project = Projects::where('id', $id)->first();
         $budget = Budget::where('projects_id', $id)->first();
-        $totalBudget= BudgetItems::where('budget_id', $budget->id)->sum('cost');
+        $totalBudget = BudgetItems::where('budget_id', $budget->id)->sum('cost');
         $record = CalculatedTotal::where('projects_id', $id)->first();
-        if (isset($record)){
+        if (isset($record)) {
             $record->proposedBudget = $totalBudget;
             $project->totalAmount()->save($record);
-        }else{
+        } else {
             $total = new CalculatedTotal();
             $total->proposedBudget = $totalBudget;
             $project->totalAmount()->save($total);
@@ -288,7 +305,8 @@ class HODController extends Controller
     }
 
 
-    public function saveProjectBudget(Request $request, $id){
+    public function saveProjectBudget(Request $request, $id)
+    {
         $validator = $this->projectBudgetValidation($request->all());
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -296,34 +314,34 @@ class HODController extends Controller
             );
         }
 
-        $record = Budget::where('projects_id',$id)->first();
+        $record = Budget::where('projects_id', $id)->first();
         $actualProjectBudget = $record->actualProjectBudget;
-        if (($this->projectTotalBudgetCalculator($id) + $request['cost']) <= $actualProjectBudget){
-            if (isset($record)){
+        if (($this->projectTotalBudgetCalculator($id) + $request['cost']) <= $actualProjectBudget) {
+            if (isset($record)) {
 
                 $info = new BudgetItems();
                 $info->budgetLine = $request['budgetLine'];
                 $info->cost = $request['cost'];
                 $info->description = $request['description'];
                 $info->quantity = $request['quantity'];
-                $info->pricePerUnit= $request['costPerUnit'];
+                $info->pricePerUnit = $request['costPerUnit'];
                 $record->budgetItems()->save($info);
 
                 $this->projectTotalBudgetCalculator($id);
 
-                if ($this->projectTotalBudgetCalculator($id)==$actualProjectBudget){
+                if ($this->projectTotalBudgetCalculator($id) == $actualProjectBudget) {
                     //send an email to  the Hod so that he can approve the project's budget
                 }
 
-            }else{
+            } else {
                 //display an error message
                 Session::flash('flash_message', 'Error!');
                 Return Redirect::back();
             }
 
-        }else{
+        } else {
             //display an error message
-            Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K'.$actualProjectBudget.'.00');
+            Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K' . $actualProjectBudget . '.00');
             Return Redirect::back();
         }
 
@@ -332,36 +350,40 @@ class HODController extends Controller
     }
 
 
-
-    public function viewBudget(){
+    public function viewBudget()
+    {
         return view('hod.budgetInfo');
     }
 
-    public function getDepartmentIdFromLoggedInUSer(){
+    public function getDepartmentIdFromLoggedInUSer()
+    {
         $user = Auth::user();
         $id = $user->departments_id;
         return $id;
     }
 
-    public function getAccessLevelId(){
+    public function getAccessLevelId()
+    {
         $user = Auth::user();
         $access_level_id = $user->access_level_id;
-        return  $access_level_id;
+        return $access_level_id;
     }
 
-    public function getUsersFullName(){
+    public function getUsersFullName()
+    {
         $user = Auth::user();
-        $name = $user->firstName.' '.$user->otherName.' '.$user->lastName;
+        $name = $user->firstName . ' ' . $user->otherName . ' ' . $user->lastName;
         return $name;
     }
 
     /**
      * Get a validator for an incoming profile editing request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function projectBudgetValidation(array $data){
+    protected function projectBudgetValidation(array $data)
+    {
         return Validator::make($data, [
             'cost' => 'required|max:150',
             'quantity' => 'required|max:150',
@@ -375,7 +397,8 @@ class HODController extends Controller
      * @param array $data
      * @return mixed
      */
-    protected function projectMoneyRequestValidation(array $data){
+    protected function projectMoneyRequestValidation(array $data)
+    {
         return validator::make($data, [
             'date' => 'required|max:255',
             'beneficiary' => 'required|max:255',
@@ -384,13 +407,15 @@ class HODController extends Controller
             'budgetLine' => 'required|max:255',
         ]);
     }
+
     /**
      * Get a validator for an incoming profile editing request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function saveProjectValidation(array $data){
+    protected function saveProjectValidation(array $data)
+    {
         return Validator::make($data, [
             'projectName' => 'required|max:255|unique:projects',
             'projectCoordinator' => 'required|max:255',
@@ -402,7 +427,7 @@ class HODController extends Controller
     /**
      * Get a validator for an incoming profile editing request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function addStaffValidation(array $data)

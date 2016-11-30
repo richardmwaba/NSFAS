@@ -26,7 +26,7 @@ class ImprestRetirementController extends Controller
         if ($access_level_id == 'HD' or $access_level_id == 'OT') {
 
             return view('imprests.Retirement.retirementForm')
-                ->with(['imprest'=> $imprest, 'id'=>$id]);
+                ->with(['imprest' => $imprest, 'id' => $id]);
         } else {
 
             //retrieve an incomplete retirement process that belongs to this user
@@ -52,7 +52,8 @@ class ImprestRetirementController extends Controller
 
 
     //returns a confirmation page before saving the retirement
-    public function confirm(Request $request){
+    public function confirm(Request $request)
+    {
 
         $v = Validator::make($request->all(), [
             'chequeNumber' => 'required',
@@ -107,10 +108,10 @@ class ImprestRetirementController extends Controller
         });
 
         if ($v->fails()) {
-            return redirect('/imprests/retirement/form/'.$request->imprestId)
+            return redirect('/imprests/retirement/form/' . $request->imprestId)
                 ->withErrors($v)
                 ->withInput();
-        }else{
+        } else {
 
             $imprest = Imprest::findOrFail($request->imprestId);
             $total = $request->item1Amount +
@@ -118,7 +119,7 @@ class ImprestRetirementController extends Controller
                 $request->item3Amount +
                 $request->otherAmount +
                 $request->subAmount;
-            return view('imprests.Retirement.confirm')->with(['retirement'=>$request, 'imprest'=>$imprest, 'total'=>$total]);
+            return view('imprests.Retirement.confirm')->with(['retirement' => $request, 'imprest' => $imprest, 'total' => $total]);
         }
 
     }
@@ -150,6 +151,14 @@ class ImprestRetirementController extends Controller
             'otherAmount' => $request->otherAmount,
             'receiptNumber' => $request->receiptNo,
             'amountRecoverable' => $request->recoverableAmount]);
+        //notify the head or the dean
+        /*if(Auth::user()->access_level_id=='HD')
+        if (ImprestController::is_connected()) {
+            Mail::send('Mails.addUser', ['imprest' => $imprest], function ($m) use ($user) {
+
+                $m->to($user->email, 'Me')->subject('Your account has been created');
+            });
+        }*/
 
         session()->flash('flash_message', 'Saved!');
         return Redirect::action('ImprestController@showAll');

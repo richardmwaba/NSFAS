@@ -6,6 +6,7 @@ use App\Imprest;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use App\Http\Controllers\ImprestController;
+use Mail;
 
 class check_for_overdue_imprests extends Command
 {
@@ -44,7 +45,7 @@ class check_for_overdue_imprests extends Command
         $imprests = Imprest::where('created_at', '<', Carbon::now()->subHours(48))->where('isRetired', '=', 0)->get();
 
         //notify the owners of these imprests and set an over due attribute to use for penalising
-        if($imprests==[]) {
+        if($imprests!=[]) {
             foreach ($imprests as $imprest) {
                 $imprest->overDue = 1;
                 $imprest->save();

@@ -9,7 +9,7 @@
 <p>
    You have been added to the UNZA | Financial Accounting System.
    Your password is <h3>{{$password}}</h3> ,
-   <a href="{{url('/')}}">click here!</a>
+   <a href="{{url('/')}}">click here to login!</a>
 
 </p>
 
