@@ -7,8 +7,12 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
+<<<<<<< HEAD
+        "barryvdh/laravel-dompdf": "^0.7.0"
+=======
         "barryvdh/laravel-dompdf": "^0.7.0",
         "doctrine/dbal": "^2.5"
+>>>>>>> 349096c2ab72c13ddcc1313bf7f83438afa3d829
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirementForm');
     Route::post('/imprests/retirement/create', 'ImprestRetirementController@create');
+    Route::post('/imprests/retirement/confirm', 'ImprestRetirementController@confirm');
     Route::post('/imprests/retirement/edit/{id}', 'ImprestRetirementController@edit');
     Route::post('/imprests/retirement/update/{id}', 'ImprestRetirementController@update');
 

@@ -20,15 +20,15 @@ class CreateImprestsTable extends Migration
             $table->double('amountRequested');
             $table->integer('purpose')->nullable();
             $table->integer('budgetLine')->nullable();
-            $table->enum('authorisedByHead', ['rejected','approved'])->nullable();
+            $table->integer('authorisedByHead')->default(0);
             $table->date('authorisedByHeadOn');
             $table->integer('headManNumber')->nullable();
             $table->string('commentFromHead')->nullable();
-            $table->enum('authorisedByDean', ['rejected','approved'])->nullable();
+            $table->integer('authorisedByDean')->default(0);
             $table->date('authorisedByDeanOn');
             $table->integer('deanManNumber')->nullable();
             $table->string('commentFromDean')->nullable();
-            $table->enum('bursarRecommendation',['rejected','approved'])->nullable();
+            $table->integer('bursarRecommendation')->default(0);
             $table->date('bursarRecommendationDate')->nullable();
             $table->integer('bursarManNumber')->nullable();
             $table->string('commentFromBursar')->nullable(false);

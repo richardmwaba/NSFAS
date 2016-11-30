@@ -40,7 +40,7 @@
                                         <div class="form-group">
                                             <!-- Add school, unit or dept accroding to form from acccounts-->
                                             <input type="hidden" class="form-control"
-                                                   value="{{Auth::user()->department->id}}"
+                                                   value="{{Auth::user()->departments_id}}"
                                                    name="department"
                                                    placeholder="{{Auth::user()->department->departmentName}}">
 
@@ -117,6 +117,8 @@
                                                                 placeholder="{{$item->item_id}}">{{$item->description}}</option>
                                                     @endforeach
                                                 @endforeach
+                                                <option value=""
+                                                        placeholder="">Other</option>
                                             </select>
 
                                             @if ($errors->has('purpose'))
@@ -208,7 +210,7 @@
                                                     <option value="{{ old('budgetLine') }}">Select a budget line
                                                     </option>
                                                     @foreach($budgets as $budget)
-                                                        <option value="{{$budget->id}}">{{$budget->name}}</option>
+                                                        <option value="{{$budget->id}}">{{$budget->budgetName}}</option>
                                                     @endforeach
 
                                                 </select>
@@ -237,6 +239,8 @@
                                                                 placeholder="{{$item->item_id}}">{{$item->description}}</option>
                                                     @endforeach
                                                 @endforeach
+                                                <option value="{{$item->id}}"
+                                                        >Other</option>
                                             </select>
 
                                             @if ($errors->has('purpose'))
