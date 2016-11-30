@@ -8,25 +8,51 @@ use App\Income;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use PDF;
 use App\Http\Requests;
 use App\Imprest;
 use App\Budget;
-use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Mail;
+use Auth;
 
 class ImprestController extends Controller
 {
 
+// Printing REports
+
+    public function getImprestPdf(/*$id*/){
+        // query to get Imprest
+        // $imprests = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
+        // $payment = $payment->findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.imprest' // ['imprests'=>$imprests]
+        );
+        return $pdf->stream('imprest.pdf');
+    }
+
+    public function getProjectPdf(/*$id*/){
+        // query to get projects Data
+        // $projects = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
+        // $projects = $payment->findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.projects'// ['projects'=>$projects]
+        );
+        return $pdf->stream('projects.pdf');
+    }
+
+    public function getDepartmentIdFromLoggedInUSer(){
+        $user = Auth::user();
+        $id = $user->departments_id;
+        return $id;
+    }
     //form for creating a new imprest
-    public function newForm()
-    {
+    public function newForm() {
+        $budgets = Budget::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
+//        $budgets = Budget::all();
 
-
-        $budgets = Budget::where('departmentId', Auth::user()->departmentId)->get();
-
-        return view('imprests.new')->with(['budgets' => $budgets]);
+        return view('imprests.new')->with('budgets', $budgets);
     }
 
 
@@ -37,17 +63,17 @@ class ImprestController extends Controller
         $imprest = Imprest::findOrFail($id);
 
         //choose what to update based on current user
-        $ac = Auth::user()->accessLevelId;
+        $ac = Auth::user()->access_level_id;
         $actual = Expenditure::where('purpose', $imprest->purpose)->sum('amountPaid');
         $accounts = Account::all();
 
         switch ($ac) {
             case 'HD':
-                $budgets = Budget::where('departmentId', Auth::user()->department_id)->get();
+                $budgets = Budget::where('departments_id', Auth::user()->department_id)->get();
                 break;
 
             case 'OT':
-                $budgets = Budget::where('departmentId', Auth::user()->department_id)->get();
+                $budgets = Budget::where('departments_id', Auth::user()->department_id)->get();
                 break;
 
             default:
@@ -72,10 +98,10 @@ class ImprestController extends Controller
         } else {
 
             //choose what to save based on level id
-            if (Auth::user()->accessLevelId == 'OT') {
+            if (Auth::user()->access_level_id == 'OT') {
 
                 //create a new record
-                Imprest::create(['applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'amountRequested' => $request->amountRequested,
+                Imprest::create(['applicantId' => Auth::user()->manNumber, 'departments_id' => $request->department, 'amountRequested' => $request->amountRequested,
                     'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
 
                 //function to notify this user's head
@@ -90,7 +116,7 @@ class ImprestController extends Controller
                 if ($request->authorisedByHead == 1) {
 
                     //create a record
-                    Imprest::create(['headManNumber' => Auth::user()->manNumber, 'applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'authorisedByHead' => $request->authorisedByHead,
+                    Imprest::create(['headManNumber' => Auth::user()->manNumber, 'applicantId' => Auth::user()->manNumber, 'departments_id' => $request->department, 'authorisedByHead' => $request->authorisedByHead,
                         'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
                         'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
 
@@ -102,7 +128,7 @@ class ImprestController extends Controller
                 } else {
 
                     //create a record
-                    Imprest::create(['applicantId' => Auth::user()->manNumber, 'departmentId' => $request->department, 'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
+                    Imprest::create(['applicantId' => Auth::user()->manNumber, 'departments_id' => $request->department, 'commentFromHead' => $request->commentFromHead, 'amountRequested' => $request->amountRequested,
                         'purpose' => $request->purpose, 'budgetLine' => $request->budgetLine]);
 
                 }
@@ -146,7 +172,7 @@ class ImprestController extends Controller
 
                 //when found, look for this user's head and send him/her a mail
                 if ($this->is_connected()) {
-                    $head = User::where('accesslevelId', 'HD')->where('departmentId', Auth::user()->departmentId)->first();
+                    $head = User::where('access_level_id', 'HD')->where('departments_id', Auth::user()->departments_id)->first();
 
                     Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($head) {
 
@@ -174,7 +200,7 @@ class ImprestController extends Controller
 
                 //when found, look for this user's head and send him/her a mail
                 if ($this->is_connected()) {
-                    $dean = User::where('accessLevelId', 'DN')->first();
+                    $dean = User::where('access_level_id', 'DN')->first();
 
                     Mail::send('Mails.newImprest', ['imprest' => $imprest], function ($m) use ($dean) {
 
@@ -199,7 +225,7 @@ class ImprestController extends Controller
 
         $imprest = Imprest::findOrFail($request->id);
 
-        $ac = Auth::user()->accessLevelId;
+        $ac = Auth::user()->access_level_id;
 
         //choose what to update based on current user
         switch ($ac) {
@@ -256,7 +282,7 @@ class ImprestController extends Controller
 
                     //send mail to accountants
                     If ($this->is_connected()) {
-                        $user = User::where('accessLevelId', 'AC')->get();
+                        $user = User::where('access_level_id', 'AC')->get();
                         foreach ($user as $user) {
                             Mail::send('Mails.authorised', ['imprest' => $imprest], function ($m) use ($user) {
 
@@ -315,7 +341,7 @@ class ImprestController extends Controller
 
             //send mail to the dean about update
             if ($this->is_connected()) {
-                $user = User::where('accessLevelId', 'DN')->first();
+                $user = User::where('access_level_id', 'DN')->first();
                 Mail::send('Mails.recommended', ['imprest' => $imprest], function ($m) use ($user) {
 
                     $m->to($user->email, 'Me')->subject('The bursar has recommended this imprest');
@@ -331,15 +357,15 @@ class ImprestController extends Controller
     public function showAll()
     {
         //get all imprests that belong to this user
-        if (Auth::user()->accessLevelId == 'OT') {
+        if (Auth::user()->access_level_id == 'OT') {
             $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'desc')->get();
 
             //get all imprests that belong to current user department
-        } elseif (Auth::user()->accessLevelId == 'HD') {
+        } elseif (Auth::user()->access_level_id == 'HD') {
             $imprests = Auth::user()->department->imprests;
 
             //get all imprests that have been seen and sent to accountant for recommendation
-        } elseif (Auth::user()->accessLevelId == 'AC') {
+        } elseif (Auth::user()->access_level_id == 'AC') {
             $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'desc')->get();
 
             //get all imprests that have been authorised by head for the dean to see
@@ -380,7 +406,7 @@ class ImprestController extends Controller
         $imprest->commentFromDean = $request->commentFromDean;
         $imprest->save();
 
-        $user = User::where('accessLevelId', 'AC')->get();
+        $user = User::where('access_level_id', 'AC')->get();
 
         if ($this->is_connected()) {
             foreach ($user as $user) {
@@ -411,5 +437,7 @@ class ImprestController extends Controller
         return $is_conn;
 
     }
+
+
 
 }

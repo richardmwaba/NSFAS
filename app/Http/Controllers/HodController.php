@@ -22,6 +22,7 @@ use Validator;
 use Mail;
 use Hash;
 
+
 class HODController extends Controller
 {
 
@@ -33,7 +34,7 @@ class HODController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-       return view('hod.addStaff');
+        return view('hod.addStaff');
     }
 
     public function staff(){
@@ -46,7 +47,6 @@ class HODController extends Controller
         }
     }
 
- //
     public function imprestForm(){
 
         return view('imprests.imprests');
@@ -162,7 +162,7 @@ class HODController extends Controller
 
     public function addProject(){
 
-       $id = $this->getDepartmentIdFromLoggedInUSer();
+        $id = $this->getDepartmentIdFromLoggedInUSer();
         $staff = User::where('departments_id', $id)->get();
         if ($this->getAccessLevelId() == 'OT'){
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
@@ -196,8 +196,8 @@ class HODController extends Controller
         $unzaPercentage = $request['unzaPercentage'];
         $actualProjectBudget= $request['actualProjectBudget'];
 
-         $dPercentage = ($departmentPercentage/100) * $net_project_budget;
-         $uPercentage = ($unzaPercentage/100) * $net_project_budget;
+        $dPercentage = ($departmentPercentage/100) * $net_project_budget;
+        $uPercentage = ($unzaPercentage/100) * $net_project_budget;
 
         $id = $this->getDepartmentIdFromLoggedInUSer();
         $department = Departments::where('id', $id)->first();
@@ -219,6 +219,7 @@ class HODController extends Controller
                 $budget->departmentAmount = $dPercentage;
                 $budget->unzaAmount = $uPercentage;
                 $budget->actualProjectBudget = $actualProjectBudget;
+                $budget->departments_id =  $record->departments_id;
 
                 if ($record->budget()->save($budget)){
                     $account = new Accounts();
@@ -248,6 +249,37 @@ class HODController extends Controller
             ->with('records', $records)
             ->with('items', $items)
             ->with('total', $total);
+    }
+
+    public function projectBudgetApprove($id){
+        $project = Projects::where('id', $id)->first();
+
+        $unza = $project->budget->unzaAmount;
+        $npb  = $project->budget->netProjectBudget ;
+//        $apb  = $project->budget->actualProjectBudget;
+        $dpa  = $project->budget->departmentAmount;
+
+        $dPercent = ($dpa/$npb) * 100;
+        $uPercent = ($unza/$npb) * 100;
+
+        return view('hod.projectBudgetApproval')
+            ->with('project', $project)
+            ->with('uPercent', $uPercent)
+            ->with('dPercent', $dPercent);
+    }
+    public function projectBudgetApproval($id){
+        $projects = Projects::where('id', $id)->first();
+        $budget = Budget::where('projects_id', $projects->id)->first();
+        if ($budget->approved == 0){
+            $budget->approved = 1;
+            $projects->budget()->save($budget);
+            $message = " budget for ".$projects->projectName." project successfully approved";
+        }else{
+            $message = " something went wrong";
+        }
+
+        Session::flash('flash_message', $message);
+        Return Redirect::action('HodController@projectInfo');
     }
 
     public function projectTotalIncomeCalculator($projects_id){

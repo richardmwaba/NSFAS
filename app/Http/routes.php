@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ImprestController;
+
 Route::group(['middleware' => ['web']], function () {
     /**
      * All the routes bellow can be accessed by an unauthenticated user who visits our site
@@ -77,6 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/requestForMoney/{id}', ['uses'=> 'HodController@requestForMoney', 'as' => '/requestForMoney']);
     Route::get('/requestApproval/{id}', ['uses'=> 'HodController@requestApproval', 'as' => '/requestApproval']);
     Route::get('/editStaff/{id}', ['uses' =>'HodController@edit', 'as' => '/editStaff']);
+    Route::get('/approvalProjectBudget/{id}', ['uses' =>'HodController@projectBudgetApprove', 'as' => '/approvalProjectBudget']);
+    Route::post('/approvalProjectBudget/{id}', 'HodController@projectBudgetApproval');
 
     /**
      * routes for all the accountant controller goes here
@@ -84,16 +88,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projectIncomes', 'AccountantController@projectIncomes');
     Route::get('/budgetIncomes', 'AccountantController@budgetIncomes');
     Route::get('/Info', 'AccountantController@Info');
-    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@approvalProjectBudgetInfo', 'as' => '/approvalProjectBudget']);
+//    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@approvalProjectBudgetInfo', 'as' => '/approvalProjectBudget']);
     Route::get('/projectIncomes/{id}', ['uses' =>'AccountantController@addProjectIncome', 'as' => '/projectIncomes']);
     Route::get('/projectIncomesDetails/{id}', ['uses' =>'AccountantController@moreIncomeInfo', 'as' => '/projectIncomesDetails']);
     Route::get('/projectBudgetDetails/{id}', ['uses' =>'AccountantController@moreBudgetInfo', 'as' => '/projectBudgetDetails']);
-    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@projectBudgetApproval', 'as' => '/approvalProjectBudget']);
     Route::get('/approvalProjectBudget', 'AccountantController@approvalProjectBudget');
 
     Route::post('/projectIncomes/{id}', 'AccountantController@addProjectIncomes');
 //    Route::post('/approvalProjectBudget', 'AccountantController@approvalProjectBudgetInfo');
 //    Route::post('/projectBudgetApproval/{id}', 'AccountantController@projectBudgetApproval');
+
+    /**
+     * Routes for printing PDF'S
+     */
+        Route::get('/pdf.imprest','ImprestController@getImprestPdf');
+
+        Route::get('/pdf.projects','ImprestController@getProjectPdf');
 
 
 

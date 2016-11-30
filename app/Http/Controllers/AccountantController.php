@@ -129,18 +129,5 @@ class AccountantController extends Controller
         return view('acc.approvalProjectBudget')->with('projects', $projects);
     }
 
-    public function projectBudgetApproval($id){
-        $projects = Projects::where('id', $id)->first();
-        $budget = Budget::where('projects_id', $projects->id)->first();
-        if ($budget->approved == 0){
-            $budget->approved = 1;
-            $projects->budget()->save($budget);
-            $message = " budget for ".$projects->projectName." project successfully approved";
-        }else{
-            $message = " something went wrong";
-        }
 
-        Session::flash('flash_message', $message);
-        Return Redirect::back();
-    }
 }

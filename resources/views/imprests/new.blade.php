@@ -1,4 +1,6 @@
 @extends('layouts.authorized')
+@section('title', 'add | Projects')
+@section('heading','')
 @section('main_content')
 
 
@@ -16,7 +18,7 @@
                         <div class="col-md-8 col-lg-offset-1">
 
 
-                            @if(Auth::user()->accessLevelId=='OT')
+                            @if(Auth::user()->access_level_id=='OT')
 
                                 <fieldset id="OT">
 
@@ -85,9 +87,9 @@
                                             <div id="bL">
                                                 <select class="form-control"
                                                         name="budgetLine" id="budgetLine">
-                                                    <option value="">Select a budget line</option>
+                                                    <option value="">Select a budget line </option>
                                                     @foreach($budgets as $budget)
-                                                        <option value="{{$budget->id}}">{{$budget->name}}</option>
+                                                        <option value="{{$budget->id}}">{{$budget->budgetName}}</option>
                                                     @endforeach
 
                                                 </select>
@@ -284,8 +286,8 @@
         window.onload = function () {
             if (window.jQuery) {
                 // jQuery is loaded
-                document.getElementById("current").innerHTML = document.getElementById("{{Auth::user()->accessLevelId}}").innerHTML;
-                document.getElementById("{{Auth::user()->accessLevelId}}").innerHTML = '';
+                document.getElementById("current").innerHTML = document.getElementById("{{Auth::user()->access_level_id}}").innerHTML;
+                document.getElementById("{{Auth::user()->access_level_id}}").innerHTML = '';
 
             } else {
                 location.reload();

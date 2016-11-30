@@ -20,9 +20,9 @@ class BudgetItems extends Model
         return $this->hasMany('App\Imprests');
     }
 
-    public function budget()
-    {
-
-        return $this->belongsTo('App\Budget', 'budget_id', 'id');
-    }
+//    public function budget()
+//    {
+//
+//        return $this->belongsTo('App\Budget', 'budget_id', 'id');
+//    }
 }

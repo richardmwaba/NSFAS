@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
 
-                    @if(Auth::user()->accessLevelId=='OT' or Auth::user()->accessLevelId=='HD')
+                    @if(Auth::user()->access_level_id=='OT' or Auth::user()->access_level_id=='HD')
                         <div class="form-group">
                             <a href="{{url('/imprests/new')}}" class="btn btn-link glyphicon-certificate">Create new</a>
                         </div>
@@ -23,11 +23,11 @@
                         <thead>
                         <tr>
                             <!--<th data-field="state" data-checkbox="true">Count</th>-->
-                            <th data-field="application stage" data-sortable="true">Budget</th>
+                            <th data-field="budget" data-sortable="true">Budget</th>
                             <th data-field="name" data-sortable="true">Purpose</th>
                             <th data-field="id" data-sortable="true">Applicant</th>
                             <th data-field="position" data-sortable="true">Amount</th>
-                            <th data-field="application stage" data-sortable="true">Authorised amount</th>
+                            <th data-field="authorized" data-sortable="true">Authorised amount</th>
                             <th data-field="school" data-sortable="true">Authorisation</th>
                             <th data-field="renew by" data-sortable="true">Recommended by</th>
                             <th data-field="contract status" data-sortable="true">Status</th>
@@ -63,7 +63,7 @@
                             <tr>
 
                                 <!--<td data-field="state" data-checkbox="true">{$imprest->id}}</td>-->
-                                <td>{{$imprest->budget->name}}</td>
+                                <td>{{$imprest->budget->budgetName}}</td>
                                 <td>{{$imprest->item->description}}</td>
                                 <td>{{$imprest->owner->firstName}} {{$imprest->owner->lastName}}</td>
                                 <td>{{$imprest->amountRequested}}</td>
