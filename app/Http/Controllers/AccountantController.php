@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Validator;
+use Mail;
 
 class AccountantController extends Controller
 {
@@ -85,6 +86,14 @@ class AccountantController extends Controller
             $account->income()->save($income);
         }
         $this->projectTotalIncomeCalculator($id);
+
+        //send an email to use after an income is added.
+//        if (ImprestController::is_connected()) {
+//            Mail::send('Mails.incomeAdded', ['project' => $project], function ($m) use ($staff) {
+//
+//                $m->to($staff->email, 'Me')->subject('Income add by the accountant');
+//            });
+//        }
 
         Session::flash('flash_message', 'Income added successfully');
         Return Redirect::action('AccountantController@addProjectIncome', $id);

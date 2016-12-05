@@ -8,6 +8,7 @@
             <div class="panel-body">
 
                 <details id="details">
+                    <summary>Click to view imprest details</summary>
                     <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">Imprest details</div>
@@ -26,7 +27,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="form-group">
                                             <label class="col-sm-3 col-md-3 col-xs-4"
                                                    for="first-name">Name</label>
@@ -35,6 +35,16 @@
                                                        for="first_name_value">{{$imprest->owner->firstName}} {{$imprest->owner->lastName}} {{$imprest->owner->otherName}}</label>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-md-3 col-xs-4"
+                                                   for="first-name">Man number</label>
+                                            <div class="col-sm-6 col-md-6 col-xs-5">
+                                                <label class="text-primary"
+                                                       for="first_name_value">{{$imprest->applicantId}}</label>
+                                            </div>
+                                        </div>
+
 
                                         <div class="form-group">
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Amount
@@ -59,7 +69,7 @@
                                                 obtained</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{\Carbon\Carbon::parse($imprest->updated_at)->diffForHumans()}}</label>
+                                                       for="first_name_value">{{\Carbon\Carbon::parse($imprest->updated_at)->toFormattedDateString()}}</label>
                                             </div>
                                         </div>
 
@@ -68,7 +78,7 @@
                                                 return</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{\Carbon\Carbon::parse($retirement->dateOfreturn)->diffForHumans()}}</label>
+                                                       for="first_name_value">{{\Carbon\Carbon::parse($retirement->dateOfreturn)->toFormattedDateString()}}</label>
                                             </div>
                                         </div>
 
@@ -94,7 +104,7 @@
                                                 at</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->aarivedAt}}</label>
+                                                       for="first_name_value">{{$retirement->arivedAt}}</label>
                                             </div>
                                         </div>
 
@@ -150,32 +160,38 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-md-3 col-xs-4"
-                                                   for="first-name">{{$retirement->item2}}</label>
-                                            <div class="col-sm-6 col-md-6 col-xs-5">
-                                                <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->item2Amount}}</label>
+                                        @if($retirement->item2!=null)
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-md-3 col-xs-4"
+                                                       for="first-name">{{$retirement->item2}}</label>
+                                                <div class="col-sm-6 col-md-6 col-xs-5">
+                                                    <label class="text-primary"
+                                                           for="first_name_value">K {{$retirement->item2Amount}}</label>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-md-3 col-xs-4"
-                                                   for="first-name">{{$retirement->item3}}</label>
-                                            <div class="col-sm-6 col-md-6 col-xs-5">
-                                                <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->item3Amount}}</label>
+                                        @if($retirement->item3!=null)
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-md-3 col-xs-4"
+                                                       for="first-name">{{$retirement->item3}}</label>
+                                                <div class="col-sm-6 col-md-6 col-xs-5">
+                                                    <label class="text-primary"
+                                                           for="first_name_value">K {{$retirement->item3Amount}}</label>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Other
-                                                expenses</label>
-                                            <div class="col-sm-6 col-md-6 col-xs-5">
-                                                <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->other}}</label>
+                                        @if($retirement->item3!=null)
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Other
+                                                    expenses</label>
+                                                <div class="col-sm-6 col-md-6 col-xs-5">
+                                                    <label class="text-primary"
+                                                           for="first_name_value">{{$retirement->other}}</label>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
                                         <div class="form-group">
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Total</label>
@@ -199,7 +215,12 @@
                                                 action</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->bursarApproval}}</label>
+                                                       for="first_name_value">
+                                                    @if($retirement->bursarApproval==0)
+                                                        {{$d='None'}}
+                                                    @elseif($retirement->bursarApproval==1)
+                                                        {{$d='Approved'}}@else{{$d= 'Rejected'}}
+                                                    @endif</label>
                                             </div>
                                         </div>
 
@@ -218,7 +239,13 @@
                                                 action</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->deanOrHeadApproval}}</label>
+                                                       for="first_name_value">
+                                                    @if($retirement->deanOrHeadApproval==0)
+                                                        {{$d='None'}}
+                                                    @elseif($retirement->deanOrHeadApproval==1)
+                                                        {{$d='Approved'}}@else{{$d= 'Rejected'}}
+                                                    @endif</label>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="form-group">

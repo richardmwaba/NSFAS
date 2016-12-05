@@ -31,6 +31,14 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
+
+    //user routes
+    Route::get('my_profile', 'UserController@my_profile');
+    Route::get('/edit_profile', 'UserController@edit_profile');
+    Route::post('change_password', 'PasswordController@change_password');
+    Route::post('update_profile','UserController@store');
+
+    //imprest routes
     Route::get('/imprests/new', 'ImprestController@newForm');
     Route::post('/imprests/create', 'ImprestController@create');
     Route::get('/imprests/edit/{id}', 'ImprestController@editForm');
@@ -39,10 +47,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/imprests/newBudgetLine', 'ImprestController@newBudgetLine');
     Route::post('imprests/recommendation/{id}', 'ImprestController@recommendation');
 
+    //cash out routes
     Route::post('cashout/summary', 'CashOut@cashout');
     Route::post('cashout/confirm', 'CashOut@confirm');
 
-    Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirementForm');
+    //imprest retirement routes
+    Route::get('/imprests/retirement/form/{id}', 'ImprestRetirementController@retirement');
     Route::post('/imprests/retirement/create', 'ImprestRetirementController@create');
     Route::post('/imprests/retirement/confirm', 'ImprestRetirementController@confirm');
     Route::post('/imprests/retirement/edit/{id}', 'ImprestRetirementController@edit');
@@ -64,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addStaff', 'HodController@index');
     Route::post('/addStaff', 'HodController@addStaff');
     Route::get('/addProject', 'HodController@addProject');
+    Route::get('/projectReport', 'HodController@projectReport');
     Route::post('/addProject', 'HodController@saveProject');
 //    Route::get('/projectBudgeting/{id}', 'HodController@projectBudget');
 //    Route::post('/projectBudgeting/{id}', 'HodController@saveProjectBudget');
@@ -102,10 +113,11 @@ Route::group(['middleware' => 'auth'], function () {
     /**
      * Routes for printing PDF'S
      */
-        Route::get('/pdf.imprest','ImprestController@getImprestPdf');
+    Route::get('/imprestPDF','ImprestController@getImprestPdf');
 
-        Route::get('/pdf.projects','ImprestController@getProjectPdf');
+    Route::get('/projectsPDF/{id}', ['uses'=> 'HodController@getProjectPdf', 'as' => '/projectsPDF']);
 
+    Route::post('/imprestSummaryPDF/{id}', ['uses'=> 'CashOut@getsummaryPdf', 'as' => '/imprestSummaryPDF']);
 
 
 });

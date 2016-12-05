@@ -15,39 +15,104 @@ use Validator;
 
 class ImprestRetirementController extends Controller
 {
-    //display the imprest retirement form
-    function retirementForm($id)
-    {
 
+    //choose what form to display. Edit or new retirement
+    function newOrEditForm($id)
+    {
+        //if();
+    }
+
+
+    //display the imprest retirement form
+    function retirement($id)
+    {
+        //
         $imprest = Imprest::findOrFail($id);
         $access_level_id = Auth::user()->access_level_id;
 
         //choose page to render based on current user access
-        if ($access_level_id == 'HD' or $access_level_id == 'OT') {
+        if ($access_level_id == 'OT') {
 
-            return view('imprests.Retirement.retirementForm')
-                ->with(['imprest' => $imprest, 'id' => $id]);
+            //show new retirement form
+            return $this->showNewRetirementForm($id, $imprest);
+
+            //if this user is the head
+        } else if ($access_level_id == 'HD') {
+
+            //check if this imprest has an ongoing retirement process or not
+            if ($imprest->retirement == null) {
+
+                //was this imprest created by the head?
+                //If not, show flash message that he can not create a retirement for it
+                if ($imprest->owner != Auth::user()) {
+
+                    //owner has not started retirement process yet
+                    return $this->noRetirementYet();
+
+                } else {
+                    //show new retirement form
+                    return $this->showNewRetirementForm($id, $imprest);
+                }
+
+            } else {
+                //show retirement form for editing
+                return $this->showNewRetirementForm($id, $imprest);
+            }
+
+            //user is either the dean or bursar or higher
         } else {
 
-            //retrieve an incomplete retirement process that belongs to this user
-            $retirement = imprestRetirement::where('imprestId', $id)->where('deanOrHeadApproval', null)->orWhere('deanOrHeadApproval', 'rejected')->first();
+            //retrieve an incomplete retirement process that belongs to this user if it exists
+            $retirement = imprestRetirement::where('imprestId', $id)
+                ->where('deanOrHeadApproval', null)
+                ->orWhere('deanOrHeadApproval', 'rejected')->first();
 
             //if the $retirement is null. return to previous page with a flash message else return the desired page
             if ($retirement == []) {
-
-                session()->flash('flash_message', 'Sorry! The owner of this imprest has not started the retirement process yet.');
-                return Redirect::action('ImprestController@showAll');
+                //owner has not started retirement process yet
+                return $this->noRetirementYet();
 
             } else {
-                $total = $retirement->item1Amount +
-                    $retirement->item2Amount +
-                    $retirement->item3Amount +
-                    $retirement->otherAmount +
-                    $retirement->subAmount;
+                //return th imprest retiremnt edit form
+                return $this->editForm($retirement, $imprest);
 
-                return view('imprests.Retirement.edit')->with(['imprest' => $imprest, 'total' => $total, 'retirement' => $retirement]);
             }
         }
+    }
+
+
+    public function showNewRetirementForm($id, $imprest)
+    {
+
+        return view('imprests.Retirement.retirementForm')
+            ->with(['imprest' => $imprest, 'id' => $id]);
+
+    }
+
+    //
+    public function editForm($retirement, $imprest)
+    {
+
+        //compute the total cost imprest retirement items
+        $total = $retirement->item1Amount +
+            $retirement->item2Amount +
+            $retirement->item3Amount +
+            $retirement->otherAmount +
+            $retirement->subAmount;
+
+        return view('imprests.Retirement.edit')
+            ->with(['imprest' => $imprest, 'total'
+            => $total, 'retirement'
+            => $retirement]);
+
+    }
+
+    //method to handle what happens when a user tries to acces a retirement that has not been stated
+    public function noRetirementYet()
+    {
+
+        session()->flash('flash_message', 'Sorry! The owner of this imprest has not started the retirement process yet.');
+        return Redirect::action('ImprestController@showAll');
     }
 
 
@@ -65,9 +130,6 @@ class ImprestRetirementController extends Controller
             return $input->dateOfReturn != null;
         });
         $v->sometimes('arrivedAt', 'required', function ($input) {
-            return $input->dateOfReturn != null;
-        });
-        $v->sometimes('departureDate', 'required', function ($input) {
             return $input->dateOfReturn != null;
         });
         $v->sometimes('departedFrom', 'required', function ($input) {
@@ -94,7 +156,7 @@ class ImprestRetirementController extends Controller
         $v->sometimes('otherAmount', 'required', function ($input) {
             return $input->other != null;
         });
-        $v->sometimes('departedfrom', 'required', function ($input) {
+        $v->sometimes('departedFrom', 'required', function ($input) {
             return $input->subAmount != null;
         });
         $v->sometimes('cashBalanceDate', 'required', function ($input) {
@@ -119,7 +181,11 @@ class ImprestRetirementController extends Controller
                 $request->item3Amount +
                 $request->otherAmount +
                 $request->subAmount;
-            return view('imprests.Retirement.confirm')->with(['retirement' => $request, 'imprest' => $imprest, 'total' => $total]);
+            return view('imprests.Retirement.confirm')
+                ->with(['retirement'
+                => $request, 'imprest'
+                => $imprest, 'total'
+                => $total]);
         }
 
     }
@@ -151,6 +217,7 @@ class ImprestRetirementController extends Controller
             'otherAmount' => $request->otherAmount,
             'receiptNumber' => $request->receiptNo,
             'amountRecoverable' => $request->recoverableAmount]);
+
         //notify the head or the dean
         /*if(Auth::user()->access_level_id=='HD')
         if (ImprestController::is_connected()) {
@@ -158,7 +225,7 @@ class ImprestRetirementController extends Controller
 
                 $m->to($user->email, 'Me')->subject('Your account has been created');
             });
-        }*/
+        } */
 
         session()->flash('flash_message', 'Saved!');
         return Redirect::action('ImprestController@showAll');

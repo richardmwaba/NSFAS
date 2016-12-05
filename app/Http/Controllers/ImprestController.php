@@ -12,7 +12,6 @@ use PDF;
 use App\Http\Requests;
 use App\Imprest;
 use App\Budget;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Mail;
 use Auth;

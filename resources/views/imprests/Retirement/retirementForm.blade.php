@@ -169,7 +169,7 @@
                                     </div>
 
                                     <div class="col-md-2">
-                                        <div class="form-group{{$errors->has('departedFrom') ? 'has-error' : ''}}">
+                                        <div class="form-group{{$errors->has('subAmount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Amount</label>
                                             <input type="number" value="{{old('subAmount')}}" class="form-control" name="subAmount"
                                                    placeholder="K">
@@ -216,7 +216,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group{{$errors->has('item1Amount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent"></label>
-                                            <input type="number" value="{{old('ietm1Amount')}}" class="form-control" name="item1Amount"
+                                            <input type="number" value="{{old('item1Amount')}}" class="form-control" name="item1Amount"
                                                    placeholder="K">
                                             @if ($errors->has('item1Amount'))
                                                 <span class="help-block">
@@ -331,7 +331,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group{{$errors->has('cashBalanceAmount') ? 'has-error' : ''}}">
-                                            <label>Date</label>
+                                            <label>Amount</label>
                                             <input class="form-control" value="{{old('cashBalanceAmount')}}" type="number" name="cashBalanceAmount" placeholder="K">
                                             @if ($errors->has('cashBalanceAmount'))
                                                 <span class="help-block">

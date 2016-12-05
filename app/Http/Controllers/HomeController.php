@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Departments;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Validator;
 
@@ -33,23 +34,24 @@ class HomeController extends Controller
          if ($access_level_id =='SA'){
              return view('admin.index');
          }elseif ($access_level_id =='AC'){
-             return view('acc.index');
+             Return Redirect::action('AccountantController@Info');
          }elseif ($access_level_id == 'HD' || $access_level_id =='OT'){
              $id = $logged_in_user->department_id;
              $record = Departments::find($id);
              if (isset($record)){
 //                 $record = $record->departmentName;
-                 return view('hod.index', ['record',$record]);
+//                 return view('hod.index', ['record',$record]);
+                 Return Redirect::action('HodController@projectInfo');
              }else{
-                 return view('hod.index');
+                 Return Redirect::action('HodController@projectInfo');
              }
 
          }elseif ($access_level_id == 'DN'){
-             return view('dos.index');
+             Return Redirect::action('AccountantController@Info');
          }elseif ($access_level_id =='HU'){
              return view('hou.index');
-         }elseif ($access_level_id =='OT'){
-             return view('staff.index');
+//         }elseif ($access_level_id =='OT'){
+//             return view('staff.index');
          }else {
              return view('home');
 

@@ -13,5 +13,5 @@ class Expenditure extends Model
    public  function projects(){
        return $this->belongsTo('App\Projects');
    }
-    public $fillable = ['amountPaid', 'beneficiary', 'account_id', 'purpose', 'voucherNumber'];
+    public $fillable = ['amountPaid', 'beneficiary', 'accounts_id', 'purpose', 'voucherNumber'];
 }
