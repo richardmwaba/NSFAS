@@ -21,7 +21,8 @@ class ImprestController extends Controller
 
 // Printing REports
 
-    public function getImprestPdf(/*$id*/){
+    public function getImprestPdf(/*$id*/)
+    {
         // query to get Imprest
         // $imprests = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
         // $payment = $payment->findOrFail($id);
@@ -31,7 +32,8 @@ class ImprestController extends Controller
         return $pdf->stream('imprest.pdf');
     }
 
-    public function getProjectPdf(/*$id*/){
+    public function getProjectPdf(/*$id*/)
+    {
         // query to get projects Data
         // $projects = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
         // $projects = $payment->findOrFail($id);
@@ -132,7 +134,6 @@ class ImprestController extends Controller
                 //method to notify the dean
                 $this->notifyDean();
 
-               
 
                 //don't change the default authoriseState
             } else {
@@ -240,6 +241,14 @@ class ImprestController extends Controller
     {
 
         $imprest = Imprest::findOrFail($request->id);
+        //check if this imprest has been authorised by the dean.
+        // Prevent any changes to it if so
+        if ($imprest->authorisedByDean == 1) {
+            session()->flash('flash_message',
+                'You can no longer make changes to this imprest');
+            return Redirect::action('ImprestController@showAll');
+
+        }
 
         $ac = Auth::user()->access_level_id;
 

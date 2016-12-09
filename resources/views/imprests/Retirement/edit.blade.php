@@ -229,10 +229,11 @@
                                                 comment</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->deanOrHeadComment}}</label>
+                                                       for="first_name_value">
+                                                        {{$retirement->deanOrHeadComment}}
+                                                </label>
                                             </div>
                                         </div>
-
 
                                         <div class="form-group">
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Dean/Head
@@ -243,7 +244,13 @@
                                                     @if($retirement->deanOrHeadApproval==0)
                                                         {{$d='None'}}
                                                     @elseif($retirement->deanOrHeadApproval==1)
-                                                        {{$d='Approved'}}@else{{$d= 'Rejected'}}
+                                                        {{$d='Approved by'}} {{$retirement->deanOrHead->firstName}}
+                                                        {{$retirement->deanOrHead->otherName}}
+                                                        {{$retirement->deanOrHead->lastName}}
+                                                    @else{{$d= 'Rejected by'}}
+                                                    {{$retirement->deanOrHead->firstName}}
+                                                    {{$retirement->deanOrHead->otherName}}
+                                                    {{$retirement->deanOrHead->lastName}}
                                                     @endif</label>
                                                 </label>
                                             </div>
@@ -272,13 +279,16 @@
 
                         <!--code to be injected based on current user-->
                         <div class="form-group form-inline">
-                            <input type="radio" value="approved" name="approval">Approve<br>
-                            <input type="radio" value="rejected" name="approval" checked>Reject<br>
+                            <input type="radio" value="1"
+                                   name="approval"@if($retirement->deanOrHeadApproval==1){{$c='checked'}}@endif>Approve<br>
+                            <input type="radio" value="2"
+                                   name="approval" @if($retirement->deanOrHeadApproval==2){{$c='checked'}}@endif>Reject<br>
+                            <input type="hidden" name="imprestId" value="{{$retirement->imprestId}}">
                         </div>
 
                         <div class="form-group">
                             <label>Comment</label>
-                            <input type="text" name="comment">
+                            <input value="{{$retirement->deanOrHeadComment}}" type="text" name="comment">
                         </div>
 
                     </div>

@@ -27,7 +27,7 @@ class Imprest extends Model
     public function expenditure()
     {
 
-        return $this->hasMany('App\Expenditure', 'purpose', 'purpose');
+        return $this->hasOne('App\Expenditure', 'purpose', 'purpose');
     }
 
     public function budget()

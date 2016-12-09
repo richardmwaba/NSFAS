@@ -23,4 +23,12 @@ class imprestRetirement extends Model
 
         return $this->belongsTo('App\User', 'manNumber','applicantId');
     }
+
+    public function deanOrHead()
+    {
+
+        return $this->belongsTo('App\User', 'deanOrHeadManNumber', 'manNumber');
+    }
+
+
 }

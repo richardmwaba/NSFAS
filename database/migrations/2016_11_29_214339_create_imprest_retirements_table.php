@@ -23,7 +23,7 @@ class CreateImprestRetirementsTable extends Migration
             $table->string('departedFrom')->nullable();
             $table->date('departureDate')->nullable();
             $table->string('arrivedAt')->nullable();
-            $table->integer('noOfNoNights')->nullable();
+            $table->integer('noOfNights')->nullable();
             $table->integer('ratePerNight')->nullable();
             $table->double('subAmount')->nullable();
             $table->double('fuelAmount')->nullable();
