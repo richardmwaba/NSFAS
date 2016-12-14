@@ -400,7 +400,7 @@ class ImprestController extends Controller
     {
         //get all imprests that belong to this user
         if (Auth::user()->access_level_id == 'OT') {
-            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'asc')->get();
 
             //get all imprests that belong to current user department
         } elseif (Auth::user()->access_level_id == 'HD') {
@@ -408,11 +408,11 @@ class ImprestController extends Controller
 
             //get all imprests that have been seen and sent to accountant for recommendation
         } elseif (Auth::user()->access_level_id == 'AC') {
-            $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'asc')->get();
 
             //get all imprests that have been authorised by head for the dean to see
         } else {
-            $imprests = Imprest::where('authorisedByHead', 1)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('authorisedByHead', 1)->orderBy('created_at', 'asc')->get();
 
         }
 
