@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBudgetItemsTable extends Migration
+class CreateEstimatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,15 @@ class CreateBudgetItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('budget_items', function (Blueprint $table) {
+        Schema::create('estimates', function (Blueprint $table) {
 
             $table->increments('id');
+            $table->integer('activities_id');
 
-            $table->string('budgetLine')->nullable();
-            $table->string('description');
+            $table->string('itemDescription');
             $table->integer('quantity');
-            $table->float('pricePerUnit')->nullable();
             $table->float('cost');
 
-            $table->integer('budget_id');
-            $table->integer('activities_id')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateBudgetItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('budget_items');
+        Schema::drop('estimates');
     }
 }

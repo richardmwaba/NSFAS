@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class BudgetItems extends Model
 {
-  public function budget(){
-      return $this->belongsTo('App\Budget');
-  }
+    public function budget()
+    {
+        return $this->belongsTo('App\Budget');
+    }
+
     public function item()
     {
         return $this->belongsTo('App\Budget', 'budget_id');
@@ -16,13 +18,12 @@ class BudgetItems extends Model
 
     public function imprests()
     {
-
         return $this->hasMany('App\Imprests');
     }
 
-//    public function budget()
-//    {
-//
-//        return $this->belongsTo('App\Budget', 'budget_id', 'id');
-//    }
+    public function activity()
+    {
+        return $this->belongsTo('App\Activities');
+    }
+
 }

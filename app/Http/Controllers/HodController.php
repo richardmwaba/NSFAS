@@ -21,6 +21,7 @@ use Auth;
 use Validator;
 use Mail;
 use Hash;
+use PDF;
 
 
 class HODController extends Controller
@@ -33,6 +34,47 @@ class HODController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // PRINTING IN PDF
+
+    public  function getProjectPdf($id){
+        $project = Projects::where('id', $id)->first();
+        $budget = Budget::where('projects_id',$project->id)->first();
+        $budgetItems = BudgetItems::where('budget_id',$budget->id)->get();
+
+
+        $account = Accounts::where('projects_id', $project->id)->first();
+        //calculates the account balance
+        $totalIn = Income::where('accounts_id', $account->id)->sum('amountReceived');
+        $totalEx = Expenditure::where('accounts_id', $account->id)->sum('amountPaid');
+
+
+        $pdf = PDF::loadView('reports.projectsPDF', ['project'=>$project,'budgetItems'=>$budgetItems,
+            'totalIn' =>$totalIn, 'totalEx'=>$totalEx]);
+
+        return $pdf->stream('reports.projectsPDF');
+//        return view('reports.projectsPDF')->with('project',$project);
+    }
+
+    public function projectReport(){
+        if ($this->getAccessLevelId() == 'OT'){
+            $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
+                ->where('projectCoordinator', $this->getUsersFullName())
+                ->get();
+        }elseif ($this->getAccessLevelId()=='HD'){
+            $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
+        }else{
+            $record = Projects::all();
+        }
+
+        if($record){
+            return view('reports.projectReport')->with('record', $record);
+        }else{
+            return view('reports.projectReport');
+        }
+
+
+    }
     public function index()
     {
         return view('hod.addStaff');
@@ -86,7 +128,7 @@ class HODController extends Controller
             });
         }
 
-        Session::flash('flash_message', 'staff added successfully! ');
+        Session::flash('flash_message', 'Staff member added successfully. An email has been sent to the staff! ');
         Return Redirect::action('HodController@staff');
     }
 
@@ -164,13 +206,16 @@ class HODController extends Controller
 
     public function projectExpenditures()
     {
-        if ($this->getAccessLevelId() == 'OT') {
+        if ($this->getAccessLevelId() == 'OT'){
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
                 ->get();
-        } else {
+        }elseif ($this->getAccessLevelId()=='HD'){
             $projects = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->get();
+        }else{
+            $projects = Projects::all();
         }
+
         if ($projects) {
             return view('hod.projectExpenditures')->with('projects', $projects);
         }
@@ -250,7 +295,7 @@ class HODController extends Controller
         }else{
 
         }
-        Session::flash('flash_message', 'The '.$projectName.' project has been added successfully!outline your budget and await for the HD approval!');
+        Session::flash('flash_message', 'The '.$projectName.' project has been added successfully. Outline your budget and await for the HOD approval!');
         Return Redirect::action('HodController@addProject');
     }
 
@@ -343,7 +388,7 @@ class HODController extends Controller
             Return Redirect::back();
         }
 
-        Session::flash('flash_message', 'ok!');
+        Session::flash('flash_message', 'operation successfully');
         Return Redirect::action('HodController@projectBudget', $id);
     }
 

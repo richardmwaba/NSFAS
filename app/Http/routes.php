@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addStaff', 'HodController@index');
     Route::post('/addStaff', 'HodController@addStaff');
     Route::get('/addProject', 'HodController@addProject');
+    Route::get('/projectReport', 'HodController@projectReport');
     Route::post('/addProject', 'HodController@saveProject');
 //    Route::get('/projectBudgeting/{id}', 'HodController@projectBudget');
 //    Route::post('/projectBudgeting/{id}', 'HodController@saveProjectBudget');
@@ -89,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projectIncomes', 'AccountantController@projectIncomes');
     Route::get('/budgetIncomes', 'AccountantController@budgetIncomes');
     Route::get('/Info', 'AccountantController@Info');
+    Route::get('/viewAccounts', 'AccountantController@viewAccounts');
 //    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@approvalProjectBudgetInfo', 'as' => '/approvalProjectBudget']);
     Route::get('/projectIncomes/{id}', ['uses' =>'AccountantController@addProjectIncome', 'as' => '/projectIncomes']);
     Route::get('/projectIncomesDetails/{id}', ['uses' =>'AccountantController@moreIncomeInfo', 'as' => '/projectIncomesDetails']);
@@ -102,10 +104,11 @@ Route::group(['middleware' => 'auth'], function () {
     /**
      * Routes for printing PDF'S
      */
-        Route::get('/pdf.imprest','ImprestController@getImprestPdf');
+    Route::get('/imprestPDF','ImprestController@getImprestPdf');
 
-        Route::get('/pdf.projects','ImprestController@getProjectPdf');
+    Route::get('/projectsPDF/{id}', ['uses'=> 'HodController@getProjectPdf', 'as' => '/projectsPDF']);
 
+    Route::post('/imprestSummaryPDF/{id}', ['uses'=> 'CashOut@getsummaryPdf', 'as' => '/imprestSummaryPDF']);
 
 
 });

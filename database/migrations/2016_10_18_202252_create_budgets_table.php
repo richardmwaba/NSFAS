@@ -24,7 +24,6 @@ class CreateBudgetsTable extends Migration
 
             $table->boolean('approved');
             $table->boolean('isDepartmentBudget');
-            $table->string('name');
 
             $table->integer('projects_id')->nullable();
             $table->integer('departments_id')->nullable();

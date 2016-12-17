@@ -22,13 +22,9 @@
                             @if(Auth::user()->access_level_id != 'OT')
                             <th data-field="department" data-sortable="true">Department</th>
                             @endif
-                            {{--<th data-field="description" data-sortable="true">Description</th>--}}
+                            <th data-field="description" data-sortable="true">Description</th>
                             <th data-field="Budget" data-sortable="true">Budget</th>
-                            <th data-field="usedBudget" data-sortable="true">Amount Used</th>
-                            {{--<th data-field="remainingBudget" data-sortable="true">Amount Remaining</th>--}}
-                            {{--@if(Auth::user()->access_level_id == 'OT')--}}
                             <th data-field="expenditure" data-sortable="true">Expenditure</th>
-                            {{--@endif--}}
                             <th data-field="expenditureStatus" data-sortable="true">Status</th>
                             <th data-field="info" data-sortable="true">More Info</th>
                             <th data-field="startDate" data-sortable="true">Start Date</th>
@@ -44,16 +40,13 @@
                                 @if(Auth::user()->access_level_id != 'OT')
                                 <td> @if(isset($project)) {{ $project->departments->departmentName }} @endif </td>
                                 @endif
+                                <td> @if(isset($project)){{ $project->description }} @endif </td>
                                 <td> @if(isset($project)) K{{ $project->budget->actualProjectBudget }}.00 @endif </td>
-                                <td> @if(isset($project)){{ $project->accounts->id }} @endif </td>
-                                {{--<td> @if(isset($project->expenditures->amountPaid)) {{ $project->expenditures->amountPaid }}@endif </td>--}}
-                                {{--@if(Auth::user()->access_level_id == 'OT')--}}
                                 <td> @if(isset($project))
                                         @if(Auth::user()->access_level_id == 'HD')
                                            @foreach($project->expenditures() as $expend)
                                             @if(isset($project))
                                                 @if($expend->approvedByHOD == 0)
-                                                    {{--link for approval goes here--}}
                                                     <div class="btn-group">
                                                         <a href="{{ route('/requestApproval', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa- fa-fw text-success"></i><span class="text-success">Approve</span></a>
                                                     </div>

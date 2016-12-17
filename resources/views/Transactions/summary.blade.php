@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Budget line</label>
                         <div class="col-sm-6 col-md-6 col-xs-5">
-                            <label class="text-primary" for="first_name_value">{{$imprest->budget->name}}</label>
+                            <label class="text-primary" for="first_name_value">{{$imprest->budget->budgetName}}</label>
                         </div>
                     </div>
 
@@ -86,7 +86,19 @@
 
 
                 </form>
-                <a type="button" class="btn btn-primary">Print</a>
+                <form role="form" method="POST" action="{{url('/imprestSummaryPDF/'.$imprest->imprestId)}}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="initialBalance" value="{{$balance}}">
+                    <input type="hidden" name="accountName" value="{{$accountName}}">
+                    <input type="hidden" name="amount" value="{{$request->amount}}">
+                    <input type="hidden" name="currentBalance" value="{{$balance-$request->amount}}">
+                    <input type="hidden" name="description" value="{{$imprest->item->description}}">
+                    <input type="hidden" name="budgetName" value="{{$imprest->budget->budgetName}}">
+                    <input type="hidden" name="applicantNames"
+                           value="{{$imprest->owner->firstName}} {{$imprest->owner->otherName}} {{$imprest->owner->lastName}}">
+                    <input type="hidden" name="department" value="{{$imprest->owner->department->departmentName}}">
+                <button type="submit" class="btn btn-primary">Print</button>
+                </form>
 
             </div>
 

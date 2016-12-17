@@ -15,6 +15,13 @@ use Validator;
 
 class ImprestRetirementController extends Controller
 {
+
+    //choose what form to display. Edit or new retirement
+    function  newOrEditForm($id){
+        //if();
+    }
+
+
     //display the imprest retirement form
     function retirementForm($id)
     {
@@ -67,9 +74,6 @@ class ImprestRetirementController extends Controller
         $v->sometimes('arrivedAt', 'required', function ($input) {
             return $input->dateOfReturn != null;
         });
-        $v->sometimes('departureDate', 'required', function ($input) {
-            return $input->dateOfReturn != null;
-        });
         $v->sometimes('departedFrom', 'required', function ($input) {
             return $input->dateOfReturn != null;
         });
@@ -94,7 +98,7 @@ class ImprestRetirementController extends Controller
         $v->sometimes('otherAmount', 'required', function ($input) {
             return $input->other != null;
         });
-        $v->sometimes('departedfrom', 'required', function ($input) {
+        $v->sometimes('departedFrom', 'required', function ($input) {
             return $input->subAmount != null;
         });
         $v->sometimes('cashBalanceDate', 'required', function ($input) {
@@ -151,6 +155,7 @@ class ImprestRetirementController extends Controller
             'otherAmount' => $request->otherAmount,
             'receiptNumber' => $request->receiptNo,
             'amountRecoverable' => $request->recoverableAmount]);
+
         //notify the head or the dean
         /*if(Auth::user()->access_level_id=='HD')
         if (ImprestController::is_connected()) {
@@ -158,7 +163,7 @@ class ImprestRetirementController extends Controller
 
                 $m->to($user->email, 'Me')->subject('Your account has been created');
             });
-        }*/
+        } */
 
         session()->flash('flash_message', 'Saved!');
         return Redirect::action('ImprestController@showAll');
