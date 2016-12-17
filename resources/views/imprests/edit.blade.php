@@ -136,7 +136,7 @@
                                             <div class="form-group">
                                                 <label for="Date_Sent">Date</label>
                                                 <input type="text" class="form-control" value="" name="Date_Sent"
-                                                       placeholder="{{Carbon\Carbon::parse($imprest->created_at)->diffForHumans()}}">
+                                                       placeholder="{{Carbon\Carbon::parse($imprest->created_at)->toFormattedDateString()}}">
                                             </div>
 
                                         </div>
@@ -545,7 +545,7 @@
                                     <label for="Copied_To">Date Outstanding imprest obtained</label>
                                     <input @if($imprest->busarRecommendation == 0){{$d ='date'}} @else {{$d='text'}}@endif type="{{$d}}"
                                            class="form-control" name="dateOutstandingImprest"
-                                           placeholder="{{ \Carbon\Carbon::parse($imprest->updated_at)->diffForHumans()}}">
+                                           placeholder="{{ \Carbon\Carbon::parse($imprest->updated_at)->toFormattedDateString()}}">
                                 </div>
                                 <input name="id" id="id" type="hidden" value="{{$imprest->imprestId}}">
                             </div>

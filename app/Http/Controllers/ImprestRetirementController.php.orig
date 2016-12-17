@@ -18,7 +18,17 @@ class ImprestRetirementController extends Controller
 {
 
     //choose what form to display. Edit or new retirement
+<<<<<<< HEAD
+    function  newOrEditForm($id){
+        //if();
+    }
+
+
+    //display the imprest retirement form
+    function retirementForm($id)
+=======
     function newOrEditForm($id)
+>>>>>>> a955937e6d0d7852c644ee008021edaaac86ec47
     {
         //if();
     }
@@ -177,9 +187,6 @@ class ImprestRetirementController extends Controller
         $v->sometimes('arrivedAt', 'required', function ($input) {
             return $input->dateOfReturn != null;
         });
-        $v->sometimes('departureDate', 'required', function ($input) {
-            return $input->dateOfReturn != null;
-        });
         $v->sometimes('departedFrom', 'required', function ($input) {
             return $input->dateOfReturn != null;
         });
@@ -244,6 +251,29 @@ class ImprestRetirementController extends Controller
     {
 
 
+<<<<<<< HEAD
+        imprestRetirement::create(['chequeNo' => $request->chequeNo,
+            'imprestId' => $request->imprestId,
+            'date' => Carbon::now(),
+            'dateOfReturn' => $request->dateOfReturn,
+            'departedFrom' => $request->departedFrom,
+            'departureDate' => $request->departureDate,
+            'arrivedAt' => $request->arrivedAt,
+            'noOfNoNights' => $request->noOfNights,
+            'ratePerNight' => $request->ratePerNight,
+            'subAmount' => $request->subAmount,
+            'fuelAmount' => $request->fuelAmount,
+            'item1' => $request->item1,
+            'item1Amount' => $request->item1Amount,
+            'item2' => $request->item2,
+            'item2Amount' => $request->item2Amount,
+            'item3' => $request->item3,
+            'item3Amount' => $request->item3Amount,
+            'other' => $request->other,
+            'otherAmount' => $request->otherAmount,
+            'receiptNumber' => $request->receiptNo,
+            'amountRecoverable' => $request->recoverableAmount]);
+=======
         $imprestRetirement = imprestRetirement::firstOrNew(['imprestId' => $request->imprestId]);
         $imprestRetirement->chequeNo = $request->chequeNo;
         $imprestRetirement->date = Carbon::now();
@@ -266,6 +296,7 @@ class ImprestRetirementController extends Controller
         $imprestRetirement->receiptNumber = $request->receiptNo;
         $imprestRetirement->amountRecoverable = $request->recoverableAmount;
         $imprestRetirement->save();
+>>>>>>> a955937e6d0d7852c644ee008021edaaac86ec47
 
         //notify the head or the dean
         /*if(Auth::user()->access_level_id=='HD')
@@ -339,16 +370,6 @@ class ImprestRetirementController extends Controller
                 $retirement->deanOrHeadManNumber = Auth::user()->manNumber;
                 $retirement->save();
 
-                //set the imprest as retired
-                $imprest->isRetired = 1;
-                $imprest->save();
-
-                //notify the user
-                if (ImprestController::isConnected()) {
-                    Mail::send('Mails.retired', ['imprest' => $imprest], function ($m) use ($imprest) {
-                        $m->to($imprest->owner->email, 'Me')->subject('Your imprest has been retired');
-                    });
-                }
 
                 break;
 

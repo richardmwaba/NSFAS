@@ -21,7 +21,8 @@ class ImprestController extends Controller
 
 // Printing REports
 
-    public function getImprestPdf(/*$id*/){
+    public function getImprestPdf(/*$id*/)
+    {
         // query to get Imprest
         // $imprests = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
         // $payment = $payment->findOrFail($id);
@@ -31,7 +32,8 @@ class ImprestController extends Controller
         return $pdf->stream('imprest.pdf');
     }
 
-    public function getProjectPdf(/*$id*/){
+    public function getProjectPdf(/*$id*/)
+    {
         // query to get projects Data
         // $projects = User::with('imprest','budgets', 'accounts','actual')->groupBy('id');
         // $projects = $payment->findOrFail($id);
@@ -132,7 +134,6 @@ class ImprestController extends Controller
                 //method to notify the dean
                 $this->notifyDean();
 
-               
 
                 //don't change the default authoriseState
             } else {
@@ -240,6 +241,14 @@ class ImprestController extends Controller
     {
 
         $imprest = Imprest::findOrFail($request->id);
+        //check if this imprest has been authorised by the dean.
+        // Prevent any changes to it if so
+        if ($imprest->authorisedByDean == 1) {
+            session()->flash('flash_message',
+                'You can no longer make changes to this imprest');
+            return Redirect::action('ImprestController@showAll');
+
+        }
 
         $ac = Auth::user()->access_level_id;
 
@@ -391,7 +400,7 @@ class ImprestController extends Controller
     {
         //get all imprests that belong to this user
         if (Auth::user()->access_level_id == 'OT') {
-            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('applicantId', Auth::user()->manNumber)->orderBy('created_at', 'asc')->get();
 
             //get all imprests that belong to current user department
         } elseif (Auth::user()->access_level_id == 'HD') {
@@ -399,11 +408,11 @@ class ImprestController extends Controller
 
             //get all imprests that have been seen and sent to accountant for recommendation
         } elseif (Auth::user()->access_level_id == 'AC') {
-            $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('seenByDean', 1)->orderBy('created_at', 'asc')->get();
 
             //get all imprests that have been authorised by head for the dean to see
         } else {
-            $imprests = Imprest::where('authorisedByHead', 1)->orderBy('created_at', 'desc')->get();
+            $imprests = Imprest::where('authorisedByHead', 1)->orderBy('created_at', 'asc')->get();
 
         }
 

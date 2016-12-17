@@ -84,7 +84,7 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="{{url('#')}}"><i class="fa fa-user fa-fw"></i>Profile</a>
+                    <li><a href="{{url('my_profile')}}"><i class="fa fa-user fa-fw"></i>Profile</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -120,6 +120,7 @@
                         </li>
                         @endif
                         <!--future menus for other users can be included here-->
+
                         @if(Auth::user()->access_level_id=='DN' ||  Auth::user()->access_level_id == 'AC')
 
                             <li>
@@ -142,9 +143,15 @@
                                             <li>
                                                 <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-info fa-fw"></i>Income summary</a>
                                             </li>
+                                            {{--<li>--}}
+                                            {{--<a href="#" ><i class="fa fa-plus-circle fa-fw"></i>Add Income</a>--}}
+                                            {{--</li>--}}
                                         </ul>
                                         <!-- /.nav-third-level -->
                                     </li>
+                                    {{--<li>--}}
+                                        {{--<a href="{{URL::asset('/projectReport')}}"><i class="fa fa-gear fa-fw"></i>Generate Report</a>--}}
+                                    {{--</li>--}}
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -200,6 +207,7 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+
                             <li>
                                 <a href="#"><i class="fa fa-"></i>Requests<span
                                             class="fa arrow"></span></a>
@@ -255,6 +263,7 @@
                                         <!-- /.nav-third-level -->
                                     </li>
                                 </ul>
+                                <!-- /.nav-second-level -->
                             </li>
 
                             <li>
@@ -325,6 +334,11 @@
                 <!--future menus for other users can be included here-->
                 </ul>
 
+                    <!--future menus for other users can be included here-->
+                <li>
+                    <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-gear fa-fw"></i>imprests</a>
+                </li>
+                </ul>
             </div>
             <!-- /.sidebar-collapse -->
         </div>

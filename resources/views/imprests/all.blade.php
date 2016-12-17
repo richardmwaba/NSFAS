@@ -73,7 +73,7 @@
 
 
                                 <td @if($retired=="Retired") style="color:red;"{{$retired}} @else style="color:limegreen;" @endif >{{$retired}}</td>
-                                <td>{{\Carbon\Carbon::parse($imprest->created_at)->diffForHumans()}}</td>
+                                <td>{{\Carbon\Carbon::parse($imprest->created_at)->toFormattedDateString()}}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{url('/imprests/edit/'.$imprest->imprestId)}}"

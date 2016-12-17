@@ -58,7 +58,7 @@
                                                 obtained</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{\Carbon\Carbon::parse($imprest->updated_at)->diffForHumans()}}</label>
+                                                       for="first_name_value">{{\Carbon\Carbon::parse($imprest->updated_at)->toFormattedDateString()}}</label>
                                             </div>
                                         </div>
 
@@ -67,7 +67,7 @@
                                                 return</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{\Carbon\Carbon::parse($retirement->dateOfReturn)->diffForHumans()}}</label>
+                                                       for="first_name_value">{{\Carbon\Carbon::parse($retirement->dateOfReturn)->toFormattedDateString()}}</label>
                                                 <input class="hidden"
                                                        name="dateOfReturn" value="{{$retirement->dateOfReturn}}">
                                             </div>
@@ -155,6 +155,8 @@
                                                 <label class="text-primary"
                                                        for="first_name_value">K {{$retirement->item1Amount}}</label>
                                                 <input class="hidden"
+                                                       name="item1" value="{{$retirement->item1}}">
+                                                <input class="hidden"
                                                        name="item1Amount" value="{{$retirement->item1Amount}}">
                                             </div>
                                         </div>
@@ -165,6 +167,8 @@
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
                                                        for="first_name_value">K {{$retirement->item2Amount}}</label>
+                                                <input class="hidden"
+                                                       name="item2" value="{{$retirement->item2}}">
                                                 <input class="hidden"
                                                        name="item2Amount" value="{{$retirement->item2Amount}}">
                                             </div>
@@ -177,18 +181,21 @@
                                                 <label class="text-primary"
                                                        for="first_name_value">K {{$retirement->item3Amount}}</label>
                                                 <input class="hidden"
+                                                       name="item3" value="{{$retirement->item3}}">
+                                                <input class="hidden"
                                                        name="item3Amount" value="{{$retirement->item3Amount}}">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Other
-                                                expenses</label>
+                                            <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">{{$retirement->other}}</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->other}}</label>
+                                                       for="first_name_value">K {{$retirement->otherAmount}}</label>
                                                 <input class="hidden"
                                                        name="other" value="{{$retirement->other}}">
+                                                <input class="hidden"
+                                                       name="otherAmount" value="{{$retirement->otherAmount}}">
                                             </div>
                                         </div>
 
