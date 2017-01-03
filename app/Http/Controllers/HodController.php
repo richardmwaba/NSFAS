@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 
 use App\Accounts;
+use App\Activities;
 use App\Budget;
 use App\BudgetItems;
 use App\CalculatedTotal;
 use App\Departments;
+use App\Estimates;
 use App\Expenditure;
 use App\Income;
+use App\Objectives;
 use App\Projects;
+use App\StrategicDirections;
 use App\User;
 
 use Illuminate\Support\Facades\Session;
@@ -56,7 +60,99 @@ class HODController extends Controller
 //        return view('reports.projectsPDF')->with('project',$project);
     }
 
+    public function budgetProposal(){
+
+        $stBudgetPlan = StrategicDirections::where('school_id', $this->getSchoolId())->get();
+        return view('hod.budgetProposal')->with('stBudgetPlan', $stBudgetPlan);
+    }
+
+    public function departmentBudgetProposal(){
+
+        $dpName = null;
+        $dp = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+        if ($dp){ $dpName = $dp->departmentName; }
+        $records = Activities::where('department_id', $dp->id)->get();
+        $totalBudget = 0;
+        foreach ( $records as $record){
+            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalBudget = $totalBudget +$total;
+        }
+
+        if ($records and $dp){
+            return view('hod.dBProposal')
+                ->with('records' , $records)
+                ->with('dpName' , $dpName)
+                ->with('totalBudget' , $totalBudget);
+        }
+        return view('hod.dBProposal');
+    }
+
+    public function saveObjective(Request $request){
+
+        //validate
+        $this->validate($request, [
+            'body'=>'required'
+        ]);
+
+        $row = StrategicDirections::where('id', $request['strategyId'])->first();
+        $record = new Objectives();
+        $record->objective = $request['body'];
+        $record->department_id = $this->getDepartmentIdFromLoggedInUSer();
+        $row->objective()->save($record);
+        return response()->json(['success'=> 'Objective added successfully'], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function saveActivity(Request $request){
+
+        $row = Objectives::where('id',$request['objectiveId'])->first();
+        $entry = StrategicDirections::find($request['strategicId']);
+        $department = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+
+        $active = new Activities();
+        $active->activityName = $request['activity_name'];
+        $active->indicatorOfSuccess = $request['success_indicator'];
+        $active->targetOfIndicator = $request['target_indicator'];
+        $active->baselineOfIndicator = $request['baseline_indicator'];
+        $active->staffResponsible	 = $request['staff_responsible'];
+        $active->percentageAchieved = $request['percentage_achieved'];
+        $active->sourceOfFunding = $request['source_funding'];
+        $active->firstQuarter = $request['first_quarter'];
+        $active->secondQuarter = $request['second_quarter'];
+        $active->thirdQuarter = $request['third_quarter'];
+        $active->fourthQuarter = $request['fourth_quarter'];
+
+        $active->strategic_directions()->associate($entry);
+        $active->department()->associate($department);
+        $active->objectives()->associate($row);
+        $active->save();
+
+        $activity = Activities::where('id', $active->id)->first();
+        $record = new BudgetItems();
+
+
+        $estimates = new Estimates();
+        $estimates->itemDescription =  $request['item_description'];
+        $estimates->quantity =  $request['quantity_value'];
+        $estimates->pricePerUnit = $request['price_per_unit'];
+        $estimates->cost = $request['total_cost'];
+        $estimates->department_id = $this->getDepartmentIdFromLoggedInUSer();
+        $activity->estimate()->save($estimates);
+
+
+        return response()->json(['message'=> $activity->activityName ], 200);
+    }
+
+    public function activities(){
+        $records = Objectives::where('department_id', $this->getDepartmentIdFromLoggedInUSer())->get();
+        return view('hod.activities')->with('records',$records);
+    }
+
     public function projectReport(){
+
         if ($this->getAccessLevelId() == 'OT'){
             $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
@@ -409,6 +505,12 @@ class HODController extends Controller
         $user = Auth::user();
         $access_level_id = $user->access_level_id;
         return  $access_level_id;
+    }
+
+    public function getSchoolId(){
+        $user = Auth::user();
+        $id = $user->schools_id;
+        return $id;
     }
 
     public function getUsersFullName(){

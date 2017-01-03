@@ -10,11 +10,11 @@ class Objectives extends Model
         return $this->belongsTo('App\Departments');
     }
 
-    public function strategicDirection(){
+    public function strategic_directions(){
         return $this->belongsTo('App\StrategicDirections');
     }
 
-    public function activity(){
+    public function activities(){
         return $this->hasMany('App\Activities');
     }
 }

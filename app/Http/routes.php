@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/addHod', 'AdminController@addHOD');
     Route::get('/addAccountant', 'AdminController@getAcc');
     Route::post('/addAccountant', 'AdminController@addAccountant');
-    Route::get('/addDos', 'AdminController@dos');
+    Route::get('/addDos', 'AdminController@dean');
     Route::post('/addDos', 'AdminController@addDos');
 
     /**
@@ -76,15 +76,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addProject', 'HodController@addProject');
     Route::get('/projectReport', 'HodController@projectReport');
     Route::post('/addProject', 'HodController@saveProject');
-//    Route::get('/projectBudgeting/{id}', 'HodController@projectBudget');
-//    Route::post('/projectBudgeting/{id}', 'HodController@saveProjectBudget');
     Route::post('/projectBudget/{id}', 'HodController@saveProjectBudget');
     Route::post('/projectMoneyRequest/{id}', 'HodController@projectMoneyRequest');
 
     Route::get('/viewStaff', 'HodController@staff');
+    Route::get('/departmentBudgetProposal', 'HodController@departmentBudgetProposal');
     Route::get('/viewBudget', 'HodController@viewBudget');
     Route::get('/viewProjectInfo', 'HodController@projectInfo');
     Route::get('/projectExpenditures', 'HodController@projectExpenditures');
+    Route::get('/budgetProposal', 'HodController@budgetProposal');
+    Route::get('/activities', 'HodController@activities');
+    Route::post('/save', [
+        'uses' => 'HodController@saveObjective',
+        'as' =>'/saveObjective'
+    ]);
+    Route::post('/save-activity', [
+        'uses' => 'HodController@saveActivity',
+        'as' =>'/saveActivity'
+    ]);
 
     Route::get('/dltStaff/{id}', ['uses'=> 'HodController@destroy', 'as' => '/dltStaff']);
     Route::get('/projectBudget/{id}', ['uses'=> 'HodController@projectBudget', 'as' => '/projectBudget']);
@@ -101,7 +110,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/budgetIncomes', 'AccountantController@budgetIncomes');
     Route::get('/Info', 'AccountantController@Info');
     Route::get('/viewAccounts', 'AccountantController@viewAccounts');
-//    Route::get('/approvalProjectBudget/{id}', ['uses' =>'AccountantController@approvalProjectBudgetInfo', 'as' => '/approvalProjectBudget']);
     Route::get('/projectIncomes/{id}', ['uses' =>'AccountantController@addProjectIncome', 'as' => '/projectIncomes']);
     Route::get('/projectIncomesDetails/{id}', ['uses' =>'AccountantController@moreIncomeInfo', 'as' => '/projectIncomesDetails']);
     Route::get('/projectBudgetDetails/{id}', ['uses' =>'AccountantController@moreBudgetInfo', 'as' => '/projectBudgetDetails']);
@@ -110,6 +118,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/projectIncomes/{id}', 'AccountantController@addProjectIncomes');
 //    Route::post('/approvalProjectBudget', 'AccountantController@approvalProjectBudgetInfo');
 //    Route::post('/projectBudgetApproval/{id}', 'AccountantController@projectBudgetApproval');
+
+    /**
+     * Routes for the Dean of school
+     */
+    Route::get('/addStrategicDirections', 'DeanController@add_Str_Dir');
+    Route::get('/viewAll', 'DeanController@viewAll');
+    Route::post('/addStrategicDirections', 'DeanController@addStrategicDirections');
+    Route::get('/departmentBudget/{id?}', ['uses' =>'DeanController@departmentBudget', 'as' => '/departmentBudget']);
+    Route::get('/departmentActualBudget', 'DeanController@departmentBudget');
+    Route::get('/departmentBP/{id}', ['uses' =>'DeanController@getDB', 'as' => '/departmentBP']);
+    Route::post('/getDepartmentId', [
+        'uses' => 'DeanController@getDepartmentProposalBudget',
+        'as' =>'departmentId'
+    ]);
+
 
     /**
      * Routes for printing PDF'S

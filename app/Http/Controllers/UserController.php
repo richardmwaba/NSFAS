@@ -36,12 +36,10 @@ class UserController extends Controller
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
             'email' => 'sometimes|email|max:255|unique:users',
-            'nationality' => 'required'
         ]);
 
         $user->fill(['firstName' => $request->firstName, 'lastName' => $request->lastName,
-            'otherName' => $request->otherName, 'nationality' => $request->nationality,
-            'address' => $request->address, 'phoneNumber' => $request->phoneNumber, 'NRC' => $request->nrcNumber,
+            'otherName' => $request->otherName, 'phoneNumber' => $request->phoneNumber,
         ]);
 
         if($request->has('email')){

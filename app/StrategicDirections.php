@@ -15,4 +15,8 @@ class StrategicDirections extends Model
    {
        return $this->hasMany('App\Objectives');
    }
+
+   public function activities(){
+       return $this->hasMany('App\Activities');
+   }
 }

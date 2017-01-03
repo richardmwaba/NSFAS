@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Departments extends Model
 {
 
+    public function activities(){
+        return $this->hasMany('App\Activities');
+    }
     public function objectives(){
         return $this->hasMany('App\Objectives');
     }

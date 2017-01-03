@@ -78,7 +78,7 @@ class AdminController extends Controller
 
         $password = $request['password'];
         $school = $request['school'];
-        $record = school::where('schoolName', $school)->first();
+        $record = School::where('schoolName', $school)->first();
 //        $check = User::find($record->id)->first();
 //        if (!$check) {
             $newEntry = new User();
@@ -111,7 +111,7 @@ class AdminController extends Controller
 
         $password = $request['password'];
         $school = $request['school'];
-        $record = school::where('schoolName', $school)->first();
+        $record = School::where('schoolName', $school)->first();
 //        $check = User::find($record->id)->first();
 //        if (!$check) {
         $newEntry = new User();

@@ -14,7 +14,7 @@ class CreateStrategicDirectionsTable extends Migration
     {
         Schema::create('strategic_directions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('schools_id');
+            $table->integer('school_id');
 
             $table->string('strategy');
             $table->string('academicYear');

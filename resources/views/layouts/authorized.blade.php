@@ -20,9 +20,9 @@
     <link href="{{URL::asset('../frontend/css/sb-admin-2.css')}}" rel="stylesheet">
 
     <!-- Custom CSS -->
-{{--<link href="{{URL::asset('../frontend/css/timeline.css')}}" rel="stylesheet">--}}
+   <link href="{{URL::asset('../frontend/css/timeline.css')}}" rel="stylesheet">
 
-<!-- Custom Fonts -->
+   <!-- Custom Fonts -->
     <link href="{{URL::asset('../frontend/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet"
           type="text/css">
 
@@ -36,7 +36,7 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
-<!--[if lt IE 9] >
+    <!--[if lt IE 9] >
              <script src="http://html5shiv.googlecode/svn/trunk/html5.js"></script>
              <script src="{{URL::asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')}}"></script>
              <script src="{{URL::asset('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')}}"></script>
@@ -122,6 +122,42 @@
                         <!--future menus for other users can be included here-->
 
                         @if(Auth::user()->access_level_id=='DN' ||  Auth::user()->access_level_id == 'AC')
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>Budget<span
+                                            class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{URL::asset('/addStrategicDirections')}}"><i class="fa fa-plus-circle fa-fw"></i>Strategic Directions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-info fa-fw"></i>Budget proposals<span
+                                                    class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="{{URL::asset('/departmentBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{URL::asset('/viewAll')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-third-level -->
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-info fa-fw"></i>Actual Budget<span
+                                                    class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="{{URL::asset('/departmentActualBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{URL::asset('/viewActualBudget')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-third-level -->
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
 
                             <li>
                                 <a href="#"><i class="fa fa-"></i>projects<span
@@ -143,15 +179,9 @@
                                             <li>
                                                 <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-info fa-fw"></i>Income summary</a>
                                             </li>
-                                            {{--<li>--}}
-                                            {{--<a href="#" ><i class="fa fa-plus-circle fa-fw"></i>Add Income</a>--}}
-                                            {{--</li>--}}
                                         </ul>
                                         <!-- /.nav-third-level -->
                                     </li>
-                                    {{--<li>--}}
-                                        {{--<a href="{{URL::asset('/projectReport')}}"><i class="fa fa-gear fa-fw"></i>Generate Report</a>--}}
-                                    {{--</li>--}}
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -266,6 +296,7 @@
                                 <!-- /.nav-second-level -->
                             </li>
 
+
                             <li>
                                 <a href="#"><i class="fa fa-"></i>Budget<span
                                             class="fa arrow"></span></a>
@@ -274,7 +305,20 @@
                                     <a href="{{URL::asset('/viewBudget')}}"><i class="fa fa-info fa-fw"></i>info</a>
                                 </li>
                                 <li>
-                                    <a href="{{URL::asset('/budgetProposal')}}"><i class="fa fa-plus-circle fa-fw"></i>budget proposal</a>
+                                    <a href="#"><i class="fa fa-info fa-fw"></i>Budget proposal<span
+                                                class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="{{URL::asset('/budgetProposal')}}"><i class="fa fa-plus-circle fa-fw"></i>Objectives</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{URL::asset('/activities')}}"><i class="fa fa-plus-circle fa-fw"></i>Activities</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{URL::asset('/departmentBudgetProposal')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
                                 </li>
                                 <li>
                                     <a href="{{URL::asset('/budgetReport')}}"><i class="fa fa-gear fa-fw"></i>Generate Report</a>
@@ -333,12 +377,6 @@
                         <!-- /.nav-second-level -->
                 <!--future menus for other users can be included here-->
                 </ul>
-
-                    <!--future menus for other users can be included here-->
-                <li>
-                    <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-gear fa-fw"></i>imprests</a>
-                </li>
-                </ul>
             </div>
             <!-- /.sidebar-collapse -->
         </div>
@@ -389,6 +427,7 @@
 
     <!-- jQuery -->
     <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{URL::asset('../frontend/js/dist/jquery.validate.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('../frontend/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>

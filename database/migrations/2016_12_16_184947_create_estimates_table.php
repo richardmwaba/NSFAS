@@ -15,9 +15,11 @@ class CreateEstimatesTable extends Migration
         Schema::create('estimates', function (Blueprint $table) {
 
             $table->increments('id');
+            $table->integer('department_id');
             $table->integer('activities_id');
 
             $table->string('itemDescription');
+            $table->float('pricePerUnit')->nullable();
             $table->integer('quantity');
             $table->float('cost');
 

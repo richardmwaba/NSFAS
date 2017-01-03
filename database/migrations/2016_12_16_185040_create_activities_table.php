@@ -16,6 +16,8 @@ class CreateActivitiesTable extends Migration
 
             $table->increments('id');
             $table->integer('objectives_id');
+            $table->integer('department_id');
+            $table->integer('strategic_directions_id')->nullable();
 
             $table->string('activityName');
             $table->string('indicatorOfSuccess');

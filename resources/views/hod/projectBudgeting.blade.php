@@ -94,9 +94,9 @@
             var quantity = document.getElementById('quantity').value;
             var costPerUnit = document.getElementById('costPerUnit').value;
             var amount = parseInt(costPerUnit);
-
+             var  total =0;
             if (quantity && amount ){
-                var total = quantity * amount;
+                total = quantity * amount;
                 document.getElementById('cost').value = total ;
             }
 

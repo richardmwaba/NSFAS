@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estimates extends Model
 {
-    public function activity()
-    {
+    public function activities() {
         return $this->belongsTo('App\Activities');
     }
 }
