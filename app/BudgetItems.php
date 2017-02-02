@@ -21,7 +21,7 @@ class BudgetItems extends Model
         return $this->hasMany('App\Imprests');
     }
 
-    public function activity()
+    public function activities()
     {
         return $this->belongsTo('App\Activities');
     }

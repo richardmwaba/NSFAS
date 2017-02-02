@@ -14,16 +14,17 @@ class Budget extends Model
     }
 
     public function departments(){
-        return $this->hasOne('App\Departments');
+        return $this->belongsTo('App\Departments');
     }
-    public function department()
-    {
+    public function department(){
         return $this->belongsTo('App\Departments', 'depertmentID');
     }
 
-    public function items()
-    {
+    public function accounts(){
+        return $this->belongsTo('App\Accounts');
+    }
 
+    public function items(){
         return $this->hasMany('App\BudgetItems', 'budget_id');
     }
 }

@@ -16,7 +16,7 @@ class CreateIncomesTable extends Migration
 
             $table->increments('id');
 
-            $table->float('amountReceived');
+            $table->integer('amountReceived');
             $table->string('giver');
             $table->string('dateReceived');
             $table->string('receiptNumber');

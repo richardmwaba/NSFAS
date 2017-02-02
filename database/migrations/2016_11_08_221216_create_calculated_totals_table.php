@@ -15,10 +15,13 @@ class CreateCalculatedTotalsTable extends Migration
         Schema::create('calculated_totals', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->float('incomeAcquired')->nullable();
-            $table->float('proposedBudget')->nullable();
+            $table->integer('incomeAcquired')->nullable();
+            $table->integer('proposedBudget')->nullable();
+            $table->integer('expenditureAcquired')->nullable();
 
-            $table->integer('projects_id');
+            $table->integer('projects_id')->nullable();
+            $table->integer('accounts_id')->nullable();
+            $table->integer('budget_id')->nullable();
             $table->timestamps();
         });
     }

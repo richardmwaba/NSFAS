@@ -17,6 +17,8 @@ class CreateBudgetsTable extends Migration
             $table->increments('id');
 
             $table->string('budgetName')->nullable();
+            $table->integer('schoolIncome')->nullable();
+            $table->integer('departmentIncome')->nullable();
             $table->float('netProjectBudget')->nullable();
             $table->float('departmentAmount')->nullable();
             $table->float('unzaAmount')->nullable();

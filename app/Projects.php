@@ -10,7 +10,6 @@ class Projects extends Model
         return $this->hasOne('App\Budget');
     }
 
-
     public function accounts(){
         return $this->hasOne('App\Accounts');
     }

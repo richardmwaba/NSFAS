@@ -37,7 +37,10 @@
                 </div>
 
                 <div class="panel-body">
-
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
+                            </i><span class="text-success">Print</span></a>
+                    </div>
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
                            data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
@@ -65,7 +68,14 @@
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
                                 <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
                                 <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
-                                <td> @if(isset($rcd))  @endif </td>
+                                <td> @if(isset($rcd))
+                                        <div class="btn-group">
+                                            <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
+                                               class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success">
+                                                </i><span class="text-success">More info</span></a>
+                                        </div>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         @endif

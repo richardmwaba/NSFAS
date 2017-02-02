@@ -17,9 +17,11 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->integer('objectives_id');
             $table->integer('department_id');
+            $table->integer('school_id');
             $table->integer('strategic_directions_id')->nullable();
 
             $table->string('activityName');
+            $table->boolean('belongsToActualBudget');
             $table->string('indicatorOfSuccess');
             $table->string('targetOfIndicator');
             $table->string('baselineOfIndicator');

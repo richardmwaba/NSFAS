@@ -34,7 +34,7 @@ class HomeController extends Controller
          if ($access_level_id =='SA'){
              return view('admin.index');
          }elseif ($access_level_id =='AC'){
-             Return Redirect::action('AccountantController@Info');
+             Return Redirect::action('AccountantController@viewAccounts');
          }elseif ($access_level_id == 'HD' || $access_level_id =='OT'){
              $id = $logged_in_user->department_id;
              $record = Departments::find($id);

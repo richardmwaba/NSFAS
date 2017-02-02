@@ -190,9 +190,6 @@
                                 <td> @if(isset($rcd)) {{ $rcd->endingDate }} @endif </td>
                                 <td>
                                     <div class="btn-group">
-                                        {{--<a class="btn btn-default btn-xs" href="{{ route('/dltStaff', ['id' => $rcd->id] ) }}"--}}
-                                        {{--type="button" name="toggle" title="delete"><i class="glyphicon glyphicon glyphicon-trash"></i>--}}
-                                        {{--</a>--}}
                                         <a href="{{ route('/editStaff', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link">Edit</a>
                                     </div>
                                 </td>

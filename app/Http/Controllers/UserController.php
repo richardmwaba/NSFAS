@@ -7,9 +7,32 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+
+
+    public function postSaveAccount(Request $request){
+
+        $user =Auth::user();
+        $file = $request->file('image');
+        $fileName = $user->firstName. '-'.$user->id.'001'.'.jpg';
+        if ($file){
+            Storage::disk('local')->put($fileName, File::get($file));
+        }
+
+        Return Redirect::action('UserController@my_profile');
+
+//        return redirect()->route('my_profile');
+    }
+
+    public  function getUserImage($filename){
+        $file = Storage::disk('local')->get($filename);
+        return new Response($file, 200);
+    }
+
     //
     public function my_profile()
     {

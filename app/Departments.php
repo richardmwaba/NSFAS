@@ -33,7 +33,7 @@ class Departments extends Model
     }
 
     public function budget(){
-        return $this->hasOne('App\Departments');
+        return $this->hasOne('App\Budget');
     }
     public function staff(){
             return $this->hasMany('App\Staff');

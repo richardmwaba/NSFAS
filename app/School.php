@@ -10,7 +10,11 @@ class School extends Model
         return $this->hasMany('App\Departments');
     }
 
-    public function strategicDirections(){
+    public function strategic_directions(){
         return $this->hasMany('App\StrategicDirections');
+    }
+
+    public function accounts(){
+        return $this->hasMany('App\Account');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Accounts;
 use App\Activities;
 use App\Budget;
@@ -32,32 +31,224 @@ class HODController extends Controller
 {
 
     protected $totalCost;
+    protected $msg = " ";
+
+
+    public function departmentBudgetProposalPDF(){
+        $dpName = null;
+
+        $dp = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+        if ($dp){ $dpName = $dp->departmentName; }
+        $records = Activities::where('department_id', $dp->id)->get();
+        $totalBudget = 0;
+        foreach ( $records as $record){
+            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalBudget = $totalBudget +$total;
+        }
+
+        $pdf = PDF::loadView('reports.departmentBudgetProposalPDF',
+            ['records'=>$records,'dpName'=>$dpName,
+                'totalBudget' =>$totalBudget,]);
+
+        return $pdf->stream('reports.departmentBudgetProposalPDF');
+    }
+
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
+    public  function departmentFinalActualBudget(){
+        $dpName = null;
 
-    // PRINTING IN PDF
+        $dp = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+        if ($dp){ $dpName = $dp->departmentName; }
+        $records = Activities::where('department_id', $dp->id)->where('belongsToActualBudget', 1)->get();
+        $totalBudget = 0;
+        foreach ( $records as $record){
+            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalBudget = $totalBudget +$total;
+        }
 
+        $pdf = PDF::loadView('reports.departmentFinalActualBudget',
+            ['records'=>$records,'dpName'=>$dpName,
+            'totalBudget' =>$totalBudget,]);
+
+        return $pdf->stream('reports.departmentFinalActualBudget');
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
     public  function getProjectPdf($id){
+
         $project = Projects::where('id', $id)->first();
         $budget = Budget::where('projects_id',$project->id)->first();
         $budgetItems = BudgetItems::where('budget_id',$budget->id)->get();
 
-
         $account = Accounts::where('projects_id', $project->id)->first();
-        //calculates the account balance
         $totalIn = Income::where('accounts_id', $account->id)->sum('amountReceived');
         $totalEx = Expenditure::where('accounts_id', $account->id)->sum('amountPaid');
-
 
         $pdf = PDF::loadView('reports.projectsPDF', ['project'=>$project,'budgetItems'=>$budgetItems,
             'totalIn' =>$totalIn, 'totalEx'=>$totalEx]);
 
         return $pdf->stream('reports.projectsPDF');
-//        return view('reports.projectsPDF')->with('project',$project);
+    }
+
+    public function redirectBack(){
+        Return Redirect::back();
+    }
+
+    public function viewActualBudgetInfo(){
+
+        $dpName = null;
+        $dp = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+        if ($dp){ $dpName = $dp->departmentName; }
+        $records = Activities::where('department_id', $dp->id)->where('belongsToActualBudget', 1)->get();
+        $totalBudget = 0;
+        foreach ( $records as $record){
+            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalBudget = $totalBudget +$total;
+        }
+
+        if ($records){
+            return view('hod.viewActualBudgetInfo')
+                ->with('records' , $records)
+                ->with('dpName' , $dpName)
+                ->with('totalBudget' , $totalBudget);
+        }
+        return view('hod.viewActualBudgetInfo');
+    }
+
+    public function moreInfo($id){
+       $activity = Activities::where('id', $id)->first();
+        return view('moreActivityInfo')->with('activity', $activity);
+    }
+
+    protected function actualBudgetTotalIncomeCalculator($activities){
+        global  $totalCost;
+
+        foreach ( $activities as $record){
+            $totalIncome = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalCost  += $totalIncome;
+        }
+
+        return $totalCost;
+    }
+
+
+    public function saveAsFinal($id){
+        global  $msg;
+
+        $department = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
+        $budget = Budget::where('budgetName', 'The department of '.$department->departmentName. " Budget")
+            ->where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->first();
+
+        if (isset($budget)){
+            $activity = Activities::where('id', $id)->first();
+            $activity->belongsToActualBudget = 1;
+            $departmentIncome = $budget->departmentIncome;
+            $activities = Activities::where('department_id', $this->getDepartmentIdFromLoggedInUSer())
+                ->where('belongsToActualBudget', 1)->get();
+
+            $sum = $this->actualBudgetTotalIncomeCalculator($activities) + $activity->estimate->cost;
+            if ($sum <= $departmentIncome){
+                $remainingAmount = $departmentIncome - $sum;
+
+                $budget_item = new BudgetItems();
+                $budget_item->budgetLine ='The department of '.$department->departmentName. " Budget";
+                $budget_item->description = $activity->estimate->itemDescription;
+                $budget_item->quantity = $activity->estimate->quantity;
+                $budget_item->pricePerUnit =  $activity->estimate->pricePerUnit;
+                $budget_item->cost =  $activity->estimate->cost;
+
+                $budget_item->activities()->associate($activity);
+                $budget_item->budget()->associate($budget);
+                if ($budget_item->save()){
+                    $activity->save();
+                }else{
+                    $msg = " An Error 421! Please Contact the system administrator!";
+                }
+                $this->actualBudgetTotalIncomeCalculator($activities);
+                $msg = "successfully added!Now you are remaining with K".$remainingAmount.'.00 to add to the final actual budget! 
+                please keep this in mind when saving next activity!';
+            }else{
+                //display an error message
+                $excessAmount =$sum - $departmentIncome;
+                $msg = 'Sorry, you have exceeded by K'.$excessAmount.'.00 
+                !please make sure that your total final actual budget does not exceed K' . $departmentIncome. '.00 as allocated 
+                to your department by your School';
+            }
+
+        }else{
+           $msg = 'The account for your department is not yet created! please info the accountant about this problem';
+        }
+
+        Session::flash('flash_message', $msg);
+        Return Redirect::back();
+    }
+
+    public function modify($id){
+        $activity = Activities::where('id', $id)->first();
+        $estimate = Estimates::where('activities_id', $activity->id)->first();
+        return view('hod.modifyBudget')->with('estimate', $estimate);
+    }
+
+    public function modifySave(Request $request, $id){
+
+        $this->validate($request, [
+           'itemDescription' => 'required',
+           'quantity' => 'required',
+           'pricePerUnit' => 'required',
+           'cost' => 'required'
+        ]);
+
+        $estimate = Estimates::where('id', $id)->first();
+        $estimate->itemDescription = $request['itemDescription'];
+        $estimate->quantity = $request['quantity'];
+        $estimate->pricePerUnit = $request['pricePerUnit'];
+        $estimate->cost = $request['cost'];
+        $estimate->update();
+
+        Return Redirect::action('HodController@actualBudget');
+    }
+
+    public function actualBudget(){
+
+        $department = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
+        $budget = Budget::where('budgetName', 'The department of '.$department->departmentName. " Budget")
+            ->where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->first();
+
+        $departmentIncome = $budget->departmentIncome;
+        $activities = Activities::where('department_id', $this->getDepartmentIdFromLoggedInUSer())
+            ->where('belongsToActualBudget', 1)->get();
+
+        $sum = $this->actualBudgetTotalIncomeCalculator($activities);
+        if ($sum <= $departmentIncome){
+            $totalBudget = $departmentIncome - $sum;
+        }else{
+            $totalBudget = $sum - $departmentIncome;
+        }
+
+        $dpName = null;
+        $dp = Departments::find($this->getDepartmentIdFromLoggedInUSer());
+        if ($dp){ $dpName = $dp->departmentName; }
+
+        $records = Activities::where('department_id', $dp->id)->where('belongsToActualBudget', 0)->get();
+//        $totalBudget = 0;
+//        foreach ( $records as $record){
+//            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+//            $totalBudget = $totalBudget +$total;
+//        }
+        if ($records){
+            return view('hod.actualBudget')
+                ->with('records' , $records)
+                ->with('dpName' , $dpName)
+                ->with('departmentIncome' , $departmentIncome)
+                ->with('totalBudget' , $totalBudget);
+        }
+        return view('hod.actualBudget');
     }
 
     public function budgetProposal(){
@@ -114,6 +305,7 @@ class HODController extends Controller
 
         $active = new Activities();
         $active->activityName = $request['activity_name'];
+        $active->school_id = $department->schools_id;
         $active->indicatorOfSuccess = $request['success_indicator'];
         $active->targetOfIndicator = $request['target_indicator'];
         $active->baselineOfIndicator = $request['baseline_indicator'];
@@ -131,8 +323,6 @@ class HODController extends Controller
         $active->save();
 
         $activity = Activities::where('id', $active->id)->first();
-        $record = new BudgetItems();
-
 
         $estimates = new Estimates();
         $estimates->itemDescription =  $request['item_description'];
@@ -411,6 +601,7 @@ class HODController extends Controller
     }
 
     public function projectTotalIncomeCalculator($projects_id){
+
         $project = Projects::where('id', $projects_id)->first();
         $account = Accounts::where('projects_id', $projects_id)->first();
         $totalAmountReceived = Income::where('accounts_id',$account->id)->sum('amountReceived');
@@ -490,8 +681,11 @@ class HODController extends Controller
 
 
 
-    public function viewBudget(){
-        return view('hod.budgetInfo');
+    public function viewAccountInfo(){
+        $departments = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
+        $account = Accounts::where('accountName', 'The department of '.$departments->departmentName. " main account")->first();
+        $budget = Budget::where('accounts_id', $account->id)->first();
+        return view('hod.viewAccountInfo')->with('account', $account)->with('budget', $budget)->with('departments', $departments);
     }
 
     public function getDepartmentIdFromLoggedInUSer()

@@ -16,7 +16,7 @@ class CreateExpendituresTable extends Migration
 
             $table->increments('id');
 
-            $table->float('amountPaid');
+            $table->integer('amountPaid');
             $table->string('budgetLine')->nullable();
             $table->string('beneficiary');
             $table->string('purpose');

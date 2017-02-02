@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
 
             $table->integer('projects_id')->nullable();
             $table->integer('budget_id')->nullable();
+            $table->integer('schools_id')->nullable();
             $table->timestamps();
         });
     }

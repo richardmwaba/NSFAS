@@ -9,6 +9,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Accounts Details</div>
                 <div class="panel-body">
+
+                    <div class="panel-body">
+                        <div class="btn-group">
+                            <a href="{{ route('viewSchoolAccounts') }}" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
+                                </i><span class="text-success">Print</span></a>
+                        </div>
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
                            data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
@@ -16,8 +22,7 @@
                         <thead>
                         <tr>
                             <th data-field="accountsName" data-sortable="true">Account Name</th>
-                            <th data-field="department" data-sortable="true">Department</th>
-                            <th data-field="budgetLine" data-sortable="true">Budget Line</th>
+                            {{--<th data-field="budgetLine" data-sortable="true">Budget Line</th>--}}
                             <th data-field="income" data-sortable="true">Total Income</th>
                             <th data-field="expenditures" data-sortable="true">Expenditures</th>
                             <th data-field="balance" data-sortable="true">Balance</th>
@@ -26,11 +31,12 @@
                         @foreach( $accounts as $account)
                             <tr>
                                 <td> @if(isset($account)){{ $account->accountName }} @endif </td>
-                                <td> @if(isset($account)) @endif </td>
-                                <td> @if(isset($account)) @endif </td>
-                                <td> @if(isset($account)) @endif </td>
-                                <td> @if(isset($account)) @endif </td>
-                                <td> @if(isset($account)) @endif </td>
+                                {{--<td> @if(isset($account)){{ $account->budget->budgetName}} @endif </td>--}}
+                                <td> @if(isset($account)) K {{ $account->calculatedTotal->incomeAcquired }}.00  @endif </td>
+                                <td> @if(isset($account)) K {{ $account->calculatedTotal->expenditureAcquired }}.00  @endif </td>
+                                <td> @if(isset($account))
+                                        K {{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}.00
+                                    @endif </td>
                             </tr>
                         @endforeach
                     </table>

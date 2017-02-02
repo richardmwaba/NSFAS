@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+
 use Auth;
-use Symfony\Component\HttpFoundation\Tests\AcceptHeaderTest;
+
 use Validator;
 use Mail;
 use PDF;
@@ -26,27 +26,59 @@ class DeanController extends Controller
 
     protected $totalBudget = 0;
 
+    protected function costCalculator($records){
+        global $totalBudget;
+        foreach ( $records as $record){
+            $total = Estimates::where('activities_id', $record->id)->sum('cost');
+            $totalBudget += $total;
+        }
+    }
+
+    public function proposedBudgetReport(){
+        global $totalBudget;
+        $schoolName = null;
+
+        $school = School::find($this->getLoginDeanSchool());
+        if ($school){ $schoolName= $school->schoolName; }
+        $records = Activities::where('school_id', $school->id)->get();
+        $this->costCalculator($records);
+
+        $pdf = PDF::loadView('reports.proposedBudgetReport',
+            ['records'=>$records,'schoolName'=>$schoolName,
+                'totalBudget' =>$totalBudget,]);
+
+        return $pdf->stream('reports.proposedBudgetReport');
+    }
+
+    public function actualBudgetReport(){
+        global $totalBudget;
+        $schoolName = null;
+
+        $school = School::find($this->getLoginDeanSchool());
+        if ($school){ $schoolName= $school->schoolName; }
+        $records = Activities::where('school_id', $school->id)->where('belongsToActualBudget', 1)->get();
+        $this->costCalculator($records);
+
+        $pdf = PDF::loadView('reports.schoolActualBudget',
+            ['records'=>$records,'schoolName'=>$schoolName,
+                'totalBudget' =>$totalBudget,]);
+
+        return $pdf->stream('reports.schoolActualBudget');
+    }
+
      public  function  viewAll(){
          global $totalBudget;
-         $records = Activities::all();
-         foreach ( $records as $record){
-             $total = Estimates::where('activities_id', $record->id)->sum('cost');
-             $totalBudget = $totalBudget +$total;
-         }
+         $records = Activities::where('school_id', $this->getLoginDeanSchool())->get();
+         $this->costCalculator($records);
          return view('dean.viewBudgetInfo')->with('records', $records)->with('totalBudget', $totalBudget);
      }
 
-    public function getDepartmentProposalBudget(){
-        $departments = Departments::all();
-
-        $returnHTML = view('dean.dBProposal')->with('departments', $departments);
-        return response()->json( array('success' => true, 'html'=>$returnHTML) );
-//        return response()->json(['data'=> $departmentName ], 200);
-    }
-
-    public function getDB(Request $request, $id){
-
-    }
+     public function viewActualBudget(){
+         global $totalBudget;
+         $records = Activities::where('belongsToActualBudget', 1)->where('school_id', $this->getLoginDeanSchool())->get();
+         $this->costCalculator($records);
+         return view('dean.viewActualBudget')->with('records', $records)->with('totalBudget', $totalBudget);
+     }
 
     /**
      * @return mixed school id for the login dean
@@ -54,6 +86,34 @@ class DeanController extends Controller
     public  function getLoginDeanSchool(){
         $dean = Auth::user();
         return $dean->schools_id;
+    }
+
+    public function getDepartmentIdFromLoggedInUSer()
+    {
+        $user = Auth::user();
+        $id = $user->departments_id;
+        return $id;
+    }
+
+    public function departmentActualBudget($id=null){
+
+        $dpName = null;
+        $departments = Departments::where('schools_id', $this->getLoginDeanSchool())->get();
+        $dp = Departments::find($id);
+        if ($dp){ $dpName = $dp->departmentName; }
+        $records = Activities::where('department_id', $id)
+            ->where('belongsToActualBudget', 1)->get();
+        global $totalBudget;
+        $this->costCalculator($records);
+
+        if ($records){
+            return view('dean.departmentsActualBudget')
+                ->with('departments',$departments)
+                ->with('records' , $records)
+                ->with('dpName' , $dpName)
+                ->with('totalBudget' , $totalBudget);
+        }
+        return view('dean.departmentsActualBudget')->with('departments',$departments);
     }
 
     public function departmentBudget($id = null){
@@ -64,10 +124,7 @@ class DeanController extends Controller
         if ($dp){ $dpName = $dp->departmentName; }
         $records = Activities::where('department_id', $id)->get();
         global $totalBudget;
-        foreach ( $records as $record){
-            $total = Estimates::where('activities_id', $record->id)->sum('cost');
-            $totalBudget = $totalBudget +$total;
-        }
+        $this->costCalculator($records);
 
         if ($records and $dp){
             return view('dean.dBProposal')

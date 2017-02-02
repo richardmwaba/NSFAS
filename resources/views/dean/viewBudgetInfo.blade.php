@@ -8,7 +8,7 @@
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading text-info"> Budget Proposals From All Units and Departments for The School of
+                <div class="panel-heading text-info">Budget Proposals From All Units and Departments for The School of
                     <?php
                     use App\School;
                     use Illuminate\Support\Facades\Auth;
@@ -19,6 +19,10 @@
                 </div>
 
                 <div class="panel-body">
+                    <div class="btn-group">
+                        <a href="{{ route('proposedBudgetReport') }}" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
+                            </i><span class="text-success">Print</span></a>
+                    </div>
                     <div class="form-group">
                         <label for="forTheTotalAmount">Total amount of the proposed budget from all units/Departments:
                             <span class="text-primary">  k {{ $totalBudget }}.00</span></label>
@@ -30,7 +34,7 @@
                         <thead>
                         <tr>
                             <th data-field="departmentName" data-sortable="true">Department</th>
-                            <th data-field="departmentName" data-sortable="true">Strategic Directions</th>
+                            <th data-field="strategy" data-sortable="true">Strategic Directions</th>
                             <th data-field="projectCoordinator" data-sortable="true">Objective</th>
                             <th data-field="startDate" data-sortable="true">Activity Name</th>
                             <th data-field="endDate" data-sortable="true">Item Description</th>
@@ -42,7 +46,7 @@
                         </thead>
                         @foreach( $records as $rcd)
                             <tr>
-                                <td> @if(isset($rcd)) {{ $rcd->strategic_directions->strategy  }} @endif </td>
+                                <td> @if(isset($rcd)) {{ $rcd->department->departmentName  }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->strategic_directions->strategy  }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->objectives->objective  }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
@@ -50,7 +54,14 @@
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
                                 <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
                                 <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
-                                <td> @if(isset($rcd))  @endif </td>
+                                <td> @if(isset($rcd))
+                                        <div class="btn-group">
+                                            <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
+                                               class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success">
+                                                </i><span class="text-success">More info</span></a>
+                                        </div>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </table>
