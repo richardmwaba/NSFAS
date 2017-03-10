@@ -2,68 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2606110e-a50b-4eef-ae55-50f52c4f5fd8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/11.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-01.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-02.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-03.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-04.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-05.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-06.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-07.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-08.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-09.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-10.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-11.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/frontend/img/HDR.-12jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/acc/addAccIncome.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/acc/addAccountIncome.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/hod/actualBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/hod/modifyBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/hod/viewActualBudgetInfo.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/moreActivityInfo.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/departmentBudgetProposalPDF.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/departmentFinalActualBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/proposedBudgetReport.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/schoolActualBudget.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/hod/budgetInfo.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Account.php" afterPath="$PROJECT_DIR$/app/Account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Accounts.php" afterPath="$PROJECT_DIR$/app/Accounts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Budget.php" afterPath="$PROJECT_DIR$/app/Budget.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/BudgetItems.php" afterPath="$PROJECT_DIR$/app/BudgetItems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/CalculatedTotal.php" afterPath="$PROJECT_DIR$/app/CalculatedTotal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Departments.php" afterPath="$PROJECT_DIR$/app/Departments.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountantController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AccountantController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/DeanController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/DeanController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Income.php" afterPath="$PROJECT_DIR$/app/Income.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Projects.php" afterPath="$PROJECT_DIR$/app/Projects.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/School.php" afterPath="$PROJECT_DIR$/app/School.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_10_18_202252_create_budgets_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_10_18_202252_create_budgets_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_10_18_202521_create_accounts_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_10_18_202521_create_accounts_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_10_18_202643_create_incomes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_10_18_202643_create_incomes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_10_18_202908_create_expenditures_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_10_18_202908_create_expenditures_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_11_08_221216_create_calculated_totals_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_11_08_221216_create_calculated_totals_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_12_16_185040_create_activities_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_12_16_185040_create_activities_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/css/index.css" afterPath="$PROJECT_DIR$/public/frontend/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/authorized.js" afterPath="$PROJECT_DIR$/public/frontend/js/authorized.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/activities.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/activities.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/profile/my_profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/profile/my_profile.blade.php" />
     </list>
     <ignored path="FAS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,49 +43,51 @@
       <file leaf-file-name="HodController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="50" column="34" selection-start-line="48" selection-start-column="7" selection-end-line="52" selection-end-column="67" />
+            <state relative-caret-position="5724">
+              <caret line="318" column="0" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2772">
-              <caret line="163" column="71" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountantController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountantController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activities.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activities.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/hod/activities.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="74" column="47" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="62" />
+            <state relative-caret-position="2394">
+              <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="160">
+              <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorized.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/authorized.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8190">
+              <caret line="455" column="0" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorized.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/frontend/js/authorized.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2736">
+              <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,9 +109,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/dean/add_Str_Dir.blade.php" />
         <option value="$PROJECT_DIR$/app/Activities.php" />
-        <option value="$PROJECT_DIR$/public/frontend/js/authorized.js" />
         <option value="$PROJECT_DIR$/database/migrations/2016_10_18_202521_create_accounts_table.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
@@ -210,12 +152,14 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/DeanController.php" />
         <option value="$PROJECT_DIR$/resources/views/acc/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" />
         <option value="$PROJECT_DIR$/public/frontend/css/index.css" />
         <option value="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AccountantController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/hod/activities.blade.php" />
+        <option value="$PROJECT_DIR$/public/frontend/js/authorized.js" />
       </list>
     </option>
   </component>
@@ -261,6 +205,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,10 +257,30 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nfas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nfas" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -426,19 +392,23 @@
       <workItem from="1485708525096" duration="3480000" />
       <workItem from="1485774782516" duration="1368000" />
       <workItem from="1486018678294" duration="415000" />
-      <workItem from="1486021771098" duration="363000" />
+      <workItem from="1486021771098" duration="4351000" />
+      <workItem from="1486117120256" duration="1199000" />
+      <workItem from="1487065831863" duration="1222000" />
+      <workItem from="1487243439881" duration="963000" />
+      <workItem from="1487854046890" duration="786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="705302000" />
+    <option name="totallyTimeSpent" value="713460000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="21" width="1366" height="747" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1096823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -483,13 +453,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Budget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/BudgetItems.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -757,27 +720,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="34" selection-start-line="48" selection-start-column="7" selection-end-line="52" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2772">
-          <caret line="163" column="71" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/schoolActualBudget.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1602">
           <caret line="89" column="73" selection-start-line="0" selection-start-column="0" selection-end-line="104" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,23 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="96" column="7" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountantController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/authorized.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="436" column="22" selection-start-line="436" selection-start-column="22" selection-end-line="436" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,10 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
-          <folding>
-            <marker date="1484068145327" expanded="true" signature="4152:4278" ph="..." />
-            <marker date="1484068145327" expanded="true" signature="4169:4277" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -827,22 +752,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="37" column="71" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="163" column="71" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/authorized.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8190">
+          <caret line="455" column="0" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5724">
+          <caret line="318" column="0" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/frontend/js/authorized.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2736">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/hod/activities.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2394">
+          <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/activities.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="74" column="47" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="62" />
+        <state relative-caret-position="160">
+          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding />
         </state>
       </provider>

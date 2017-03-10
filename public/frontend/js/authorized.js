@@ -96,6 +96,36 @@ $('.add-activity').on('click', function (event) {
 $('#save-activity').on('click', function (event) {
     event.preventDefault();
 
+        // // It has the name attribute "registration"
+        // $("#addActivities").validate({
+        //     // Specify validation rules
+        //     rules: {
+        //         // The key name on the left side is the name attribute
+        //         // of an input field. Validation rules are defined
+        //         // on the right side
+        //         activityName: "required",
+        //         successIndicator: "required",
+        //         targetOfIndicator: "required",
+        //         baselineOfIndicator: "required",
+        //         staffResponsible: "required",
+        //         percentageAchieved: "required",
+        //         sourceOfFunding: "required",
+        //         ItemDescription: "required",
+        //         quantity: "required",
+        //         pricePerUnit: "required",
+        //         cost: "required",
+        //     },
+        //     // Specify validation error messages
+        //     messages: {
+        //         activityName: "Please enter your activity name",
+        //         successIndicator: "Please enter your  success indicator",
+        //     },
+        //     // Make sure the form is submitted to the destination defined
+        //     // in the "action" attribute of the form when valid
+        //     // submitHandler: function(form) {
+        //     //     form.submit();
+        //     // }
+        // });
     activity_name       = $('#activityName').val();
     success_indicator   = $('#successIndicator').val();
     target_indicator    = $('#targetOfIndicator').val();
@@ -111,15 +141,6 @@ $('#save-activity').on('click', function (event) {
     if ($('#secondQuarter').is(':checked')) { second_quarter = 1; }
     if ($('#thirdQuarter').is(':checked')) { third_quarter = 1; }
     if ($('#fourthQuarter').is(':checked')) { fourth_quarter = 1; }
-
-    // // first_quarter       = $('#firstQuarter').val();
-    // second_quarter      = $('#secondQuarter').val();
-    // third_quarter       = $('#thirdQuarter').val();
-    // fourth_quarter      = $('#fourthQuarter').val();
-
-    // console.log(strategicId, objectiveId, activity_name, success_indicator,
-    // target_indicator,baseline_indicator,staff_responsible,percentage_achieved,source_funding,
-    // item_description,quantity_value,price_per_unit,total_cost);
 
     $.ajax({
         method: "POST",

@@ -456,7 +456,7 @@
 
     <!-- jQuery -->
     <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{URL::asset('../frontend/js/dist/jquery.validate.min.js')}}"></script>
+    <script src="{{URL::asset('../frontend/js/dist/jquery.validate.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('../frontend/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>

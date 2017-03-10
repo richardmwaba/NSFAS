@@ -72,7 +72,7 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-md-offset-1 col-xs-10 " >
-                                <form onkeyup="autoUpdate();"  role="form"  method="POST" action="#">{!! csrf_field() !!}
+                                <form id="addActivities"  onkeyup="autoUpdate();"  role="form"  method="POST" action="#">{!! csrf_field() !!}
                                     <div class="form-group">
                                         <label for="strategy" >Strategic Directions </label>
                                         <input id="strategy"  readonly type="text" class="form-control" name="strategy" value="">
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="activityName" >Activity</label>
-                                        <textarea class="form-control" name="activityName" id="activityName" rows="3"></textarea>
+                                        <textarea class="form-control" name="activityName" id="activityName" rows="3" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="successIndicator" >Indicator of Success</label>
