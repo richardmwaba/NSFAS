@@ -70,7 +70,7 @@
                             <th data-field="academicYear" data-sortable="true">Academic Year</th>
                             <th data-field="strategicDirectionNumber" data-sortable="true">Strategic Direction No</th>
                             <th data-field="strategicDirectionDescription" data-sortable="true">Strategic Direction Description</th>
-                            <th data-field="deleteEdit" data-sortable="true">Delete | Edit</th>
+                            <th data-field="deleteEdit" data-sortable="true"> Edit</th>
                         </tr>
                         </thead>
                         @foreach($str_dir as $rcd)
@@ -80,9 +80,9 @@
                                 <td> @if(isset($rcd)) {{ $rcd->strategy }} @endif </td>
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
-                                            <a class="btn btn-default btn-xs" href="{{ route('/dltStaff', ['id' => $rcd->id] ) }}"
-                                               type="button" name="toggle" title="delete"><i class="glyphicon glyphicon glyphicon-trash"></i>
-                                            </a>
+                                            {{--<a class="btn btn-default btn-xs" href="{{ route('/dltStaff', ['id' => $rcd->id] ) }}"--}}
+                                               {{--type="button" name="toggle" title="delete"><i class="glyphicon glyphicon glyphicon-trash"></i>--}}
+                                            {{--</a>--}}
 
                                             <a href="{{ route('/editStaff', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link">edit</a>
                                         </div>

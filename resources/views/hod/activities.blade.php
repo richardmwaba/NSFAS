@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="activityName" >Activity</label>
-                                        <textarea class="form-control" name="activityName" id="activityName" rows="3" required></textarea>
+                                        <textarea class="form-control" name="activityName" id="activityName" rows="3" required="true"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="successIndicator" >Indicator of Success</label>

@@ -507,6 +507,18 @@ class HODController extends Controller
         }
     }
 
+    public function destroy($id){
+        $item = StrategicDirections::find($id);
+        $item->delete();
+        return back();
+    }
+
+    public function edit($id){
+        $record = StrategicDirections::find($id);
+
+        return view('dean.editStrategy')->with('record', $record);
+    }
+
     public function addProject()
     {
 

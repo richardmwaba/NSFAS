@@ -173,7 +173,7 @@ class DeanController extends Controller
         $str_dir->academicYear = $request['academicYear'];
         $str_dir->strategy = $request['strategy'];
 
-        $school->strategicDirections()->save($str_dir);
+        $school->strategic_directions()->save($str_dir);
 
         Session::flash('flash_message', 'Strategy successfully added to the system!');
         Return Redirect::action('DeanController@add_Str_Dir');
