@@ -140,7 +140,7 @@ class ImprestController extends Controller
 
                 //create a record
                 Imprest::create(['applicantId' => Auth::user()->manNumber,
-                    'departments_id' => $request->department,
+                    'departmentId' => $request->department,
                     'commentFromHead' => $request->commentFromHead,
                     'amountRequested' => $request->amountRequested,
                     'purpose' => $request->purpose,
@@ -443,6 +443,7 @@ class ImprestController extends Controller
     public function recommendation(Request $request)
     {
 
+         $msg = null;
         //send the from to bursar fro recommendation and set a state that will tell that
         // this imprest is now waiting for recommendation from the bursar
         $imprest = Imprest::findOrFAil($request->id);
@@ -461,9 +462,12 @@ class ImprestController extends Controller
                 });
 
             }
+            $msg = "Email Sent to Bursar!";
+        }else {
+            $msg = "Email not sent. You do not internet access!";
         }
 
-        session()->flash('flash_message', 'sent!');
+        session()->flash('flash_message', $msg);
 
         return Redirect::action('ImprestController@showAll');
     }

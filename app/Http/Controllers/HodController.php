@@ -269,12 +269,13 @@ class HODController extends Controller
             $totalBudget = $totalBudget +$total;
         }
 
-        if ($records and $dp){
+        if(isset($records) and $dp){
             return view('hod.dBProposal')
                 ->with('records' , $records)
                 ->with('dpName' , $dpName)
                 ->with('totalBudget' , $totalBudget);
         }
+
         return view('hod.dBProposal');
     }
 

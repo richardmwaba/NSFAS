@@ -41,9 +41,9 @@ class HomeController extends Controller
              if (isset($record)){
 //                 $record = $record->departmentName;
 //                 return view('hod.index', ['record',$record]);
-                 Return Redirect::action('HodController@projectInfo');
+                 Return Redirect::action('HodController@viewAccountInfo');
              }else{
-                 Return Redirect::action('HodController@projectInfo');
+                 Return Redirect::action('HodController@viewAccountInfo');
              }
 
          }elseif ($access_level_id == 'DN'){

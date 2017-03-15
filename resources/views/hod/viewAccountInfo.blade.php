@@ -76,7 +76,9 @@
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="amount">
                                     @if(isset($account))
-                                    K {{ $account->calculatedTotal->incomeAcquired }}.00
+                                        @if(isset($account->calculatedTotal->incomeAcquired))
+                                             K {{ $account->calculatedTotal->incomeAcquired }}.00
+                                        @endif
                                     @endif
                                 </label>
                             </div>
@@ -86,7 +88,9 @@
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="amount">
                                     @if(isset($account))
-                                    K {{ $account->calculatedTotal->expenditureAcquired }}.00
+                                        @if(isset($account->calculatedTotal->expenditureAcquired))
+                                            K {{ $account->calculatedTotal->expenditureAcquired }}.00
+                                        @endif
                                     @endif
                                 </label>
                             </div>
@@ -96,7 +100,9 @@
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="amount">
                                     @if(isset($account))
-                                    K {{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}.00
+                                        @if(isset($account->calculatedTotal->expenditureAcquired))
+                                            K {{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}.00
+                                        @endif
                                     @endif
                                 </label>
                             </div>

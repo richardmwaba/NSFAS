@@ -420,7 +420,7 @@
                    <div class="pull-right">@section('departmentName')@yield('department')@show</div>
                     @section('page_title')@yield('heading')@show
                     @if(Session::has('flash_message'))
-                        <div class="alert alert-danger {{session()->has('flash_message_important')? session('flash_message') : ''}}">
+                        <div class="alert alert-success {{session()->has('flash_message_important')? session('flash_message') : ''}}">
                             {{Session::get('flash_message')}}
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             @if(session()->has('flash_message_important'))
