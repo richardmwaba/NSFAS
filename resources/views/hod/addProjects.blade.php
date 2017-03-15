@@ -173,7 +173,7 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
+                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="ProjectName" data-sortable="true">Project Name</th>
                             <th data-field="projectCoordinator" data-sortable="true">Project Coordinator</th>
                             <th data-field="startDate" data-sortable="true">Start Date</th>
@@ -183,7 +183,7 @@
                         </thead>
                         @foreach( $projects as $rcd)
                             <tr>
-                                <td data-field="state" data-checkbox="true"></td>
+                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($rcd)) {{ $rcd->projectName }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->projectCoordinator }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->startDate }} @endif </td>

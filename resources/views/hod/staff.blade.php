@@ -17,7 +17,7 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
+                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="manNumber" data-sortable="true">Man Number</th>
                             <th data-field="name" data-sortable="true">Name</th>
                             <th data-field="phoneNumber" data-sortable="true">phoneNumber</th>
@@ -28,7 +28,7 @@
                         @foreach( $staff as $st)
                         {{--@for($i = 0; $i< count($staff); $i++)--}}
                             <tr>
-                                <td data-field="state" data-checkbox="true"></td>
+                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td>
                                     @if(isset($st))
                                         {{ $st->manNumber }}

@@ -16,7 +16,7 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
+                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="ProjectName" data-sortable="true">Project Name</th>
                             <th data-field="projectCoordinator" data-sortable="true">Coordinator</th>
                             @if(Auth::user()->access_level_id != 'OT')
@@ -34,7 +34,7 @@
                         @foreach( $projects as $project)
                             {{--@if($project->budget->approved == 1)--}}
                             <tr>
-                                <td data-field="state" data-checkbox="true"></td>
+                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($project)) {{ $project->projectName }} @endif </td>
                                 <td> @if(isset($project)) {{ $project->projectCoordinator }} @endif </td>
                                 @if(Auth::user()->access_level_id != 'OT')

@@ -115,7 +115,7 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
+                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="ProjectName" data-sortable="true">Budget Line</th>
                             <th data-field="projectCoordinator" data-sortable="true">Description</th>
                             <th data-field="quantity" data-sortable="true">Quantity</th>
@@ -126,7 +126,7 @@
                         </thead>
                         @foreach( $items as $item)
                             <tr>
-                                <td data-field="state" data-checkbox="true"></td>
+                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($item)) {{ $item->budgetLine }} @endif </td>
                                 <td> @if(isset($item)) {{ $item->description }} @endif </td>
                                 <td> @if(isset($item)) {{ $item->quantity }} @endif </td>

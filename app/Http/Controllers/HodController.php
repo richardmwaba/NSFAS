@@ -648,7 +648,7 @@ class HODController extends Controller
     }
 
     public function projectBudgetApproval($id){
-        
+
         $record = Budget::where('projects_id', $id)->first();
         $record->approved = 1;
         $record->save();
