@@ -703,7 +703,6 @@ class HODController extends Controller
         }else{
             return view('hod.viewAccountInfo')->with('departments', $departments);
         }
-
     }
 
     public function getDepartmentIdFromLoggedInUSer()

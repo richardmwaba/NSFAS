@@ -35,23 +35,22 @@ class HomeController extends Controller
              return view('admin.index');
          }elseif ($access_level_id =='AC'){
              Return Redirect::action('AccountantController@viewAccounts');
-         }elseif ($access_level_id == 'HD' || $access_level_id =='OT'){
+         }elseif ($access_level_id == 'HD'){
              $id = $logged_in_user->department_id;
              $record = Departments::find($id);
              if (isset($record)){
-//                 $record = $record->departmentName;
-//                 return view('hod.index', ['record',$record]);
                  Return Redirect::action('HodController@viewAccountInfo');
              }else{
                  Return Redirect::action('HodController@viewAccountInfo');
              }
 
+         }elseif ( $access_level_id =='OT'){
+             Return Redirect::action('ImprestController@showAll');
+
          }elseif ($access_level_id == 'DN'){
-             Return Redirect::action('AccountantController@Info');
+             Return Redirect::action('AccountantController@viewAccounts');
          }elseif ($access_level_id =='HU'){
              return view('hou.index');
-//         }elseif ($access_level_id =='OT'){
-//             return view('staff.index');
          }else {
              return view('home');
 
