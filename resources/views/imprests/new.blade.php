@@ -239,7 +239,6 @@
                                                                 placeholder="{{$item->item_id}}">{{$item->description}}</option>
                                                     @endforeach
                                                 @endforeach
-                                                <option value="{{$item->id}}"
                                                         >Other</option>
                                             </select>
 

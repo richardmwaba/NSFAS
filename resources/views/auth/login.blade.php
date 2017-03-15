@@ -15,7 +15,7 @@
                            <label for="email" class="control-label" style="color:#fff; ">MAN NUMBER</label>
                            <input  placeholder="Enter your man number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
                            @if ($errors->has('manNumber'))
-                               <span class="help-block">
+                               <span class="help-block" style="color:#f0f0f0">
                                     <strong>{{ $errors->first('manNumber') }}</strong>
                                 </span>
                            @endif
