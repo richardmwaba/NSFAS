@@ -647,8 +647,10 @@ class HODController extends Controller
         return $totalBudget;
     }
 
-    public function projectBudgetApprove(){
+    public function projectBudgetApprove($id){
 
+        $project = Projects::where('id', $id)->first();
+        return view('hod.projectBudgetApproval')->with('project', $project);
     }
 
     public function saveProjectBudget(Request $request, $id)
