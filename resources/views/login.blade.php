@@ -16,7 +16,7 @@
                            <label for="email" class="control-label" style="color:#fff; ">MAN NUMBER</label>
                            <input  placeholder="Enter your man number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
                            @if ($errors->has('manNumber'))
-                               <span class="help-block" style="color: #cc0000">
+                               <span class="help-block" style="color: #f0f0f0">
                                     <strong>{{ $errors->first('manNumber') }}</strong>
                                 </span>
                            @endif
@@ -26,7 +26,7 @@
                            <label for="password" class="control-label" style="color: #fff;">PASSWORD</label>
                            <input id="password" type="password" class="form-control" name="password" placeholder="password">
                            @if ($errors->has('password'))
-                               <span class="help-block" style="color: #cc0000">
+                               <span class="help-block" style="color: #f0f0f0">
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>
                            @endif
