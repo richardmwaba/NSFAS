@@ -43,7 +43,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name"> Net Budget: </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    K{{ $project->budget->netProjectBudget }}.00
+                                    K{{ $project->budget->netProjectBudget }}
                                 </label>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Department Percentage (%): </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    {{--{{$dPercent}}--}}
+                                    {{$dPercent}}
                                 </label>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Department Amount: </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    K{{ $project->budget->departmentAmount }}.00
+                                    K{{ $project->budget->departmentAmount }}
                                 </label>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Unza Percentage (%): </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    {{--{{$uPercent}}--}}
+                                    {{$uPercent}}
                                 </label>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">unza Amount: </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    K{{ $project->budget->unzaAmount }}.00
+                                    K{{ $project->budget->unzaAmount }}
                                 </label>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Actual Budget: </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    K{{ $project->budget->actualProjectBudget }}.00
+                                    K{{ $project->budget->actualProjectBudget }}
                                 </label>
                             </div>
                         </div>

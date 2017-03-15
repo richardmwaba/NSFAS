@@ -650,7 +650,11 @@ class HODController extends Controller
     public function projectBudgetApprove($id){
 
         $project = Projects::where('id', $id)->first();
-        return view('hod.projectBudgetApproval')->with('project', $project);
+
+        $dPercent = ($project->budget->departmentAmount / $project->budget->netProjectBudget) * 100 ;
+        $uPercent = ($project->budget->unzaAmount / $project->budget->netProjectBudget) * 100;
+
+        return view('hod.projectBudgetApproval')->with('project', $project)->with('dPercent', $dPercent)->with('uPercent',$uPercent);
     }
 
     public function saveProjectBudget(Request $request, $id)
