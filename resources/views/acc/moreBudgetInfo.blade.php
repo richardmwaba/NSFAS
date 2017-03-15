@@ -18,7 +18,7 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
+                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="budgetLine" data-sortable="true">Budget Line</th>
                             <th data-field="description" data-sortable="true">Description</th>
                             <th data-field="quantity" data-sortable="true">Quantity</th>
@@ -28,12 +28,12 @@
                         </thead>
                         @foreach( $budget as $rcd)
                             <tr>
-                                <td data-field="state" data-checkbox="true"></td>
+                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($rcd)) {{ $rcd->budgetLine }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->description }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->quantity }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->pricePerUnit }} @endif </td>
-                                <td> @if(isset($rcd)) k{{ $rcd->cost }}.00 @endif </td>
+                                <td> @if(isset($rcd)) k{{ $rcd->cost }} @endif </td>
                             </tr>
                         @endforeach
                     </table>

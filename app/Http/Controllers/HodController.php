@@ -647,6 +647,9 @@ class HODController extends Controller
         return $totalBudget;
     }
 
+    public function projectBudgetApprove(){
+
+    }
 
     public function saveProjectBudget(Request $request, $id)
     {
