@@ -52,7 +52,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Department Percentage (%): </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    {{$dPercent}}
+                                    {{--{{$dPercent}}--}}
                                 </label>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Unza Percentage (%): </label>
                             <div class="col-sm-6 col-md-6 col-xs-5">
                                 <label class="text-primary" for="last_name_value">
-                                    {{$uPercent}}
+                                    {{--{{$uPercent}}--}}
                                 </label>
                             </div>
                         </div>
