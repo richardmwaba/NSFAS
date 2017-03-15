@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2606110e-a50b-4eef-ae55-50f52c4f5fd8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php" />
     </list>
     <ignored path="FAS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HodController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HodController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="648" column="0" selection-start-line="648" selection-start-column="0" selection-end-line="648" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="650" column="8" selection-start-line="650" selection-start-column="8" selection-end-line="650" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -93,18 +92,18 @@
       <file leaf-file-name="projectInfo.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
+            <state relative-caret-position="592">
               <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projectBudgetApproval.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="projectBudgetApproval.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+            <state relative-caret-position="142">
+              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -198,8 +197,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AccountantController.php" />
         <option value="$PROJECT_DIR$/resources/views/acc/moreBudgetInfo.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
       </list>
     </option>
   </component>
@@ -370,12 +369,12 @@
       <workItem from="1489491225119" duration="6733000" />
       <workItem from="1489507532979" duration="5461000" />
       <workItem from="1489522773542" duration="11936000" />
-      <workItem from="1489573554591" duration="15308000" />
+      <workItem from="1489573554591" duration="16031000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="754451000" />
+    <option name="totallyTimeSpent" value="755174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="21" width="1366" height="747" extended-state="6" />
@@ -741,14 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/hod/projectBudgeting.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-320">
@@ -799,18 +790,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="648" column="0" selection-start-line="648" selection-start-column="0" selection-end-line="648" selection-end-column="0" />
+        <state relative-caret-position="142">
+          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectBudgetApproval.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="592">
-          <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+          <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="650" column="8" selection-start-line="650" selection-start-column="8" selection-end-line="650" selection-end-column="8" />
           <folding />
         </state>
       </provider>
