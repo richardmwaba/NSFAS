@@ -1,7 +1,7 @@
 @extends('layouts.authorized')
 
 @section('title', 'Account details')
-@section('heading','Financial summary record for The Department Of '. $departments->departmentName. '')
+@section('heading','Financial summary record for The Department Of '.$departments->departmentName. '')
 
 @section('content')
     <div class="panel panel-default">
