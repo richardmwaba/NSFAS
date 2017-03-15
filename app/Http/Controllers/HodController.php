@@ -697,8 +697,13 @@ class HODController extends Controller
     public function viewAccountInfo(){
         $departments = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
         $account = Accounts::where('accountName', 'The department of '.$departments->departmentName. " main account")->first();
-        $budget = Budget::where('accounts_id', $account->id)->first();
-        return view('hod.viewAccountInfo')->with('account', $account)->with('budget', $budget)->with('departments', $departments);
+        if(isset($account)){
+            $budget = Budget::where('accounts_id', $account->id)->first();
+            return view('hod.viewAccountInfo')->with('account', $account)->with('budget', $budget)->with('departments', $departments);
+        }else{
+            return view('hod.viewAccountInfo')->with('departments', $departments);
+        }
+
     }
 
     public function getDepartmentIdFromLoggedInUSer()
