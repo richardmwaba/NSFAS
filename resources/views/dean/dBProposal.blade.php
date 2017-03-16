@@ -47,14 +47,14 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="departmentName" data-sortable="true">Strategic Directions</th>
-                            <th data-field="projectCoordinator" data-sortable="true">Objective</th>
-                            <th data-field="startDate" data-sortable="true">Activity Name</th>
-                            <th data-field="endDate" data-sortable="true">Item Description</th>
-                            <th data-field="quantity" data-sortable="true">Quantity</th>
-                            <th data-field="pricePerUnit" data-sortable="true">Price Per Unit</th>
-                            <th data-field="cost" data-sortable="true">Cost</th>
-                            <th data-field="moreInfo" data-sortable="true">More</th>
+                            <th data-field="departmentName" data-sortable="true" style="text-align: center">Strategic Directions</th>
+                            <th data-field="projectCoordinator" data-sortable="true" style="text-align: center">Objective</th>
+                            <th data-field="startDate" data-sortable="true" style="text-align: center">Activity Name</th>
+                            <th data-field="endDate" data-sortable="true" style="text-align: center">Item Description</th>
+                            <th data-field="quantity" data-sortable="true" style="text-align: center">Quantity</th>
+                            <th data-field="pricePerUnit" data-sortable="true" style="text-align: center">Price Per Unit</th>
+                            <th data-field="cost" data-sortable="true" style="text-align: center">Cost</th>
+                            <th data-field="moreInfo" data-sortable="true" style="text-align: center">More</th>
                         </tr>
                         </thead>
                         @if(isset($records))
@@ -66,8 +66,8 @@
                                 <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                                <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
-                                <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
+                                <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }}@endif </td>
+                                <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
                                             <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
