@@ -68,9 +68,12 @@
             </button>
             <div>
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{URL::asset('home')}}">
-                     UNIVERSITY OF ZAMBIA | Financial Accounting System
-                </a>
+                <img src="frontend/img/logo.png" class="navbar-brand" height="100px" width="65px">
+                <span>
+                    <a class="navbar-brand" href="{{URL::asset('home')}}">
+                         Financial Accounting System
+                    </a>
+                </span>
             </div>
         </div>
         <!-- /.navbar-header -->
@@ -420,7 +423,8 @@
                    <div class="pull-right">@section('departmentName')@yield('department')@show</div>
                     @section('page_title')@yield('heading')@show
                     @if(Session::has('flash_message'))
-                        <div class="alert alert-success {{session()->has('flash_message_important')? session('flash_message') : ''}}">
+                        {{--<div class="alert alert-success {{session()->has('flash_message_important')? session('flash_message') : ''}}">--}}
+                        <div class="alert {{ session::get('alert-class', 'alert-success') }} {{session()->has('flash_message_important')? session('flash_message') : ''}}">
                             {{Session::get('flash_message')}}
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             @if(session()->has('flash_message_important'))

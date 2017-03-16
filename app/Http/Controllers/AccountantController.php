@@ -258,6 +258,7 @@ class AccountantController extends Controller
         }
 
         Session::flash('flash_message', $message);
+        Session::flash('alert-class', 'alert-danger');
         Return Redirect::back();
     }
 
