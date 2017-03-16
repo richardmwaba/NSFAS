@@ -66,8 +66,8 @@
                                     <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                                    <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
-                                    <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
+                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }}@endif </td>
+                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
                                     <td> @if(isset($rcd))
                                             <div class="btn-group">
                                                 <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
