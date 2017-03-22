@@ -23,6 +23,7 @@ use PDF;
 class AccountantController extends Controller
 {
     protected  $message = " ";
+    protected $alert_msg = "";
     protected $totalBudget = 0;
     protected   $departmentNumber = 0;
 
@@ -108,6 +109,7 @@ class AccountantController extends Controller
     public function saveAccountIncome(Request $request, $id){
 
         global $message;
+        global $alert_msg;
         global $departmentNumber;
 
         //validate
@@ -164,7 +166,8 @@ class AccountantController extends Controller
                     $incomes->accounts()->associate($account);
                     $incomes->save();
                 }
-                $message="income added successfully";
+                $message="Income added successfully";
+                $alert_msg = "alert-success";
 
             }else{
 
@@ -176,15 +179,18 @@ class AccountantController extends Controller
                 $income->accounts()->associate($account);
                 $income->save();
 
-                $message="income added successfully";
+                $message="Income added successfully";
+                $alert_msg = "alert-success";
             }
 
         }else{
             $message = "Error occurred! Please make sure that you create Departments and units accounts before adding incomes to 
                 the school's main account!";
+            $alert_msg = "alert-danger";
         }
 
         Session::flash('flash_message', $message);
+        Session::flash('alert-class', $alert_msg);
         Return Redirect::action('AccountantController@addAccountIncome');
     }
 
@@ -224,6 +230,7 @@ class AccountantController extends Controller
     public function saveAddedDepartmentAccount(Request $request){
 
         global $message;
+        global $alert_msg;
         //validate
         $this->validate($request,[
             'departmentName' => 'required',
@@ -233,6 +240,7 @@ class AccountantController extends Controller
         $budgetName = Budget::where('budgetName', 'The department of '.$departments->departmentName. " Budget" )->first();
         if (isset($budgetName)){
               $message = "Sorry but department of ". $departments->departmentName." has an account created already!";
+              $alert_msg = 'alert-danger';
         }else{
             $user = Auth::user();
             $school = School::where('id', $this->getAccountantSchool())->first();
@@ -251,14 +259,16 @@ class AccountantController extends Controller
                 $acc->budget()->save($budget);
                 $budget->save();
                 $message = "Account added successfully!";
+                $alert_msg = 'alert-success';
 
             }else{
                 $message = "Error!";
+                $alert_msg = 'alert-danger';
             }
         }
 
         Session::flash('flash_message', $message);
-        Session::flash('alert-class', 'alert-danger');
+        Session::flash('alert-class', $alert_msg);
         Return Redirect::back();
     }
 
@@ -279,6 +289,7 @@ class AccountantController extends Controller
     public function saveAddedSchoolAccount(Request $request){
 
         global  $message;
+        global  $alert_msg;
 
         //validation
         $this->validate($request,[
@@ -289,6 +300,7 @@ class AccountantController extends Controller
         $accountName = Accounts::where('accountName', 'The school of '.$school->schoolName .' main account')->first();
         if (isset($accountName)){
             $message = "Sorry!but The School of ". $school->schoolName." has an account created already!";
+            $alert_msg = "alert-success";
         }else{
             $user = Auth::user();
             $account = new Accounts();
@@ -300,6 +312,7 @@ class AccountantController extends Controller
         }
 
         Session::flash('flash_message', $message);
+        Session::flash('alert-class', $alert_msg);
         Return Redirect::back();
     }
 

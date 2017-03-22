@@ -148,6 +148,7 @@ class ImprestRetirementController extends Controller
     {
 
         session()->flash('flash_message', 'Sorry! The owner of this imprest has not started the retirement process yet.');
+        Session::flash('alert-class', 'alert-danger');
         return Redirect::action('ImprestController@showAll');
     }
 
@@ -277,6 +278,7 @@ class ImprestRetirementController extends Controller
         } */
 
         session()->flash('flash_message', 'Saved!');
+        Session::flash('alert-class', 'alert-success');
         return Redirect::action('ImprestController@showAll');
     }
 
@@ -354,11 +356,13 @@ class ImprestRetirementController extends Controller
 
             default:
                 session()->flash('flash_message', 'Invalid operation');
+                Session::flash('alert-class', 'alert-danger');
                 return Redirect::action('ImprestController@showAll');
                 break;
         }
 
         session()->flash('flash_message', 'Saved!');
+        Session::flash('alert-class', 'alert-success');
         return Redirect::action('ImprestController@showAll');
     }
 

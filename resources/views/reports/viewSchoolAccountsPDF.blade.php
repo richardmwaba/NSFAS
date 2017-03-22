@@ -82,9 +82,9 @@
             <tr>
 
                 <td> @if(isset($rcd)) {{ $rcd->accountName   }} @endif </td>
-                <td> @if(isset($rcd)) K {{ $rcd->calculatedTotal->incomeAcquired }}.00 @endif </td>
-                <td> @if(isset($rcd)) K {{ $rcd->calculatedTotal->expenditureAcquired  }}.00 @endif </td>
-                <td> @if(isset($rcd))  K {{ $rcd->calculatedTotal->incomeAcquired - $rcd->calculatedTotal->expenditureAcquired }}.0 @endif </td>
+                <td> @if(isset($rcd)) K{{ $rcd->calculatedTotal->incomeAcquired }} @endif </td>
+                <td> @if(isset($rcd)) K{{ $rcd->calculatedTotal->expenditureAcquired  }} @endif </td>
+                <td> @if(isset($rcd))  K {{ $rcd->calculatedTotal->incomeAcquired - $rcd->calculatedTotal->expenditureAcquired }} @endif </td>
             </tr>
         @endforeach
     </table>

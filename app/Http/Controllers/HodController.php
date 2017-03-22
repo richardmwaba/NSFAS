@@ -31,7 +31,8 @@ class HODController extends Controller
 {
 
     protected $totalCost;
-    protected $msg = " ";
+    protected $msg       = " ";
+    protected $alert_msg = "";
 
 
     public function departmentBudgetProposalPDF(){
@@ -140,6 +141,7 @@ class HODController extends Controller
 
     public function saveAsFinal($id){
         global  $msg;
+        global  $alert_msg;
 
         $department = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
         $budget = Budget::where('budgetName', 'The department of '.$department->departmentName. " Budget")
@@ -169,23 +171,28 @@ class HODController extends Controller
                     $activity->save();
                 }else{
                     $msg = " An Error 421! Please Contact the system administrator!";
+                    $alert_msg = "alert-danger";
                 }
                 $this->actualBudgetTotalIncomeCalculator($activities);
-                $msg = "successfully added!Now you are remaining with K".$remainingAmount.'.00 to add to the final actual budget! 
+                $msg = "successfully added!Now you are remaining with K".$remainingAmount.' to add to the final actual budget! 
                 please keep this in mind when saving next activity!';
+                $alert_msg = "alert-success";
             }else{
                 //display an error message
                 $excessAmount =$sum - $departmentIncome;
-                $msg = 'Sorry, you have exceeded by K'.$excessAmount.'.00 
+                $msg = 'Sorry, you have exceeded by K'.$excessAmount.' 
                 !please make sure that your total final actual budget does not exceed K' . $departmentIncome. '.00 as allocated 
                 to your department by your School';
+                $alert_msg = "alert-danger";
             }
 
         }else{
-           $msg = 'The account for your department is not yet created! please info the accountant about this problem';
+            $msg = 'The account for your department is not yet created! Please info the accountant about this problem';
+            $alert_msg = "alert-info";
         }
 
         Session::flash('flash_message', $msg);
+        Session::flash('alert-class', $alert_msg);
         Return Redirect::back();
     }
 
@@ -220,7 +227,12 @@ class HODController extends Controller
         $budget = Budget::where('budgetName', 'The department of '.$department->departmentName. " Budget")
             ->where('departments_id', $this->getDepartmentIdFromLoggedInUSer())->first();
 
-        $departmentIncome = $budget->departmentIncome;
+        if(isset($budget)){
+            $departmentIncome = $budget->departmentIncome;
+        }else{
+            $departmentIncome = 0;
+        }
+
         $activities = Activities::where('department_id', $this->getDepartmentIdFromLoggedInUSer())
             ->where('belongsToActualBudget', 1)->get();
 
@@ -236,12 +248,8 @@ class HODController extends Controller
         if ($dp){ $dpName = $dp->departmentName; }
 
         $records = Activities::where('department_id', $dp->id)->where('belongsToActualBudget', 0)->get();
-//        $totalBudget = 0;
-//        foreach ( $records as $record){
-//            $total = Estimates::where('activities_id', $record->id)->sum('cost');
-//            $totalBudget = $totalBudget +$total;
-//        }
-        if ($records){
+
+        if (isset($records)){
             return view('hod.actualBudget')
                 ->with('records' , $records)
                 ->with('dpName' , $dpName)
@@ -416,6 +424,7 @@ class HODController extends Controller
         }
 
         Session::flash('flash_message', 'Staff member added successfully. An email has been sent to the staff! ');
+        Session::flash('alert-class', 'alert-success');
         Return Redirect::action('HodController@staff');
     }
 
@@ -472,11 +481,14 @@ class HODController extends Controller
         $project->expenditures()->save($expend);
 
         Session::flash('flash_message', 'Your request has been successfully submitted!');
+        Session::flash('alert-class', 'alert-success');
         Return Redirect::action('HodController@projectExpenditures');
     }
 
     public function requestApproval($id)
     {
+
+        global $alert_msg;
 
         $projects = Projects::where('id', $id)->first();
         if ($projects->expenditures->approvedByHOD == 0) {
@@ -484,10 +496,14 @@ class HODController extends Controller
             $projects->save();
 
             $message = " success";
+            $alert_msg = "alert-success";
+
         } else {
             $message = 'error';
+            $alert_msg = 'alert-danger';
         }
         Session::flash('flash_message', $message);
+        Session::flash('alert-class', $alert_msg);
         Return Redirect::back();
     }
 
@@ -595,6 +611,7 @@ class HODController extends Controller
 
         }
         Session::flash('flash_message', 'The '.$projectName.' project has been added successfully. Outline your budget and await for the HOD approval!');
+        Session::flash('alert-class', 'alert-info');
         Return Redirect::action('HodController@addProject');
     }
 
@@ -697,16 +714,19 @@ class HODController extends Controller
             }else{
                 //display an error message
                 Session::flash('flash_message', 'Error!');
+                Session::flash('alert-call', 'alert-danger');
                 Return Redirect::back();
             }
 
         }else{
             //display an error message
             Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K' . $actualProjectBudget . '.00');
+            Session::flash('alert-call', 'alert-danger');
             Return Redirect::back();
         }
 
-        Session::flash('flash_message', 'operation successfully');
+        Session::flash('flash_message', 'Operation successfully');
+        Session::flash('alert-call', 'alert-success');
         Return Redirect::action('HodController@projectBudget', $id);
     }
 

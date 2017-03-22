@@ -66,7 +66,7 @@
         @if(isset($schoolName)) The School Of {{ $schoolName }} @endif
     </p>
     <p>Total A.C Budget Amount:
-        @if(isset($totalBudget ))  k {{ $totalBudget }}.00 @endif
+        @if(isset($totalBudget ))  k {{ $totalBudget }} @endif
     </p>
     <br>
     <table>
@@ -84,15 +84,14 @@
         @endif
         @foreach( $records as $rcd)
             <tr>
-
                 <td> @if(isset($rcd)) {{ $rcd->strategic_directions->strategy  }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->department->departmentName  }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->objectives->objective  }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
-                <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
+                <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }} @endif </td>
+                <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
             </tr>
         @endforeach
     </table>

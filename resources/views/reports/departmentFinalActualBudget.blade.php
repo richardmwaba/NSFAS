@@ -66,7 +66,7 @@
         @if(isset($dpName)) The Department Of {{ $dpName }} @endif
     </p>
     <p>Total A.C Budget Amount:
-        @if(isset($totalBudget ))  k {{ $totalBudget }}.00 @endif
+        @if(isset($totalBudget ))  K{{ $totalBudget }} @endif
     </p>
     <br>
     <table>
@@ -88,8 +88,8 @@
                     <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                     <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                     <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                    <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}.00 @endif </td>
-                    <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }}.00 @endif </td>
+                    <td> @if(isset($rcd)) k {{ $rcd->estimate->pricePerUnit }}@endif </td>
+                    <td> @if(isset($rcd)) k {{ $rcd->estimate->cost }} @endif </td>
                 </tr>
             @endforeach
     </table>

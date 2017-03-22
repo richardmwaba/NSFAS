@@ -176,6 +176,7 @@ class DeanController extends Controller
         $school->strategic_directions()->save($str_dir);
 
         Session::flash('flash_message', 'Strategy successfully added to the system!');
+        Session::flash('alert-class', 'alert-success');
         Return Redirect::action('DeanController@add_Str_Dir');
     }
 }

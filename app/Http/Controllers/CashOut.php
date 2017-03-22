@@ -38,6 +38,7 @@ class CashOut extends Controller
         $imprest->save();
 
         session()->flash('flash_message', 'Your transaction has been saved');
+        Session::flash('alert-class', 'alert-success');
         return Redirect::action('ImprestController@showAll');
     }
 

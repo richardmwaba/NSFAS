@@ -19,6 +19,7 @@ use Auth;
 class ImprestController extends Controller
 {
 
+    protected $alert_msg = "";
 // Printing REports
 
     public function getImprestPdf(/*$id*/)
@@ -434,6 +435,7 @@ class ImprestController extends Controller
         $imprest->save();
 
         session()->flash('flash_message', 'The new budget line has been saved');
+        Session::flash('alert-class', 'alert-success');
 
         return Redirect::action('ImprestController@editForm', [$imprest->imprestId]);
 
@@ -443,6 +445,7 @@ class ImprestController extends Controller
     public function recommendation(Request $request)
     {
 
+        global $alert_msg;
          $msg = null;
         //send the from to bursar fro recommendation and set a state that will tell that
         // this imprest is now waiting for recommendation from the bursar
@@ -463,12 +466,14 @@ class ImprestController extends Controller
 
             }
             $msg = "Email Sent to Bursar!";
+            $alert_msg = "alert-success";
         }else {
             $msg = "Email not sent. You do not internet access!";
+            $alert_msg = "alert-danger";
         }
 
         session()->flash('flash_message', $msg);
-
+        Session::flash('alert-class', $alert_msg);
         return Redirect::action('ImprestController@showAll');
     }
 

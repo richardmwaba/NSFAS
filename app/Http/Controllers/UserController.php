@@ -72,6 +72,7 @@ class UserController extends Controller
 
         $user->save();
         session()->flash('flash_message', 'Profile updated');
+        Session::flash('alert-class', 'alert-success');
         Return Redirect::action('HomeController@index');
 
     }

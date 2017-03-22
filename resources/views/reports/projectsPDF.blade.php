@@ -79,14 +79,14 @@
     <p>Project Department: {{$project->departments->departmentName}}</p><br>
     <p>Project Start Date: {{$project->startDate}}</p><br>
     <p>Project End Date: {{$project->endingDate}}</p><br>
-    <p>Total Project Budget Amount:K {{$project->budget->actualProjectBudget}}.00</p><br>
-    <p>Total Received Income:K {{$totalIn}}.00</p><br>
-    <p>Amount Used: K {{$totalEx}}.00 </p><br>
+    <p>Total Project Budget Amount: K{{$project->budget->actualProjectBudget}}</p><br>
+    <p>Total Received Income: K{{$totalIn}}</p><br>
+    <p>Amount Used: K{{$totalEx}} </p><br>
     <p>Available Amount:
         {{--@if($balance == 0)--}}
             {{--K {{$project->budget->actualProjectBudget}}.00--}}
         {{--@else--}}
-        K {{$balance = $totalIn - $totalEx}}.00
+        K{{$balance = $totalIn - $totalEx}}
         {{--@endif--}}
 
     </p><br>
