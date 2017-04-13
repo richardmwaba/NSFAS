@@ -13,7 +13,7 @@
 
                        <div class="form-group{{ $errors->has('manNumber') ? ' has-error' : '' }}">
                            <label for="email" class="control-label" style="color:#fff; ">MAN NUMBER</label>
-                           <input  placeholder="Enter your man number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
+                           <input  placeholder="Enter Your Man Number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
                            @if ($errors->has('manNumber'))
                                <span class="help-block" style="color:#f0f0f0">
                                     <strong>{{ $errors->first('manNumber') }}</strong>
@@ -23,7 +23,7 @@
 
                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                            <label for="password" class="control-label" style="color: #fff;">PASSWORD</label>
-                           <input id="password" type="password" class="form-control" name="password" placeholder="password">
+                           <input id="password" type="password" class="form-control" name="password" placeholder="Enter Your Ploassword">
                            @if ($errors->has('password'))
                                <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
