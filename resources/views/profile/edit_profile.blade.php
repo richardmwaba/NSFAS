@@ -77,10 +77,10 @@
                                 <!--Research on how to compare passwords entered in these fields-->
 
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-sm btn-success">Save</button>
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">
-                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <a href="{{url('my_profile')}}" type="reset" class="btn btn-sm btn-primary">Cancel</a>
                                 </div>
 
                             </form>
@@ -92,8 +92,8 @@
                                     <div class="modal-dialog modal-md">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button id="close" type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
+                                                <button id="close" type="button" class="close btn-bg"
+                                                        data-dismiss="modal" style="color: #ff0000">&times;</button>
                                                 <h4 class="modal-title text-primary"> Change Password</h4>
                                             </div>
                                             <div class="modal-body">
@@ -123,12 +123,12 @@
                                             <div class="modal-footer">
                                                 <div class="col-md- ">
 
-                                                    <button onclick="changePassword()" class="btn btn-default">save
+                                                    <button onclick="changePassword()" class="btn btn-sm btn-success">Save
                                                     </button>
 
                                                     <!--</div>
                                                     <div class="">-->
-                                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                                    <button type="reset" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
                                                 </div>
 
                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
@@ -146,7 +146,10 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-                </div>
+            </div>
+            <!-- /.col-md-12 -->
+        </div>
+        <!-- /.row -->
 
     <script>
         function changePassword() {

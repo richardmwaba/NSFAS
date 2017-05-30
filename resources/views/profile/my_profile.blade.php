@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <input class="form-control" type="file" name="image" id="image">
                                 </div>
-                                <button class="btn btn-primary" type="submit">upload</button>
+                                <button class="btn btn-sm btn-success" type="submit">Upload</button>
                                 <input type="hidden" name="_token" value="{{ Session::token() }}">
                             </form>
                         </div>

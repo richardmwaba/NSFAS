@@ -66,15 +66,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div>
-                <!-- Branding Image -->
-                <img src="frontend/img/logo.png" class="navbar-brand" height="100px" width="65px">
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="{{URL::asset('home')}}">
                 <span>
-                    <a class="navbar-brand" href="{{URL::asset('home')}}">
-                         Financial Accounting System
-                    </a>
+                    <img src="{{url('../frontend/img/logo.png')}}" height="35px" width="30px" style="padding-bottom:5px">
                 </span>
-            </div>
+                Financial Accounting System
+            </a>
         </div>
         <!-- /.navbar-header -->
 
@@ -105,7 +104,7 @@
                     @section('sideMenu')@yield('menu')@show
                         @if(Auth::user()->access_level_id == 'SA')
                         <li>
-                            <a href="#"><i class="fa fa-home fa-fw"></i>Add a user<span
+                            <a href="#"><i class="fa fa-home fa-fw"></i>Add New User<span
                                         class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -132,7 +131,7 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewAccounts')}}"><i class="fa fa-table fa-fw"></i>view</a>
+                                        <a href="{{URL::asset('/viewAccounts')}}"><i class="fa fa-table fa-fw"></i>View Accounts Details</a>
                                     </li>
 
                                     {{--@if(Auth::user()->access_level_id== 'DN')--}}
@@ -145,7 +144,7 @@
                                         <a href="{{URL::asset('/addAccountIncome')}}"><i class="fa fa-info fa-fw"></i>Incomes</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-plus-circle fa-fw"></i>Add an Account<span
+                                        <a href="#"><i class="fa fa-plus-circle fa-fw"></i>Add New Account<span
                                                     class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -154,7 +153,8 @@
                                             <li>
                                                 <a href="{{URL::asset('/addDepartmentAccount')}}">
                                                     <i class="fa fa-plus-circle fa-fw"></i>Department Account</a>
-                                            </li>
+                                            </li>dd</a>
+                                    </li>
                                             <li>
                                                 <a href="#"><i class="fa fa-plus-circle fa-fw"></i>Unit Account</a>
                                             </li>
@@ -182,7 +182,7 @@
                                                 <a href="{{URL::asset('/departmentBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
                                             </li>
                                             <li>
-                                                <a href="{{URL::asset('/viewAll')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                                <a href="{{URL::asset('/viewAll')}}"><i class="fa fa-table fa-fw"></i>View All</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -195,7 +195,7 @@
                                                 <a href="{{URL::asset('/departmentActualBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
                                             </li>
                                             <li>
-                                                <a href="{{URL::asset('/viewActualBudget')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                                <a href="{{URL::asset('/viewActualBudget')}}"><i class="fa fa-table fa-fw"></i>View All</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -208,30 +208,30 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>imprests</a>
+                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>View All Imprests</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-"></i>projects<span
+                                <a href="#"><i class="fa fa-"></i>Projects<span
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/Info')}}"><i class="fa fa-home fa-fw"></i>information</a>
+                                        <a href="{{URL::asset('/Info')}}"><i class="fa fa-home fa-fw"></i>Information</a>
                                     </li>
                                     <li>
                                         <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-info fa-fw"></i>Expenditures</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/approvalProjectBudget')}}"><i class="fa fa-money fa-fw"></i>budget</a>
+                                        <a href="{{URL::asset('/approvalProjectBudget')}}"><i class="fa fa-money fa-fw"></i>Budget</a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-info fa-fw"></i>Incomes<span
                                                     class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-info fa-fw"></i>Income summary</a>
+                                                <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-info fa-fw"></i>Income Summary</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -244,20 +244,20 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-gear fa-fw"></i>budget</a>
+                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-gear fa-fw"></i>Budget Report</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>projects<span
+                                        <a href="#"><i class="fa fa-info fa-fw"></i>Projects Report<span
                                                     class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-gear fa-fw"></i>individual Report</a>
+                                                <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-gear fa-fw"></i>Individual Report</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-gear fa-fw"></i>accounts</a>
+                                        <a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-gear fa-fw"></i>Accounts Report</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -272,7 +272,7 @@
                                         {{--<a href="{{URL::asset('/viewAccounts')}}"><i class="fa fa-table fa-fw"></i>view</a>--}}
                                     {{--</li>--}}
                                     <li>
-                                        <a href="{{URL::asset('/viewAccountInfo')}}"><i class="fa fa-info fa-fw"></i>main account info</a>
+                                        <a href="{{URL::asset('/viewAccountInfo')}}"><i class="fa fa-info fa-fw"></i>Main Account Info</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -282,7 +282,7 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Budget proposal<span
+                                        <a href="#"><i class="fa fa-info fa-fw"></i>Budget Proposal<span
                                                     class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -292,7 +292,7 @@
                                                 <a href="{{URL::asset('/activities')}}"><i class="fa fa-plus-circle fa-fw"></i>Activities</a>
                                             </li>
                                             <li>
-                                                <a href="{{URL::asset('/departmentBudgetProposal')}}"><i class="fa fa-table fa-fw"></i>view all</a>
+                                                <a href="{{URL::asset('/departmentBudgetProposal')}}"><i class="fa fa-table fa-fw"></i>View all</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -322,7 +322,7 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>imprests</a>
+                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>View All Imprests</a>
                                     </li>
                                 </ul>
                             </li>
@@ -332,13 +332,13 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-info fa-fw"></i>information</a>
+                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-info fa-fw"></i>Information</a>
                                     </li>
                                     <li>
                                         <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-info fa-fw"></i>Expenditures</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-circle fa-fw"></i>add</a>
+                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-circle fa-fw"></i>Add Project</a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-info fa-fw"></i>Generate Reports<span
@@ -359,10 +359,10 @@
                                                     class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="{{URL::asset('/viewStaff')}}"><i class="fa fa-table fa-fw"></i>view</a>
+                                            <a href="{{URL::asset('/viewStaff')}}"><i class="fa fa-table fa-fw"></i>View All Staff</a>
                                         </li>
                                         <li>
-                                            <a href="{{URL::asset('/addStaff')}}"><i class="fa fa-plus-circle fa-fw"></i>add</a>
+                                            <a href="{{URL::asset('/addStaff')}}"><i class="fa fa-plus-circle fa-fw"></i>Add New Staff</a>
                                         </li>
                                     </ul>
                             <!-- /.nav-second-level -->
@@ -374,7 +374,7 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>imprests</a>
+                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>View All Imprests</a>
                                     </li>
                                 </ul>
                             </li>
@@ -384,13 +384,13 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-info fa-fw"></i>information</a>
+                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-info fa-fw"></i>Information</a>
                                     </li>
                                     <li>
                                         <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-info fa-fw"></i>Expenditures</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-circle fa-fw"></i>add</a>
+                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-circle fa-fw"></i>Add New Project</a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-info fa-fw"></i>Generate Reports<span
