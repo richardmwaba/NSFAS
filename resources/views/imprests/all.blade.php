@@ -1,11 +1,13 @@
 @extends('layouts.authorized')
+@section('title','Imprests')
+
 @section('main_content')
 
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="panel panel-default">
-                <div class="panel-heading"> Imprests</div>
+                <div class="panel-heading"> <b>All Imprests</b></div>
 
                 <div class="panel-body">
 

@@ -1,26 +1,22 @@
 @extends('layouts.authorized')
 
-@section('title', 'add | account')
+@section('title', 'Add | Account')
 @section('heading','And an account')
 
 @section('content')
-    <div class="panel panel-default">
-        <div class="row">
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >
-                    <form class="form-horizontal" role="form" style="margin-left: 20px;margin-top: 20px" method="POST"
-                            action="{{ url('/saveSchoolAccount') }}">
-                        {!! csrf_field() !!}
-                            <label for="accountName" class="col-md-3">Click Add Button To Create Your School's Main Account</label>
-                        <div class="form-group">
-                            <div class="col-md-8">
-                                <button type="submit" class="btn btn-default">Add</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- /.form -->
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 ">
+            <form class="form-horizontal" role="form" method="POST"
+                  action="{{ url('/saveSchoolAccount') }}">
+                {!! csrf_field() !!}
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-sm btn-primary">Create Your School's Main Account</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            <!-- /.form -->
         </div>
     </div>
 
@@ -28,7 +24,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Recently Added Accounts</div>
+                <div class="panel-heading"><b>Recently Added Accounts</b></div>
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"

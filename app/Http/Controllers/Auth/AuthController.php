@@ -54,6 +54,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'school' => 'max:4',
+            'department' => 'max:4',
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
             'otherName' => '|max:255',
@@ -72,7 +74,9 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'accessLevelId' => $data['accessLevelId'],
+            'access_level_id' => $data['accessLevelId'],
+            'schools_id' => $data['school'],
+            'departments_id' => $data['department'],
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'otherName' => $data['otherName'],

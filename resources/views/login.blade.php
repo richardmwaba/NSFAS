@@ -1,12 +1,14 @@
 @extends('layouts.unauthorized')
+@section('title', 'NFAS | Login')
 @section('main_content')
+    <div class="row">
        <div class="well well-lg">
            <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-12 col-xs-12">
                    <h3 style="text-align: center; margin-bottom: 20px; color: #e5e5e5"><b>FINANCIAL ACCOUNTING SYSTEM</b></h3>
                    <img class="center-block" src="frontend/img/logo.png">
                </div>
-               <section class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+               <section class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                        {{ csrf_field() }}
                        <h4 style="text-align: center; color: #e5e5e5"><b>LOG IN</b></h4>
@@ -50,8 +52,11 @@
                    </form>
                </section>
            </div>
+           <!-- /.row -->
        </div>
-   </div>
+       <!-- /.well -->
+    </div>
+    <!-- /.row -->
 @endsection
 
    {{--<script>--}}

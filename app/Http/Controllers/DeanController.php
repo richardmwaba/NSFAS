@@ -145,6 +145,18 @@ class DeanController extends Controller
        return view('dean.add_Str_Dir');
     }
 
+
+    //edit strategic directions
+    public function edit_Str_Dir(Request $request)
+    {
+        $str_dir = StrategicDirections::findOrFail($request->id);
+        $str_dir->academicYear = $request->academicYear;
+        $str_dir->strategy = $request->strategy;
+        $str_dir->save();
+        session()->flash('flash_message', 'Strategic direction successfully updated');
+        Return Redirect::action('DeanController@add_Str_Dir');
+    }
+
     /**
      * Get a validator for an incoming profile editing request.
      *
@@ -154,7 +166,7 @@ class DeanController extends Controller
     protected function add_Str_DirValidation(array $data)
     {
         return Validator::make($data, [
-            'academicYear' => 'required|max:40',
+            'academicYear' => 'required|max:40|regex:[\d{4}/\d{4}]',
             'strategy' => 'required|max:255',
         ]);
     }

@@ -1,5 +1,5 @@
 @extends('layouts.authorized')
-@section('title', 'project | Expenditures')
+@section('title', 'Project | Expenditures')
 @section('heading','Projects Expenditures')
 
 @section('content')
@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Projects Information</div>
+                <div class="panel-heading"><b>Projects Information</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"

@@ -33,8 +33,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-4 col-sm-3 col-md-offset-7 col-md-2">
-                                <button type="submit" class="btn btn-default">Add</button>
+                            <div class="col-xs-4 col-sm-3 col-md-offset-8 col-md-1">
+                                <button type="submit" class="btn btn-success">Add</button>
                             </div>
                             <div class="col-xs-4 col-sm-3 col-md-2">
                                 <button type="reset" class="btn btn-default pull-right">Cancel</button>

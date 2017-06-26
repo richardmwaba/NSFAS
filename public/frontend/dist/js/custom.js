@@ -1,68 +1,68 @@
 /*Populating content in the drop downs for School and departments*/
 
 function dropdowns(ddl1, ddl2){
-    		var ns = ['Biological Sciences','Computer Science','Chemistry','Geography','Mathematics & Statistics','Physics'];
-    		var humanities = ['Development Studies','Economics','History','Political & Administrative Studies','Population Studies','Psychology','Philosophy & Applied Ethics','Mass Communication','Literature & Language','Gender Studies','Social Development Studies'];
-    		var education = ['Adult Education & Extension Studies', 'Advisory Units for Colleges of Education','Education Administration & Policy Studies','Educational Psychology, Socialogy & Special Education','Library Information Studies','Language & Social Sciences','Mathematics & Science Education', 'Primary Education','Religious Studies'];
-            var engineering = ['Agricutural Engineering','Civil & Enviromental Engineering','Electrical & Electronic Engineering', 'Mechanical Engineering','Geomatic Engineering'];
-            var law = ['Public Law','Private Law'];
-    		var agric = ['Agriculture Economics', 'Animal Science', 'Food Science & Nutrition', 'Plant Science', 'Soil Science'];
-            var mines = ['Geology','Mines Engineering','Metarllugy & Material Processing','Specialized Units'];
-            var veterinary= ['Biomedical Studies','Clinical Studies','Disease Control','Para-Clinical Studies','Central Services & Supply'];
-            var medicine = ['Anatomy','Biomedical Scinces','Physiological Sciences','Nursing Sciences','Medical Education Development','Obstetrics & Gynaecology','Paediatrics & Child Health','Pathology & Microbiology','Pharmacy','Physiotherapy','Psychiatry','Public Health','Surgery','Internal Medicine'];
+    		var ns = ['-- select department --','Biological Sciences','Computer Science','Chemistry','Geography','Mathematics & Statistics','Physics'];
+    		var humanities = ['-- select department --','Development Studies','Economics','History','Political & Administrative Studies','Population Studies','Psychology','Philosophy & Applied Ethics','Mass Communication','Literature & Language','Gender Studies','Social Development Studies'];
+    		var education = ['-- select department --','Adult Education & Extension Studies', 'Advisory Units for Colleges of Education','Education Administration & Policy Studies','Educational Psychology, Socialogy & Special Education','Library Information Studies','Language & Social Sciences','Mathematics & Science Education', 'Primary Education','Religious Studies'];
+            var engineering = ['-- select department --','Agricutural Engineering','Civil & Enviromental Engineering','Electrical & Electronic Engineering', 'Mechanical Engineering','Geomatic Engineering'];
+            var law = ['-- select department --','Public Law','Private Law'];
+    		var agric = ['-- select department --','Agriculture Economics', 'Animal Science', 'Food Science & Nutrition', 'Plant Science', 'Soil Science'];
+            var mines = ['-- select department --','Geology','Mines Engineering','Metarllugy & Material Processing','Specialized Units'];
+            var veterinary= ['-- select department --','Biomedical Studies','Clinical Studies','Disease Control','Para-Clinical Studies','Central Services & Supply'];
+            var medicine = ['-- select department --','Anatomy','Biomedical Scinces','Physiological Sciences','Nursing Sciences','Medical Education Development','Obstetrics & Gynaecology','Paediatrics & Child Health','Pathology & Microbiology','Pharmacy','Physiotherapy','Psychiatry','Public Health','Surgery','Internal Medicine'];
 
     		switch(ddl1.value) {
-    			case 'NS':
+    			case '8':
     				ddl2.options.length = 0;
-    				for (i = 0;i < ns.length;i++ ) {
+    				for (i = 50;i < ns.length;i++ ) {
     					createOption(ddl2,ns[i],ns[i]);
     				}
     				break;
-    			case 'Humanities':
+    			case '4':
     				ddl2.options.length = 0;
-    				for (i = 0;i < humanities.length;i++) {
+    				for (var i = 19;i < humanities.length;i++) {
     					createOption(ddl2, humanities[i],humanities[i]);
     				}
     				break;
-    			case 'Education':
+    			case '2':
     				ddl2.options.length = 0;
-    				for (i = 0;i < education.length;i++) {
-    					createOption(ddl2, education[i],education[i]);
+    				for (var i = 5;i < education.length;i++) {
+    					createOption(ddl2, education[i],i);
     				}
     				break;
-    			case 'Agriculture':
+    			case '1':
     				ddl2.options.length =0;
-    				for (i = 0;i < agric.length;i++) {
-    					createOption(ddl2, agric[i],agric[i]);
+    				for (var i = 0;i < agric.length;i++) {
+    					createOption(ddl2, agric[i],i);
     				}
     				break;
-                case 'Law':
+                case '5':
                     ddl2.options.length = 0;
-                    for (i = 0;i < law.length;i++){
+                    for (var i = 30;i < law.length;i++){
                         createOption(ddl2,law[i],law[i]);
                     }
                     break;
-                case 'Engineering':
+                case '3':
                     ddl2.options.length = 0;
-                    for (i = 0;i < engineering.length;i++){
+                    for (var i = 14;i < engineering.length;i++){
                         createOption(ddl2,engineering[i],engineering[i]);
                     }
                     break;
-                case 'Medicine':
+                case '6':
                     ddl2.options.length = 0;
-                    for (i= 0;i< medicine.length;i++) {
+                    for (var i= 36;i< medicine.length;i++) {
                         createOption(ddl2,medicine[i],medicine[i]);
                     }
                     break;
-                case 'Mines':
+                case '7':
                     ddl2.options.length = 0;
-                    for (i = 0;i < mines.length;i++) {
+                    for (var i = 32;i < mines.length;i++) {
                         createOption(ddl2,mines[i],mines[i]);
                     }
                     break;
-                case 'Veterinary Medicine':
+                case '9':
                     ddl2.options.length = 0;
-                    for (i= 0;i < veterinary.length;i++){
+                    for (var i= 56;i < veterinary.length;i++){
                         createOption(ddl2,veterinary[i],veterinary[i]);
 
                     }

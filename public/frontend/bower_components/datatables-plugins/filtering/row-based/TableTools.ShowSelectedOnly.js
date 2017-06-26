@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Used in combination with TableTools and selectable rows, this will allow you
  * to switch between showing all rows and just the selected ones.
  *

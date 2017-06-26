@@ -13,7 +13,7 @@ class User extends Authenticatable
      */
 //    public $primaryKey = 'manNumber';
     protected $fillable = [
-        'accessLevelId','manNumber','firstName','lastName','otherName', 'email', 'password',
+        'access_level_id', 'schools_id', 'departments_id','manNumber','firstName','lastName','otherName', 'email', 'password',
     ];
 
     public $incrementing = false;

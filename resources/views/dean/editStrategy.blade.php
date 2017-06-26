@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >
                     <form class="form-horizontal" role="form" style="margin-left: 20px;margin-top: 20px" method="POST"
-                          action="#">
+                          action="{{ url('/editStrategicDirections') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('academicYear') ? ' has-error' : '' }}">
@@ -17,6 +17,7 @@
                             <div class="col-md-8">
                                 <input id="academicYear" placeholder="2016/2017" type="text" class="form-control" name="academicYear"
                                        value="{{ $record->academicYear }}">
+                                <input type="hidden" name="id" value="{{$record->id}}">
                                 @if ($errors->has('academicYear'))
                                     <span class="help-block"><strong>{{ $errors->first('academicYear') }}</strong></span>
                                 @endif

@@ -126,6 +126,11 @@
 
                         @endif
                         @if(Auth::user()->access_level_id=='DN' ||  Auth::user()->access_level_id == 'AC')
+                            @if(Auth::user()->access_level_id== 'DN')
+                                <li>
+                                    <a href="{{URL::asset('/addStrategicDirections')}}"><i class=""></i>Strategic Directions</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="#"><i class="fa "></i>Accounts<span
                                             class="fa arrow"></span></a>
@@ -135,9 +140,9 @@
                                     </li>
 
                                     {{--@if(Auth::user()->access_level_id== 'DN')--}}
-                                    <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Department & Unit</a>
-                                    </li>
+                                    {{--<li>--}}
+                                        {{--<a href="#"><i class="fa fa-info fa-fw"></i>Department & Unit</a>--}}
+                                    {{--</li>--}}
                                     {{--@endif--}}
                                     @if(Auth::user()->access_level_id== 'AC')
                                     <li>
@@ -152,9 +157,9 @@
                                             </li>
                                             <li>
                                                 <a href="{{URL::asset('/addDepartmentAccount')}}">
-                                                    <i class="fa fa-plus-circle fa-fw"></i>Department Account</a>
-                                            </li>dd</a>
-                                    </li>
+                                                    <i class="fa fa-plus-circle fa-fw"></i>Department Account
+                                                </a>
+                                            </li>
                                             <li>
                                                 <a href="#"><i class="fa fa-plus-circle fa-fw"></i>Unit Account</a>
                                             </li>
@@ -166,51 +171,36 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-"></i>Budget<span
+                                <a href="#"><i class="fa fa-"></i>Budgets<span
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    @if(Auth::user()->access_level_id== 'DN')
                                     <li>
-                                        <a href="{{URL::asset('/addStrategicDirections')}}"><i class="fa fa-plus-circle fa-fw"></i>Strategic Directions</a>
-                                    </li>
-                                    @endif
-                                    <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Budget proposals<span
+                                        <a href="#"><i class="fa fa-bank fa-fw"></i>Department/Unit Budgets<span
                                                     class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="{{URL::asset('/departmentBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
+                                                <a href="{{URL::asset('/departmentBudget')}}"><i class="fa fa-folder-open fa-fw"></i>Budget Proposals</a>
                                             </li>
                                             <li>
-                                                <a href="{{URL::asset('/viewAll')}}"><i class="fa fa-table fa-fw"></i>View All</a>
+                                                <a href="{{URL::asset('/departmentActualBudget')}}"><i class="fa fa-folder fa-fw"></i>Actual Budgets</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Actual Budget<span
-                                                    class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{{URL::asset('/departmentActualBudget')}}"><i class="fa fa-info fa-fw"></i>Department / Unit</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{URL::asset('/viewActualBudget')}}"><i class="fa fa-table fa-fw"></i>View All</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-third-level -->
+                                        <a href="{{URL::asset('/viewAll')}}"><i class="fa fa-table fa-fw"></i>All Budget Proposals</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{URL::asset('/viewActualBudget')}}"><i class="fa fa-table fa-fw"></i>All Actual Budgets</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{URL::asset('/approvalProjectBudget')}}"><i class="fa fa-money fa-fw"></i>Project Budgets</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-fa-fw"></i>Imprest<span
-                                            class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>View All Imprests</a>
-                                    </li>
-                                </ul>
+                                <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-fa-fw"></i>Imprests</a>
                             </li>
 
                             <li>
@@ -218,23 +208,13 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/Info')}}"><i class="fa fa-home fa-fw"></i>Information</a>
+                                        <a href="{{URL::asset('/Info')}}"><i class="fa fa-table fa-fw"></i>All Projects</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-info fa-fw"></i>Expenditures</a>
+                                        <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-file-excel-o fa-fw"></i>Expenditure Summary</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/approvalProjectBudget')}}"><i class="fa fa-money fa-fw"></i>Budget</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Incomes<span
-                                                    class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-info fa-fw"></i>Income Summary</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-third-level -->
+                                        <a href="{{URL::asset('/projectIncomes')}}"><i class="fa fa-file-excel-o fa-fw"></i>Income Summary</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -244,20 +224,13 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-gear fa-fw"></i>Budget Report</a>
+                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-pie-chart fa-fw"></i>Budgets Report</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Projects Report<span
-                                                    class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-gear fa-fw"></i>Individual Report</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-third-level -->
+                                        <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-area-chart fa-fw"></i>Projects Report</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-gear fa-fw"></i>Accounts Report</a>
+                                        <a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-bar-chart fa-fw"></i>Accounts Report</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -265,17 +238,7 @@
                         @endif
                         @if(Auth::user()->access_level_id == 'HD')
                             <li>
-                                <a href="#"><i class="fa "></i>Accounts<span
-                                            class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    {{--<li>--}}
-                                        {{--<a href="{{URL::asset('/viewAccounts')}}"><i class="fa fa-table fa-fw"></i>view</a>--}}
-                                    {{--</li>--}}
-                                    <li>
-                                        <a href="{{URL::asset('/viewAccountInfo')}}"><i class="fa fa-info fa-fw"></i>Main Account Info</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
+                                <a href="{{URL::asset('/viewAccountInfo')}}"><i class="fa "></i>Account Information</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-"></i>Budget<span
@@ -318,13 +281,7 @@
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-fa-fw"></i>Imprest<span
-                                            class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-plus-circle fa-fw"></i>View All Imprests</a>
-                                    </li>
-                                </ul>
+                                <a href="{{URL::asset('/imprests/all')}}"><i class="fa fa-fa-fw"></i>Imprests</a>
                             </li>
 
                             <li>
@@ -470,6 +427,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{URL::asset('../frontend/js/sb-admin-2.js')}}"></script>
+    <script src="{{URL::asset('../frontend/dist/js/custom.js')}}"></script>
 
     <!-- Datatables JavaScript -->
     <script src="{{URL::asset('../frontend/js/bootstrap-table.js')}}"></script>

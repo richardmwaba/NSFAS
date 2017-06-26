@@ -144,6 +144,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Routes for the Dean of school
      */
     Route::get('/addStrategicDirections', 'DeanController@add_Str_Dir');
+    Route::post('/editStrategicDirections', 'DeanController@edit_Str_Dir');
     Route::get('/viewAll', 'DeanController@viewAll');
     Route::get('/viewActualBudget', 'DeanController@viewActualBudget');
     Route::post('/addStrategicDirections', 'DeanController@addStrategicDirections');
@@ -164,6 +165,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('viewSchoolAccounts', ['uses'=> 'AccountantController@viewSchoolAccountsPDF', 'as' => 'viewSchoolAccounts']);
     Route::get('actualBudgetReport', ['uses'=> 'DeanController@actualBudgetReport', 'as' => 'actualBudgetReport']);
     Route::get('/projectsPDF/{id}', ['uses'=> 'HodController@getProjectPdf', 'as' => '/projectsPDF']);
+    Route::get('/accounts/info/print', ['uses'=> 'HodController@getAccountsInfoPdf', 'as' => '/AccountsInfoPdf']);
     Route::get('departmentBudgetProposalPDF', ['uses'=> 'HodController@departmentBudgetProposalPDF', 'as' => 'departmentBudgetProposalPDF']);
     Route::get('/departmentFinalActualBudget/{id?}', ['uses'=> 'HodController@departmentFinalActualBudget',
         'as' => '/departmentFinalActualBudget']);
