@@ -8,7 +8,7 @@
         <div class="row">
             <div class="row">
                 <div class="btn-group">
-                    <a href="{{ route('/accounts/info/print') }}" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
+                    <a href="{{ url('/accounts/info/print') }}" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
                         </i><span class="text-success">Print</span></a>
                 </div>
                 <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >

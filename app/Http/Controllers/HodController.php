@@ -747,17 +747,10 @@ class HODController extends Controller
     public function getAccountsInfoPdf(){
         $departments = Departments::where('id', $this->getDepartmentIdFromLoggedInUSer())->first();
         $account = Accounts::where('accountName', 'The department of '.$departments->departmentName. " main account")->first();
-        $project = Projects::where('id', $id)->first();
-        $budget = Budget::where('projects_id',$project->id)->first();
-        $budgetItems = BudgetItems::where('budget_id',$budget->id)->get();
+        $budget = Budget::where('accounts_id', $account->id)->first();
+        $pdf = PDF::loadView('reports.accountsInfoPDF', ['account'=>$account,'departments'=>$departments, 'budget'=>$budget]);
 
-        $account = Accounts::where('projects_id', $project->id)->first();
-        $totalIn = Income::where('accounts_id', $account->id)->sum('amountReceived');
-        $totalEx = Expenditure::where('accounts_id', $account->id)->sum('amountPaid');
-
-        $pdf = PDF::loadView('reports.AccountsInfoPdf', ['account'=>$account,'departments'=>$departments]);
-
-        return $pdf->stream('reports.AccountsInfoPdf');
+        return $pdf->stream('reports.accountsInfoPDF');
     }
 
     public function getDepartmentIdFromLoggedInUSer()
