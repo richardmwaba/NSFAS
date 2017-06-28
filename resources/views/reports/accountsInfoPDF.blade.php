@@ -66,26 +66,26 @@
         @if(isset($account)) {{ $account->accountName }} @endif
     </p>
     <p>Budget Line:
-        @if(isset($budget ))  {{ $budget->budgetName }} @endif
+        @if(isset($budget )) <b><i> {{ $budget->budgetName }}</i></b> @endif
     </p>
     <p>School Main Account:
-        @if(isset($budget )) K{{ $budget->schoolIncome }} @endif
+        @if(isset($budget ))<b><i> K{{ $budget->schoolIncome }}</i></b> @endif
     </p>
     <p>Department Income(Received from School main account):
-        @if(isset($budget ))  K{{ $budget->departmentIncome }} @endif
+        @if(isset($budget )) <b><i> K{{ $budget->departmentIncome }}</i></b> @endif
     </p>
     <p>Department Total Income:
-        @if(isset($account ))  K{{ $account->calculatedTotal->incomeAcquired }} @endif
+        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->incomeAcquired }}</i></b> @endif
     </p>
     <p>Department Total Expenditure:
-        @if(isset($account ))  K{{ $account->calculatedTotal->expenditureAcquired }} @endif
+        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->expenditureAcquired }}</i></b> @endif
     </p>
     <p>Department Balance(As of today):
-        @if(isset($account ))  K{{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }} @endif
+        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}</i></b> @endif
     </p>
     <br>
     <pre>
-    <p>Report Printed By:<Strong>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</strong>  Date Printed: <strong>{{date('d-m-Y')}}</strong></p>
+        <p><b>Report Printed By:</b>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}  <b>Date Printed:</b> {{date('d-m-Y')}}</p>
         </pre>
 
 </div>

@@ -9,7 +9,7 @@
             <div class="panel-heading"><b>Account Information</b></div>
             <div class="panel-body">
                 <div class="btn-group pull-right">
-                    <a href="#" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
+                    <a href="{{url('accounts/info/print')}}" class="btn btn-md btn-link"><i class="fa fa-print fa-fw text-success">
                         </i><span class="text-success">Print</span></a>
                 </div>
                 <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" >
