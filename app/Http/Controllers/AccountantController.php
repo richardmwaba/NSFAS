@@ -239,7 +239,7 @@ class AccountantController extends Controller
         $departments = Departments::where('id', $request['departmentName'])->first();
         $budgetName = Budget::where('budgetName', 'The department of '.$departments->departmentName. " Budget" )->first();
         if (isset($budgetName)){
-              $message = "Sorry but department of ". $departments->departmentName." has an account created already!";
+              $message = "Oops! Looks like the department of ". $departments->departmentName." has an account already created.";
               $alert_msg = 'alert-danger';
         }else{
             $user = Auth::user();
@@ -262,7 +262,7 @@ class AccountantController extends Controller
                 $alert_msg = 'alert-success';
 
             }else{
-                $message = "Error!";
+                $message = " An error occurred while adding the department account. Please try again.";
                 $alert_msg = 'alert-danger';
             }
         }
@@ -299,8 +299,8 @@ class AccountantController extends Controller
         $school = School::where('id', $this->getAccountantSchool())->first();
         $accountName = Accounts::where('accountName', 'The school of '.$school->schoolName .' main account')->first();
         if (isset($accountName)){
-            $message = "Sorry!but The School of ". $school->schoolName." has an account created already!";
-            $alert_msg = "alert-success";
+            $message = "Oops! Looks like The School of ". $school->schoolName." has an account already created.";
+            $alert_msg = "alert-danger";
         }else{
             $user = Auth::user();
             $account = new Accounts();

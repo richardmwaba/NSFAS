@@ -1,4 +1,5 @@
 @extends('layouts.unauthorized')
+@section('title', 'Login')
 @section('main_content')
        <div class="well well-lg">
            <div class="row">

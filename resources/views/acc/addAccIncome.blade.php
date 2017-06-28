@@ -5,13 +5,12 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="row">
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >
-                    <form class="form-horizontal" role="form" style="margin-left: 20px;margin-top: 20px" method="POST"
-                          action="{{ url('/accountIncomes/' .$account->id) }}">
-                        {!! csrf_field() !!}
-
+        <div class="panel-body">
+            <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >
+                <form class="form-horizontal" role="form" style="margin-left: 20px;margin-top: 20px" method="POST"
+                      action="{{ url('/accountIncomes/' .$account->id) }}">
+                    {!! csrf_field() !!}
+                    <div class="row">
                         <div class="form-group{{ $errors->has('amountReceived') ? ' has-error' : '' }}">
                             <label for="amountReceived" class="col-md-3">Amount Received</label>
                             <div class="col-md-8">
@@ -57,17 +56,21 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-xs-4 col-sm-3 col-md-offset-7 col-md-2">
-                                <button type="submit" class="btn btn-default">Add</button>
+                            <div class="col-lg-9 col-xs-8 col-sm-9 col-md-10 ">
+                                <button type="submit" class="btn btn-primary pull-right">Add</button>
                             </div>
-                            <div class="col-xs-4 col-sm-3 col-md-2">
-                                <button type="reset" class="btn btn-default pull-right">Cancel</button>
+                            <div class="col-lg-2 col-xs-4 col-sm-3 col-md-2">
+                                <a href="{{URL::asset('/addAccountIncome')}}" type="reset" class="btn btn-warning pull-right">Cancel</a>
                             </div>
                         </div>
-                    </form>
-                    <!-- /.form -->
-                </div>
+                    </div>
+                    <!-- /.row -->
+                </form>
+                <!-- /.form -->
             </div>
+            <!-- /.col-lg-md-sm -->
         </div>
+        <!-- /.panel-body -->
     </div>
+    <!-- /.panel -->
 @endsection

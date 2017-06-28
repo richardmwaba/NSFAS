@@ -1,26 +1,25 @@
 @extends('layouts.authorized')
 
-@section('title', 'add | account')
-@section('heading','And an account')
+@section('title', 'Add | Account')
+@section('heading','Add an account')
 
 @section('content')
     <div class="panel panel-default">
-        <div class="row">
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-11" >
-                    <form class="form-horizontal" role="form" style="margin-left: 20px;margin-top: 20px" method="POST"
-                          action="{{ url('/saveDepartmentAccount') }}">
-                        {!! csrf_field() !!}
-
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" method="POST"
+                  action="{{ url('/saveDepartmentAccount') }}">
+                {!! csrf_field() !!}
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" >
                         <div class="form-group{{ $errors->has('departmentName') ? ' has-error' : '' }}">
-                            <label for="departmentName" class="col-md-3">Department Name</label>
-                            <div class="col-md-8">
+                            <label for="departmentName" class="col-md-2 col-sm-4">Department Name:</label>
+                            <div class="col-md-10 col-sm-8">
                                 <select class="form-control" name="departmentName" id="departmentName">
-                                    <option value="">- Select a department -</option>
+                                    <option value="">-- Select a department to add an account to from this list --</option>
                                     @if(isset($departments))
-                                    @foreach( $departments as $st)
-                                        <option value="{{ $st->id}}">{{ $st->departmentName }}</option>
-                                    @endforeach
+                                        @foreach( $departments as $st)
+                                            <option value="{{ $st->id}}">{{ $st->departmentName }}</option>
+                                        @endforeach
                                     @endif
                                 </select>
                                 @if ($errors->has('departmentName'))
@@ -28,27 +27,38 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                    <!-- /.col-lg-md-sm-xs -->
+                </div>
+                <!-- /.row -->
 
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
-                            <div class="col-xs-4 col-sm-3 col-md-offset-7 col-md-2">
-                                <button type="submit" class="btn btn-default">Add</button>
+                            <div class="col-lg-11 col-md-11 col-sm-10  col-xs-9 ">
+                                <button type="submit" class="btn btn-sm btn-success pull-right">Add</button>
                             </div>
-                            <div class="col-xs-4 col-sm-3 col-md-2">
-                                <button type="reset" class="btn btn-default pull-right">Cancel</button>
+                            <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+                                <button type="reset" class="btn btn-sm btn-danger pull-right">Cancel</button>
                             </div>
                         </div>
-                    </form>
-                    <!-- /.form -->
+                    </div>
+                    <!-- /.col-lg-md-sm-xs-12 -->
                 </div>
-            </div>
+                <!-- /.row -->
+
+            </form>
+            <!-- /.form -->
         </div>
+        <!-- /.panel-body -->
     </div>
+    <!-- /.panel /.panel-default -->
 
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Recently Added Accounts</div>
+                <div class="panel-heading"><b>Recently Added Accounts</b></div>
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"

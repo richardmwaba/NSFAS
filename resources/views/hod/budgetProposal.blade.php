@@ -1,14 +1,14 @@
 @extends('layouts.authorized')
 
 @section('title', 'Department Budget | proposal')
-@section('heading','Activity Based Work Plan and Budget | Strategic Directions. CAUTION: Add objectives only to Strategic Directions applying to your Department!! ')
+@section('heading','CAUTION: Add objectives only to Strategic Directions applying to your Department.')
 
 @section('content')
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Strategic Directions</div>
+                <div class="panel-heading"><b>Strategic Directions</b></div>
                 <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">

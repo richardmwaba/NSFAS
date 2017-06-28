@@ -1,11 +1,13 @@
 @extends('layouts.authorized')
+@section('title','Imprests')
+
 @section('main_content')
 
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="panel panel-default">
-                <div class="panel-heading"> Imprests</div>
+                <div class="panel-heading"> <b>All Imprests</b></div>
 
                 <div class="panel-body">
 
@@ -22,7 +24,6 @@
 
                         <thead>
                         <tr>
-                            <!--<th data-field="state" data-checkbox="true">Count</th>-->
                             <th data-field="budget" data-sortable="true">Budget</th>
                             <th data-field="name" data-sortable="true">Purpose</th>
                             <th data-field="id" data-sortable="true">Applicant</th>
@@ -61,8 +62,6 @@
                             } ?>
 
                             <tr>
-
-                                <!--<td data-field="state" data-checkbox="true">{$imprest->id}}</td>-->
                                 <td>{{$imprest->budget->budgetName}}</td>
                                 <td>{{$imprest->item->description}}</td>
                                 <td>{{$imprest->owner->firstName}} {{$imprest->owner->lastName}}</td>

@@ -1,5 +1,5 @@
 @extends('layouts.authorized')
-@section('title', 'project | Expenditures')
+@section('title', 'Project | Expenditures')
 @section('heading','Projects Expenditures')
 
 @section('content')
@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Projects Information</div>
+                <div class="panel-heading"><b>Projects Information</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -26,9 +26,9 @@
                             <th data-field="Budget" data-sortable="true">Budget</th>
                             <th data-field="expenditure" data-sortable="true">Expenditure</th>
                             <th data-field="expenditureStatus" data-sortable="true">Status</th>
-                            <th data-field="info" data-sortable="true">More Info</th>
                             <th data-field="startDate" data-sortable="true">Start Date</th>
                             <th data-field="endDate" data-sortable="true">End date</th>
+                            <th data-field="info" data-sortable="true">More Info</th>
                         </tr>
                         </thead>
                         @foreach( $projects as $project)
@@ -97,14 +97,14 @@
                                      @endif
                                  </td>
                                 @endif
-                                <td> @if(isset($project))
-                                        <div class="btn-group">
-                                            <a href="{{ route('/projectBudgetDetails', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success"></i><span class="text-success">More details</span></a>
-                                        </div>
-                                     @endif
-                                </td>
                                 <td> @if(isset($project)){{$project->startDate}} @endif </td>
                                 <td> @if(isset($project)){{$project->endingDate  }}@endif </td>
+                                <td> @if(isset($project))
+                                        <div class="btn-group">
+                                            <a href="{{ route('/projectBudgetDetails', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-primary" style="font-size: medium"></i><span class="text-primary">More details</span></a>
+                                        </div>
+                                    @endif
+                                </td>
                         @endforeach
                     </table>
 

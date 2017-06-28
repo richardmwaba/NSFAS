@@ -8,7 +8,7 @@
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading text-info">Budget Proposals From All Units and Departments for The School of
+                <div class="panel-heading text-info"><b>Budget Proposals From All Units and Departments for The School of
                     <?php
                     use App\School;
                     use Illuminate\Support\Facades\Auth;
@@ -16,6 +16,7 @@
                     $school = School::where('id', Auth::user()->schools_id)->first();
                     echo $school->schoolName;
                     ?>
+                    </b>
                 </div>
 
                 <div class="panel-body">
@@ -24,8 +25,8 @@
                             </i><span class="text-success">Print</span></a>
                     </div>
                     <div class="form-group">
-                        <label for="forTheTotalAmount">Total amount of the proposed budget from all units/Departments:
-                            <span class="text-primary">  k {{ $totalBudget }}.00</span></label>
+                        <label for="forTheTotalAmount">Total amount of the proposed budget from all Units/Departments:
+                            <span class="text-primary">  K{{ $totalBudget }}.00</span></label>
                     </div>
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
@@ -57,8 +58,8 @@
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
                                             <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
-                                               class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success">
-                                                </i><span class="text-success">More info</span></a>
+                                               class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-primary" style="font-size: medium">
+                                                </i><span class="text-primary" >More info</span></a>
                                         </div>
                                     @endif
                                 </td>

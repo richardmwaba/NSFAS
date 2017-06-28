@@ -48,14 +48,16 @@
     <!-- ./footer -->
 
 
-<!-- jQuery -->
-<script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
+    <!-- jQuery -->
+    <script src="{{URL::asset('../frontend/js/jquery-2.1.4.min.js')}}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{URL::asset('../frontend/bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{URL::asset('../frontend/bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
 
-<!-- Custom Theme JavaScript -->
-{{--<script src="{{URL::asset('../frontend/metisMenu/dist/metisMenu.min.js')}}"></script>--}}
+    <!-- Custom Theme JavaScript -->
+    {{--<script src="{{URL::asset('../frontend/metisMenu/dist/metisMenu.min.js')}}"></script>--}}
 
+    <!-- Custom Script for Schools and Departments -->
+    <script src="{{URL::asset('../frontend/dist/js/custom.js')}}"></script>
 </body>
 </html>

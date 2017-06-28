@@ -2,28 +2,28 @@
 
 @section('title', 'Department Actual Budget')
 @section('heading')
-    <ul class="nav nav-tabs">
-        @if(isset($departments))
-            @foreach($departments as $department)
-                <li data-id="{{$department->id}}" id="clicked-{{$department->id}}" class="clicked">
-                    <a href="{{ route('/departmentActualBudget', ['id' => $department->id]) }}"> {{ $department->departmentName }} </a></li>
-            @endforeach
-        @endif
-    </ul>
-
     {{--<ul class="nav nav-tabs">--}}
-    {{--<li class="dropdown">--}}
-    {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Departments / Units--}}
-    {{--<span class="caret"></span></a>--}}
-    {{--<ul class="dropdown-menu">--}}
     {{--@if(isset($departments))--}}
     {{--@foreach($departments as $department)--}}
-    {{--<li><a href="{{ route('/departmentBudget', ['id' => $department->id]) }}"> {{ $department->departmentName }} </a></li>--}}
+    {{--<li data-id="{{$department->id}}" id="clicked-{{$department->id}}" class="clicked">--}}
+    {{--<a href="{{ route('/departmentActualBudget', ['id' => $department->id]) }}"> {{ $department->departmentName }} </a></li>--}}
     {{--@endforeach--}}
     {{--@endif--}}
     {{--</ul>--}}
-    {{--</li>--}}
-    {{--</ul>--}}
+
+    <ul class="nav">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Departments & Units
+                <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                @if(isset($departments))
+                    @foreach($departments as $department)
+                        <li><a href="{{ route('/departmentBudget', ['id' => $department->id]) }}"> {{ $department->departmentName }} </a></li>
+                    @endforeach
+                @endif
+            </ul>
+        </li>
+    </ul>
 @endsection
 
 @section('content')
@@ -33,7 +33,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading ">
                     @if(isset($dpName)) <div class="text-primary">The Department Of {{ $dpName }} |
-                        The total Actual Budget amount is k {{ $totalBudget }}.00</div> @endif
+                        The total Actual Budget amount is K{{ $totalBudget }}.00</div> @endif
                 </div>
 
                 <div class="panel-body">
@@ -71,8 +71,8 @@
                                     <td> @if(isset($rcd))
                                             <div class="btn-group">
                                                 <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"
-                                                   class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success">
-                                                    </i><span class="text-success">More info</span></a>
+                                                   class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-primary" style="font-size: medium">
+                                                    </i><span class="text-primary">More info</span></a>
                                             </div>
                                         @endif
                                     </td>
@@ -93,10 +93,10 @@
                                     classes += ' table-condensed';
                                 }
                                 $('#table-style').bootstrapTable('destroy')
-                                        .bootstrapTable({
-                                            classes: classes,
-                                            striped: $('#striped').prop('checked')
-                                        });
+                                    .bootstrapTable({
+                                        classes: classes,
+                                        striped: $('#striped').prop('checked')
+                                    });
                             });
                         });
 

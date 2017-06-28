@@ -1,6 +1,6 @@
 @extends('layouts.authorized')
 
-@section('title', 'staff')
+@section('title', 'Staff')
 @section('heading','Staff Details')
 
 @section('content')

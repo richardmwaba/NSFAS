@@ -1,6 +1,6 @@
 @extends('layouts.authorized')
 
-@section('title', 'project | budget-approval')
+@section('title', 'Project | Budget-approval')
 @section('heading','')
 
 @section('content')

@@ -1,14 +1,14 @@
 @extends('layouts.authorized')
 
-@section('title', 'add | account income')
-@section('heading','Add an income to an account!')
+@section('title', 'Add | Account Income')
+@section('heading','Add An Income To An Account')
 
 @section('content')
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Recently Added Accounts</div>
+                <div class="panel-heading"><b>Recently Added Accounts</b></div>
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
@@ -34,7 +34,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('/addAccountIncome', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link">
-                                                <i class="fa fa-plus-circle fa-fw text-success"></i><span class="text-success">Add</span></a>
+                                                <i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i><span class="text-primary">Add Income</span></a>
                                         </div>
                                     </td>
                                 </tr>

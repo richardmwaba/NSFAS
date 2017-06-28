@@ -1,5 +1,5 @@
 @extends('layouts.authorized')
-@section('title', 'project | budgeting')
+@section('title', 'Project | Budgeting')
 @section('heading','The '. $records->projectName.' project budgeting. '.
  'Remember that your total budget must be less than or equal to K'.$records->budget->actualProjectBudget.'.00 ')
 

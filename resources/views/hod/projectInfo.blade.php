@@ -1,14 +1,14 @@
 @extends('layouts.authorized')
 
 @section('title', 'Projects')
-@section('heading','Projects information')
+@section('heading','Projects Information')
 
 @section('content')
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">project info</div>
+                <div class="panel-heading"><b>Project info</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -17,7 +17,6 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            {{--<th data-field="state" data-checkbox="true">Count</th>--}}
                             <th data-field="ProjectName" data-sortable="true">Project Name</th>
                             <th data-field="description" data-sortable="true">Description</th>
                             <th data-field="projectCoordinator" data-sortable="true">Coordinator</th>
@@ -31,7 +30,6 @@
                         </thead>
                         @foreach( $record as $rcd)
                             <tr>
-                                {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($rcd)) {{ $rcd->projectName }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->description }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->projectCoordinator }} @endif </td>
@@ -45,8 +43,8 @@
                                                 K{{ $rcd->totalAmount->proposedBudget }}.00
                                                 @if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)
                                                     <div class="btn-group">
-                                                        <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" >
-                                                            Add Budget items</a>
+                                                        <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" ><i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i>
+                                                            <span class="text-primary">Add Budget Items</span></a>
                                                     </div>
                                                 @endif
                                             @else

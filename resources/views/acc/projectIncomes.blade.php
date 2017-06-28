@@ -1,5 +1,5 @@
 @extends('layouts.authorized')
-@section('title', 'project | income')
+@section('title', 'Project | Income')
 @section('heading','Projects Income')
 
 
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Projects Income Details</div>
+                <div class="panel-heading"><b>Projects Income Details</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -18,11 +18,10 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
                             <th data-field="department" data-sortable="true">Department</th>
                             <th data-field="ProjectName" data-sortable="true">Project Name</th>
-                            <th data-field="projectCoordinator" data-sortable="true">incomes</th>
-                            <th data-field="startDate" data-sortable="true">start date</th>
+                            <th data-field="projectCoordinator" data-sortable="true">Incomes</th>
+                            <th data-field="startDate" data-sortable="true">Start date</th>
                             <th data-field="endDate" data-sortable="true">End date</th>
                             <th data-field="approved" data-sortable="true">Add Income</th>
                             <th data-field="moreInfo" data-sortable="true">More Income Info</th>
@@ -30,7 +29,6 @@
                         </thead>
                         @foreach( $projects as $project)
                                 <tr>
-                                    <td data-field="state" data-checkbox="true"></td>
                                     <td> @if(isset($project)) {{ $project->departments->departmentName }} @endif </td>
                                     <td> @if(isset($project)) {{ $project->projectName }} @endif </td>
                                     <td> @if(isset($project->totalAmount->incomeAcquired)) k{{ $project->totalAmount->incomeAcquired }}.00 @endif </td>
@@ -38,14 +36,14 @@
                                     <td> @if(isset($project)) {{ $project->endingDate }} @endif </td>
                                     <td> @if(isset($project))
                                             <div class="btn-group">
-                                                <a href="{{ route('/projectIncomes', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-plus-circle fa-fw text-success"></i><span class="text-success">Add</span></a>
+                                                <a href="{{ route('/projectIncomes', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i><span class="text-primary">Add</span></a>
                                             </div>
                                         @endif
                                     </td>
 
                                     <td> @if(isset($project))
                                             <div class="btn-group">
-                                                <a href="{{ route('/projectIncomesDetails', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success"></i><span class="text-success">More details</span></a>
+                                                <a href="{{ route('/projectIncomesDetails', ['id' => $project->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-primary" style="font-size: medium"></i><span class="text-primary">More details</span></a>
                                             </div>
                                         @endif
                                     </td>

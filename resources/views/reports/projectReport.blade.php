@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Project Reports</div>
+                <div class="panel-heading"><b>Project Reports</b></div>
 
                 <div class="panel-body">
 
@@ -16,7 +16,6 @@
 
         <thead>
         <tr>
-            <!--<th data-field="state" data-checkbox="true">Count</th>-->
             <th data-field="ProjectName" data-sortable="true">Project Name</th>
             <th data-field="department" data-sortable="true">Department</th>
             <th data-field="projectCoordinator" data-sortable="true">Project Co-ordinator</th>
@@ -37,7 +36,7 @@
                 <td>
 
                     <div class="btn-group">
-                        <a href="{{ route('/projectsPDF', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success"></i><span class="text-success">Print</span></a>
+                        <a href="{{ route('/projectsPDF', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link"><i class="fa fa-print fa-fw text-success" style="font-size: medium"></i><span class="text-success">Print</span></a>
                     </div>
 
             @endforeach

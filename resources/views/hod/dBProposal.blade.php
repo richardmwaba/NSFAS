@@ -9,8 +9,13 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading ">
-                    @if(isset($dpName)) <div class="text-primary">The Department Of {{ $dpName }} |
-                        The total proposed budget amount is k {{ $totalBudget }}.00</div> @endif
+                    @if(isset($dpName))
+                        <div class="">
+                            <b>The Department Of {{ $dpName }} |
+                                The total proposed budget amount is k {{ $totalBudget }}.00
+                            </b>
+                        </div>
+                    @endif
                 </div>
                 <div class="panel-body">
                     <div class="btn-group">

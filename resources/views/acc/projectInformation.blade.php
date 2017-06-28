@@ -1,5 +1,5 @@
 @extends('layouts.authorized')
-@section('title', 'project | Information')
+@section('title', 'Project | Information')
 @section('heading','Projects Information')
 
 @section('content')
@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Projects Information</div>
+                <div class="panel-heading"><b>Projects Information</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -16,7 +16,6 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true">Count</th>
                             <th data-field="ProjectName" data-sortable="true">Project Name</th>
                             <th data-field="projectCoordinator" data-sortable="true">Coordinator</th>
                             <th data-field="department" data-sortable="true">Department</th>
@@ -31,7 +30,6 @@
                         @foreach( $projects as $project)
                             {{--@if($project->budget->approved == 1)--}}
                                 <tr>
-                                    <td data-field="state" data-checkbox="true"></td>
                                     <td> @if(isset($project)) {{ $project->projectName }} @endif </td>
                                     <td> @if(isset($project)) {{ $project->projectCoordinator }} @endif </td>
                                     <td> @if(isset($project)) {{ $project->departments->departmentName }} @endif </td>
