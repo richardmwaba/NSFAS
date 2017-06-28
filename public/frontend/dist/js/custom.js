@@ -15,13 +15,13 @@ function dropdowns(ddl1, ddl2){
     			case '8':
     				ddl2.options.length = 0;
     				for (i = 50;i < ns.length;i++ ) {
-    					createOption(ddl2,ns[i],ns[i]);
+    					createOption(ddl2,ns[i],i);
     				}
     				break;
     			case '4':
     				ddl2.options.length = 0;
     				for (var i = 19;i < humanities.length;i++) {
-    					createOption(ddl2, humanities[i],humanities[i]);
+    					createOption(ddl2, humanities[i],i);
     				}
     				break;
     			case '2':
@@ -39,31 +39,31 @@ function dropdowns(ddl1, ddl2){
                 case '5':
                     ddl2.options.length = 0;
                     for (var i = 30;i < law.length;i++){
-                        createOption(ddl2,law[i],law[i]);
+                        createOption(ddl2,law[i],i);
                     }
                     break;
                 case '3':
                     ddl2.options.length = 0;
                     for (var i = 14;i < engineering.length;i++){
-                        createOption(ddl2,engineering[i],engineering[i]);
+                        createOption(ddl2,engineering[i],i);
                     }
                     break;
                 case '6':
                     ddl2.options.length = 0;
                     for (var i= 36;i< medicine.length;i++) {
-                        createOption(ddl2,medicine[i],medicine[i]);
+                        createOption(ddl2,medicine[i],i);
                     }
                     break;
                 case '7':
                     ddl2.options.length = 0;
                     for (var i = 32;i < mines.length;i++) {
-                        createOption(ddl2,mines[i],mines[i]);
+                        createOption(ddl2,mines[i],i);
                     }
                     break;
                 case '9':
                     ddl2.options.length = 0;
                     for (var i= 56;i < veterinary.length;i++){
-                        createOption(ddl2,veterinary[i],veterinary[i]);
+                        createOption(ddl2,veterinary[i],i);
 
                     }
                     break;        
