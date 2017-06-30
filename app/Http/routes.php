@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/addHod', 'AdminController@addHOD');
     Route::get('/addAccountant', 'AdminController@getAcc');
     Route::post('/addAccountant', 'AdminController@addAccountant');
-    Route::get('/addDos', 'AdminController@dean');
+    Route::get('/addDos', 'AdminController@dos');
     Route::post('/addDos', 'AdminController@addDos');
 
     /**
@@ -126,7 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projectIncomes', 'AccountantController@projectIncomes');
     Route::get('/budgetIncomes', 'AccountantController@budgetIncomes');
     Route::get('/Info', 'AccountantController@Info');
-    Route::get('/viewAccounts', 'AccountantController@viewAccounts');
+    Route::get('/Accounts', 'AccountantController@viewAccounts');
     Route::get('/projectIncomes/{id}', ['uses' =>'AccountantController@addProjectIncome', 'as' => '/projectIncomes']);
     Route::get('/projectIncomesDetails/{id}', ['uses' =>'AccountantController@moreIncomeInfo', 'as' => '/projectIncomesDetails']);
     Route::get('/projectBudgetDetails/{id}', ['uses' =>'AccountantController@moreBudgetInfo', 'as' => '/projectBudgetDetails']);

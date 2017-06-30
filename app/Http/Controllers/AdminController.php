@@ -47,7 +47,8 @@ class AdminController extends Controller
             $newEntry->otherName = ucfirst($request['otherName']);
             $newEntry->password = bcrypt($request['password']);
             $newEntry->access_level_id = 'HD';
-            $newEntry->departments_id= $record->id;
+            $newEntry->schools_id = $request['school'];
+            $newEntry->departments_id = $request['department'];
             $newEntry->save();
 //        }else{
 //            Session::flash('flash_message', 'sorry but department of '.$department.',has already been assigned an HOD! ');
@@ -65,10 +66,14 @@ class AdminController extends Controller
     }
 
     public function getAcc(){
-        return view('admin.addAccountant');
+        $schools = School::all();
+        return view('admin.addAccountant')->with('schools', $schools);
     }
 
     public function addAccountant(Request $request){
+
+        $schools = School::all();
+
         $validator = $this->validateAccountant($request->all());
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -92,8 +97,10 @@ class AdminController extends Controller
             $newEntry->schools_id= $record->id;
             $newEntry->save();
 //        }else{
-            Session::flash('flash_message', 'sorry but department of '.$school.',has already been assigned an HOD! ');
-            Return view('admin.addAccountant');
+            //Session::flash('flash_message', 'sorry but the school of '.$school.',has already been assigned an Accountant! ');
+            Session::flash('flash_message', 'An Accountant for the school of '.$school.',has successfully been added ');
+            Return view('admin.addAccountant')->with('schools', $schools);
+            //return redirect('back');
 //        }
     }
 
@@ -125,8 +132,9 @@ class AdminController extends Controller
         $newEntry->schools_id= $record->id;
         $newEntry->save();
 //        }else{
-        Session::flash('flash_message', 'sorry but department of '.$school.',has already been assigned an HOD! ');
-        Return view('admin.addAccountant');
+        //Session::flash('flash_message', 'sorry but department of '.$school.',has already been assigned an HOD! ');
+        Session::flash('flash_message', 'A Dean for the school of '.$school.',has successfully been added ');
+        Return view('admin.addDOS');
 //        }
     }
 

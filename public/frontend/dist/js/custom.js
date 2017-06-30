@@ -14,56 +14,75 @@ function dropdowns(ddl1, ddl2){
     		switch(ddl1.value) {
     			case '8':
     				ddl2.options.length = 0;
-    				for (i = 50;i < ns.length;i++ ) {
-    					createOption(ddl2,ns[i],i);
+    				var v = 50;
+    				for (i = 0;i < ns.length;i++ ) {
+    					createOption(ddl2,ns[i],v);
+    					v++;
     				}
     				break;
     			case '4':
     				ddl2.options.length = 0;
-    				for (var i = 19;i < humanities.length;i++) {
-    					createOption(ddl2, humanities[i],i);
+    				var m = 19;
+    				for (var i = 0;i < humanities.length;i++) {
+    					createOption(ddl2, humanities[i],m);
+    					m++
     				}
     				break;
     			case '2':
+    			    var k = 5;
     				ddl2.options.length = 0;
-    				for (var i = 5;i < education.length;i++) {
-    					createOption(ddl2, education[i],i);
+    				for (var i = 0;i < education.length;i++) {
+    					createOption(ddl2, education[i],k);
+    					k++;
     				}
     				break;
     			case '1':
     				ddl2.options.length =0;
-    				for (var i = 0;i < agric.length;i++) {
-    					createOption(ddl2, agric[i],i);
-    				}
+    				var j = 0;
+                    for (var i = 0;i < agric.length;i++) {
+                        createOption(ddl2, agric[i],j);
+                        j++;
+                    }
+
     				break;
                 case '5':
                     ddl2.options.length = 0;
-                    for (var i = 30;i < law.length;i++){
-                        createOption(ddl2,law[i],i);
+                    var n = 30;
+                    for (var i = 0;i < law.length;i++){
+                        createOption(ddl2,law[i],n);
+                        n++;
                     }
                     break;
                 case '3':
+                    var l = 14;
                     ddl2.options.length = 0;
-                    for (var i = 14;i < engineering.length;i++){
-                        createOption(ddl2,engineering[i],i);
+                    for (var i = 0;i < engineering.length;i++){
+                        createOption(ddl2,engineering[i],l);
+                        l++
                     }
                     break;
                 case '6':
                     ddl2.options.length = 0;
-                    for (var i= 36;i< medicine.length;i++) {
-                        createOption(ddl2,medicine[i],i);
+                    var p = 36;
+                    for (var i= 0;i< medicine.length;i++) {
+                        createOption(ddl2,medicine[i],p);
+                        p++;
                     }
                     break;
                 case '7':
                     ddl2.options.length = 0;
-                    for (var i = 32;i < mines.length;i++) {
-                        createOption(ddl2,mines[i],i);
+                    var q = 32;
+                    for (var i = 0;i < mines.length;i++) {
+                        createOption(ddl2,mines[i],q);
+                        q++;
                     }
                     break;
                 case '9':
+                    var x = 56;
                     ddl2.options.length = 0;
-                    for (var i= 56;i < veterinary.length;i++){
-                        createOption(ddl2,veterinary[i],i);
+                    for (var i= 0;i < veterinary.length;i++){
+                        createOption(ddl2,veterinary[i],x);
+                        x++;
 
                     }
                     break;        
