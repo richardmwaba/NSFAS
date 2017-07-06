@@ -19,7 +19,7 @@ class Departments extends Model
     }
 
     public function user(){
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\User', 'id');
     }
 
     public function budgets()

@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->char('access_level_id', 2);
-            $table->integer('departments_id')->nullable();
-            $table->integer('schools_id')->nullable();
+            $table->integer('departments_id')->default('63');
+            $table->integer('schools_id')->default('11');
             $table->rememberToken();
             $table->timestamps();
 

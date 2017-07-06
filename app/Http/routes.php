@@ -72,6 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/addAccountant', 'AdminController@addAccountant');
     Route::get('/addDos', 'AdminController@dos');
     Route::post('/addDos', 'AdminController@addDos');
+    Route::get('/admin/viewUsers', 'AdminController@viewUsers');
+    Route::post('/admin/deleteUser/{id}', 'AdminController@delete');
+    Route::post('/admin/update/{id}', 'AdminController@update');
 
     /**
      * routes for all head of department operations goes here

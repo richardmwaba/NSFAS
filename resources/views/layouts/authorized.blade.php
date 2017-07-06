@@ -104,7 +104,10 @@
                     @section('sideMenu')@yield('menu')@show
                         @if(Auth::user()->access_level_id == 'SA')
                         <li>
-                            <a href="#"><i class="fa fa-home fa-fw"></i>Add New User<span
+                            <a href="{{URL::asset('/admin/viewUsers')}}"><i class="fa fa-users fa-fw"></i>View Users</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Add New User<span
                                         class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

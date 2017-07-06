@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AccessLevel;
 use App\Departments;
 use App\School;
 use Illuminate\Http\Request;
@@ -20,9 +21,17 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
        return view('admin.addHOD');
+    }
+
+    public function viewUsers()
+    {
+        $users = User::with('department', 'school', 'access_level')->get();
+        $access_level = AccessLevel::all();
+        return view('admin.viewUsers')->with('users', $users)->with('access_level', $access_level);
     }
 
     public function addHOD( Request $request){
@@ -138,6 +147,30 @@ class AdminController extends Controller
 //        }
     }
 
+    //Update User details
+    public function update(Request $data, $manNumber)
+    {
+        // validation
+        $this->validate($data, [
+            'manNumber'=>'required',
+            'firstName' => 'required|max:60',
+            'lastName' => 'required|max:60',
+            'otherName' => 'max:60',
+            'email'=> 'required|max:60|email',
+            'access_level_id' => 'required|max:6',
+            'departments_id' => 'integer',
+            'schools_id' => 'integer|required',
+            'phone_number' => 'max:60'
+        ]);
+
+        $members = User::findOrFail($manNumber);
+
+        $members->update($data->all());
+
+        return redirect()->back()
+            ->with('flash_message', 'User has been updated successfully!!');
+    }
+
     /**
      * Get a validator for an incoming profile editing request.
      *
@@ -173,5 +206,12 @@ class AdminController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+    }
+
+    public function delete($manNumber)
+    {
+        $user = User::findOrFail($manNumber);
+        $user->delete();
+        return redirect()->back()->with('flash_message', 'User has been deleted successfully!!');
     }
 }

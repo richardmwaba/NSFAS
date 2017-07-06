@@ -17,4 +17,8 @@ class School extends Model
     public function accounts(){
         return $this->hasMany('App\Account');
     }
+
+    public function user(){
+        return $this->hasMany('App\User', 'id');
+    }
 }

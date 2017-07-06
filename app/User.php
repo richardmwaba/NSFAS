@@ -30,7 +30,7 @@ class User extends Authenticatable
     ];
 
     public function access_level(){
-        return $this->belongsTo('App\AccessLevel');
+        return $this->belongsTo('App\AccessLevel', 'access_level_id', 'access_level_id');
     }
 
     public function role(){
@@ -51,5 +51,9 @@ class User extends Authenticatable
 
     public function accounts(){
         return $this->hasMany('App\Account');
+    }
+
+    public function school(){
+        return $this->belongsTo('App\School','schools_id');
     }
 }
