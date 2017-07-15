@@ -12,7 +12,7 @@
                     @if(isset($dpName))
                         <div class="">
                             <b>The Department Of {{ $dpName }} |
-                                The total proposed budget amount is k {{ $totalBudget }}.00
+                                The total proposed budget amount is {{"K ".number_format($totalBudget, 2, ".", ",") }}
                             </b>
                         </div>
                     @endif
@@ -47,8 +47,8 @@
                                     <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }}@endif </td>
-                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
+                                    <td> @if(isset($rcd)) {{ "K ".number_format($rcd->estimate->pricePerUnit, "2", ".", ",")}}@endif </td>
+                                    <td> @if(isset($rcd)) {{ "K ".number_format($rcd->estimate->cost, "2", ".",",") }} @endif </td>
                                     <td> @if(isset($rcd))
                                             <div class="btn-group">
                                                 <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"

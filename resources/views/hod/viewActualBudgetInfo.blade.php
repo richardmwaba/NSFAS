@@ -10,7 +10,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading ">
                     @if(isset($dpName)) <div class="text-primary">The Department Of {{ $dpName }} |
-                        The total Actual Budget amount is k {{ $totalBudget }}.00</div> @endif
+                        The total Actual Budget amount is {{"K ". number_format($totalBudget, "2", ".", ",") }}.00</div> @endif
                 </div>
                 <div class="panel-body">
                     <div class="btn-group">
@@ -42,8 +42,8 @@
                                     <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                                     <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }} @endif </td>
-                                    <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }}@endif </td>
+                                    <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->pricePerUnit, "2", ".", ",") }} @endif </td>
+                                    <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->cost, "2", ".", ",") }}@endif </td>
                                     <td> @if(isset($rcd))
                                             <div class="btn-group">
                                                 <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"

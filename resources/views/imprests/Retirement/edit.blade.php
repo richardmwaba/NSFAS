@@ -51,7 +51,7 @@
                                                 of Imprest advanced</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$imprest->authorisedAmount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($imprest->authorisedAmount, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 
@@ -131,7 +131,7 @@
                                                 allowance</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->subAmount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($retirement->subAmount, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 
@@ -139,7 +139,7 @@
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Fuel</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">{{$retirement->fuelAmount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($retirement->fuelAmount, "2", ".", ".")}}</label>
                                             </div>
                                         </div>
 
@@ -147,7 +147,7 @@
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Amount</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->fuelAmount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($retirement->fuelAmount, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 
@@ -156,7 +156,7 @@
                                                    for="first-name">{{$retirement->item1}}</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->item1Amount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($retirement->item1Amount, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 
@@ -166,7 +166,7 @@
                                                        for="first-name">{{$retirement->item2}}</label>
                                                 <div class="col-sm-6 col-md-6 col-xs-5">
                                                     <label class="text-primary"
-                                                           for="first_name_value">K {{$retirement->item2Amount}}</label>
+                                                           for="first_name_value">{{"K ".number_format($retirement->item2Amount, "2", ".", ",")}}</label>
                                                 </div>
                                             </div>
                                         @endif
@@ -177,7 +177,7 @@
                                                        for="first-name">{{$retirement->item3}}</label>
                                                 <div class="col-sm-6 col-md-6 col-xs-5">
                                                     <label class="text-primary"
-                                                           for="first_name_value">K {{$retirement->item3Amount}}</label>
+                                                           for="first_name_value">{{"K ".number_format($retirement->item3Amount, "2", ".", ",")}}</label>
                                                 </div>
                                             </div>
                                         @endif
@@ -197,7 +197,7 @@
                                             <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Total</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$total}}</label>
+                                                       for="first_name_value">{{"K ".number_format($total, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 

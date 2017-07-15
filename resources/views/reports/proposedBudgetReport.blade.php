@@ -66,7 +66,7 @@
         @if(isset($schoolName)) The School Of {{ $schoolName }} @endif
     </p>
     <p>Total Proposed Budget Amount:
-        @if(isset($totalBudget ))  K{{ $totalBudget }} @endif
+        @if(isset($totalBudget ))  {{"K ".number_format($totalBudget, "2", ".",",") }} @endif
     </p>
     <br>
     <table>
@@ -91,8 +91,8 @@
                 <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }} @endif </td>
-                <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
+                <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->pricePerUnit, "2", ".", ",") }} @endif </td>
+                <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->cost, "2", ".", ",") }} @endif </td>
             </tr>
         @endforeach
     </table>

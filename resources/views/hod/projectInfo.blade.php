@@ -35,12 +35,12 @@
                                 <td> @if(isset($rcd)) {{ $rcd->projectCoordinator }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->startDate }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->endingDate }} @endif </td>
-                                <td> @if(isset($rcd)) K{{ $rcd->totalAmount->incomeAcquired }}.00 @endif </td>
+                                <td> @if(isset($rcd)) {{"K ".number_format($rcd->totalAmount->incomeAcquired, "2", ".", ",") }} @endif </td>
                                 <td> @if(isset($rcd))
                                         @if(Auth::user()->access_level_id == 'OT')
 
                                             @if($rcd->budget->approved  == 0)
-                                                K{{ $rcd->totalAmount->proposedBudget }}.00
+                                                {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}
                                                 @if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)
                                                     <div class="btn-group">
                                                         <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" ><i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i>
@@ -48,11 +48,11 @@
                                                     </div>
                                                 @endif
                                             @else
-                                                K{{ $rcd->totalAmount->proposedBudget }}.00
+                                                {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",")}}
                                             @endif
 
                                         @elseif(Auth::user()->access_level_id == 'HD')
-                                             K{{ $rcd->totalAmount->proposedBudget }}.00
+                                             {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}
                                         @endif
                                     @endif
                                 </td>

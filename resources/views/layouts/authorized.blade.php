@@ -104,10 +104,7 @@
                     @section('sideMenu')@yield('menu')@show
                         @if(Auth::user()->access_level_id == 'SA')
                         <li>
-                            <a href="{{URL::asset('/admin/viewUsers')}}"><i class="fa fa-users fa-fw"></i>View Users</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i>Add New User<span
+                            <a href="#"><i class="fa fa-home fa-fw"></i>Add New User<span
                                         class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -238,9 +235,9 @@
                                     <li>
                                         <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-pie-chart fa-fw"></i>Projects Report</a>
                                     </li>
-                                    <li>
-                                        <a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-pie-chart fa-fw"></i>Accounts Report</a>
-                                    </li>
+                                    {{--<li>--}}
+                                        {{--<a href="{{URL::asset('/ProjectReport')}}"><i class="fa fa-pie-chart fa-fw"></i>Accounts Report</a>--}}
+                                    {{--</li>--}}
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>

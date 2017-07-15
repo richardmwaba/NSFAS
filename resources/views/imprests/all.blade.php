@@ -65,8 +65,8 @@
                                 <td>{{$imprest->budget->budgetName}}</td>
                                 <td>{{$imprest->item->description}}</td>
                                 <td>{{$imprest->owner->firstName}} {{$imprest->owner->lastName}}</td>
-                                <td>{{$imprest->amountRequested}}</td>
-                                <td>{{$imprest->authorisedAmount}}</td>
+                                <td>{{"K ".number_format($imprest->amountRequested, "2", ".", ",")}}</td>
+                                <td>{{"K ".number_format($imprest->authorisedAmount, "2", ".", ",")}}</td>
                                 <td @if($auth=='None') style="color: red" @elseif($auth=="The Head") style="color: orange" @else style="color:limegreen;"@endif>{{$auth}}</td>
                                 <td @if($bursar=="Not recommended") style="color: red" @else style="color:limegreen" @endif >{{$bursar}}</td>
 

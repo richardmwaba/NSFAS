@@ -66,22 +66,22 @@
         @if(isset($account)) {{ $account->accountName }} @endif
     </p>
     <p>Budget Line:
-        @if(isset($budget )) <b><i> {{ $budget->budgetName }}</i></b> @endif
+        @if(isset($budget )) <b>{{ $budget->budgetName }}</b> @endif
     </p>
     <p>School Main Account:
-        @if(isset($budget ))<b><i> K{{ $budget->schoolIncome }}</i></b> @endif
+        @if(isset($budget ))<b> {{ "K ".number_format($budget->schoolIncome, "2", ".", ",") }}</b> @endif
     </p>
     <p>Department Income(Received from School main account):
-        @if(isset($budget )) <b><i> K{{ $budget->departmentIncome }}</i></b> @endif
+        @if(isset($budget )) <b> {{"K ".number_format($budget->departmentIncome, "2",".", ",") }}</b> @endif
     </p>
     <p>Department Total Income:
-        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->incomeAcquired }}</i></b> @endif
+        @if(isset($account )) <b> {{"K ".number_format($account->calculatedTotal->incomeAcquired, "2", ".",",") }}</b> @endif
     </p>
     <p>Department Total Expenditure:
-        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->expenditureAcquired }}</i></b> @endif
+        @if(isset($account )) <b> {{"K ".number_format($account->calculatedTotal->expenditureAcquired, "2", ".", ",") }}</b> @endif
     </p>
     <p>Department Balance(As of today):
-        @if(isset($account )) <b><i> K{{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}</i></b> @endif
+        @if(isset($account )) <b> {{"K ".number_format(($account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired), "2", ".", ",") }}</b> @endif
     </p>
     <br>
     <pre>

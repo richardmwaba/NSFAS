@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><span style="color: red;">Total Budget for {{ $projects->projectName }} project is K{{ $projects->totalAmount->proposedBudget }}.00</span></div>
+                <div class="panel-heading"><span style="color: red;">Total Budget for {{ $projects->projectName }} project is {{ "K ".number_format($projects->totalAmount->proposedBudget, "2", ".", ",") }}.00</span></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -33,7 +33,7 @@
                                 <td> @if(isset($rcd)) {{ $rcd->description }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->quantity }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->pricePerUnit }} @endif </td>
-                                <td> @if(isset($rcd)) k{{ $rcd->cost }} @endif </td>
+                                <td> @if(isset($rcd)) {{ "K ".number_format($rcd->cost, "2", ".", ",") }} @endif </td>
                             </tr>
                         @endforeach
                     </table>

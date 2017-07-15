@@ -79,14 +79,14 @@
     <p>Project Department: {{$project->departments->departmentName}}</p><br>
     <p>Project Start Date: {{$project->startDate}}</p><br>
     <p>Project End Date: {{$project->endingDate}}</p><br>
-    <p>Total Project Budget Amount: K{{$project->budget->actualProjectBudget}}</p><br>
-    <p>Total Received Income: K{{$totalIn}}</p><br>
-    <p>Amount Used: K{{$totalEx}} </p><br>
+    <p>Total Project Budget Amount: {{"K ".number_format($project->budget->actualProjectBudget, "2", ".", ",")}}</p><br>
+    <p>Total Received Income: {{"K ".number_format($totalIn, "2", ".", ",")}}</p><br>
+    <p>Amount Used: {{"K ".number_format($totalEx, "2", ".", ",")}} </p><br>
     <p>Available Amount:
         {{--@if($balance == 0)--}}
             {{--K {{$project->budget->actualProjectBudget}}.00--}}
         {{--@else--}}
-        K{{$balance = $totalIn - $totalEx}}
+        {{"K ".number_format($balance = $totalIn - $totalEx, "2", ".", ",")}}
         {{--@endif--}}
 
     </p><br>
@@ -107,8 +107,8 @@
                 <tr>
                     <td style="text-align: left">{{$budgetItem->description}} </td>
                     <td>{{$budgetItem->quantity}} </td>
-                    <td>{{$budgetItem->pricePerUnit}} </td>
-                    <td>{{$budgetItem->cost}} </td>
+                    <td>{{"K ".number_format($budgetItem->pricePerUnit, "2", ".", ",")}} </td>
+                    <td>{{"K ".number_format($budgetItem->cost, "2", ".", ",")}} </td>
                 </tr>
                 @endforeach
 

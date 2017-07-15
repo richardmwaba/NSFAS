@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="forTheTotalAmount">Total amount of the proposed budget from all Units/Departments:
-                            <span class="text-primary">  K{{ $totalBudget }}.00</span></label>
+                            <span class="text-primary">  {{"K ".number_format($totalBudget, "2", ".", ",") }}</span></label>
                     </div>
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
@@ -53,8 +53,8 @@
                                 <td> @if(isset($rcd)) {{ $rcd->activityName }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->itemDescription }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->estimate->quantity }} @endif </td>
-                                <td> @if(isset($rcd)) K{{ $rcd->estimate->pricePerUnit }} @endif </td>
-                                <td> @if(isset($rcd)) K{{ $rcd->estimate->cost }} @endif </td>
+                                <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->pricePerUnit, "2", ".", ",") }} @endif </td>
+                                <td> @if(isset($rcd)) {{"K ".number_format($rcd->estimate->cost, "2", ".", ",") }} @endif </td>
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
                                             <a href="{{ route('/moreInfo', ['id' => $rcd->id]) }}"

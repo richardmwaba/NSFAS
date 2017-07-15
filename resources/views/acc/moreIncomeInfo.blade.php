@@ -28,7 +28,7 @@
                         @foreach( $incomes as $rcd)
                             <tr>
                                 <td data-field="state" data-checkbox="true"></td>
-                                <td> @if(isset($rcd)) k{{ $rcd->amountReceived }}.00 @endif </td>
+                                <td> @if(isset($rcd)) {{ "K ".number_format($rcd->amountReceived, "2", ".", ",") }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->dateReceived }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->giver }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->receiptNumber }} @endif </td>

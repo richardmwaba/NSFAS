@@ -47,7 +47,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">School Main Account:</label>
                             <div class="col-sm-6 col-md-6 col-xs-5 text-primary">
                                 @if(isset($budget))
-                                    K{{ $budget->schoolIncome }}.00
+                                    {{ "K ".number_format($budget->schoolIncome, "2", ".", ",") }}
                                 @endif
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             <label class="col-sm-3 col-md-3 col-xs-4" for="last-name">Department Income (Received from School main account):</label>
                             <div class="col-sm-6 col-md-6 col-xs-5 text-primary">
                                 @if(isset($budget))
-                                    K{{ $budget->departmentIncome }}.00
+                                    {{ "K ".number_format($budget->departmentIncome, "2", ".", ",")}}
                                 @endif
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <div class="col-sm-6 col-md-6 col-xs-5 text-primary">
                                 @if(isset($account))
                                     @if(isset($account->calculatedTotal->incomeAcquired))
-                                        K{{ $account->calculatedTotal->incomeAcquired }}.00
+                                        {{ "K ".number_format($account->calculatedTotal->incomeAcquired, "2", ".", ",") }}
                                     @endif
                                 @endif
                             </div>
@@ -77,7 +77,7 @@
                             <div class="col-sm-6 col-md-6 col-xs-5 text-primary">
                                 @if(isset($account))
                                     @if(isset($account->calculatedTotal->expenditureAcquired))
-                                        K{{ $account->calculatedTotal->expenditureAcquired }}.00
+                                        {{ "K ".number_format($account->calculatedTotal->expenditureAcquired, "2", ".", ",") }}
                                     @endif
                                 @endif
                             </div>
@@ -87,7 +87,7 @@
                             <div class="col-sm-6 col-md-6 col-xs-5 text-primary">
                                 @if(isset($account))
                                     @if(isset($account->calculatedTotal->expenditureAcquired))
-                                        K{{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}.00
+                                        {{ "K ".number_format(($account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired) ,"2",".", ",") }}
                                     @endif
                                 @endif
                             </div>

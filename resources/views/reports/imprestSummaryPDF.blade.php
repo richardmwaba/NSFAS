@@ -75,8 +75,8 @@
     <!--foreach($projects as $project)-->
 
     <p>Account: {{$request->accountName}}</p><br>
-    <p>Total Balance In Account: K{{$request->initialBalance}}</p><br>
-    <p>Balance After Withdraw: K{{$request->currentBalance}}</p><br>
+    <p>Total Balance In Account: {{"K ".number_format($request->initialBalance, "2", ".", ",")}}</p><br>
+    <p>Balance After Withdraw: {{"K ".number_format($request->currentBalance, "2", ".", ",")}}</p><br>
     <p>Purpose: {{$request->description}}</p><br>
     <p>Budget Line: {{$request->budgetName}}</p><br>
     <p>Beneficiary: {{$request->applicantNames}}</p><br>

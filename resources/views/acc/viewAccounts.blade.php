@@ -32,10 +32,10 @@
                             <tr>
                                 <td> @if(isset($account)){{ $account->accountName }} @endif </td>
                                 {{--<td> @if(isset($account)){{ $account->budget->budgetName}} @endif </td>--}}
-                                <td> @if(isset($account)) K {{ $account->calculatedTotal->incomeAcquired }}.00  @endif </td>
-                                <td> @if(isset($account)) K {{ $account->calculatedTotal->expenditureAcquired }}.00  @endif </td>
+                                <td> @if(isset($account)) {{ "K ".number_format($account->calculatedTotal->incomeAcquired, "2", ".", ",") }}  @endif </td>
+                                <td> @if(isset($account)) {{ "K ".number_format($account->calculatedTotal->expenditureAcquired, "2", ".", ",") }}  @endif </td>
                                 <td> @if(isset($account))
-                                        K {{ $account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired }}.00
+                                        {{ "K ".number_format(($account->calculatedTotal->incomeAcquired - $account->calculatedTotal->expenditureAcquired), "2", ".", ",") }}
                                     @endif </td>
                             </tr>
                         @endforeach

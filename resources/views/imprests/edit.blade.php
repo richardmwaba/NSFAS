@@ -73,7 +73,7 @@
                                                 <label for="Date_Sent">Amount of Imprest required </label>
                                                 <input type="number" class="form-control" name="amountRequested"
                                                        value="{{$imprest->amountRequested}}"
-                                                       placeholder="{{$imprest->amountRequested}}">
+                                                       placeholder="{{"K ".number_format($imprest->amountRequested, "2",".",",")}}">
 
                                                 @if ($errors->has('amountRequested'))
                                                     <span class="help-block">
@@ -217,10 +217,10 @@
 
                                                                    @else
 
-                                                                   {{$pl = $imprest->imprestBalance}}
+                                                                   {{"K ".number_format($pl = $imprest->imprestBalance, "2", ".", ",")}}
 
                                                                    @endif placeholder="" disabled>
-                                                            <span class="input-group-addon">.00</span>
+                                                            <span class="input-group-addon"></span>
                                                         </div>
                                                     </div>
 

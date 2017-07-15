@@ -41,7 +41,7 @@
                                 <td> @if(isset($project)) {{ $project->departments->departmentName }} @endif </td>
                                 @endif
                                 <td> @if(isset($project)){{ $project->description }} @endif </td>
-                                <td> @if(isset($project)) K{{ $project->budget->actualProjectBudget }}.00 @endif </td>
+                                <td> @if(isset($project)) {{"K ".number_format($project->budget->actualProjectBudget, "2", ".", ",") }} @endif </td>
                                 <td> @if(isset($project))
                                         @if(Auth::user()->access_level_id == 'HD')
                                            @foreach($project->expenditures() as $expend)

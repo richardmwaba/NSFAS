@@ -40,7 +40,7 @@
                                                 of retirement advanced</label>
                                             <div class="col-sm-6 col-md-6 col-xs-5">
                                                 <label class="text-primary"
-                                                       for="first_name_value">K {{$retirement->imprest->authorisedAmount}}</label>
+                                                       for="first_name_value">{{"K ".number_format($retirement->imprest->authorisedAmount, "2", ".", ",")}}</label>
                                             </div>
                                         </div>
 
@@ -176,7 +176,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group{{$errors->has('subAmount') ? 'has-error' : ''}}">
                                             <label for="Date_Sent">Amount</label>
-                                            <input type="number" value="{{$retirement->subAmount}}" class="form-control" name="subAmount"
+                                            <input type="number" value="{{"K ".number_format($retirement->subAmount, "2", ".", ",")}}" class="form-control" name="subAmount"
                                                    placeholder="K">
                                             @if ($errors->has('subAmount'))
                                                 <span class="help-block">
@@ -199,7 +199,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Date_Sent">Amount</label>
-                                        <input type="number" value="{{$retirement->fuelAmount}}" class="form-control" name="fuelAmount"
+                                        <input type="number" value="{{"K ".number_format($retirement->fuelAmount, "2", ".", ",")}}" class="form-control" name="fuelAmount"
                                                placeholder="K">
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group{{$errors->has('item1Amount') ? 'has-error' : ''}}">
                                         <label for="Date_Sent"></label>
-                                        <input type="number" value="{{$retirement->item1Amount}}" class="form-control" name="item1Amount"
+                                        <input type="number" value="{{"K ".number_format($retirement->item1Amount, "2", ".", ",")}}" class="form-control" name="item1Amount"
                                                placeholder="K">
                                         @if ($errors->has('item1Amount'))
                                             <span class="help-block">

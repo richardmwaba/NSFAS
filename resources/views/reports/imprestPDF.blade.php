@@ -47,13 +47,13 @@
 
     <p>Name Of Applicant:{{$imprest}}</p><br>
     <p>Applicants Department:{{$imprest->}}</p><br>
-    <p>Amount Requested:{{$imprest->amountRequested}}</p><br>
+    <p>Amount Requested:{{"K ".number_format($imprest->amountRequested, "2", ".", ",")}}</p><br>
     <p>Purpose:{{$imprest->}}</p><br>
     <p>Budget Line:{{$imprest->budgetLine}}</p><br>
     <p>Name Of Authorizing H.O.D:{{$imprest->}}</p><br>
     <p>Name Of Authorizing Dean:{{$imprest->}}</p><br>
     <p>Name Of Authorizing Bursar:{{$imprest->}}</p><br>
-    <p>Authorized Amount:{{$imprest->authorizedAmount}}</p><br>
+    <p>Authorized Amount:{{"K ".number_format($imprest->authorizedAmount, "2", ".", ",")}}</p><br>
     <p>Date Obtained:{{$imprest->}}</p><br>
     <p>Date Request Was Made:{{$imprest->}}</p>
     <pre> Imprest History</pre>

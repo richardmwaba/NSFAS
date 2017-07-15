@@ -21,14 +21,14 @@
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Total balance in account</label>
                         <div class="col-sm-6 col-md-6 col-xs-5">
-                            <label class="text-primary" for="first_name_value">K {{$balance}}</label>
+                            <label class="text-primary" for="first_name_value">{{"K ".number_format($balance, "2", ".", ",")}}</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Amount to be withdrawn</label>
                         <div class="col-sm-6 col-md-6 col-xs-5">
-                            <label class="text-primary" for="first_name_value">K {{$request->amount}}</label>
+                            <label class="text-primary" for="first_name_value">{{"K ".number_format($request->amount, "2", ".", ",")}}</label>
                             <input type="hidden" value="{{$request->amount}}" name="amount">
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 col-xs-4" for="first-name">Balance after withdrawing</label>
                         <div class="col-sm-6 col-md-6 col-xs-5">
-                            <label class="text-primary" for="first_name_value">K {{$balance-$request->amount}}</label>
+                            <label class="text-primary" for="first_name_value">{{"K ".number_format($balance-$request->amount, "2", ".", ",")}}</label>
                         </div>
                     </div>
 

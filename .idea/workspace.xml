@@ -2,158 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2606110e-a50b-4eef-ae55-50f52c4f5fd8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/.HodController.php.swp" afterPath="$PROJECT_DIR$/app/Http/Controllers/.HodController.php.swp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/img/HDR-01.jpeg" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-01.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/img/HDR-02.jpeg" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-02.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/img/HDR-03.jpeg" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-03.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/img/HDR-04.jpeg" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-04.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/img/HDR-05.jpeg" afterPath="$PROJECT_DIR$/public/frontend/img/HDR-05.jpeg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/.viewAccountInfo.blade.php.swp" afterPath="$PROJECT_DIR$/resources/views/hod/.viewAccountInfo.blade.php.swp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/additional-methods.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/additional-methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/additional-methods.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/additional-methods.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/jquery.validate.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/jquery.validate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/jquery.validate.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/jquery.validate.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ar.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ar.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ar.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bg.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bg.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bg.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bn_BD.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bn_BD.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bn_BD.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_bn_BD.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ca.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ca.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ca.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_cs.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_cs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_cs.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_cs.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_da.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_da.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_da.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_da.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_de.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_de.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_de.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_de.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_el.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_el.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_el.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_el.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_AR.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_AR.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_AR.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_AR.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_PE.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_PE.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_PE.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_es_PE.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_et.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_et.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_et.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_et.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_eu.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_eu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_eu.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_eu.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fa.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fa.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fa.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fi.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fi.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fi.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fr.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fr.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_fr.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ge.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ge.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ge.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ge.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_gl.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_gl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_gl.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_gl.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_he.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_he.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_he.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_he.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hr.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hr.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hr.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hu.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hu.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hu.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hy_AM.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hy_AM.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hy_AM.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_hy_AM.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_id.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_id.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_id.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_id.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_is.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_is.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_is.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_is.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_it.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_it.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_it.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_it.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ja.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ja.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ja.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ja.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ka.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ka.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ka.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ka.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_kk.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_kk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_kk.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_kk.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ko.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ko.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ko.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ko.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lt.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lt.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lt.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lv.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lv.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_lv.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_mk.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_mk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_mk.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_mk.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_my.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_my.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_my.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_my.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_nl.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_nl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_nl.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_nl.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_no.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_no.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_no.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_no.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pl.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pl.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pl.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_BR.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_BR.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_BR.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_BR.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_PT.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_PT.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_PT.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_pt_PT.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ro.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ro.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ro.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ro.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ru.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ru.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ru.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_ru.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_si.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_si.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_si.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_si.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sk.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sk.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sk.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sl.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sl.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sl.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr_lat.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr_lat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr_lat.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sr_lat.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sv.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sv.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_sv.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_th.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_th.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_th.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_th.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tj.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tj.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tj.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tj.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tr.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tr.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_tr.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_uk.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_uk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_uk.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_uk.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_vi.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_vi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_vi.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_vi.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh_TW.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh_TW.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh_TW.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/messages_zh_TW.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_de.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_de.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_de.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_de.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_es_CL.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_es_CL.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_es_CL.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_es_CL.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_fi.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_fi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_fi.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_fi.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_nl.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_nl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_nl.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_nl.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_pt.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_pt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_pt.min.js" afterPath="$PROJECT_DIR$/public/frontend/js/dist/localization/methods_pt.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/StaffTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/StaffTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/localhost.sql" afterPath="$PROJECT_DIR$/localhost.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/addUser.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/addUser.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/authorised.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/authorised.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/newImprest.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/newImprest.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/overDue.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/overDue.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/ready.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/ready.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/recommendation.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/recommendation.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/recommended.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/recommended.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Mails/retired.blade.php" afterPath="$PROJECT_DIR$/resources/views/Mails/retired.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Transactions/summary.blade.php" afterPath="$PROJECT_DIR$/resources/views/Transactions/summary.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/addAccIncome.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/addAccIncome.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/addAccountIncome.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/addAccountIncome.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/moreBudgetInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/moreBudgetInfo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/moreIncomeInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/moreIncomeInfo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/projectIncomes.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/projectIncomes.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" afterPath="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/viewUsers.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/viewUsers.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/editStrategy.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/editStrategy.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/activities.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/activities.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/actualBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/actualBudget.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/addStaff.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/addStaff.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/modifyBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/modifyBudget.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectBudgeting.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/projectBudgeting.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php.orig" afterPath="$PROJECT_DIR$/resources/views/hod/projectInfo.blade.php.orig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/projectMoneyRequest.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/projectMoneyRequest.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/hod/viewActualBudgetInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/hod/viewActualBudgetInfo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/imprests/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/imprests/all.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php.orig" afterPath="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php.orig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/moreActivityInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/moreActivityInfo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/pdf/imprest.blade.php" afterPath="$PROJECT_DIR$/resources/views/pdf/imprest.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/pdf/projects.blade.php" afterPath="$PROJECT_DIR$/resources/views/pdf/projects.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/profile/edit_profile.blade.php.orig" afterPath="$PROJECT_DIR$/resources/views/profile/edit_profile.blade.php.orig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/profile/edit_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/profile/edit_user.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/ImprestReport.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/ImprestReport.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/departmentBudgetProposalPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/departmentBudgetProposalPDF.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/departmentFinalActualBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/departmentFinalActualBudget.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/imprest.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/imprest.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/imprestPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/imprestPDF.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/imprestSummaryPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/imprestSummaryPDF.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/projects.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/projects.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/proposedBudgetReport.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/proposedBudgetReport.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/schoolActualBudget.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/schoolActualBudget.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/stBPlan.blade.php" afterPath="$PROJECT_DIR$/resources/views/stBPlan.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/vendor/.gitkeep" afterPath="$PROJECT_DIR$/resources/views/vendor/.gitkeep" />
     </list>
     <ignored path="FAS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -187,68 +100,7 @@
     <favorites_list name="FAS" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="154" column="59" lean-forward="true" selection-start-line="154" selection-start-column="59" selection-end-line="154" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HodController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="750" column="113" lean-forward="true" selection-start-line="750" selection-start-column="113" selection-end-line="750" selection-end-column="113" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accountsInfoPDF.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="77" column="35" lean-forward="true" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projectReport.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/reports/projectReport.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="39" column="55" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewAccountInfo.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="103" column="139" lean-forward="false" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="139" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewSchoolAccountsPDF.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -268,6 +120,8 @@
       <find>viewAcc</find>
       <find>getProjectPDF</find>
       <find>projectsPDF</find>
+      <find>departmentActualBudget</find>
+      <find>departmentBudget</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -276,16 +130,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2016_10_18_202252_create_budgets_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/hod/budgetInfo.blade.php" />
-        <option value="$PROJECT_DIR$/app/BudgetItems.php" />
-        <option value="$PROJECT_DIR$/resources/views/hod/modifyBudget.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/moreActivityInfo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/profile/my_profile.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_16_185040_create_activities_table.php" />
         <option value="$PROJECT_DIR$/resources/views/acc/index.blade.php" />
         <option value="$PROJECT_DIR$/public/frontend/css/index.css" />
-        <option value="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" />
         <option value="$PROJECT_DIR$/public/frontend/js/authorized.js" />
         <option value="$PROJECT_DIR$/resources/views/hod/activities.blade.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/3c6a0da6e9712cb9c3b26305580e40a16640597a.php" />
@@ -296,14 +144,11 @@
         <option value="$PROJECT_DIR$/resources/views/hod/addProjects.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/projectBudgeting.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/staff.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/hod/viewActualBudgetInfo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AccountantController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CashOut.php" />
@@ -312,7 +157,6 @@
         <option value="$PROJECT_DIR$/resources/views/reports/departmentBudgetProposalPDF.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/departmentFinalActualBudget.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/imprestSummaryPDF.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/proposedBudgetReport.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/schoolActualBudget.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/viewSchoolAccountsPDF.blade.php" />
@@ -322,11 +166,21 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/authorized.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ImprestController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DeanController.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/accountsInfoPDF" />
-        <option value="$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HodController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
+        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" />
+        <option value="$PROJECT_DIR$/resources/views/imprests/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php" />
       </list>
     </option>
   </component>
@@ -340,6 +194,9 @@
       </GulpfileState>
     </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -366,25 +223,26 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -398,97 +256,20 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
+              <option name="myItemId" value="ns-financial-and-accounting-information-system" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reports" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NFAS" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -497,14 +278,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unzabeca" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/frontend/img" />
       <recent name="$PROJECT_DIR$/public/frontend/js" />
       <recent name="$PROJECT_DIR$/public/frontend/css" />
-      <recent name="$PROJECT_DIR$/public/frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
@@ -594,6 +376,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2606110e-a50b-4eef-ae55-50f52c4f5fd8" name="Default" comment="" />
@@ -652,11 +437,23 @@
       <workItem from="1498430175540" duration="1953000" />
       <workItem from="1498470206347" duration="2282000" />
       <workItem from="1498496084595" duration="5836000" />
+      <workItem from="1499422668006" duration="2187000" />
+      <workItem from="1499462307802" duration="30000" />
+      <workItem from="1499462377693" duration="452000" />
+      <workItem from="1499463072896" duration="48000" />
+      <workItem from="1499463414769" duration="124000" />
+      <workItem from="1499464540783" duration="5648000" />
+      <workItem from="1499594940379" duration="29000" />
+      <workItem from="1499599068871" duration="32000" />
+      <workItem from="1499628405997" duration="1777000" />
+      <workItem from="1499782501116" duration="612000" />
+      <workItem from="1499872978277" duration="16000" />
+      <workItem from="1499882350133" duration="42000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="799247000" />
+    <option name="totallyTimeSpent" value="810244000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -668,11 +465,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20658037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20618556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -720,83 +516,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectMoneyRequest.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="37" column="85" lean-forward="false" selection-start-line="37" selection-start-column="85" selection-end-line="37" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/dBProposal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="59" lean-forward="false" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/viewActualBudgetInfo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/modifyBudget.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="74" column="55" lean-forward="false" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imprests/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="69" column="85" lean-forward="false" selection-start-line="69" selection-start-column="85" selection-end-line="69" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="77" column="66" lean-forward="false" selection-start-line="77" selection-start-column="66" selection-end-line="77" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/acc/addAccIncome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-740">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/imprests/all.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -822,7 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,7 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -846,7 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -854,7 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,7 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,7 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="315" column="32" lean-forward="false" selection-start-line="315" selection-start-column="32" selection-end-line="315" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,13 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -967,34 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/editStrategy.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="83" lean-forward="false" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-448">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Imprest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1010,33 +685,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dean/add_Str_Dir.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="35" column="73" lean-forward="false" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DeanController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="175" column="34" lean-forward="false" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-636">
-          <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/authorized.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5280">
           <caret line="240" column="70" lean-forward="false" selection-start-line="240" selection-start-column="60" selection-end-line="240" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1044,15 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="154" column="59" lean-forward="true" selection-start-line="154" selection-start-column="59" selection-end-line="154" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1060,39 +703,174 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1188">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="101" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reports/projectReport.blade.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="39" column="55" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="4356">
+          <caret line="200" column="7" lean-forward="false" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/imprests/Retirement/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="103" column="139" lean-forward="false" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="139" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HodController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="750" column="113" lean-forward="true" selection-start-line="750" selection-start-column="113" selection-end-line="750" selection-end-column="113" />
-          <folding />
+        <state relative-caret-position="-308">
+          <caret line="760" column="5" lean-forward="false" selection-start-line="760" selection-start-column="5" selection-end-line="760" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reports/projectReport.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="771">
+          <caret line="38" column="55" lean-forward="false" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/imprests/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="92" column="44" lean-forward="false" selection-start-line="92" selection-start-column="44" selection-end-line="92" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/hod/projectExpenditures.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1496">
+          <caret line="43" column="135" lean-forward="false" selection-start-line="43" selection-start-column="135" selection-end-line="43" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/hod/viewAccountInfo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1166">
+          <caret line="89" column="172" lean-forward="false" selection-start-line="89" selection-start-column="172" selection-end-line="89" selection-end-column="172" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/accountsInfoPDF.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="77" column="35" lean-forward="true" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="638">
+          <caret line="68" column="32" lean-forward="false" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/acc/viewAccounts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="37" column="63" lean-forward="false" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/acc/addDepartmentAccount.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="80" column="123" lean-forward="false" selection-start-line="80" selection-start-column="123" selection-end-line="80" selection-end-column="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/acc/addSchoolAccount.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1012">
+          <caret line="46" column="62" lean-forward="false" selection-start-line="46" selection-start-column="62" selection-end-line="46" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/add_Str_Dir.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/editStrategy.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="19" column="83" lean-forward="false" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/viewActualBudget.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="808">
+          <caret line="77" column="66" lean-forward="false" selection-start-line="77" selection-start-column="66" selection-end-line="77" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/viewBudgetInfo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-990">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reports/projectsPDF.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pdf/projects.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-726">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/dBProposal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="72" column="107" lean-forward="false" selection-start-line="72" selection-start-column="107" selection-end-line="72" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dean/departmentsActualBudget.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="69" column="107" lean-forward="false" selection-start-line="69" selection-start-column="107" selection-end-line="69" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DeanController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="118" column="36" lean-forward="false" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="153" column="33" lean-forward="false" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="33" />
         </state>
       </provider>
     </entry>

@@ -44,7 +44,7 @@
                             <tr>
                                 {{--<td data-field="state" data-checkbox="true"></td>--}}
                                 <td> @if(isset($rcd)) {{ $rcd->accountName }} @endif </td>
-                                <td> @if(isset($rcd)) K {{ $rcd->calculatedTotal->incomeAcquired }}.00 @endif </td>
+                                <td> @if(isset($rcd)) {{ "K ".number_format($rcd->calculatedTotal->incomeAcquired, "2", ".", ",") }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->user->firstName }} {{ $rcd->user->otherName }} {{ $rcd->user->lastName }}@endif </td>
                             </tr>
                         @endforeach
