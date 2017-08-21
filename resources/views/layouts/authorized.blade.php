@@ -131,7 +131,7 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewAccounts')}}"><i class="fa fa-table fa-fw"></i>View Accounts Details</a>
+                                        <a href="{{URL::asset('/Accounts')}}"><i class="fa fa-table fa-fw"></i>View Accounts Details</a>
                                     </li>
 
                                     {{--@if(Auth::user()->access_level_id== 'DN')--}}
