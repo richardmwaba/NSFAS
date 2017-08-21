@@ -13,7 +13,13 @@
 
                     @if(Auth::user()->access_level_id=='OT' or Auth::user()->access_level_id=='HD')
                         <div class="form-group">
-                            <a href="{{url('/imprests/new')}}" class="btn btn-link glyphicon-certificate">Create new</a>
+                                  action="{{ url('/saveSchoolAccount') }}">
+                                {!! csrf_field() !!}
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                       <button class="btn btn-sm btn-primary"><a href="{{url('/imprests/new')}}" class="btn btn-link glyphicon-certificate">Create new</a></button>
+                                    </div>
+                                </div>
                         </div>
                     @endif
 
