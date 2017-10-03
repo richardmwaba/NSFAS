@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 12, 2017 at 06:20 PM
+-- Generation Time: Oct 03, 2017 at 03:02 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.21
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `accounts_accountname_unique` (`accountName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `accounts`
@@ -75,7 +75,8 @@ INSERT INTO `accounts` (`id`, `user_id`, `accountName`, `projects_id`, `budget_i
 (22, 1111, 'The department of Geography main account', NULL, NULL, 8, '2017-03-16 09:21:32', '2017-03-16 09:21:32'),
 (23, 1111, 'The department of Physics main account', NULL, NULL, 8, '2017-03-16 09:21:40', '2017-03-16 09:21:40'),
 (24, 1111, 'The department of Mathematics and Statistics main account', NULL, NULL, 8, '2017-03-16 09:21:45', '2017-03-16 09:21:45'),
-(25, 0, 'Huawei training', 4, NULL, NULL, '2017-03-28 11:16:00', '2017-03-28 11:16:00');
+(25, 0, 'Huawei training', 4, NULL, NULL, '2017-03-28 11:16:00', '2017-03-28 11:16:00'),
+(26, 0, 'Nfas', 5, NULL, NULL, '2017-09-23 20:48:39', '2017-09-23 20:48:39');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `budgets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `budgets`
@@ -152,7 +153,8 @@ INSERT INTO `budgets` (`id`, `budgetName`, `schoolIncome`, `departmentIncome`, `
 (19, 'The department of Geography Budget', 9000000, 1500000, NULL, NULL, NULL, NULL, 0, 0, NULL, 4, 22, '2017-03-16 09:21:32', '2017-03-16 09:22:27'),
 (20, 'The department of Physics Budget', 9000000, 1500000, NULL, NULL, NULL, NULL, 0, 0, NULL, 5, 23, '2017-03-16 09:21:40', '2017-03-16 09:22:27'),
 (21, 'The department of Mathematics and Statistics Budget', 9000000, 1500000, NULL, NULL, NULL, NULL, 0, 0, NULL, 6, 24, '2017-03-16 09:21:45', '2017-03-16 09:22:27'),
-(22, 'Huawei training', NULL, NULL, 20000.00, 14000.00, 6000.00, 20000.00, 0, 0, 4, 3, NULL, '2017-03-28 11:16:00', '2017-03-28 11:16:00');
+(22, 'Huawei training', NULL, NULL, 20000.00, 14000.00, 6000.00, 20000.00, 0, 0, 4, 3, NULL, '2017-03-28 11:16:00', '2017-03-28 11:16:00'),
+(23, 'Nfas', NULL, NULL, 8000.00, 4800.00, 3200.00, 2880.00, 0, 0, 5, 54, NULL, '2017-09-23 20:48:39', '2017-09-23 20:48:39');
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `calculated_totals` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `calculated_totals`
@@ -216,7 +218,9 @@ INSERT INTO `calculated_totals` (`id`, `incomeAcquired`, `proposedBudget`, `expe
 (26, 1500000, NULL, NULL, NULL, 23, NULL, '2017-03-16 09:21:40', '2017-03-16 09:22:27'),
 (27, 1530000, NULL, NULL, NULL, 24, NULL, '2017-03-16 09:21:45', '2017-03-23 10:38:33'),
 (28, NULL, NULL, NULL, 4, NULL, NULL, '2017-03-28 11:18:07', '2017-03-28 11:18:07'),
-(29, NULL, NULL, NULL, NULL, 25, NULL, '2017-03-28 11:22:04', '2017-03-28 11:22:04');
+(29, NULL, NULL, NULL, NULL, 25, NULL, '2017-03-28 11:22:04', '2017-03-28 11:22:04'),
+(30, NULL, NULL, NULL, 5, NULL, NULL, '2017-09-23 20:49:59', '2017-09-23 20:49:59'),
+(31, NULL, NULL, NULL, NULL, 26, NULL, '2017-10-02 13:08:38', '2017-10-02 13:08:38');
 
 -- --------------------------------------------------------
 
@@ -591,14 +595,15 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `projectName`, `projectCoordinator`, `description`, `startDate`, `endingDate`, `completed`, `departments_id`, `created_at`, `updated_at`) VALUES
-(4, 'Huawei training', 'John Kelvin Doe', 'Training students for huawei networking devices', '2017-03-28', '2017-03-31', 0, 53, '2017-03-28 11:16:00', '2017-03-28 11:16:00');
+(4, 'Huawei training', 'John Kelvin Doe', 'Training students for huawei networking devices', '2017-03-28', '2017-03-31', 0, 53, '2017-03-28 11:16:00', '2017-03-28 11:16:00'),
+(5, 'Nfas', 'Kabamba  Kabamba', 'The financial accounting system', '2017-09-24', '2018-09-24', 0, 54, '2017-09-23 20:48:39', '2017-09-23 20:48:39');
 
 -- --------------------------------------------------------
 
@@ -756,12 +761,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `manNumber`, `firstName`, `lastName`, `otherName`, `email`, `phoneNumber`, `password`, `access_level_id`, `departments_id`, `schools_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 1234, 'Manasseh', 'Mwansa', 'Kabaso', 'ks@gmail.com', NULL, '$2y$10$yomSYSPc4mE1AEwhwHTlZeKFRF7cga3jmaJRED2lag7fUyuLVAzZi', 'SA', NULL, NULL, 'uDf2sDEhRxtmMcyS3IC40idzdv1H9KCd8ztKSBfoTcxjPir8cvp6z9Z70jnr', '2016-10-23 05:39:11', '2017-07-13 12:26:46'),
-(2, 1111, 'Mwenda', 'Mwenda', 'T', 'mwenda@gmail.com', NULL, '$2y$10$NGY1JVISGIEX4XRRMkZxeuNrdqon8aRhGEpJla2QKfPU6pE.DLhK2', 'AC', NULL, 8, '42XHd885R086oh9WiR7TQTvQcZNy2Wva6hXUDwIJNDULQ9t0YQ27Wf71Zimo', '2016-11-23 12:48:02', '2017-05-23 07:06:50'),
-(3, 2222, 'Habatwa', 'Mweene', '', 'hm@gmail.com', NULL, '$2y$10$O/Ls0I394QGbjzv54RSrpel5rZbghkweGo5vELOOQGCPfWqZCiw4G', 'DN', NULL, 8, '5Fv0SaqIS7UDuHw9pqbW1MdKvxK6oN51IYrVsKwgOJhVNN4a8pRFlYY6lNh8', '2016-11-23 12:49:29', '2017-07-11 18:30:29'),
-(4, 3333, 'Jackson', 'Phiri', '', 'jp@gmail.com', NULL, '$2y$10$L2jNRECEIgdFQqmR.GqN4ugmMEt20STPeG5V4aSmCsl5FMR/VrsMi', 'HD', 53, 8, '4dbzHd3jZF36uPzUu1nvkU23JhtKM8VwmLXN2v867NwQQCfMJt855VzxRQ4y', '2016-11-23 12:58:00', '2017-06-02 08:48:13'),
-(5, 4444, 'Shehata', 'Shehata', '', 'sh@gmail.com', NULL, '$2y$10$ySsb63qGBOedAejX.mA01u9QM1EYfX5v8zlmOOPFI05fi7eFHZHW6', 'HD', 51, 8, 'g2gJRpZNS7dQbzH1sWt5Py1ouChNg1MHQnC9iwzuVrWANXKqKdBNLMdt8bA0', '2016-11-23 12:59:27', '2017-03-16 18:16:49'),
-(6, 5555, 'Prokahshi', 'Prokahshi', '', 'pk@gmail.com', NULL, '$2y$10$OgofixT9Hntdtom3MElD9.VxNBbTzS9cvdtddCiZXreraj06VqGGC', 'HD', 52, 8, 'J7XDHtQ3F2IVVMelzw539SaSVPBFHV8WXxtXFT7c04tlDuIIPAwUhWkkvRqF', '2016-11-23 13:00:34', '2017-07-13 09:48:19'),
-(7, 6666, 'Kabamba', 'Kabamba', '', 'kbz@gmail.com', NULL, '$2y$10$Jir8g5D4ujLiVGNIamGn5.BrO8pxeIb4OiWwee7IdrzIRXbiF3LaG', 'HD', 54, 8, NULL, '2016-11-23 13:01:56', '2016-11-23 13:01:56'),
+(2, 1111, 'Mwenda', 'Mwenda', 'T', 'mwenda@gmail.com', NULL, '$2y$10$NGY1JVISGIEX4XRRMkZxeuNrdqon8aRhGEpJla2QKfPU6pE.DLhK2', 'AC', NULL, 8, '1V6QH76nTWEJ3EDZeTZKzOXV4GiljNAiKQZzR8IZ0dfs8AqgQgI6Bj2CFbdn', '2016-11-23 12:48:02', '2017-10-03 09:07:11'),
+(3, 2222, 'Habatwa', 'Mweene', '', 'hm@gmail.com', NULL, '$2y$10$O/Ls0I394QGbjzv54RSrpel5rZbghkweGo5vELOOQGCPfWqZCiw4G', 'DN', NULL, 8, 'B4h2bsdYmznaJgicu06ldm7gjQENtkfMmJkKYHiG6QcZWv17rJg0AK2H5dw0', '2016-11-23 12:49:29', '2017-10-03 09:05:51'),
+(4, 3333, 'Jackson', 'Phiri', '', 'jp@gmail.com', NULL, '$2y$10$L2jNRECEIgdFQqmR.GqN4ugmMEt20STPeG5V4aSmCsl5FMR/VrsMi', 'HD', 53, 8, 'jhcKByxka6zUbVvu9paivtKZsFiE4lbjBIkkLaf08mtOkdNjvMa27xor4Fzp', '2016-11-23 12:58:00', '2017-10-03 09:49:33'),
+(5, 4444, 'Shehata', 'Shehata', '', 'sh@gmail.com', NULL, '$2y$10$ySsb63qGBOedAejX.mA01u9QM1EYfX5v8zlmOOPFI05fi7eFHZHW6', 'HD', 51, 8, '25CI1SuF9FlgoxbKu3R0RmIvGRVHVBwPrQXGlREaXdw2uPM5KRTh857a2o1x', '2016-11-23 12:59:27', '2017-09-23 20:46:36'),
+(6, 5555, 'Prokahshi', 'Prokahshi', '', 'pk@gmail.com', NULL, '$2y$10$OgofixT9Hntdtom3MElD9.VxNBbTzS9cvdtddCiZXreraj06VqGGC', 'HD', 52, 8, 'oRzd1tLtlkuxErP1z6iokWHstFJ7HroQqRBgFwBMNAuBhA3dtphNPK61wuDR', '2016-11-23 13:00:34', '2017-10-03 09:06:41'),
+(7, 6666, 'Kabamba', 'Kabamba', '', 'kbz@gmail.com', NULL, '$2y$10$Jir8g5D4ujLiVGNIamGn5.BrO8pxeIb4OiWwee7IdrzIRXbiF3LaG', 'HD', 54, 8, '3ts8a01Ao18impDQBHFTeoNAdIQ1jCK1HdmLJTQLpNg8yjH3HQ4Bm6gXDJLm', '2016-11-23 13:01:56', '2017-09-20 20:21:52'),
 (8, 7777, 'Ephraim', 'Ephraim', '', 'ep@gmail.com', NULL, '$2y$10$8RuUtxVQZm69EH/MjjNms.X2hCkVhDsO2LJQhR0DRiSLFgMXaaumG', 'HD', 55, 8, NULL, '2016-11-23 13:03:04', '2016-11-23 13:03:04'),
 (9, 8888, 'Maywoood', 'Maluza', '', 'marktwain@gmail.com', NULL, '$2y$10$qhItkIxq3mMmOXEuw8voueg95j0L19dDjqtNd/yhrsNPNt/EK8H9y', 'HD', 56, 8, NULL, '2016-11-23 13:04:59', '2016-11-23 13:04:59'),
 (12, 5454, 'John', 'Doe', 'Kelvin', 'ricch.mwaba@gmail.com', '+260 962034633', '$2y$10$TIp6Rj/Sr37h7ROpatfioO//HbnLYxz.ij3MdcLhB1rypGJWBhcMi', 'OT', 53, 8, 'RFfWZpa9PQxYusvBsFbLwtSwc3VguO5xcoPw6NCtcJJ4cC62NkRe1Vs1tVhj', '2017-03-15 13:21:05', '2017-03-16 06:32:15'),

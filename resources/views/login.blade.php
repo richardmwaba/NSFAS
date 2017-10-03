@@ -11,11 +11,11 @@
                <section class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                        {{ csrf_field() }}
-                       <h4 style="text-align: center; color: #e5e5e5"><b>LOG IN</b></h4>
+                       <h4 style="text-align: center; color: #e5e5e5"><b>LOGIN</b></h4>
 
 
                        <div class="form-group{{ $errors->has('manNumber') ? ' has-error' : '' }}">
-                           <label for="email" class="control-label" style="color: #e5e5e5; ">MAN NUMBER</label>
+                           <label for="manNumber" class="control-label" style="color: #e5e5e5; ">MAN NUMBER</label>
                            <input  placeholder="Enter Your Man Number" id="manNumber" type="number" class="form-control" name="manNumber" value="{{ old('manNumber') }}">
                            @if ($errors->has('manNumber'))
                                <span class="help-block" style="color: #f0f0f0">

@@ -17,7 +17,7 @@
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <div class="col-md-8">
-                                       <button class="btn btn-sm btn-primary"><a href="{{url('/imprests/new')}}" class="btn btn-link glyphicon-certificate">Create new</a></button>
+                                        <a href="{{url('/imprests/new')}}" class="btn btn-primary glyphicon glyphicon-plus">Add New</a>
                                     </div>
                                 </div>
                         </div>

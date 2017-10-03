@@ -34,13 +34,13 @@
                                     <td> @if(isset($project)) {{ $project->projectCoordinator }} @endif </td>
                                     <td> @if(isset($project)) {{ $project->departments->departmentName }} @endif </td>
                                     <td>
-                                        @if(isset($project->totalAmount->proposedBudget)) K{{ $project->totalAmount->proposedBudget }}.00
+                                        @if(isset($project->totalAmount->proposedBudget)) {{"K ".number_format($project->totalAmount->proposedBudget, "2", ".", ",")}}
                                         @else
                                             <span style="color: red; ">Budget not submitted</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if(isset($project->totalAmount->incomeAcquired)) K{{ $project->totalAmount->incomeAcquired }}.00
+                                        @if(isset($project->totalAmount->incomeAcquired)) {{"K ".number_format($project->totalAmount->incomeAcquired, "2", ".", ",")}}
                                         @else
                                             <span style="color: red; ">Awaiting Income</span>
                                         @endif
