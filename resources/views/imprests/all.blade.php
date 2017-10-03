@@ -12,8 +12,8 @@
                 <div class="panel-body">
 
                     @if(Auth::user()->access_level_id=='OT' or Auth::user()->access_level_id=='HD')
-                        <div class="form-group">
-                                  action="{{ url('/saveSchoolAccount') }}">
+                        <div class="form-group"
+                           action="{{ url('/saveSchoolAccount') }}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <div class="col-md-8">
