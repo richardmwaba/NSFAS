@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><b>Project info</b></div>
+                <div class="panel-heading"><b>Projects information</b></div>
 
                 <div class="panel-body">
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
@@ -17,15 +17,15 @@
                            data-sort-order="desc" style="font-size: small">
                         <thead>
                         <tr>
-                            <th data-field="ProjectName" data-sortable="true">Project Name</th>
+                            <th data-field="ProjectName" data-sortable="true">Name</th>
                             <th data-field="description" data-sortable="true">Description</th>
                             <th data-field="projectCoordinator" data-sortable="true">Coordinator</th>
                             <th data-field="startDate" data-sortable="true">Start Date</th>
                             <th data-field="endDate" data-sortable="true">End date</th>
-                            <th data-field="income" data-sortable="true">Income</th>
-                            <th data-field="allocatedBudget" data-sortable="true">Budget</th>
-                            <th data-field="approved" data-sortable="true">Budget Status</th>
-                            <th data-field="moreInfo" data-sortable="true">More Budget Info</th>
+                            {{--<th data-field="income" data-sortable="true">Income</th>--}}
+                            {{--<th data-field="allocatedBudget" data-sortable="true">Budget</th>--}}
+                            {{--<th data-field="approved" data-sortable="true">Budget Status</th>--}}
+                            <th data-field="moreInfo" data-sortable="true">View Budget</th>
                         </tr>
                         </thead>
                         @foreach( $record as $rcd)
@@ -35,63 +35,63 @@
                                 <td> @if(isset($rcd)) {{ $rcd->projectCoordinator }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->startDate }} @endif </td>
                                 <td> @if(isset($rcd)) {{ $rcd->endingDate }} @endif </td>
-                                <td> @if(isset($rcd)) {{"K ".number_format($rcd->totalAmount->incomeAcquired, "2", ".", ",") }} @endif </td>
-                                <td> @if(isset($rcd))
-                                        @if(Auth::user()->access_level_id == 'OT')
+                                {{--<td> @if(isset($rcd)) {{"K ".number_format($rcd->totalAmount->incomeAcquired, "2", ".", ",") }} @endif </td>--}}
+                                {{--<td> @if(isset($rcd))--}}
+                                        {{--@if(Auth::user()->access_level_id == 'OT')--}}
 
-                                            @if($rcd->budget->approved  == 0)
-                                                {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}
-                                                @if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)
-                                                    <div class="btn-group">
-                                                        <a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" ><i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i>
-                                                            <span class="text-primary">Add Budget Items</span></a>
-                                                    </div>
-                                                @endif
-                                            @else
-                                                {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",")}}
-                                            @endif
+                                            {{--@if($rcd->budget->approved  == 0)--}}
+                                                {{--{{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}--}}
+                                                {{--@if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)--}}
+                                                    {{--<div class="btn-group">--}}
+                                                        {{--<a href="{{ route('/projectBudget', ['id' => $rcd->id]) }}" class="btn btn-sm btn-link" ><i class="fa fa-plus-circle fa-fw text-primary" style="font-size: medium"></i>--}}
+                                                            {{--<span class="text-primary">Add Budget Items</span></a>--}}
+                                                    {{--</div>--}}
+                                                {{--@endif--}}
+                                            {{--@else--}}
+                                                {{--{{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",")}}--}}
+                                            {{--@endif--}}
 
-                                        @elseif(Auth::user()->access_level_id == 'HD')
-                                             {{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}
-                                        @endif
-                                    @endif
-                                </td>
-                                <td> @if(isset($rcd))
-                                        @if(Auth::user()->access_level_id == 'OT')
-                                            @if($rcd->budget->approved  == 0)
-                                                @if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)
-                                                    <span style="color: red; ">Complete budgeting</span>
-                                                @else
-                                                    <span style="color: orangered; ">Sent to HOD</span>
-                                                @endif
-                                            @else
-                                                <span style="color: darkgreen; ">Approved by HOD</span>
-                                            @endif
+                                        {{--@elseif(Auth::user()->access_level_id == 'HD')--}}
+                                             {{--{{ "K ".number_format($rcd->totalAmount->proposedBudget, "2", ".", ",") }}--}}
+                                        {{--@endif--}}
+                                    {{--@endif--}}
+                                {{--</td>--}}
+                                {{--<td> @if(isset($rcd))--}}
+                                        {{--@if(Auth::user()->access_level_id == 'OT')--}}
+                                            {{--@if($rcd->budget->approved  == 0)--}}
+                                                {{--@if($rcd->totalAmount->proposedBudget < $rcd->budget->actualProjectBudget)--}}
+                                                    {{--<span style="color: red; ">Complete budgeting</span>--}}
+                                                {{--@else--}}
+                                                    {{--<span style="color: orangered; ">Sent to HOD</span>--}}
+                                                {{--@endif--}}
+                                            {{--@else--}}
+                                                {{--<span style="color: darkgreen; ">Approved by HOD</span>--}}
+                                            {{--@endif--}}
 
-                                        @elseif(Auth::user()->access_level_id == 'HD')
+                                        {{--@elseif(Auth::user()->access_level_id == 'HD')--}}
 
-                                            @if($rcd->budget->approved  == 0)
-                                                @if($rcd->totalAmount->proposedBudget == $rcd->budget->actualProjectBudget)
-                                                    <div class="btn-group">
-                                                        <a type="button" href="{{ route('/approvalProjectBudget', ['id' => $rcd->id]) }}"
-                                                           class="btn btn-sm btn-link"><span style="color: orangered; ">Approve</span></a>
-                                                    </div>
-                                                @else
-                                                    <span style="color: red; ">Budget not submitted</span>
-                                                @endif
-                                            @else
-                                                <span style="color: darkgreen; ">Approved</span>
-                                            @endif
-                                       
-                                        @endif
-                                     @endif
-                                </td>
+                                            {{--@if($rcd->budget->approved  == 0)--}}
+                                                {{--@if($rcd->totalAmount->proposedBudget == $rcd->budget->actualProjectBudget)--}}
+                                                    {{--<div class="btn-group">--}}
+                                                        {{--<a type="button" href="{{ route('/approvalProjectBudget', ['id' => $rcd->id]) }}"--}}
+                                                           {{--class="btn btn-sm btn-link"><span style="color: orangered; ">Approve</span></a>--}}
+                                                    {{--</div>--}}
+                                                {{--@else--}}
+                                                    {{--<span style="color: red; ">Budget not submitted</span>--}}
+                                                {{--@endif--}}
+                                            {{--@else--}}
+                                                {{--<span style="color: darkgreen; ">Approved</span>--}}
+                                            {{--@endif--}}
+                                       {{----}}
+                                        {{--@endif--}}
+                                     {{--@endif--}}
+                                {{--</td>--}}
                               
                                 <td> @if(isset($rcd))
                                         <div class="btn-group">
-                                            <a href="{{ route('/projectBudgetDetails', ['id' => $rcd->id]) }}"
-                                               class="btn btn-sm btn-link"><i class="fa fa-info-circle fa-fw text-success">
-                                                </i><span class="text-success">More details</span></a>
+                                            <a href="{{ url('/budgetDetails/'.$rcd->budget_id) }}"
+                                               class="btn btn-sm btn-link"><i class="fa fa-external-link-square fa-fw text-primary">
+                                                </i><span class="text-primary">Go to budget</span></a>
                                         </div>
                                     @endif
                                 </td>

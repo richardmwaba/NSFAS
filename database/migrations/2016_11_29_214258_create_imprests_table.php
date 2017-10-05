@@ -17,7 +17,7 @@ class CreateImprestsTable extends Migration
             $table->increments('imprestId');
             $table->integer('applicantId')->nullable();
             $table->integer('departmentId');
-            $table->double('amountRequested');
+            $table->double('amountRequested', 12, 2);
             $table->integer('purpose')->nullable();
             $table->integer('budgetLine')->nullable();
             $table->integer('authorisedByHead')->default(0);
@@ -33,7 +33,7 @@ class CreateImprestsTable extends Migration
             $table->integer('bursarManNumber')->nullable();
             $table->string('commentFromBursar')->nullable(false);
             $table->double('authorisedAmount')->default(0);
-            $table->double('imprestBalance')->default(0);
+            $table->double('imprestBalance', 12, 2)->default(0);
             $table->boolean('cashAvailable')->default(false);
             $table->date('dateOutstandingImprest')->nullable();
             $table->boolean('isRetired')->default(false);

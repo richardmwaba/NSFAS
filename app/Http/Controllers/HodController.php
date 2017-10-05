@@ -54,6 +54,14 @@ class HODController extends Controller
         return $pdf->stream('reports.departmentBudgetProposalPDF');
     }
 
+    //Function to show budget breakdown in terms of items
+    public function budgetBreakdown($id){
+        $budgetRecord = BudgetItems::where('budget_id', $id)->get();
+        $project = Projects::where('budget_id', $id)->first();
+
+        return view('hod.budgetBreakdown')->with('budgetRecords', $budgetRecord)->with('projects', $project);
+    }
+
 
     /**
      * @return mixed
@@ -431,6 +439,7 @@ class HODController extends Controller
     public function projectInfo()
     {
         if ($this->getAccessLevelId() == 'OT') {
+            //$budgetRecord = Budget::all();
             $record = Projects::where('departments_id', $this->getDepartmentIdFromLoggedInUSer())
                 ->where('projectCoordinator', $this->getUsersFullName())
                 ->get();

@@ -17,12 +17,12 @@ class CreateBudgetsTable extends Migration
             $table->increments('id');
 
             $table->string('budgetName')->nullable();
-            $table->integer('schoolIncome')->nullable();
-            $table->integer('departmentIncome')->nullable();
-            $table->float('netProjectBudget')->nullable();
-            $table->float('departmentAmount')->nullable();
-            $table->float('unzaAmount')->nullable();
-            $table->float('actualProjectBudget')->nullable();
+            $table->decimal('schoolIncome', 12, 2)->nullable();
+            $table->decimal('departmentIncome', 12, 2)->nullable();
+            $table->decimal('netProjectBudget', 12, 2)->nullable();
+            $table->decimal('departmentAmount', 12, 2)->nullable();
+            $table->decimal('unzaAmount', 12, 2)->nullable();
+            $table->decimal('actualProjectBudget', 12, 2)->nullable();
 
             $table->boolean('approved');
             $table->boolean('isDepartmentBudget');

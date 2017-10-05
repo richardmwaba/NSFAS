@@ -26,4 +26,8 @@ class BudgetItems extends Model
         return $this->belongsTo('App\Activities');
     }
 
+    public function projects(){
+        return $this->hasOne('App\Projects', 'budget_id', 'budget_id');
+    }
+
 }

@@ -9,9 +9,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><span style="color: red;">Total Budget for {{ $projects->projectName }} project is {{ "K ".number_format($projects->totalAmount->proposedBudget, "2", ".", ",") }}.00</span></div>
+                <div class="panel-heading"><span style="color: #0b97c4">Current Total Budget for {{ $projects->projectName }} project amounts to {{ "K ".number_format($projects->totalAmount->proposedBudget, "2", ".", ",") }}</span></div>
 
                 <div class="panel-body">
+
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
                            data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
@@ -25,13 +26,13 @@
                             <th data-field="cost" data-sortable="true">Total Cost</th>
                         </tr>
                         </thead>
-                        @foreach( $budget as $rcd)
+                        @foreach( $budgetRecords as $budgetRecord)
                             <tr>
                                 {{--<td data-field="state" data-checkbox="true"></td>--}}
-                                <td> @if(isset($rcd)) {{ $rcd->description }} @endif </td>
-                                <td> @if(isset($rcd)) {{ $rcd->quantity }} @endif </td>
-                                <td> @if(isset($rcd)) {{ $rcd->pricePerUnit }} @endif </td>
-                                <td> @if(isset($rcd)) {{ "K ".number_format($rcd->cost, "2", ".", ",") }} @endif </td>
+                                <td> @if(isset($budgetRecord)) {{ $budgetRecord->description }} @endif </td>
+                                <td> @if(isset($budgetRecord)) {{ $budgetRecord->quantity }} @endif </td>
+                                <td> @if(isset($budgetRecord)) {{ $budgetRecord->pricePerUnit }} @endif </td>
+                                <td> @if(isset($budgetRecord)) {{ "K ".number_format($budgetRecord->cost, "2", ".", ",") }} @endif </td>
                             </tr>
                         @endforeach
                     </table>
@@ -48,10 +49,10 @@
                                     classes += ' table-condensed';
                                 }
                                 $('#table-style').bootstrapTable('destroy')
-                                        .bootstrapTable({
-                                            classes: classes,
-                                            striped: $('#striped').prop('checked')
-                                        });
+                                    .bootstrapTable({
+                                        classes: classes,
+                                        striped: $('#striped').prop('checked')
+                                    });
                             });
                         });
 

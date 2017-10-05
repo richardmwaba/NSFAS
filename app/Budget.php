@@ -27,4 +27,5 @@ class Budget extends Model
     public function items(){
         return $this->hasMany('App\BudgetItems', 'budget_id');
     }
+
 }

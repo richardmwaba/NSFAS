@@ -26,7 +26,7 @@
                             <div class="form-group{{ $errors->has('projectCoordinator') ? ' has-error' : '' }}">
                                 <label for="projectCoordinator" class="col-md-3">Project Coordinator</label>
                                 <div class="col-md-8">
-                                    <input id="projectCoordinator" readonly type="text" class="form-control" name="projectCoordinator"
+                                    <input id="projectCoordinator" type="text" class="form-control" name="projectCoordinator"
                                            value="{{ Auth::user()->firstName }} {{ Auth::user()->otherName }} {{ Auth::user()->lastName }}">
                                     @if ($errors->has('projectCoordinator'))
                                         <span class="help-block"><strong>{{ $errors->first('projectCoordinator') }}</strong></span>

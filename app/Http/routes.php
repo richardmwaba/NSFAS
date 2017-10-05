@@ -97,19 +97,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projectExpenditures', 'HodController@projectExpenditures');
     Route::get('/budgetProposal', 'HodController@budgetProposal');
     Route::get('/activities', 'HodController@activities');
-    Route::post('/save', [
-        'uses' => 'HodController@saveObjective',
-        'as' =>'/saveObjective'
-    ]);
-    Route::post('/save-activity', [
-        'uses' => 'HodController@saveActivity',
-        'as' =>'/saveActivity'
-    ]);
-
-    Route::post('/update/{id}', [
-        'uses' => 'HodController@modifySave',
-        'as' =>'/update'
-    ]);
+    Route::post('/save', ['uses' => 'HodController@saveObjective', 'as' =>'/saveObjective']);
+    Route::post('/save-activity', ['uses' => 'HodController@saveActivity', 'as' =>'/saveActivity']);
+    Route::post('/update/{id}', ['uses' => 'HodController@modifySave', 'as' =>'/update']);
+    Route::get('/editBudgetItem/{id}', 'HodController@editBudgetItem');
 
 
     Route::get('/dltStaff/{id}', ['uses'=> 'HodController@destroy', 'as' => '/dltStaff']);
@@ -119,9 +110,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projectBudget/{id}', ['uses'=> 'HodController@projectBudget', 'as' => '/projectBudget']);
     Route::get('/requestForMoney/{id}', ['uses'=> 'HodController@requestForMoney', 'as' => '/requestForMoney']);
     Route::get('/requestApproval/{id}', ['uses'=> 'HodController@requestApproval', 'as' => '/requestApproval']);
-    Route::get('/editStaff/{id}', ['uses' =>'HodController@edit', 'as' => '/editStaff']);
     Route::get('/approvalProjectBudget/{id}', ['uses' =>'HodController@projectBudgetApprove', 'as' => '/approvalProjectBudget']);
     Route::post('/approvalProjectBudget/{id}', 'HodController@projectBudgetApproval');
+
+    Route::get('/budgetDetails/{id}', ['as' => '/budgetDetails', 'uses' => 'HodController@budgetBreakdown']);
 
     /**
      * routes for all the accountant controller goes here

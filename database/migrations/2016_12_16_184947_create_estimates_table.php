@@ -19,9 +19,9 @@ class CreateEstimatesTable extends Migration
             $table->integer('activities_id');
 
             $table->string('itemDescription');
-            $table->float('pricePerUnit')->nullable();
+            $table->decimal('pricePerUnit', 12, 2)->nullable();
             $table->integer('quantity');
-            $table->float('cost');
+            $table->decimal('cost', 12, 2);
 
             $table->timestamps();
         });

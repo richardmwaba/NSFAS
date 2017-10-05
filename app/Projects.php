@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Projects;
 
 class Projects extends Model
 {
@@ -24,5 +25,9 @@ class Projects extends Model
 
     public function totalAmount(){
         return $this->hasOne('App\CalculatedTotal');
+    }
+
+    public function budgetItem(){
+        return $this->hasMany('App\Projects', 'budget_id', 'budget_id');
     }
 }

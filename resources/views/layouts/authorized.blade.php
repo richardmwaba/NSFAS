@@ -353,23 +353,22 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-info fa-fw"></i>Information</a>
+                                        <a href="{{URL::asset('/viewProjectInfo')}}"><i class="fa fa-list-alt fa-fw"></i>Project Information</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-info fa-fw"></i>Expenditures</a>
+                                        <a href="{{URL::asset('/projectExpenditures')}}"><i class="fa fa-credit-card fa-fw"></i>Project Expenditure</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-circle fa-fw"></i>Add New Project</a>
+                                        <a href="{{URL::asset('/addProject')}}"><i class="fa fa-plus-square-o fa-fw"></i>New Project</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-info fa-fw"></i>Generate Reports<span
-                                                    class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{{URL::asset('/projectReport')}}"><i class="fa fa fa-fw"></i>Individual Report</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-third-level -->
+                                        <a href="{{URL::asset('/projectReport')}}"><i class="fa fa-table fa-fw"></i>Project Summary</a>
+                                        {{--<ul class="nav nav-third-level">--}}
+                                            {{--<li>--}}
+                                                {{--<a href="{{URL::asset('/projectReport')}}"><i class="fa fa fa-fw"></i>Individual Report</a>--}}
+                                            {{--</li>--}}
+                                        {{--</ul>--}}
+                                        {{--<!-- /.nav-third-level -->--}}
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
