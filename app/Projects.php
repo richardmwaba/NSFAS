@@ -8,7 +8,7 @@ use App\Projects;
 class Projects extends Model
 {
     public function budget(){
-        return $this->hasOne('App\Budget');
+        return $this->hasOne('App\Budget', 'id', 'budget_id');
     }
 
     public function accounts(){
@@ -24,7 +24,7 @@ class Projects extends Model
     }
 
     public function totalAmount(){
-        return $this->hasOne('App\CalculatedTotal');
+        return $this->hasOne('App\CalculatedTotal', 'projects_id', 'id');
     }
 
     public function budgetItem(){

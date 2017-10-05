@@ -13,6 +13,71 @@
 
                 <div class="panel-body">
 
+                    <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" >
+                        <form class="form-horizontal" role="form" style="margin-top: 0px" method="POST"
+                              action="#">
+                            <div class="form-group">
+                                <a href="#" type="button" class="btn btn-primary"><span><i class="fa fa-plus-square fa-fw"></i></span>Add Budget Item</a>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 col-lg-2 col-md-2 col-xs-4" for="NRC"> Proposed Amount:</label>
+                                <div class="col-sm-6 col-lg-2 col-md-2 col-xs-5 text-primary">
+                                    {{ "K ".number_format($projects->budget->netProjectBudget, "2", ".", ",") }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 col-lg-2 col-md-2 col-xs-4" for="">Received Income Amount:</label>
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-5 text-primary">
+                                    @if(isset($projects->totalAmount->incomeAcquired))
+                                        {{ "K ".number_format($projects->totalAmount->incomeAcquired, "2", ".", ",") }}
+                                    @else
+                                        <span style="color: red">Not yet received :(</span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 col-lg- 2 col-md-2 col-xs-4" for="first-name"> Budget Status:</label>
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-5 text-primary">
+                                    @if(isset($projects))
+                                        @php
+                                            switch ($projects->budget->approved)
+                                            {
+                                                case 0:
+                                                   echo 'Adding of budget items incomplete';
+                                                break;
+                                                case 1:
+                                                    echo 'Awaiting HoD\'s approval';
+                                                break;
+                                                case 2:
+                                                    echo 'Approved by HoD';
+                                                break;
+                                                case 3:
+                                                    echo 'Awaiting Dean\'s approval';
+                                                break;
+                                                case 4:
+                                                    echo 'Approved by Dean';
+                                                break;
+                                                case 5:
+                                                    echo 'Awaiting Accountant\'s approval/funding';
+                                                break;
+                                                case 6:
+                                                    echo 'Project complete';
+                                                break;
+                                            }
+                                        @endphp
+                                    @endif
+                                </div>
+                            </div>
+
+                        </form>
+                        <!-- /.form -->
+                    </div>
+                    <!-- col-lg-md-sm-xs -->
+
                     <table class="table-striped responsive-utilities" data-toggle="table" data-show-refresh="false"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
                            data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"

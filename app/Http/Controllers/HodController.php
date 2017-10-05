@@ -57,9 +57,12 @@ class HODController extends Controller
     //Function to show budget breakdown in terms of items
     public function budgetBreakdown($id){
         $budgetRecord = BudgetItems::where('budget_id', $id)->get();
-        $project = Projects::where('budget_id', $id)->first();
+        $total = Projects::with('totalAmount')->where('budget_id', $id)->first();
+        $project = Projects::with('budget', 'totalAmount')->where('budget_id', $id)->first();
 
-        return view('hod.budgetBreakdown')->with('budgetRecords', $budgetRecord)->with('projects', $project);
+
+
+        return view('hod.budgetBreakdown')->with('budgetRecords', $budgetRecord)->with('projects', $project)->with('totals', $total);
     }
 
 

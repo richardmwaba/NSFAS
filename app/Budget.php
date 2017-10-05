@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Budget extends Model
 {
     public function project(){
-        return $this->belongsTo('App\Projects');
+        return $this->belongsTo('App\Projects', 'budget_id', 'id');
     }
     public function budgetItems(){
         return $this->hasMany('App\BudgetItems');
