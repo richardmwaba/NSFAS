@@ -6,9 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class BudgetItems extends Model
 {
+
+    protected $table = 'budget_items';
+    protected $primaryKey = 'id';
+
+    // for mass assignment
+    protected $fillable = [
+        'budgetLine', 'description', 'quantity','pricePerUnit', 'cost', 'budget_id', 'activities_id'
+    ];
+
     public function budget()
     {
-        return $this->belongsTo('App\Budget');
+        return $this->belongsTo('App\Budget', 'id');
     }
 
     public function item()

@@ -10,12 +10,9 @@ class Budget extends Model
         return $this->belongsTo('App\Projects', 'budget_id', 'id');
     }
     public function budgetItems(){
-        return $this->hasMany('App\BudgetItems');
+        return $this->hasMany('App\BudgetItems', 'budget_id', 'id');
     }
 
-    public function departments(){
-        return $this->belongsTo('App\Departments');
-    }
     public function department(){
         return $this->belongsTo('App\Departments', 'depertmentID');
     }
@@ -24,8 +21,5 @@ class Budget extends Model
         return $this->belongsTo('App\Accounts');
     }
 
-    public function items(){
-        return $this->hasMany('App\BudgetItems', 'budget_id');
-    }
 
 }

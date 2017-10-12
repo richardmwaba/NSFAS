@@ -57,12 +57,73 @@ class HODController extends Controller
     //Function to show budget breakdown in terms of items
     public function budgetBreakdown($id){
         $budgetRecord = BudgetItems::where('budget_id', $id)->get();
-        $total = Projects::with('totalAmount')->where('budget_id', $id)->first();
+        $item = Budget::where('id', $id)->get();
         $project = Projects::with('budget', 'totalAmount')->where('budget_id', $id)->first();
 
 
 
-        return view('hod.budgetBreakdown')->with('budgetRecords', $budgetRecord)->with('projects', $project)->with('totals', $total);
+        return view('hod.budgetBreakdown')->with('budgetRecords', $budgetRecord)->with('projects', $project)->with('items', $item);
+    }
+
+    //Function to delete budget item
+    public function deleteBudgetItem($budgetItem_id)
+    {
+        $budgetItem = BudgetItems::findOrFail($budgetItem_id);
+        $budgetItem->delete();
+        return redirect()->back()->with('status', 'Budget item has been deleted successfully!!');
+    }
+
+    //Function to edit budget item
+    public function updateBudgetItem(Request $data, $edit_id)
+    {
+        //Validation
+        $this->validate($data, [
+
+            'cost' => 'required|max:150',
+            'quantity' => 'required|max:150',
+            'costPerUnit' => 'required|max:150',
+            'description' => 'required|max:255',
+            'budgetName' => 'required|max:255',
+
+        ]);
+
+        $budgetItem = BudgetItems::findorfail($edit_id);
+        $item = BudgetItems::where('id', $edit_id)->first();
+        $reference_id = $item->budget->projects_id;
+        $record = Budget::where('projects_id',$reference_id)->first();
+        $actualProjectBudget = $record->actualProjectBudget;
+
+        if (($this->projectTotalBudgetCalculator($reference_id) + $data['cost']) <= $actualProjectBudget){
+            if (isset($record)){
+
+
+                $budgetItem->update($data->all());
+
+                $this->projectTotalBudgetCalculator($reference_id);
+
+                if ($this->projectTotalBudgetCalculator($reference_id) == $actualProjectBudget) {
+                    //send an email to  the Hod so that he can approve the project's budget
+                }
+
+            }else{
+                //display an error message
+                Session::flash('flash_message', 'Error!');
+                Session::flash('alert-call', 'alert-danger');
+                Return Redirect::back();
+            }
+
+        }else{
+            //display an error message
+            Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K' . $actualProjectBudget . '.00');
+            Session::flash('alert-call', 'alert-danger');
+            Return Redirect::back();
+        }
+
+
+        Session::flash('flash_message', 'Item has been successfully updated');
+        Session::flash('alert-call', 'alert-success');
+        return redirect()->back();
+
     }
 
 
@@ -711,10 +772,10 @@ class HODController extends Controller
 
                 $info = new BudgetItems();
                 $info->budgetLine = $request['budgetLine'];
-                $info->cost = $request['cost'];
-                $info->description = $request['description'];
-                $info->quantity = $request['quantity'];
-                $info->pricePerUnit = $request['costPerUnit'];
+                $info->cost = $request['total'];
+                $info->description = $request['desc'];
+                $info->quantity = $request['quant'];
+                $info->pricePerUnit = $request['pricePerUnit'];
                 $record->budgetItems()->save($info);
 
                 $this->projectTotalBudgetCalculator($id);
@@ -737,9 +798,9 @@ class HODController extends Controller
             Return Redirect::back();
         }
 
-        Session::flash('flash_message', 'Operation successfully');
+        Session::flash('flash_message', 'Item has been successfully added to your budget');
         Session::flash('alert-call', 'alert-success');
-        Return Redirect::action('HodController@projectBudget', $id);
+        return redirect()->back();
     }
 
 
@@ -799,10 +860,10 @@ class HODController extends Controller
     protected function projectBudgetValidation(array $data)
     {
         return Validator::make($data, [
-            'cost' => 'required|max:150',
-            'quantity' => 'required|max:150',
-            'costPerUnit' => 'required|max:150',
-            'description' => 'required|max:255',
+            'total' => 'required|max:150',
+            'quant' => 'required|max:150',
+            'pricePerUnit' => 'required|max:150',
+            'des' => 'required|max:255',
             'budgetLine' => 'required|max:255',
         ]);
     }

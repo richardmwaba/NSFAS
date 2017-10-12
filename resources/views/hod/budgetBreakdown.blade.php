@@ -14,8 +14,7 @@
                 <div class="panel-body">
 
                     <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" >
-                        <form class="form-horizontal" role="form" style="margin-top: 0px" method="POST"
-                              action="#">
+                        <div class="form-horizontal">
                             <div class="form-group">
                                 <button data-target="#addBudgetItemModal" data-toggle="modal" class="btn btn-primary"><span><i class="fa fa-plus-square fa-fw"></i></span>Add Budget Item</button>
                             </div>
@@ -72,9 +71,8 @@
                                     @endif
                                 </div>
                             </div>
-
-                        </form>
-                        <!-- /.form -->
+                        </div>
+                        <!-- ./ form-horizontal -->
                     </div>
                     <!-- col-lg-md-sm-xs -->
 
@@ -101,160 +99,137 @@
                                 <td> @if(isset($budgetRecord)) {{ "K ".number_format($budgetRecord->cost, "2", ".", ",") }} @endif </td>
                                 <td>
 
-                                    <button class="btn btn-default btn-xs btn-danger" type="button" data-toggle="modal" title="Delete" data-target="#deleteModal">
+                                    <button class="btn btn-default btn-xs btn-danger" type="button" data-toggle="modal" title="Delete" data-target="#deleteModal-{{ $budgetRecord->id }}">
                                         <i class="glyphicon glyphicon glyphicon-trash"></i>
                                     </button>
 
-                                    <button class="btn btn-default btn-xs btn-success" type="button" title="Edit" data-toggle="modal" data-target="#editMemberModal"><i class="glyphicon glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn btn-default btn-xs btn-success" type="button" title="Edit" data-toggle="modal" data-target="#editBudgetItemModal-{{ $budgetRecord->id }}"><i class="glyphicon glyphicon glyphicon-edit"></i></button>
 
-                                {{--<form role="form" method="post" action="{{url('/members/deleteMember/'.$member->member_id)}}">--}}
-                                {{--{{csrf_field()}}<!--delete confirmation Modal -->--}}
-                                {{--<div class="modal fade" id="deleteModal-{{$member->member_id}}" role="dialog">--}}
-                                {{--<div class="modal-dialog modal-sm">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<div class="modal-header">--}}
-                                {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                                {{--<h4 class="modal-title">Confirmation</h4>--}}
-                                {{--</div>--}}
-                                {{--<div class="modal-body">--}}
-                                {{--<p>Are you sure you want to <strong>delete--}}
-                                {{--{{$member->first_name}}</strong> from the system?</p>--}}
-                                {{--</div>--}}
-                                {{--<div class="modal-footer">--}}
-                                {{--<button type="submit" class="btn btn-danger">Yes</button>--}}
-                                {{--<button type="button" class="btn btn-primary" data-dismiss="modal">--}}
-                                {{--Close--}}
-                                {{--</button>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div> <!-- end modal -->--}}
-                                {{--</form>--}}
+                                    <form role="form" method="post" action="{{url('/deleteBudgetItem/'.$budgetRecord->id)}}">
+                                    {{csrf_field()}}<!--delete confirmation Modal -->
+                                        <div class="modal fade" id="deleteModal-{{ $budgetRecord->id }}" role="dialog">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Confirmation</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to <strong>delete
+                                                                the selected budget item</strong> from the system?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end modal -->
+                                    </form>
 
-                                <!-- Modal for editing member-->
-                                {{--<div class="modal fade" id="editMemberModal-{{$member->member_id}}" role="dialog">--}}
-                                {{--<div class="modal-dialog modal-md">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<div class="modal-header">--}}
-                                {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                                {{--<h4 class="modal-title">Edit Member</h4>--}}
-                                {{--</div>--}}
-                                {{--<div class="modal-body" style="max-height: 500px;overflow-y: scroll;">--}}
-                                {{--<div class="row">--}}
-                                {{--<form class="" role="form" method="POST"--}}
-                                {{--action="{{ url('/members/update/'.$member->member_id) }}">--}}
-                                {{--{!! csrf_field() !!}--}}
+                                    <!-- Modal for editing budget items-->
+                                    <div class="modal fade" id="editBudgetItemModal-{{ $budgetRecord->id }}" role="dialog">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">New Budget Item</h4>
+                                                </div>
+                                                <div class="modal-body" style="max-height: 500px;overflow-y: scroll;">
+                                                    <div class="row">
+                                                        <form class="" onkeyup="auto();" role="form" method="POST" action="{{ url('/changeValues/' .$budgetRecord->id) }}" enctype="multipart/form-data">
+                                                            {!! csrf_field() !!}
 
-                                {{--<div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }} col-md-12 col-sm-12 col-xs-12">--}}
+                                                            <div class="form-group{{ $errors->has('budgetName') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label for="budgetLine" >Budget Line</label>
+                                                                <input id="budgetLine" type="text" class="form-control" name="budgetName" value="{{ $projects->budget->budgetName }}">
+                                                                @if ($errors->has('budgetLine'))
+                                                                    <span class="help-block"><strong>{{ $errors->first('budgetName') }}</strong></span>
+                                                                @endif
+                                                            </div>
 
-                                {{--<label>First Name</label>--}}
-                                {{--<input class="form-control" id="first_name" name="first_name" type="text" value={{$member->first_name}}>--}}
-                                {{--@if ($errors->has('first_name'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('first_name') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }} col-md-12 col-sm-12 col-xs-12">--}}
+                                                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label for="quantity">Quantity</label>
+                                                                <input id="quantity" placeholder="" type="text" class="form-control" name="quantity" value="{{ $budgetRecord->quantity }}">
+                                                                @if ($errors->has('quantity'))
+                                                                    <span class="help-block"><strong>{{ $errors->first('quantity') }}</strong></span>
+                                                                @endif
+                                                            </div>
 
-                                {{--<label>Middle Name</label>--}}
-                                {{--<input class="form-control" id="middle_name" value="{{$member->middle_name}}" name="middle_name" type="text">--}}
-                                {{--@if ($errors->has('middle_name'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('middle_name') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                            <div class="form-group{{ $errors->has('costPerUnit') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label for="costPerUnit">Price per Unit | Quantity </label>
 
-                                {{--<label>Last Name</label>--}}
-                                {{--<input class="form-control" id="last_name" name="last_name" type="text" value="{{$member->last_name}}">--}}
-                                {{--@if ($errors->has('last_name'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('last_name') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                                <input id="costPerUnit" placeholder="" type="text" class="form-control" name="costPerUnit" value="{{ $budgetRecord->pricePerUnit }}">
+                                                                @if ($errors->has('costPerUnit'))
+                                                                    <span class="help-block"><strong>{{ $errors->first('costPerUnit') }}</strong></span>
+                                                                @endif
 
-                                {{--<label>Email</label>--}}
-                                {{--<input class="form-control" id="email" name="email" type="email" value="{{$member->email }}">--}}
-                                {{--@if ($errors->has('email'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('year') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                            </div>
 
-                                {{--<label>Year</label>--}}
-                                {{--<input class="form-control" name="year"  value="{{$member->year}}" type="text">--}}
-                                {{--@if ($errors->has('year'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('year') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                            <div class="form-group{{ $errors->has('cost') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label for="cost">Cost (Kwacha)</label>
 
-                                {{--<label>Phone Number</label>--}}
-                                {{--<input class="form-control" name="phone_number" type="tel" value="{{$member->phone_number }}">--}}
-                                {{--@if ($errors->has('phone_number'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('phone_number') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                                <input id="cost" placeholder="Enter amount" type="text" class="form-control" name="cost" value="{{ $budgetRecord->cost }}">
+                                                                @if ($errors->has('cost'))
+                                                                    <span class="help-block"><strong>{{ $errors->first('cost') }}</strong></span>
+                                                                @endif
 
-                                {{--<label>Status</label>--}}
-                                {{--<select id="ddl3" onchange="dropdowns(this,document.getElementById('ddl4'))" class="form-control" name="status_id">--}}
-                                {{--<option name="currentValue" value="{{$member->status_id}}">{{$member->status->status_description}}</option>--}}
-                                {{--<option value="">-- select one --</option>--}}
-                                {{--<option name="Executive" value="1"> Executive Member</option>--}}
-                                {{--<option name="Ordinary" value="2"> Member</option>--}}
-                                {{--<option name="Exec Alumni" value="3"> Executive Alumni Member</option>--}}
-                                {{--<option name="Ordinary Alumni" value="4"> Alumni Member</option>--}}
-                                {{--</select>--}}
+                                                            </div>
 
-                                {{--@if ($errors->has('status_id'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('status_id') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--@if($member->status_id == '1')--}}
-                                {{--<div id="position" class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                                                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label for="description">Description</label>
 
-                                {{--<label id="position_label">Position</label>--}}
-                                {{--<select id="ddl4" class="form-control" name="position_id">--}}
-                                {{--<option name="currentValue" value="{{$member->position_id}}">{{$member->position->position_description}}</option>--}}
-                                {{--//Content is loaded from an external JavaScript file--}}
-                                {{--</select>--}}
-                                {{--@if ($errors->has('position_id'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('position_id') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
+                                                                <textarea id="description" rows="4" class="form-control" name="description">{{ $budgetRecord->description }}</textarea>
+                                                                @if ($errors->has('description'))
+                                                                    <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>
+                                                                @endif
+                                                            </div>
 
-                                {{--@endif--}}
+                                                            {{--<div class="form-group{{ $errors->has('comments') ? ' has-error' : '' }}">--}}
+                                                            {{--<label for="comments" class="col-md-3">Comments</label>--}}
+                                                            {{--<div class="col-md-8">--}}
+                                                            {{--<input id="comments" type="text" class="form-control" name="comments" value="{{ old('comments') }}">--}}
+                                                            {{--@if ($errors->has('comments'))--}}
+                                                            {{--<span class="help-block"><strong>{{ $errors->first('comments') }}</strong></span>--}}
+                                                            {{--@endif--}}
+                                                            {{--</div>--}}
+                                                            {{--</div>--}}
 
-                                {{--<button type="submit" class="btn btn-default btn-primary col-lg-offset-9 col-md-offset-9 col-sm-offset-9 col-xs-offset-7">Save</button>--}}
-                                {{--<button type="reset" class="btn btn-default btn-danger pull-right" data-dismiss="modal">Cancel</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div> <!-- end modal -->--}}
-                                <!-- Modal for editing member ends here-->
+                                                            <button type="submit" class="btn btn-default btn-primary col-lg-offset-9 col-md-offset-9 col-sm-offset-9 col-xs-offset-7">Save</button>
+                                                            <button type="reset" class="btn btn-default btn-danger pull-right" data-dismiss="modal">Cancel</button>
+                                                        </form>
+
+                                                        <script type="text/javascript">
+                                                            function auto() {
+
+                                                                var quant = document.getElementById('quantity').value;
+                                                                var pricePerUnit = document.getElementById('costPerUnit').value;
+                                                                var cost = parseInt(pricePerUnit);
+                                                                var  total =0;
+                                                                if (quant && cost ){
+                                                                    total = quant * cost;
+                                                                    document.getElementById('cost').value = total ;
+                                                                }
+
+                                                            }
+                                                        </script>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div> <!-- end editing modal -->
+
                                 </td>
                             </tr>
                         @endforeach
                     </table>
 
-                    <!-- Modal for adding new buget items-->
+                    <!-- Modal for adding new budget items-->
                     <div class="modal fade" id="addBudgetItemModal" role="dialog">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
@@ -264,57 +239,52 @@
                                 </div>
                                 <div class="modal-body" style="max-height: 500px;overflow-y: scroll;">
                                     <div class="row">
-                                        <form class="" onkeyup="autoUpdate()" role="form" method="POST" action="{{ url('/projectBudget/' .$projects->id) }}" enctype="multipart/form-data">
+                                        <form class="" onkeyup="autoUpdate();" role="form" method="POST" action="{{ url('/projectBudget/' .$projects->id) }}" enctype="multipart/form-data">
                                             {!! csrf_field() !!}
 
-                                            <div class="form-group{{ $errors->has('budgetLine') ? ' has-error' : '' }}">
-                                                <label for="budgetLine" class="col-md-3">Budget Line</label>
-                                                <div class="col-md-8">
-                                                    <input id="budgetLine" type="text" class="form-control" name="budgetLine" value="{{ $projects->budget->budgetName }}">
-                                                    @if ($errors->has('budgetLine'))
-                                                        <span class="help-block"><strong>{{ $errors->first('budgetLine') }}</strong></span>
-                                                    @endif
-                                                </div>
+                                            <div class="form-group{{ $errors->has('budgetLine') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="budgetLine" >Budget Line</label>
+                                                <input id="budgetLine" type="text" class="form-control" name="budgetLine" value="{{ $projects->budget->budgetName }}">
+                                                @if ($errors->has('budgetLine'))
+                                                    <span class="help-block"><strong>{{ $errors->first('budgetLine') }}</strong></span>
+                                                @endif
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
-                                                <label for="quantity" class="col-md-3">Quantity</label>
-                                                <div class="col-md-8">
-                                                    <input id="quantity" placeholder="" type="text" class="form-control" name="quantity" value="{{ old('quantity') }}">
-                                                    @if ($errors->has('quantity'))
-                                                        <span class="help-block"><strong>{{ $errors->first('quantity') }}</strong></span>
-                                                    @endif
-                                                </div>
+                                            <div class="form-group{{ $errors->has('quant') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="quantity">Quantity</label>
+                                                <input id="quant" placeholder="" type="text" class="form-control" name="quant">
+                                                @if ($errors->has('quant'))
+                                                    <span class="help-block"><strong>{{ $errors->first('quant') }}</strong></span>
+                                                @endif
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('costPerUnit') ? ' has-error' : '' }}">
-                                                <label for="costPerUnit" class="col-md-3">Price per Unit | Quantity </label>
-                                                <div class="col-md-8">
-                                                    <input id="costPerUnit" placeholder="" type="text" class="form-control" name="costPerUnit" value="{{ old('costPerUnit') }}">
-                                                    @if ($errors->has('costPerUnit'))
-                                                        <span class="help-block"><strong>{{ $errors->first('costPerUnit') }}</strong></span>
-                                                    @endif
-                                                </div>
+                                            <div class="form-group{{ $errors->has('pricePerUnit') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="costPerUnit">Price per Unit | Quantity </label>
+
+                                                <input id="pricePerUnit" placeholder="" type="text" class="form-control" name="pricePerUnit" value="{{ old('pricePerUnit') }}">
+                                                @if ($errors->has('pricePerUnit'))
+                                                    <span class="help-block"><strong>{{ $errors->first('pricePerUnit') }}</strong></span>
+                                                @endif
+
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('cost') ? ' has-error' : '' }}">
-                                                <label for="cost" class="col-md-3">Cost (Kwacha)</label>
-                                                <div class="col-md-8">
-                                                    <input id="cost" placeholder="Enter amount" type="text" class="form-control" name="cost" value="{{ old('cost') }}">
-                                                    @if ($errors->has('cost'))
-                                                        <span class="help-block"><strong>{{ $errors->first('cost') }}</strong></span>
-                                                    @endif
-                                                </div>
+                                            <div class="form-group{{ $errors->has('total') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="cost">Cost (Kwacha)</label>
+
+                                                <input id="total" placeholder="Enter amount" type="text" class="form-control" name="total" >
+                                                @if ($errors->has('cost'))
+                                                    <span class="help-block"><strong>{{ $errors->first('total') }}</strong></span>
+                                                @endif
+
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                                <label for="description" class="col-md-3">Description</label>
-                                                <div class="col-md-8">
-                                                    <textarea id="description" rows="4" class="form-control" name="description"></textarea>
-                                                    @if ($errors->has('description'))
-                                                        <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>
-                                                    @endif
-                                                </div>
+                                            <div class="form-group{{ $errors->has('des') ? ' has-error' : '' }} col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="description">Description</label>
+
+                                                <textarea id="description" rows="4" class="form-control" name="des"></textarea>
+                                                @if ($errors->has('des'))
+                                                    <span class="help-block"><strong>{{ $errors->first('des') }}</strong></span>
+                                                @endif
                                             </div>
 
                                             {{--<div class="form-group{{ $errors->has('comments') ? ' has-error' : '' }}">--}}
@@ -333,13 +303,13 @@
                                         <script type="text/javascript">
                                             function autoUpdate() {
 
-                                                var quantity = document.getElementById('quantity').value;
-                                                var costPerUnit = document.getElementById('costPerUnit').value;
+                                                var quantity = document.getElementById('quant').value;
+                                                var costPerUnit = document.getElementById('pricePerUnit').value;
                                                 var amount = parseInt(costPerUnit);
                                                 var  total =0;
                                                 if (quantity && amount ){
                                                     total = quantity * amount;
-                                                    document.getElementById('cost').value = total ;
+                                                    document.getElementById('total').value = total ;
                                                 }
 
                                             }
@@ -348,6 +318,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                     </div> <!-- end modal -->
 

@@ -12,7 +12,9 @@
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteBase /mylaravel/public/          #----> ADDED THIS
+	RewriteRule ^(.+)$ index.php/$1 [QSA,L] #----> TWO ROW
+    #RewriteRule ^ index.php [L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

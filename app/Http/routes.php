@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/editBudgetItem/{id}', 'HodController@editBudgetItem');
 
 
+
     Route::get('/dltStaff/{id}', ['uses'=> 'HodController@destroy', 'as' => '/dltStaff']);
     Route::get('/moreInfo/{id}', ['uses'=> 'HodController@moreInfo', 'as' => '/moreInfo']);
     Route::get('/saveAsFinal/{id}', ['uses'=> 'HodController@saveAsFinal', 'as' => '/saveAsFinal']);
@@ -113,6 +114,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/approvalProjectBudget/{id}', ['uses' =>'HodController@projectBudgetApprove', 'as' => '/approvalProjectBudget']);
     Route::post('/approvalProjectBudget/{id}', 'HodController@projectBudgetApproval');
 
+    Route::post('/changeValues/{edit_id}', 'HodController@updateBudgetItem');
+    Route::post('/deleteBudgetItem/{budgetItem_id}', ['as' => '/deleteBudgetItem', 'uses' => 'HodController@deleteBudgetItem']);
     Route::get('/budgetDetails/{id}', ['as' => '/budgetDetails', 'uses' => 'HodController@budgetBreakdown']);
 
     /**
