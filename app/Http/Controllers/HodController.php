@@ -88,36 +88,36 @@ class HODController extends Controller
         ]);
 
         $budgetItem = BudgetItems::findorfail($edit_id);
-        $item = BudgetItems::where('id', $edit_id)->first();
-        $reference_id = $item->budget->projects_id;
-        $record = Budget::where('projects_id',$reference_id)->first();
-        $actualProjectBudget = $record->actualProjectBudget;
+        //$item = BudgetItems::where('id', $edit_id)->first();
+       // $reference_id = $item->budget->projects_id;
+       // $record = Budget::where('projects_id',$reference_id)->first();
+        //$actualProjectBudget = $record->actualProjectBudget;
 
-        if (($this->projectTotalBudgetCalculator($reference_id) + $data['cost']) <= $actualProjectBudget){
-            if (isset($record)){
+//        if (($this->projectTotalBudgetCalculator($reference_id) + $data['cost']) <= $actualProjectBudget){
+//            if (isset($record)){
 
 
                 $budgetItem->update($data->all());
 
-                $this->projectTotalBudgetCalculator($reference_id);
-
-                if ($this->projectTotalBudgetCalculator($reference_id) == $actualProjectBudget) {
-                    //send an email to  the Hod so that he can approve the project's budget
-                }
-
-            }else{
-                //display an error message
-                Session::flash('flash_message', 'Error!');
-                Session::flash('alert-call', 'alert-danger');
-                Return Redirect::back();
-            }
-
-        }else{
-            //display an error message
-            Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K' . $actualProjectBudget . '.00');
-            Session::flash('alert-call', 'alert-danger');
-            Return Redirect::back();
-        }
+//                $this->projectTotalBudgetCalculator($reference_id);
+//
+//                if ($this->projectTotalBudgetCalculator($reference_id) == $actualProjectBudget) {
+//                    //send an email to  the Hod so that he can approve the project's budget
+//                }
+//
+//            }else{
+//                //display an error message
+//                Session::flash('flash_message', 'Error!');
+//                Session::flash('alert-call', 'alert-danger');
+//                Return Redirect::back();
+//            }
+//
+//        }else{
+//            //display an error message
+//            Session::flash('flash_message', 'Sorry make sure that your total budget does not exceed K' . $actualProjectBudget . '.00');
+//            Session::flash('alert-call', 'alert-danger');
+//            Return Redirect::back();
+//        }
 
 
         Session::flash('flash_message', 'Item has been successfully updated');
